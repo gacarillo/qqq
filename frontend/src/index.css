@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-copa-green hover:bg-copa-green-dark text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-copa-blue hover:bg-copa-blue-light text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-yellow {
+    @apply bg-copa-yellow hover:bg-copa-yellow-dark text-gray-900 font-semibold py-2.5 px-5 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply border border-copa-green text-copa-green hover:bg-copa-green hover:text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full bg-gray-800 border border-gray-700 text-white placeholder-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-copa-green focus:ring-1 focus:ring-copa-green transition-colors;
+  }
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-xl p-5;
+  }
+  .badge-scheduled {
+    @apply bg-blue-900/50 text-blue-300 border border-blue-700/50 text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+  .badge-live {
+    @apply bg-red-900/50 text-red-300 border border-red-700/50 text-xs font-medium px-2 py-0.5 rounded-full animate-pulse;
+  }
+  .badge-finished {
+    @apply bg-gray-800 text-gray-400 border border-gray-700 text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+  .points-exact {
+    @apply bg-copa-green/20 text-copa-green border border-copa-green/30 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+  .points-winner {
+    @apply bg-copa-yellow/20 text-copa-yellow border border-copa-yellow/30 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+  .points-draw {
+    @apply bg-blue-900/30 text-blue-300 border border-blue-700/30 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+  .points-miss {
+    @apply bg-gray-800 text-gray-500 border border-gray-700 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #111827; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4B5563; }
