@@ -1,0 +1,364 @@
+# params.yaml do gfetsim
+#
+# Arquivo unico de parametros fisicos e de processo.
+# Cada parametro tem valor, unidade, incerteza, referencias (IDs da tabela em
+# docs/referencias.md) e etiqueta de origem.
+#
+# Etiquetas
+#   P  valor publicado e verificado (no resumo ou em texto conferido)
+#   C  calculo proprio a partir de valores [P]
+#   I  inferencia sem fonte direta, ou valor lembrado da literatura que NAO foi
+#      conferido no texto original (ver pendencias.md)
+#   B  convencao de bancada ou dado da receita fornecido pelo usuario
+#
+# Incerteza
+#   {tipo: normal, sigma}            desvio padrao absoluto, na unidade do valor
+#   {tipo: normal_rel, sigma_rel}    desvio padrao relativo
+#   {tipo: uniforme, min, max}
+#   {tipo: loguniforme, min, max}
+#   {tipo: varredura, min, max}      parametro de entrada, nao amostrado no MC
+#   null                             tratado como exato
+#
+# Valores null significam que o numero ainda nao foi obtido de fonte confiavel.
+# O codigo deve recusar rodar um modelo que dependa de um valor null, a menos
+# que o usuario forneca o valor ou aceite explicitamente o valor_provisorio [I].
+#
+# Ramos (alternativas) que a literatura nao resolve ficam em "ramos" e sao
+# propagados separadamente, nunca misturados numa media.
+
+meta:
+  versao_esquema: 1
+  conferencia_referencias: docs/referencias.md
+  notas_de_conferencia: docs/notas_conferencia.md
+  pendencias: pendencias.md
+  limitacao_da_conferencia: >
+    A rede desta sessao bloqueia Crossref, doi.org e as editoras. A conferencia
+    foi feita pelo indice SciSpace (DOI, autores, revista, resumo) e pelo
+    bibcode ADS. Numeros que so existem no texto completo ficaram [I] ou null.
+
+# ---------------------------------------------------------------------------
+# Constantes fisicas
+# ---------------------------------------------------------------------------
+constantes:
+  fonte: "CODATA 2018 via scipy.constants (DOI do CODATA a conferir, ver pendencias)"
+  q:      {valor: 1.602176634e-19, unidade: C,      incerteza: null, etiqueta: P}
+  k_B:    {valor: 1.380649e-23,    unidade: J/K,    incerteza: null, etiqueta: P}
+  eps0:   {valor: 8.8541878128e-12, unidade: F/m,   incerteza: null, etiqueta: P}
+  h:      {valor: 6.62607015e-34,  unidade: J*s,    incerteza: null, etiqueta: P}
+  m0:     {valor: 9.1093837015e-31, unidade: kg,    incerteza: null, etiqueta: P}
+
+# ---------------------------------------------------------------------------
+# Receita de processo (entradas)
+# ---------------------------------------------------------------------------
+receita:
+  substrato:
+    tipo:          {valor: n, etiqueta: B}
+    orientacao:    {valor: "(100)", etiqueta: B}
+    resistividade: {valor: null, unidade: ohm*cm, incerteza: {tipo: varredura, min: 0.001, max: 10.0}, etiqueta: B,
+                    nota: "desconhecida; varrer de 0,001 a 10 ohm cm"}
+    dopante_fundo: {valor: null, etiqueta: B, nota: "P ou As ou Sb? pendente; afeta Masetti e Fermi"}
+
+  implantacao:
+    ion:            {valor: P, carga: 1, etiqueta: B}
+    energia:        {valor: 30.0, unidade: keV, incerteza: {tipo: normal_rel, sigma_rel: 0.01}, etiqueta: B,
+                     nota: "incerteza de 1 % e [I], convencao de implantador; confirmar com o operador"}
+    dose:           {valor: 3.0e15, unidade: cm^-2, incerteza: {tipo: normal_rel, sigma_rel: 0.05}, etiqueta: B,
+                     nota: "incerteza de 5 % e [I]; integrador de corrente e eletrons secundarios"}
+    inclinacao:     {valor: 7.0, unidade: grau, incerteza: {tipo: normal, sigma: 0.5}, etiqueta: B,
+                     nota: "sigma 0,5 grau e [I]"}
+    rotacao_twist:  {valor: null, unidade: grau, etiqueta: B,
+                     nota: "NAO informado; decide canalizacao planar (110) a 7 graus (ver N1 Ghante)"}
+    temperatura:    {valor: 25.0, unidade: C, incerteza: {tipo: uniforme, min: 20.0, max: 80.0}, etiqueta: B,
+                     nota: "ambiente; limite superior [I] por aquecimento do feixe"}
+    densidade_corrente: {valor: null, unidade: uA/cm^2, etiqueta: B,
+                     nota: "afeta autorrecozimento e amorfizacao (Berti et al. pss(a) 97, 77 (1986))"}
+    variantes:
+      A_mascara:  {oxido_mascara_nm: 150.0, janela: true,  etiqueta: B}
+      B_lamina:   {oxido_mascara_nm: 0.0,   janela: false, etiqueta: B}
+    oxido_nativo:   {valor: 1.5, unidade: nm, incerteza: {tipo: uniforme, min: 0.5, max: 2.5}, etiqueta: I,
+                     nota: "nao informado se ha HF antes da implantacao"}
+
+  recozimento:
+    spe:
+      temperatura: {valor: 550.0, unidade: C, incerteza: {tipo: normal, sigma: 5.0}, etiqueta: B}
+      tempo:       {valor: 30.0, unidade: min, incerteza: null, etiqueta: B}
+      ambiente:    {valor: N2, etiqueta: I, nota: "ambiente da etapa de 550 C nao informado"}
+    variante_A_rta:
+      temperatura: {valor: 1050.0, unidade: C, incerteza: {tipo: normal, sigma: 10.0}, etiqueta: B,
+                    nota: "sigma de pirometro [I]"}
+      tempo:       {valor: 10.0, unidade: s, incerteza: null, etiqueta: B}
+      rampa_subida:  {valor: null, unidade: C/s, etiqueta: B, nota: "pendente; contribui ao orcamento termico"}
+      rampa_descida: {valor: null, unidade: C/s, etiqueta: B, nota: "pendente"}
+    variante_B_forno:
+      temperatura: {valor: null, unidade: C, incerteza: {tipo: varredura, min: 850.0, max: 900.0}, etiqueta: B}
+      tempo:       {valor: 30.0, unidade: min, incerteza: null, etiqueta: B}
+      ambiente:    {valor: N2, etiqueta: B}
+      rampa:       {valor: null, unidade: C/min, etiqueta: B, nota: "entrada e saida do forno pendentes"}
+
+  oxidacao_porta:
+    ambiente:      {valor: O2_seco, etiqueta: B}
+    espessura_alvo: {valor: 20.0, unidade: nm, etiqueta: B}
+    temperatura:   {valor: null, unidade: C, incerteza: {tipo: varredura, min: 800.0, max: 1000.0}, etiqueta: B,
+                    nota: "entrada; a faixa 800 a 1000 C e a faixa dos dados de Massoud (R26 a R28)"}
+    tempo:         {valor: null, unidade: min, incerteza: {tipo: varredura, min: 1.0, max: 600.0}, etiqueta: B}
+    consumo_si_por_oxido: {valor: 0.44, unidade: nm/nm, incerteza: null, etiqueta: B,
+                    nota: "fornecido pelo usuario"}
+    pressao_O2:    {valor: 1.0, unidade: atm, incerteza: null, etiqueta: B}
+    cloro:         {valor: false, etiqueta: B, nota: "sem HCl ou TCA, confirmar"}
+
+  dispositivo:
+    grafeno:       {valor: CVD_transferido, etiqueta: B}
+    metodo_transferencia: {valor: null, etiqueta: B, nota: "umido com PMMA? afeta agua presa (R33)"}
+    largura_canal: {valor: null, unidade: um, etiqueta: B}
+    comprimento_canal: {valor: null, unidade: um, etiqueta: B}
+    metal_contato: {valor: null, etiqueta: B}
+
+# ---------------------------------------------------------------------------
+# Modulo 1  Implantacao
+# ---------------------------------------------------------------------------
+implantacao:
+  rustbca:
+    n_ions_minimo: {valor: 100000, etiqueta: B}
+    validacao_previa_P_100keV:
+      Rp_rustbca: {valor: 135.0, unidade: nm, etiqueta: B, nota: "resultado do usuario"}
+      Rp_referencia: {valor: 133.0, unidade: nm, etiqueta: B, ref: [R5],
+                      nota: "Lie et al.; numero NAO conferido (R5 nao encontrado); possivel que seja em GeSi"}
+    boro_invalido: {valor: true, etiqueta: B, nota: "398 nm contra 297 nm; nao usar para B"}
+
+  amorfizacao:
+    densidade_energia_critica:
+      valor: 6.0e23
+      unidade: eV/cm^3
+      incerteza: {tipo: normal_rel, sigma_rel: 0.3}
+      ref: [A4]
+      etiqueta: P
+      nota: "do resumo de Dennis e Hale; sigma de 30 % e [I]; criterio sobre energia em processos atomicos"
+    dose_limiar_ions_massa_proxima_Si:
+      valor: null
+      faixa: {min: 1.0e15, max: 3.0e15}
+      unidade: cm^-2
+      ref: [A2]
+      etiqueta: P
+      nota: "Si+ 10 a 60 keV a 300 K; P+ 'valores similares' (resumo)"
+    observacao_P_30keV_1e16_amorfo: {valor: true, ref: [A3], etiqueta: P}
+    limiar_P_30keV_especifico: {valor: null, ref: [A1], etiqueta: P,
+                                nota: "Eklund e Andersson medem exatamente P 30 keV; numero so no texto"}
+
+  canalizacao:
+    ramo_imsil: {disponivel: false, ref: [R1], etiqueta: B, nota: "licenca com G. Hobler pendente"}
+    cauda_exponencial:
+      comprimento_decaimento: {valor: null, unidade: nm, ref: [R2, R3, R4, N1], etiqueta: I,
+                               nota: "ajustar a SIMS digitalizado; nenhum numero nos resumos"}
+      fracao_canalizada:      {valor: null, ref: [R2, R4, N3], etiqueta: I,
+                               nota: "diminui com a dose por descanalizacao (R2, N3)"}
+    sete_graus_nao_evita_canalizacao_axial: {valor: true, ref: [R4], etiqueta: P,
+                               nota: "P 80 a 150 keV, 2e14 a 2e15; nossa energia e menor"}
+    canalizacao_planar_110_a_5_graus: {valor: true, ref: [N1], etiqueta: P}
+
+# ---------------------------------------------------------------------------
+# Modulo 2  Recozimento
+# ---------------------------------------------------------------------------
+recozimento:
+  silicio:
+    ni_T:
+      forma: "ni = A T^1.5 exp(-Eg_eff / 2kT)"
+      A:      {valor: null, unidade: cm^-3 K^-1.5, etiqueta: I, valor_provisorio: 3.87e16,
+               nota: "valor usual em simuladores de processo; fonte original nao conferida"}
+      Eg_eff: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 1.21,
+               nota: "corresponde a 0,605 eV no expoente; nao conferido"}
+
+  difusao_P:
+    modelo_padrao: fair_tsai
+    ramos: [fair_tsai, mathiot_pfister]
+    fair_tsai:
+      ref: [R6]
+      nota: "tres difusividades intrinsecas (P com V0, V-, V=); fator de cauda ate 135 a 900 C (resumo)"
+      D0_neutro:   {valor: null, unidade: cm^2/s, etiqueta: I, valor_provisorio: 3.85}
+      Ea_neutro:   {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 3.66}
+      D0_menos:    {valor: null, unidade: cm^2/s, etiqueta: I, valor_provisorio: 4.44}
+      Ea_menos:    {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 4.00}
+      D0_duplo:    {valor: null, unidade: cm^2/s, etiqueta: I, valor_provisorio: 44.2}
+      Ea_duplo:    {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 4.37}
+      fator_cauda_max_900C: {valor: 135.0, unidade: adim, ref: [R6], etiqueta: P}
+      nota_valores: "valores provisorios lembrados de implementacoes do modelo; conferir no texto de R6"
+    mathiot_pfister:
+      ref: [R7, R7b, R7c]
+      nota: "o DOI de R7 aponta para a critica numerica a Fair-Tsai; o modelo de percolacao esta em R7b e R7c"
+      parametros: {valor: null, etiqueta: I}
+
+  ted:
+    fator_mais_n:
+      valor: null
+      faixa: {min: 1.0, max: 4.0}
+      unidade: adim
+      ref: [R8, N7]
+      etiqueta: P
+      nota: "R8 da maximo ~4 para As 1 keV; valor para P 30 keV 3e15 so no texto. R8 e Hobler-Moroz valem para implante NAO amorfizante"
+    camada_amorfa_varre_intersticiais: {valor: true, ref: [N8], etiqueta: P}
+    dissolucao_311_Ea: {valor: 3.8, unidade: eV, incerteza: {tipo: normal, sigma: 0.2}, ref: [R10], etiqueta: P}
+    recombinacao_superficie:
+      ramos:
+        lim:      {valor: 100.0, unidade: nm, temperatura_C: 800, ref: [R9], etiqueta: P}
+        agarwal:  {valor: 10.0,  unidade: nm, tipo_limite: superior, temperaturas_C: [810, 950, 1050], ref: [N5], etiqueta: P}
+        lamrani:  {valor: 200.0, unidade: nm, tipo_limite: superior, temperatura_C: 850, ref: [N5b], etiqueta: P}
+      nota: "discordancia de uma ordem de grandeza; Law et al. (N5c) discutem a origem"
+
+  spe_550C:
+    Ea_velocidade_spe: {valor: 2.7, unidade: eV, incerteza: {tipo: normal, sigma: 0.2}, ref: [N9], etiqueta: P,
+                        nota: "medido em RTA 475 a 600 C, com fator de aceleracao 4 frente a forno"}
+    prefator_velocidade: {valor: null, unidade: nm/s, etiqueta: I, nota: "necessario para t_SPE a 550 C"}
+    ativacao_apos_550C:
+      valor: null
+      ref: [R14, R13]
+      etiqueta: I
+      nota: "R14 diz que P atinge ativacao maxima a 550 C, sem numero no resumo"
+
+  ativacao_dados_validacao:
+    yu_dois_passos: {faixa: {min: 0.75, max: 1.00}, unidade: fracao, ref: [R13], etiqueta: P,
+                     condicao: "P 50 e 100 keV; 550 C 30 min + 1050 C 10 s"}
+    yu_um_passo:    {faixa: {min: 0.40, max: 0.60}, unidade: fracao, ref: [R13], etiqueta: P,
+                     condicao: "so 1050 C 10 s"}
+    li_han_850C:    {valor: 0.67, unidade: fracao, ref: [R19], etiqueta: P,
+                     condicao: "P 55 keV 3e15; maximo na serie de T"}
+    shannon_650C:   {valor: 5.0e20, unidade: cm^-3, ref: [R18], etiqueta: P, condicao: "40 e 100 keV, implante a TA"}
+    shannon_850C:   {valor: 1.5e21, unidade: cm^-3, ref: [R18], etiqueta: P,
+                     nota: "eletrons livres; DISCORDA da solubilidade de equilibrio de Nobili"}
+
+  solubilidade_P:
+    ref: [R15]
+    forma: "C_ativo_eq(T) em equilibrio com precipitado SiP"
+    valor_900C: {valor: null, unidade: cm^-3, incerteza: {tipo: loguniforme, min: 1.0e20, max: 5.0e20}, etiqueta: I,
+                 nota: "faixa [I] ate leitura de R15; calibravel pela Rs apos recozimento"}
+    mobilidade_independe_de_P_inativo: {valor: true, ref: [N4], etiqueta: P}
+
+  desativacao:
+    ref: [R12, R12b]
+    inicio_P: {valor: 500.0, unidade: C, ref: [R12], etiqueta: P, nota: "P desativa a partir de ~500 C"}
+    mecanismo: {valor: aglomerados_dopante_defeito, ref: [R12], etiqueta: P}
+    cinetica: {valor: null, etiqueta: I, nota: "constantes de tempo e Ea so no texto de R12b"}
+
+  mobilidade_si:
+    modelo_padrao: masetti
+    ramos: [masetti, klaassen, limite_inferior_qin]
+    masetti_eletrons_P:
+      ref: [R22]
+      nota: "parametros provisorios lembrados; conferir na tabela de R22"
+      mu_min1: {valor: null, unidade: cm^2/Vs, etiqueta: I, valor_provisorio: 68.5}
+      mu_min2: {valor: null, unidade: cm^2/Vs, etiqueta: I, valor_provisorio: 68.5}
+      mu1:     {valor: null, unidade: cm^2/Vs, etiqueta: I, valor_provisorio: 56.1}
+      mu_max:  {valor: null, unidade: cm^2/Vs, etiqueta: I, valor_provisorio: 1414.0}
+      Cr:      {valor: null, unidade: cm^-3,  etiqueta: I, valor_provisorio: 9.20e16}
+      Cs:      {valor: null, unidade: cm^-3,  etiqueta: I, valor_provisorio: 3.41e20}
+      alpha:   {valor: null, unidade: adim,   etiqueta: I, valor_provisorio: 0.711}
+      beta:    {valor: null, unidade: adim,   etiqueta: I, valor_provisorio: 1.98}
+      Pc:      {valor: null, unidade: cm^-3,  etiqueta: I, valor_provisorio: 0.0}
+    concordancia_del_alamo: {valor: 0.04, unidade: fracao, faixa_n: [1.8e19, 1.7e20], ref: [R52], etiqueta: P}
+    qin_limite_inferior:
+      mu_acima_1e21: {valor: 40.0, unidade: cm^2/Vs, ref: [R24], etiqueta: P}
+      abaixo_dos_modelos_acima_de: {valor: 1.0e20, unidade: cm^-3, ref: [R24], etiqueta: P}
+      curva_completa: {valor: null, etiqueta: I, nota: "digitalizar figura de R24"}
+
+# ---------------------------------------------------------------------------
+# Modulo 3  Oxidacao
+# ---------------------------------------------------------------------------
+oxidacao:
+  deal_grove:
+    ref: [R25]
+    faixa_validada_espessura: {min: 30.0, max: 2000.0, unidade: nm, ref: [R25], etiqueta: P}
+    faixa_validada_T: {min: 700.0, max: 1300.0, unidade: C, ref: [R25], etiqueta: P}
+    B_seco:
+      C:  {valor: null, unidade: um^2/h, etiqueta: I, valor_provisorio: 772.0}
+      Ea: {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 1.23}
+    B_sobre_A_seco_111:
+      C:  {valor: null, unidade: um/h,   etiqueta: I, valor_provisorio: 6.23e6}
+      Ea: {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 2.0}
+    razao_111_100: {valor: null, unidade: adim, etiqueta: I, valor_provisorio: 1.68}
+    nota: "valores provisorios lembrados; a fonte preferida para Si(100) seco 800 a 1000 C e N14 (Massoud, Plummer, Irene, JES 132, 1745), ainda sem DOI conferido"
+  massoud_regime_fino:
+    ref: [R26, R27, R28]
+    forma: "dx/dt = B/(2x+A) + C exp(-x/L)  (R26); ou dois termos exponenciais no tempo (R28)"
+    C: {valor: null, unidade: nm/min, etiqueta: I}
+    Ea_C: {valor: null, unidade: eV, etiqueta: I}
+    L: {valor: null, unidade: nm, etiqueta: I, nota: "ordem de 7 nm segundo literatura secundaria [I]; conferir"}
+  oxidacao_acelerada_dopagem:
+    ramos: [ho_plummer, uematsu]
+    ho_plummer: {ref: [R29], parametros: null, etiqueta: I}
+    uematsu:    {ref: [R30], parametros: null, etiqueta: I}
+    nomura_fator_max_implantado: {valor: 2.1, unidade: adim, ref: [R23], etiqueta: P,
+                                  condicao: "P+, Sb+, Sn+, Ar+ com dose > 5e14; efeito quimico"}
+    massoud_redistribuicao_reversa: {valor: true, ref: [N10], etiqueta: P,
+                                  nota: "no inicio da oxidacao seca P acumula, ativo cai e taxa se iguala a Si leve"}
+  segregacao_P:
+    coef_segregacao_m:
+      valor: null
+      limite_inferior: 1000.0
+      faixa_T_C: [1000, 1100]
+      unidade: adim
+      ref: [R17]
+      etiqueta: P
+      nota: "m = C_Si / C_SiO2; so limite inferior no resumo; abaixo de 1000 C extrapolacao [I]"
+    coef_transporte_h_1100C: {valor: 5.0, unidade: um/min, ref: [R17], etiqueta: P}
+    m_dependente_do_tempo: {valor: true, ref: [R21, R21b], etiqueta: P}
+    camada_no_oxido: {valor: 2.0e21, unidade: cm^-3, faixa_T_C: [850, 1000], ref: [R32], etiqueta: P}
+    saturacao_pileup_espessura: {valor: 5.0, unidade: nm, ref: [N12], etiqueta: P, nota: "~50 A da interface"}
+  ramos_interface:
+    acumulo_classico:  {ref: [R16, R17, R32], etiqueta: P}
+    retrogrado_horzel: {ref: [R20], etiqueta: P, espessura_retrograda_nm: {min: 10.0, max: 20.0},
+                        nota: "medido apos difusao POCl3, nao implantacao"}
+    quimico_acumula_ativo_depleta: {ref: [N20], etiqueta: P,
+                        nota: "Nicollian e Chatterjee; P ativo erfc crescente para o volume"}
+    lado_do_pileup:
+      oxido: {ref: [N21, N21b], etiqueta: P}
+      silicio_inativo: {ref: [N22], etiqueta: P, nota: "ativo no lado Si cai a ~60 %"}
+
+# ---------------------------------------------------------------------------
+# Modulo 4  Eletrico
+# ---------------------------------------------------------------------------
+eletrico:
+  materiais:
+    eps_r_Si:   {valor: null, etiqueta: I, valor_provisorio: 11.7, nota: "valor de livro-texto; fonte primaria pendente"}
+    eps_r_SiO2: {valor: null, etiqueta: I, valor_provisorio: 3.9,  nota: "valor de livro-texto; fonte primaria pendente"}
+  ionizacao_incompleta:
+    ref: [R35, R36, R37]
+    fracao_nao_ionizada_max_mott: {valor: 0.25, unidade: fracao, ref: [R35], etiqueta: P}
+    desprezivel_muito_acima_mott: {valor: true, ref: [R35], etiqueta: P}
+    correcao_steinkemper: {valor: null, ref: [R37], etiqueta: I, nota: "forma corrigida so no texto"}
+  oxido:
+    carga_fixa_Qf: {valor: null, unidade: cm^-2, incerteza: {tipo: loguniforme, min: 1.0e10, max: 1.0e12}, etiqueta: I}
+    Dit:           {valor: null, unidade: cm^-2 eV^-1, incerteza: {tipo: loguniforme, min: 1.0e10, max: 1.0e12}, etiqueta: I,
+                    nota: "P aumenta Dit e carga (Snel, SSE 24, 135 (1981)); faixa [I]"}
+    ruptura:
+      adams: {faixa: {min: 10.0, max: 13.0}, unidade: MV/cm, espessura_nm: [3, 14], ref: [B1], etiqueta: P}
+      oshea: {valor: 13.2, incerteza: {tipo: normal, sigma: 0.8}, unidade: MV/cm, espessura_nm: [7, 15], ref: [B2], etiqueta: P}
+    fowler_nordheim:
+      massa_efetiva_rel: {valor: 0.4, unidade: adim, ref: [R45], etiqueta: P}
+      corrente_medida_abaixo_teoria: {faixa: {min: 5.0, max: 10.0}, unidade: vezes, ref: [R45], etiqueta: P}
+      barreira_Si_SiO2: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 3.1, nota: "conferir em R45 ou R46"}
+  grafeno:
+    vF: {valor: null, unidade: m/s, etiqueta: I, valor_provisorio: 1.0e6, nota: "conferir em R41 ou R42"}
+    n_residual:
+      ju_lee: {valor: 3.58e11, unidade: cm^-2, ref: [N17], etiqueta: P, nota: "um dispositivo com AlOx"}
+      faixa_calibracao: {incerteza: {tipo: loguniforme, min: 1.0e11, max: 1.0e12}, unidade: cm^-2, etiqueta: I}
+    impurezas_carregadas_adam:
+      sujo: {faixa: {min: 2.5e12, max: 4.0e12}, unidade: cm^-2, sigma_min: "4e2/h", ref: [R38], etiqueta: P}
+      limpo: {valor: 2.0e11, unidade: cm^-2, sigma_min: "8e2/h", ref: [R38], etiqueta: P}
+    flutuacao_potencial: {valor: 0.1, unidade: eV, ref: [R40], etiqueta: P, nota: "ordem de 100 meV"}
+    mobilidade:
+      limite_fonons_SiO2: {valor: 4.0e4, unidade: cm^2/Vs, ref: [R44], etiqueta: P}
+      limite_intrinseco_1e12: {valor: 2.0e5, unidade: cm^2/Vs, ref: [R44], etiqueta: P}
+      resistividade_fonons_acusticos: {valor: 30.0, unidade: ohm, ref: [R44], etiqueta: P}
+      cvd_sobre_SiO2_melhor_caso: {valor: 7800.0, unidade: cm^2/Vs, ref: [R33], etiqueta: P}
+      prior_calibracao: {incerteza: {tipo: loguniforme, min: 300.0, max: 7800.0}, unidade: cm^2/Vs, etiqueta: I}
+    resistencia_contato: {valor: null, unidade: ohm*um, incerteza: {tipo: loguniforme, min: 100.0, max: 5000.0}, etiqueta: I}
+  histerese:
+    ref: [R47, R48, R49, N18]
+    some_com_varredura_rapida_em_SiO2: {valor: true, ref: [R47], etiqueta: P}
+    dados_brutos_bartosik: {doi: "10.5281/zenodo.4518319", ref: [R49], etiqueta: P}
+    parametros: {valor: null, etiqueta: B, nota: "calibrados com as medidas de ida e volta"}
+
+  calculo_anterior_usuario:
+    curvatura_bandas: {valor: 1.1, unidade: V, etiqueta: B}
+    perda_capacitancia:
+      n_1e19:   {valor: 0.17,  unidade: fracao, etiqueta: B}
+      n_1e20:   {valor: 0.06,  unidade: fracao, etiqueta: B}
+      n_3e20:   {valor: 0.035, unidade: fracao, etiqueta: B}
