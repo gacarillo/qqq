@@ -108,3 +108,19 @@ CONSTANTES DE OXIDACAO
 R50 OK. DEVSIM no PyPI, versao mais recente listada 2.11.0 (pip index), roda com wheel manylinux. Sem DOI.
 R5  Segunda busca sem sucesso. Mantido como pendencia.
 R29 parte II nao encontrada no indice.
+
+## Conferências feitas na etapa de implementação
+
+S1 Filipović, dissertação TU Wien, lida em iue.tuwien.ac.at/phd/filipovic/node31.html e node33.html. Tabela 2.2 (Deal e Grove, Si(111) a 1 atm) C1 = 7,72e2 um2/h, E1 = 1,23 eV, C2 = 6,23e6 um/h, E2 = 2,00 eV; para (100) divide-se C2 por 1,68; cita Plummer, Deal e Griffin (2000). Tabela 2.3 (Massoud, T < 1000 C, Si(100)) C_B = 1,70e11 nm2/min, E_B = 2,22 eV, C_B/A = 7,35e6 nm/min, E_B/A = 1,76 eV. Tabela 2.4 (Si(100)) K1_0 = 2,49e11 nm2/min, E_K1 = 2,18 eV, K2_0 = 3,72e11 nm2/min, E_K2 = 2,28 eV, tau1_0 = 4,14e-6 min, E_tau1 = 1,38 eV, tau2_0 = 2,71e-7 min, E_tau2 = 1,88 eV. A tese escreve tau = tau0 exp(-E/kT); com esse sinal tau seria da ordem de 1e-12 min, por isso o código usa +E/kT [C]. L1 da ordem de 1 nm e L2 da ordem de 7 nm.
+S2 Radi, dissertação TU Wien, node23.html. Ho e Plummer, F = 1 + gamma (CV/CVi - 1), gamma = gamma0 exp(-gammaE/kT), gamma0 = 2,63e3, gammaE = 1,1 eV (cita Bie90). As razões de vacâncias carregadas não aparecem.
+D1 Das et al., arXiv 0709.1174 (texto completo). Tabela I, V_BG = 0 com Pos(G) 1586,7 cm-1, FWHM 8,7, I(2D)/I(G) 2,0; no Dirac (V_nBG = 20 V) 1584,0, 12,6 e 3,1; eta = 7,2e10 cm-2/V; vF = 1,1e6 m/s; deslocamento de G até 30 cm-1 (lacunas) e 25 cm-1 (elétrons) em ~3e13 cm-2. Laser de 514,5 nm.
+R34 Kim et al., arXiv 0901.2901 (texto completo). n_tot = sqrt(n0^2 + n*^2), V_TG - V_Dirac = e n*/C_ox + hbar vF sqrt(pi n*)/e, R = R_contato + N_sq/(e mu n_tot). Ajuste n0 = 2,3e11 cm-2, mu = 8600 cm2/Vs, C_TG = 306 nF/cm2, R_contato de 0,5 a 1,5 kOhm (inset), vF = 1,1e6 m/s.
+R42 Jiménez e Moldovan, arXiv 1103.1599 (texto completo). k = 2q^3/(pi (hbar vF)^2), Ids = q W mu int rho dV / (L + mu |int dV/vsat|), vsat = Omega/sqrt(pi rho). Meric (L = 1 um, W = 2,1 um, mu = 1200, 800 Ohm, hbar Omega = 55 meV, rho0 = 1e11) e Kedzierski (L = 10 um, W = 5 um, mu = 7500, 300 Ohm, 100 meV, 3e11); 15 meV para a saída de Meric.
+N24 Solmi et al., PRB 53, 7836, 10.1103/PhysRevB.53.7836 (resumo). C_sat = 2,45e23 exp(-0,62/kT), n_e = 1,3e22 exp(-0,37/kT) cm-3, n_e medido em polissilício; para T acima de ~750 C, C_sat > n_e.
+N25 Altermatt et al., JAP 93, 1598, 10.1063/1.1529297 (resumo). ni = 9,65e9 cm-3 a 300 K, consistente com Misiakos e Tsamakis (9,7e9, 10.1063/1.354551).
+N26 Couderc et al., JAP 115, 093705, 10.1063/1.4867776 (resumo). ni = 1,541e15 T^1,712 exp(-Eg0/2kT). Texto aberto em HAL não abriu (tempo esgotado).
+A6 Narayan, Fathy, Oen, Holland, JVST 2, 1303, 10.1116/1.572399 (resumo). Densidade de energia de dano crítica 6,0e23 eV/cm3 ou 12 eV/átomo a 4 K sem recozimento.
+A4 reconferido. O resumo diz que o critério de energia crítica concorda com as doses críticas medidas e que em alta temperatura é preciso incluir a difusão da energia do dano.
+G1 Grant, Williams, Dodds, 10.1007/978-1-4615-8876-4_19 (resumo). Rp, dRp e dRL medidos por RBS maiores que LSS; 15 % em eps perto de 0,5, 40 a 70 % em eps baixo; rho_p = 1,75 eps^(2/3) para 0,02 < eps < 0,5. Texto da Springer não abriu.
+K1 Kobayashi e Gibson, NIMB 152, 365, 10.1016/S0168-583X(99)00182-2 (resumo). P em Si, 3e14, 5 a 80 keV, NRA; Rp e dRp concordam com o TRIM.
+IH Ishigami e Homma, ISUMA 1990, 10.1109/ISUMA.1990.151285 (resumo). Técnica de importância aplicada a um modelo analítico; usada só como função de teste do Sobol.

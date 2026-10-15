@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gfetsim"
+version = "0.1.0"
+description = "Simulação encadeada e calibrável da porta local implantada de um GFET (implantação, recozimento, oxidação, elétrico, incerteza, calibração)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "pyyaml>=6",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+incerteza = ["SALib>=1.4"]
+calibracao = ["emcee>=3.1"]
+relatorio = ["python-docx>=1.0"]
+dev = ["pytest>=7", "SALib>=1.4", "emcee>=3.1", "nbformat", "nbconvert", "ipykernel"]
+
+[project.scripts]
+gfetsim = "gfetsim.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gfetsim = ["*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["lento: testes que rodam o RustBCA ou Monte Carlo grande"]

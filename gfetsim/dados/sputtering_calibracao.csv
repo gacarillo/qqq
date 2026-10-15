@@ -1,0 +1,10 @@
+# Calibração do SiO2 por sputtering RF reativo (artigo do usuário, tabela 1)
+# Ar 7 sccm, O2 4 sccm, deposição de 30 min. Só leituras válidas de elipsometria.
+# A leitura de 307,4 nm (n = 1,356) da amostra de 100 W foi excluída, como no artigo.
+amostra,potencia_W,pressao_mTorr,espessura_nm,tempo_min,tecnica
+30W,30,5,53.7,30,elipsometria
+30W,30,5,67.4,30,elipsometria
+50W_5mTorr,50,5,112.4,30,elipsometria
+50W_5mTorr,50,5,124.0,30,elipsometria
+75W,75,5,188.9,30,elipsometria
+100W,100,5,244.3,30,elipsometria

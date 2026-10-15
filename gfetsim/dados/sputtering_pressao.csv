@@ -1,0 +1,8 @@
+# Série de pressão a 50 W (artigo do usuário, tabela 1)
+amostra,potencia_W,pressao_mTorr,espessura_nm,tempo_min,tecnica
+2mTorr,50,2,154.4,30,elipsometria
+2mTorr,50,2,141.5,30,elipsometria
+3mTorr,50,3,138.5,30,elipsometria
+3mTorr,50,3,148.6,30,elipsometria
+50W_5mTorr,50,5,112.4,30,elipsometria
+50W_5mTorr,50,5,124.0,30,elipsometria

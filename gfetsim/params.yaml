@@ -35,6 +35,16 @@ meta:
     A rede desta sessao bloqueia Crossref, doi.org e as editoras. A conferencia
     foi feita pelo indice SciSpace (DOI, autores, revista, resumo) e pelo
     bibcode ADS. Numeros que so existem no texto completo ficaram [I] ou null.
+  fontes_secundarias: >
+    Alguns valores [P] foram lidos em fontes secundarias abertas (teses da TU Wien,
+    artigos do arXiv) que tabelam os numeros e citam a fonte primaria. Nesses casos
+    o campo conferido_em diz onde o numero foi lido, e a fonte primaria continua
+    listada em ref. O numero e [P] porque foi lido em texto publicado, mas a
+    transcricao entre a fonte primaria e a secundaria nao foi conferida.
+    S1 Filipovic L., dissertacao TU Wien, iue.tuwien.ac.at/phd/filipovic (tabelas 2.2 a 2.4)
+    S2 Radi M., dissertacao TU Wien, iue.tuwien.ac.at/phd/radi/node23.html (eq. 2.38 a 2.42)
+    D1 Das A. et al., Nat. Nanotechnol. 3, 210 (2008), 10.1038/nnano.2008.67, texto aberto arXiv 0709.1174
+    ART artigo do usuario (Carillo, Teixeira, Pereyra), dados de bancada [B]
 
 # ---------------------------------------------------------------------------
 # Constantes fisicas
@@ -105,10 +115,23 @@ receita:
                     nota: "fornecido pelo usuario"}
     pressao_O2:    {valor: 1.0, unidade: atm, incerteza: null, etiqueta: B}
     cloro:         {valor: false, etiqueta: B, nota: "sem HCl ou TCA, confirmar"}
+    metodo:        {valor: termico, opcoes: [termico, sputtering], etiqueta: B,
+                    nota: "o artigo do usuario (ART) calibra a alternativa por sputtering RF reativo"}
+    sputtering:
+      ref: [ART]
+      inclinacao_taxa_potencia: {valor: 0.088, unidade: nm/(min*W), ic95: [0.072, 0.104], etiqueta: B,
+                                 nota: "ajuste linear da elipsometria, 4 niveis de potencia, 5 mTorr"}
+      tempo_20nm_50W: {valor: 5.1, unidade: min, ic95: [4.6, 5.9], ip95: [4.1, 6.9], etiqueta: B}
+      indice_refracao: {valor: 1.464, incerteza: {tipo: normal, sigma: 0.008}, etiqueta: B}
+      consome_si: {valor: false, etiqueta: B, nota: "oxido depositado nao consome Si nem segrega P"}
+      eps_r: {valor: null, etiqueta: I, nota: "permissividade estatica do oxido depositado nao medida; usar a do SiO2 termico com incerteza maior"}
+      eps_r_sigma_rel_extra: {valor: 0.05, etiqueta: I,
+                              nota: "densidade relativa de -1 a +3 % pela Lorentz-Lorenz (ART); 5 % cobre isso com folga"}
 
   dispositivo:
     grafeno:       {valor: CVD_transferido, etiqueta: B}
-    metodo_transferencia: {valor: null, etiqueta: B, nota: "umido com PMMA? afeta agua presa (R33)"}
+    metodo_transferencia: {valor: umido_PMMA_reagente_Marble, ref: [ART], etiqueta: B,
+                    nota: "PMMA 4,9 % em acetona, recozimento final 170 C por 30 min ou mais (ART secao 2.4)"}
     largura_canal: {valor: null, unidade: um, etiqueta: B}
     comprimento_canal: {valor: null, unidade: um, etiqueta: B}
     metal_contato: {valor: null, etiqueta: B}
@@ -124,6 +147,24 @@ implantacao:
       Rp_referencia: {valor: 133.0, unidade: nm, etiqueta: B, ref: [R5],
                       nota: "Lie et al.; numero NAO conferido (R5 nao encontrado); possivel que seja em GeSi"}
     boro_invalido: {valor: true, etiqueta: B, nota: "398 nm contra 297 nm; nao usar para B"}
+    binario: {valor: /opt/ext/RustBCA/target/release/RustBCA, etiqueta: B,
+              nota: "compilado de github.com/lcpp-org/RustBCA, commit a356280; pode ser trocado pela variavel GFETSIM_RUSTBCA"}
+    potencial: {valor: KR_C, etiqueta: B, nota: "Kr-C, padrao dos exemplos do RustBCA"}
+    parada_eletronica: {valor: LOW_ENERGY_NONLOCAL, etiqueta: B, nota: "Lindhard-Scharff, padrao do RustBCA"}
+    Si: {Z: 14, m: 28.0855, densidade_at_cm3: 4.996e22, Eb: 0.0, Es: 4.72, Ec: 1.5, etiqueta: B,
+         nota: "valores do exemplo layered_geometry do RustBCA; Es e a energia de ligacao de superficie"}
+    SiO2: {densidade_O_cm3: 4.6e22, densidade_Si_cm3: 2.3e22, etiqueta: I,
+           nota: "2,2 g/cm3 de silica; estequiometria 1:2; densidade nao conferida em fonte primaria"}
+  validacao:
+    alcance_grant:
+      ref: [G1]
+      forma: "rho_p = 1,75 eps^(2/3), valida para 0,02 < eps < 0,5 (reduzidas de LSS)"
+      coeficiente: {valor: 1.75, etiqueta: P}
+      expoente: {valor: 0.6667, etiqueta: P}
+      faixa_eps: {min: 0.02, max: 0.5, etiqueta: P}
+      nota: "Grant, Williams e Dodds, 10.1007/978-1-4615-8876-4_19, so o resumo. Definicoes de eps e rho de LSS sao [C]. A 30 keV P em Si eps ~ 0,6, fora da faixa; o teste usa 15 e 20 keV"
+    kobayashi_gibson: {ref: [K1], etiqueta: P,
+      nota: "P em Si 5 a 80 keV, 3e14; Rp e dRp medidos por NRA concordam com TRIM (10.1016/S0168-583X(99)00182-2)"}
 
   amorfizacao:
     densidade_energia_critica:
@@ -141,8 +182,22 @@ implantacao:
       etiqueta: P
       nota: "Si+ 10 a 60 keV a 300 K; P+ 'valores similares' (resumo)"
     observacao_P_30keV_1e16_amorfo: {valor: true, ref: [A3], etiqueta: P}
+    criterio_vale_a_baixa_T: {valor: true, ref: [A4, A6], etiqueta: P,
+      nota: "A6 (Narayan et al., JVST 2, 1303, 10.1116/1.572399) da 6,0e23 eV/cm3 = 12 eV/atomo a 4 K sem recozimento. A4 diz que a TA a difusao da energia do dano muda o limiar"}
+    falha_validacao_criterio_baixa_T: {etiqueta: C,
+      nota: "com o RustBCA, 6e23 eV/cm3 preve limiar de 1,1e14 a 1,7e14 cm-2 para P 10 a 60 keV, dez vezes abaixo do medido a 300 K (A2). Por isso o modelo usa o limiar de dose medido a TA (ramo limiar_TA)"}
+    ramos: [limiar_TA, energia_critica_baixa_T]
+    limiar_TA:
+      dose_limiar: {valor: null, incerteza: {tipo: uniforme, min: 1.0e15, max: 3.0e15}, unidade: cm^-2, ref: [A2, A5], etiqueta: P,
+        nota: "A2 da 1 a 3e15 para Si+ e diz que P e similar; A5 ve camada amorfa com P 1e15 de 25 a 180 keV. Regiao amorfa onde Fn(x) >= Fn_max * dose_limiar / dose [C]; a fracao de energia atomica se cancela"}
     limiar_P_30keV_especifico: {valor: null, ref: [A1], etiqueta: P,
                                 nota: "Eklund e Andersson medem exatamente P 30 keV; numero so no texto"}
+    fracao_energia_atomica:
+      valor: null
+      valor_provisorio: 0.85
+      incerteza: {tipo: uniforme, min: 0.7, max: 1.0}
+      etiqueta: I
+      nota: "o RustBCA registra so a perda nuclear do ion incidente; parte da energia dos recuos vai para excitacao eletronica. Fracao [I] ate usar uma particao publicada"
 
   canalizacao:
     ramo_imsil: {disponivel: false, ref: [R1], etiqueta: B, nota: "licenca com G. Hobler pendente"}
@@ -166,6 +221,10 @@ recozimento:
                nota: "valor usual em simuladores de processo; fonte original nao conferida"}
       Eg_eff: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 1.21,
                nota: "corresponde a 0,605 eV no expoente; nao conferido"}
+    ni_300K: {valor: 9.65e9, unidade: cm^-3, ref: [N25], etiqueta: P,
+              nota: "N25 Altermatt et al., JAP 93, 1598, 10.1063/1.1529297; concorda com Misiakos e Tsamakis (9,7e9)"}
+    ni_candidato_couderc: {ref: [N26], etiqueta: P,
+              nota: "N26 Couderc et al., JAP 115, 093705, 10.1063/1.4867776: ni = 1,541e15 T^1,712 exp(-Eg0/2kT); Eg0 e faixa de validade nao lidos"}
 
   difusao_P:
     modelo_padrao: fair_tsai
@@ -206,7 +265,11 @@ recozimento:
   spe_550C:
     Ea_velocidade_spe: {valor: 2.7, unidade: eV, incerteza: {tipo: normal, sigma: 0.2}, ref: [N9], etiqueta: P,
                         nota: "medido em RTA 475 a 600 C, com fator de aceleracao 4 frente a forno"}
-    prefator_velocidade: {valor: null, unidade: nm/s, etiqueta: I, nota: "necessario para t_SPE a 550 C"}
+    prefator_velocidade: {valor: null, unidade: cm/s, etiqueta: I, valor_provisorio: 3.07e8,
+                          nota: "valor de Olson e Roth lembrado, com Ea 2,68 eV, para Si(100) intrinseco; nao conferido"}
+    fator_aceleracao_P: {valor: null, etiqueta: I, valor_provisorio: 1.0,
+                          incerteza: {tipo: loguniforme, min: 1.0, max: 6.0},
+                          nota: "P acelera a SPE em altas concentracoes; faixa [I] sem fonte conferida"}
     ativacao_apos_550C:
       valor: null
       ref: [R14, R13]
@@ -225,11 +288,20 @@ recozimento:
                      nota: "eletrons livres; DISCORDA da solubilidade de equilibrio de Nobili"}
 
   solubilidade_P:
-    ref: [R15]
-    forma: "C_ativo_eq(T) em equilibrio com precipitado SiP"
-    valor_900C: {valor: null, unidade: cm^-3, incerteza: {tipo: loguniforme, min: 1.0e20, max: 5.0e20}, etiqueta: I,
-                 nota: "faixa [I] ate leitura de R15; calibravel pela Rs apos recozimento"}
+    ref: [R15, N24]
+    forma: "n_e(T) = A_ne exp(-Ea_ne/kT) ativo em equilibrio; C_sat(T) = A_sat exp(-Ea_sat/kT) total em equilibrio com SiP"
+    A_ne:   {valor: 1.3e22, unidade: cm^-3, ref: [N24], etiqueta: P}
+    Ea_ne:  {valor: 0.37,   unidade: eV,    ref: [N24], etiqueta: P}
+    A_sat:  {valor: 2.45e23, unidade: cm^-3, ref: [N24], etiqueta: P}
+    Ea_sat: {valor: 0.62,   unidade: eV,    ref: [N24], etiqueta: P}
+    nota: "N24 Solmi, Parisini, Angelucci, Armigliato, Nobili, Moro, PRB 53, 7836, 10.1103/PhysRevB.53.7836 (resumo). n_e medido em polissilicio; C_sat de 800 a 1000 C. Para T > 750 C, C_sat > n_e e a diferenca e P inativo movel"
+    incerteza_ne: {valor: null, incerteza: {tipo: normal_rel, sigma_rel: 0.15}, etiqueta: I,
+                   nota: "o resumo nao da incerteza; 15 % [I] cobre a diferenca de 5 % contra o valor que arXiv 1905.10667 atribui a Solmi a 890 C (3,42e20)"}
+    valor_900C_antigo: {valor: null, unidade: cm^-3, incerteza: {tipo: loguniforme, min: 1.0e20, max: 5.0e20}, etiqueta: I,
+                 nota: "faixa anterior, mantida so como referencia; N24 da 3,4e20 a 900 C, dentro dela"}
     mobilidade_independe_de_P_inativo: {valor: true, ref: [N4], etiqueta: P}
+    discordancia_shannon: {etiqueta: C,
+      nota: "R18 mede 1,5e21 eletrons apos 850 C; N24 da 2,8e20. O ramo metaestavel (sem desativacao) cobre o lado de R18"}
 
   desativacao:
     ref: [R12, R12b]
@@ -264,25 +336,53 @@ recozimento:
 oxidacao:
   deal_grove:
     ref: [R25]
+    conferido_em: "S1, tabela 2.2, que cita Plummer, Deal e Griffin (2000)"
     faixa_validada_espessura: {min: 30.0, max: 2000.0, unidade: nm, ref: [R25], etiqueta: P}
     faixa_validada_T: {min: 700.0, max: 1300.0, unidade: C, ref: [R25], etiqueta: P}
     B_seco:
-      C:  {valor: null, unidade: um^2/h, etiqueta: I, valor_provisorio: 772.0}
-      Ea: {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 1.23}
+      C:  {valor: 772.0, unidade: um^2/h, etiqueta: P, conferido_em: S1}
+      Ea: {valor: 1.23,  unidade: eV,     etiqueta: P, conferido_em: S1}
     B_sobre_A_seco_111:
-      C:  {valor: null, unidade: um/h,   etiqueta: I, valor_provisorio: 6.23e6}
-      Ea: {valor: null, unidade: eV,     etiqueta: I, valor_provisorio: 2.0}
-    razao_111_100: {valor: null, unidade: adim, etiqueta: I, valor_provisorio: 1.68}
-    nota: "valores provisorios lembrados; a fonte preferida para Si(100) seco 800 a 1000 C e N14 (Massoud, Plummer, Irene, JES 132, 1745), ainda sem DOI conferido"
+      C:  {valor: 6.23e6, unidade: um/h,  etiqueta: P, conferido_em: S1}
+      Ea: {valor: 2.00,   unidade: eV,    etiqueta: P, conferido_em: S1}
+    razao_111_100: {valor: 1.68, unidade: adim, etiqueta: P, conferido_em: S1,
+                    nota: "so B/A muda com a orientacao; B e o mesmo (S1)"}
+    nota: "N14 (Massoud, Plummer, Irene, JES 132, 1745) continua sendo a fonte preferida para Si(100) seco e ainda nao foi lida"
   massoud_regime_fino:
     ref: [R26, R27, R28]
-    forma: "dx/dt = B/(2x+A) + C exp(-x/L)  (R26); ou dois termos exponenciais no tempo (R28)"
-    C: {valor: null, unidade: nm/min, etiqueta: I}
-    Ea_C: {valor: null, unidade: eV, etiqueta: I}
-    L: {valor: null, unidade: nm, etiqueta: I, nota: "ordem de 7 nm segundo literatura secundaria [I]; conferir"}
+    conferido_em: "S1, tabelas 2.3 e 2.4, que citam Massoud et al. (1985)"
+    forma: "dx/dt = [B + K1 exp(-t/tau1) + K2 exp(-t/tau2)] / (2x + A)  (R28, eq. 2.40 de S1)"
+    faixa_T: {min: 800.0, max: 1000.0, unidade: C, etiqueta: P, conferido_em: S1}
+    Si100_T_menor_1000C:
+      C_B:    {valor: 1.70e11, unidade: nm^2/min, etiqueta: P, conferido_em: S1}
+      E_B:    {valor: 2.22,    unidade: eV,       etiqueta: P, conferido_em: S1}
+      C_BA:   {valor: 7.35e6,  unidade: nm/min,   etiqueta: P, conferido_em: S1}
+      E_BA:   {valor: 1.76,    unidade: eV,       etiqueta: P, conferido_em: S1}
+      K1_0:   {valor: 2.49e11, unidade: nm^2/min, etiqueta: P, conferido_em: S1}
+      E_K1:   {valor: 2.18,    unidade: eV,       etiqueta: P, conferido_em: S1}
+      K2_0:   {valor: 3.72e11, unidade: nm^2/min, etiqueta: P, conferido_em: S1}
+      E_K2:   {valor: 2.28,    unidade: eV,       etiqueta: P, conferido_em: S1}
+      tau1_0: {valor: 4.14e-6, unidade: min,      etiqueta: P, conferido_em: S1}
+      E_tau1: {valor: 1.38,    unidade: eV,       etiqueta: P, conferido_em: S1}
+      tau2_0: {valor: 2.71e-7, unidade: min,      etiqueta: P, conferido_em: S1}
+      E_tau2: {valor: 1.88,    unidade: eV,       etiqueta: P, conferido_em: S1}
+    sinal_tau: {valor: "+", etiqueta: C,
+      nota: "S1 escreve tau = tau0 exp(-E/kT), o que da tau de 1e-12 min a 900 C. Com exp(+E/kT) tau1 fica em minutos e decresce com T, como o efeito fisico exige. Usamos +E/kT [C]"}
+    L_ordem: {L1: 1.0, L2: 7.0, unidade: nm, etiqueta: P, conferido_em: S1,
+      nota: "comprimentos caracteristicos da forma em x (eq. 2.37 de S1), so ordem de grandeza"}
   oxidacao_acelerada_dopagem:
     ramos: [ho_plummer, uematsu]
-    ho_plummer: {ref: [R29], parametros: null, etiqueta: I}
+    ho_plummer:
+      ref: [R29]
+      conferido_em: "S2, eq. 2.38 a 2.42"
+      forma: "(B/A) = (B/A)i [1 + gamma (CV/CVi - 1)], gamma = gamma0 exp(-gammaE/kT)"
+      gamma0: {valor: 2.63e3, unidade: adim, etiqueta: P, conferido_em: S2}
+      gammaE: {valor: 1.1, unidade: eV, etiqueta: P, conferido_em: S2}
+      razoes_vacancias_intrinsecas:
+        valor: null
+        etiqueta: I
+        nota: "CV+/CV0, CV-/CV0 e CV=/CV0 em condicao intrinseca nao foram lidos. Provisoriamente usam-se as razoes de difusividade de Fair-Tsai D-/D0 e D=/D0, que medem a mesma populacao de vacancias carregadas [I]; CV+ desprezado em material n"
+      aumento_parabolico: {valor: null, etiqueta: I, nota: "o termo de B dependente da dopagem nao foi lido; B fica intrinseco"}
     uematsu:    {ref: [R30], parametros: null, etiqueta: I}
     nomura_fator_max_implantado: {valor: 2.1, unidade: adim, ref: [R23], etiqueta: P,
                                   condicao: "P+, Sb+, Sn+, Ar+ com dose > 5e14; efeito quimico"}
@@ -309,7 +409,8 @@ oxidacao:
                         nota: "Nicollian e Chatterjee; P ativo erfc crescente para o volume"}
     lado_do_pileup:
       oxido: {ref: [N21, N21b], etiqueta: P}
-      silicio_inativo: {ref: [N22], etiqueta: P, nota: "ativo no lado Si cai a ~60 %"}
+      silicio_inativo: {ref: [N22], etiqueta: P, nota: "ativo no lado Si cai a ~60 %",
+                        fracao_ativa: {valor: 0.6, etiqueta: P, ref: [N22]}}
 
 # ---------------------------------------------------------------------------
 # Modulo 4  Eletrico
@@ -318,6 +419,11 @@ eletrico:
   materiais:
     eps_r_Si:   {valor: null, etiqueta: I, valor_provisorio: 11.7, nota: "valor de livro-texto; fonte primaria pendente"}
     eps_r_SiO2: {valor: null, etiqueta: I, valor_provisorio: 3.9,  nota: "valor de livro-texto; fonte primaria pendente"}
+  silicio_300K:
+    Nc: {valor: null, valor_provisorio: 2.86e19, unidade: cm^-3, etiqueta: I,
+         nota: "Green, JAP 67, 2944 (1990), lembrado e nao conferido"}
+    afinidade_eletronica: {valor: null, valor_provisorio: 4.05, unidade: eV, etiqueta: I}
+    bgn: {valor: null, etiqueta: I, nota: "estreitamento de banda nao incluido; R36 trata a densidade de estados, sem numero no resumo"}
   ionizacao_incompleta:
     ref: [R35, R36, R37]
     fracao_nao_ionizada_max_mott: {valor: 0.25, unidade: fracao, ref: [R35], etiqueta: P}
@@ -335,10 +441,42 @@ eletrico:
       corrente_medida_abaixo_teoria: {faixa: {min: 5.0, max: 10.0}, unidade: vezes, ref: [R45], etiqueta: P}
       barreira_Si_SiO2: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 3.1, nota: "conferir em R45 ou R46"}
   grafeno:
-    vF: {valor: null, unidade: m/s, etiqueta: I, valor_provisorio: 1.0e6, nota: "conferir em R41 ou R42"}
+    vF: {valor: 1.1e6, unidade: m/s, incerteza: {tipo: normal, sigma: 0.1e6}, ref: [D1], etiqueta: P,
+         conferido_em: "D1, eq. 2 (cita Novoselov e Zhang); sigma de 0,1e6 [I] cobre o 1,0e6 usado em outros trabalhos"}
+    raman_dopagem:
+      ref: [D1]
+      nota: "D1 usa laser de 514,5 nm; o mapa do usuario usa 532 nm, e a resolucao do espectrometro do usuario e 11 cm-1 contra 1,9 e 9,4 cm-1 em D1"
+      posG_ponto_dirac: {faixa: {min: 1583.1, max: 1584.0}, unidade: cm^-1, etiqueta: P}
+      posG_lacunas_1p44e12: {valor: 1586.7, unidade: cm^-1, etiqueta: P,
+                             nota: "V_BG = 0 com V_Dirac = 20 V e eta = 7,2e10 cm^-2/V, isto e 1,44e12 cm^-2 de lacunas [C]"}
+      I2D_IG_ponto_dirac: {faixa: {min: 3.1, max: 3.3}, etiqueta: P}
+      I2D_IG_lacunas_1p44e12: {valor: 2.0, etiqueta: P}
+      deslocamento_G_max: {lacunas: 30.0, eletrons: 25.0, unidade: cm^-1, densidade_max: 3.0e13, etiqueta: P}
+    dopagem_residual_prior:
+      valor: null
+      incerteza: {tipo: loguniforme, min: 1.4e12, max: 1.0e13}
+      unidade: cm^-2
+      etiqueta: C
+      nota: "ART mede Pos(G) = 1592,6 cm-1 (eixo com erro de ~3 cm-1) e I(2D)/I(G) = 1,9. Os dois indicam dopagem igual ou maior que a da amostra de D1 em V_BG = 0 (1,44e12). O teto de 1e13 vem do deslocamento de G de ~9 cm-1 contra 30 cm-1 em 3e13 (D1). Sinal desconhecido; 2D em 2691 cm-1 nao decide"
     n_residual:
       ju_lee: {valor: 3.58e11, unidade: cm^-2, ref: [N17], etiqueta: P, nota: "um dispositivo com AlOx"}
       faixa_calibracao: {incerteza: {tipo: loguniforme, min: 1.0e11, max: 1.0e12}, unidade: cm^-2, etiqueta: I}
+    kim_ajuste:
+      ref: [R34]
+      forma: "n_tot = sqrt(n0^2 + n*^2); V - V_D = e n*/C_ox + hbar vF sqrt(pi n*)/e; R = Rc + Nsq/(e mu n_tot)"
+      n0: {valor: 2.3e11, unidade: cm^-2, etiqueta: P, conferido_em: "texto aberto arXiv 0901.2901"}
+      mu: {valor: 8600.0, unidade: cm^2/Vs, etiqueta: P}
+      C_ox: {valor: 306.0, unidade: nF/cm^2, etiqueta: P}
+      Rc_faixa: {min: 500.0, max: 1500.0, unidade: ohm, etiqueta: P, nota: "lido do inset da fig. 3, aproximado"}
+    jimenez_ajuste:
+      ref: [R42]
+      forma: "Ids = q W mu int rho dV / (L + mu |int dV/vsat|), vsat = Omega / sqrt(pi rho)"
+      hbar_Omega: {faixa: {min: 0.015, max: 0.100}, unidade: eV, etiqueta: P,
+                   nota: "55 meV (Meric, transferencia), 15 meV (Meric, saida), 100 meV (Kedzierski)"}
+      rho0: {faixa: {min: 1.0e11, max: 3.0e11}, unidade: cm^-2, etiqueta: P}
+      meric: {L_um: 1.0, W_um: 2.1, mu: 1200.0, R_SD_ohm: 800.0, hbar_Omega_eV: 0.055, rho0_cm2: 1.0e11, etiqueta: P}
+      kedzierski: {L_um: 10.0, W_um: 5.0, mu: 7500.0, R_SD_ohm: 300.0, hbar_Omega_eV: 0.100, rho0_cm2: 3.0e11, etiqueta: P}
+    hbar_Omega_prior: {valor: null, incerteza: {tipo: uniforme, min: 0.015, max: 0.100}, unidade: eV, ref: [R42], etiqueta: P}
     impurezas_carregadas_adam:
       sujo: {faixa: {min: 2.5e12, max: 4.0e12}, unidade: cm^-2, sigma_min: "4e2/h", ref: [R38], etiqueta: P}
       limpo: {valor: 2.0e11, unidade: cm^-2, sigma_min: "8e2/h", ref: [R38], etiqueta: P}
@@ -355,6 +493,19 @@ eletrico:
     some_com_varredura_rapida_em_SiO2: {valor: true, ref: [R47], etiqueta: P}
     dados_brutos_bartosik: {doi: "10.5281/zenodo.4518319", ref: [R49], etiqueta: P}
     parametros: {valor: null, etiqueta: B, nota: "calibrados com as medidas de ida e volta"}
+
+  grafeno_artigo_usuario:
+    ref: [ART]
+    densidade_defeitos_nD: {valor: 2.2e10, incerteza: {tipo: normal, sigma: 0.6e10}, unidade: cm^-2, etiqueta: B,
+                            nota: "relacao de Cancado com laser de 532 nm, mediana do mapa"}
+    fracao_ilhas_multicamada: {valor: 0.17, faixa: {min: 0.10, max: 0.21}, unidade: fracao, etiqueta: B,
+                               nota: "17 % pela segmentacao optica; 10 a 21 % pelo Raman (percentis 99 e 95 da largura do 2D)"}
+    distancia_tipica_ilhas: {valor: 6.0, unidade: um, etiqueta: B}
+    I2D_IG_mediana: {valor: 1.93, faixa: {min: 1.50, max: 2.27}, etiqueta: B}
+    posG_mediana: {valor: 1592.6, faixa: {min: 1591.4, max: 1593.8}, unidade: cm^-1, etiqueta: B,
+                   nota: "erro de eixo de cerca de 3 cm-1; resolucao de 11 cm-1"}
+    contraste_monocamada_20nm: {vermelho: 0.003, verde: 0.006, etiqueta: B,
+                                nota: "modelo de matrizes de transferencia do ART; grafeno invisivel sobre 20 nm"}
 
   calculo_anterior_usuario:
     curvatura_bandas: {valor: 1.1, unidade: V, etiqueta: B}

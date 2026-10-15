@@ -106,6 +106,17 @@ Legenda da coluna Situação
 | B1 | Adams A.C., Smith T.E., Chang C.C., JES 127, 1787 (1980) | 10.1149/1.2130002 | ruptura intrínseca de 10 a 13 MV/cm em óxidos de 3 a 14 nm |
 | B2 | O'Shea S.J., Atta R.M., Murrell M.P., Welland M.E., JVST B 13, 1945 (1995) | 10.1116/1.588113 | 13,2 ± 0,8 MV/cm em óxidos de 7 a 15 nm |
 | B3 | Harari E., JAP 49, 2478 (1978) | 10.1063/1.325096 | ruptura em óxidos de 3 a 30 nm |
+| A6 | Narayan J., Fathy D., Oen O.S., Holland O.W., Atomic structure of ion implantation damage and process of amorphization in semiconductors, JVST A 2, 1303 (1984) | 10.1116/1.572399 | 6,0e23 eV/cm³ = 12 eV/átomo a 4 K sem recozimento. Mostra que o critério de A4 é de baixa temperatura |
+| G1 | Grant W.A., Williams J.S., Dodds D., Measurement of Projected and Lateral Range Parameters for Low Energy Heavy Ions in Silicon by Rutherford Backscattering, capítulo Springer (1976) | 10.1007/978-1-4615-8876-4_19 | ρp = 1,75 ε^(2/3) para 0,02 < ε < 0,5; Rp medido 15 a 70 % acima de LSS |
+| K1 | Kobayashi H., Gibson W.M., Depth profiling of ultrashallow implanted P using NRA, NIMB 152, 365 (1999) | 10.1016/S0168-583X(99)00182-2 | Rp e ΔRp de P de 5 a 80 keV concordam com o TRIM |
+| N24 | Solmi S., Parisini A., Angelucci R., Armigliato A., Nobili D., Moro L., Dopant and carrier concentration in Si in equilibrium with monoclinic SiP precipitates, PRB 53, 7836 (1996) | 10.1103/PhysRevB.53.7836 | n_e = 1,3e22 exp(−0,37/kT) e C_sat = 2,45e23 exp(−0,62/kT) cm⁻³ no resumo. Substitui a faixa [I] da solubilidade |
+| N25 | Altermatt P.P., Schenk A., Geelhaar F., Heiser G., Reassessment of the intrinsic carrier density in crystalline silicon in view of band-gap narrowing, JAP 93, 1598 (2003) | 10.1063/1.1529297 | nᵢ = 9,65e9 cm⁻³ a 300 K |
+| N26 | Couderc R., Amara M., Lemiti M., Reassessment of the intrinsic carrier density temperature dependence in crystalline silicon, JAP 115, 093705 (2014) | 10.1063/1.4867776 | nᵢ(T) = 1,541e15 T^1,712 exp(−Eg0/2kT). Eg0 e faixa de validade não lidos |
+| D1 | Das A. et al., Monitoring dopants by Raman scattering in an electrochemically top-gated graphene transistor, Nat. Nanotechnol. 3, 210 (2008) | 10.1038/nnano.2008.67 | texto aberto arXiv 0709.1174. Pos(G) no Dirac 1583 a 1584 cm⁻¹; 1586,7 cm⁻¹ e I(2D)/I(G) = 2,0 com 1,44e12 cm⁻² de lacunas; vF = 1,1e6 m/s. É a referência [22] do artigo do usuário |
+| S1 | Filipović L., Topography Simulation of Novel Processing Techniques, dissertação, TU Wien | sem DOI, iue.tuwien.ac.at/phd/filipovic | tabelas de Deal e Grove (cita Plummer, Deal e Griffin) e de Massoud (cita Massoud et al. 1985), lidas no texto aberto |
+| S2 | Radi M., dissertação, TU Wien | sem DOI, iue.tuwien.ac.at/phd/radi | modelo de Ho e Plummer com γ₀ = 2,63e3 e γ_E = 1,1 eV |
+| IH | Ishigami T., Homma T., An importance quantification technique in uncertainty analysis for computer models, ISUMA (1990) | 10.1109/ISUMA.1990.151285 | função de teste do Sobol (verificação do módulo 5) |
+| ART | Carillo G., Teixeira V.K., Pereyra I., Óxido de porta de SiO₂ por sputtering reativo e transferência de grafeno CVD para um transistor de grafeno com porta local, manuscrito do usuário | sem DOI | dados de bancada [B]: calibração do sputtering, Raman, n_D, ilhas multicamada |
 
 ## Discordâncias registradas
 
@@ -118,3 +129,10 @@ Legenda da coluna Situação
 | concentração ativa após 850 °C | ~1,5e21 (R18) | equilíbrio com precipitado (R15) | faixa larga e calibração |
 | TED em implante amorfizante | fator +n (R8) vale para não amorfizante | camada amorfa varre intersticiais (N8) | ramo com TED pequena e ramo com +n |
 | R7 da lista | DOI aponta para crítica numérica | modelo alternativo em R7b e R7c | citar os três |
+| alcance de P | RBS mede Rp acima de LSS (G1) | NRA mede Rp igual ao TRIM (K1) | ramo com Rp do RustBCA e ramo com Rp 18 % maior |
+| limiar de amorfização | 6e23 eV/cm³ prevê 1,5e14 cm⁻² (A4, A6) | 1 a 3e15 cm⁻² medido a 300 K (A2, A5) | ramo limiar_TA com a faixa de A2; o critério de A4 fica documentado como de baixa T |
+| solubilidade elétrica a 850 °C | 2,8e20 cm⁻³ (N24) | 1,5e21 cm⁻³ (R18) | ramo equilíbrio e ramo metaestável |
+| ativação em uma etapa | modelo ativa 100 % | 40 a 60 % (R13) e 67 % (R19) | ramo com o limite de R19 na variante B |
+| aceleração da oxidação por P | Ho e Plummer, F de 3 a 5 (S2, R29) | taxa igual à do Si leve no início (N10); máximo de 2,1 (R23) | três ramos separados |
+| constantes de oxidação a 800 °C | B de Deal e Grove 3× maior que o de Massoud | B de Massoud (S1, tabela 2.3) | Massoud no regime fino, Deal e Grove só como comparação |
+| densidade residual no grafeno | soma em quadratura (R34) | soma linear (R42) | diferença de até 3 % na resistência; ambas implementadas |
