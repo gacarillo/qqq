@@ -48,6 +48,7 @@ volatile uint8_t      sb800_hd_lkg = 0, sb800_hd_oc = 0;
 volatile unsigned int sb800_hd_tries = 0, sb800_hd_lkg_fails = 0;
 volatile uint8_t      sb800_hd_oc_fails = 0;
 volatile unsigned int sb800_hd_resp_check = 0;
+void (*sb800_hd_pre_test_hook)(void) = 0;
 
 /* ------------------------------------------------------------------ SPI --- */
 unsigned int monta_msg_800(unsigned int id, unsigned int dados) {
@@ -186,7 +187,7 @@ uint8_t init_sb800(uint8_t seed) {
     /* RST_ext = 1), a 2a carrega o SEED. Tabela 21 / p. 30.                  */
     sb800_m0r  = sb800_write(0, (unsigned int)seed << 2);  /* resposta = flags de reset */
     sb800_m0r2 = sb800_write(0, (unsigned int)seed << 2);  /* deve vir com RST_ext = 0  */
-    (void)sb800_write(1, 0x0002u);            /* bit 1 fixo em 1; P=1,0; I=0,125; lsd_sink_dis=0 */
+    (void)sb800_write(1, SB800_MSG1_CFG);     /* bit 1 fixo em 1; P=1,0; I=0,125; lsd_sink_dis=0 */
     (void)sb800_write(3, 0x0004u);            /* Adin2_en = 1 (como o VC_Init da NXP) */
     sb800_msg5 = 0u;                          /* tudo desligado */
     sb800_m5r  = sb800_write(5, sb800_msg5);
@@ -270,8 +271,14 @@ static void hd_task(void)
         sb800_msg5 &= (unsigned int)~MSG5_HD_ON;  /* garante hd_on = 0 (borda depois) */
         sb800_m5r = sb800_write(5, sb800_msg5);
         for (id = 10u; id <= 17u; id++) {         /* LSD do Octal em zero durante o teste */
-            (void)sb800_write(id, 0x0000u);       /* (os do Quad sao responsabilidade do main) */
+            (void)sb800_write(id, 0x0000u);
         }
+        if (sb800_hd_pre_test_hook != 0) {
+            sb800_hd_pre_test_hook();             /* main zera os LSD do Quad */
+        }
+#if SB800_HD_TEST_SINK_DIS
+        (void)sb800_write(1, SB800_MSG1_CFG | 0x0004u);  /* lsd_sink_dis = 1 */
+#endif
         sb800_clear_faults(MSG6_HD_CLR);          /* HD_clr_flt = 1 e depois 0 */
         sb800_hd_oc  = 0u;
         sb800_hd_state = HD_ST_EDGE;
@@ -286,6 +293,9 @@ static void hd_task(void)
 
     case HD_ST_CHECK:
         sb800_hd_resp_check = sb800_resp;         /* msg 18 deste tick */
+#if SB800_HD_TEST_SINK_DIS
+        (void)sb800_write(1, SB800_MSG1_CFG);     /* devolve o sink de open-load */
+#endif
         hd_read_oc();
         if (sb800_hd_lkg || sb800_hd_oc) {
             hd_fail();

@@ -63,6 +63,12 @@
  * Em HD_lkg o gate NAO foi ligado (Tabela 9), por isso repetir e seguro.     */
 #define SB800_HD_RETRY_MS    500u  /* intervalo entre tentativas apos HD_lkg            */
 #define SB800_HD_OC_MAX      3u    /* sobrecorrente: desiste apos N tentativas          */
+/* 1 = desliga a corrente de "sink" de open-load dos LSD do Octal (msg 1 bit 2)
+ * durante o teste de fuga. So para investigar HD_lkg que aparece APENAS com
+ * valvulas conectadas (o valor dessa corrente nao consta no datasheet).
+ * Padrao 0 = comportamento da NXP.                                          */
+#define SB800_HD_TEST_SINK_DIS 0
+#define SB800_MSG1_CFG       0x0002u  /* bit 1 fixo em 1; P=1,0; I=0,125; sink on */
 
 /* --- Bits de status devolvidos por sb800_feed_wd / sb800_service ---------- */
 #define SB800_ST_FMSG    0x01u     /* chip recebeu frame com paridade errada     */
@@ -111,6 +117,11 @@ uint8_t      sb800_lfsr_next(uint8_t s);
 uint8_t      sb800_feed_wd(void);
 uint8_t      sb800_service(void);
 uint8_t      sb800_wait_ms(uint16_t total_ms);
+
+/* Chamado imediatamente antes de cada borda de hd_on (estado PREP). O main
+ * aponta para uma funcao que zera as saidas do QUAD (o sb800.c ja zera as do
+ * Octal). Sem isso, uma valvula acionada pelo Quad reprova o teste de fuga.  */
+extern void (*sb800_hd_pre_test_hook)(void);
 
 void         sb800_hd_request(unsigned char ligar);
 uint8_t      sb800_hd_is_on(void);

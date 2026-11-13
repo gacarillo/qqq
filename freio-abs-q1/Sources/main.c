@@ -16,7 +16,10 @@
 
 #define DIAG_HOLD_OFF_MS  30000u   /* fase 1: Q1 desligado, tempo para medir J6/J5 */
 
-#define LED_PIN     PORTA_PA4
+/* LEDs da placa (folha 4 do esquema: PA4/PA5/PA6 -> 1 k -> LED -> AGND) */
+#define LED_PIN     PORTA_PA4   /* LED1 (D17): estado do Q1 (ver abaixo)      */
+#define LED_LKG     PORTA_PA5   /* LED2 (D16): HD_lkg = 1 na ultima msg 18    */
+#define LED_RST     PORTA_PA6   /* LED3 (D15): o Octal ja foi reinicializado  */
 
 void uart_putc(uint8_t c) {
     while (SCI0SR1_TDRE == 0);
@@ -40,10 +43,21 @@ static void diag_le_supervisao(void)
     diag_fgnd    = (diag_m3r & M3R_FGND)    ? 1u : 0u;
 }
 
+static void quad_saidas_off(void)
+{
+    SaiQUAD(QUAD1, 0);   SaiQUAD(QUAD2, 0);   SaiQUAD(QUAD3, 0);   SaiQUAD(QUAD4, 0);
+}
+
 static void todas_saidas_off(void)
 {
     SaiOCTAL(OCTAL1, 0); SaiOCTAL(OCTAL2, 0); SaiOCTAL(OCTAL3, 0); SaiOCTAL(OCTAL4, 0);
-    SaiQUAD(QUAD1, 0);   SaiQUAD(QUAD2, 0);   SaiQUAD(QUAD3, 0);   SaiQUAD(QUAD4, 0);
+    quad_saidas_off();
+}
+
+static void atualiza_leds_diag(void)
+{
+    LED_LKG = sb800_hd_lkg ? 1 : 0;
+    LED_RST = (sb800_resets != 0u) ? 1 : 0;
 }
 
 /* Espera o CI aceitar o Q1 com todas as saidas desligadas (o teste de fuga
@@ -53,6 +67,7 @@ static void aguarda_q1(void)
     todas_saidas_off();
     while (!sb800_hd_is_on()) {
         (void)sb800_wait_ms(100);
+        atualiza_leds_diag();
         LED_PIN ^= 1;                     /* pisca rapido: aguardando Q1 */
     }
     LED_PIN = 0;
@@ -64,8 +79,11 @@ void main(void) {
 #endif
 
   MCU_init();
+  DDRA |= 0x60u;                  /* PA5/PA6 (LED2/LED3) como saida; PA4 ja e saida */
+  LED_LKG = 0; LED_RST = 0;
 
   init_sb400();
+  sb800_hd_pre_test_hook = quad_saidas_off;  /* teste de fuga sempre com o Quad desligado */
   (void)init_sb800(SB800_SEED);   /* reset, 2x msg 0, registradores, primeiro MR */
 
 #if DIAG_Q1
@@ -79,6 +97,7 @@ void main(void) {
   for (t = 0; t < (DIAG_HOLD_OFF_MS / 500u); t++) {
       (void)sb800_wait_ms(500);
       diag_le_supervisao();
+      atualiza_leds_diag();
       LED_PIN ^= 1;                       /* pisca lento: fase 1 */
   }
 
@@ -90,6 +109,7 @@ void main(void) {
   for (;;) {
       (void)sb800_wait_ms(1000);
       diag_le_supervisao();
+      atualiza_leds_diag();
       LED_PIN = sb800_hd_is_on() ? 1 : 0; /* aceso fixo = CI aceitou o Q1 */
   }
 #else
