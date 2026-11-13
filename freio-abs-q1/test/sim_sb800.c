@@ -1,6 +1,6 @@
 /* Simulacao no PC do protocolo SPI do SB0800 para testar sb800.c (maquina de estados do Q1).
- * Compilar e rodar (Linux/MinGW), a partir de freio-abs-q1/:
- *   gcc -std=c99 -Itest/stub -ISources -o sim test/sim_sb800.c Sources/sb800.c && ./sim
+ * Compilar e rodar (Linux/MinGW/WSL), a partir da pasta raiz do projeto:
+ *   sh test/rodar_sim.sh
  * O modelo do chip e SIMPLIFICADO: so serve para testar a logica do firmware, nao o hardware. */
 #include <stdio.h>
 #include <string.h>

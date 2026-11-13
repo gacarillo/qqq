@@ -88,7 +88,7 @@ void main(void) {
 
 #if DIAG_Q1
   /* ---------------- FASE 1: Q1 desligado -------------------------------- */
-  /* Meça agora (multimetro, referencia AGND):                              */
+  /* Meca agora (multimetro, referencia AGND):                              */
   /*   - J6 / dreno do Q1 / C10(+)  -> deve ser ~12 V                         */
   /*   - J5                         -> ~0 V                                   */
   /*   - opcional: 10 k entre J6 e J5 e medir J5 (ver DIAGNOSTICO_Q1.md)      */
