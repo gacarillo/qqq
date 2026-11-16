@@ -61,7 +61,14 @@ O relatório e o `pendencias.md` trazem a lista completa. Em resumo, os módulos
 
 ## Animação
 
-`animacao/gfet_animacao.html` é uma página única que mostra a fabricação (trajetórias do RustBCA, amorfização, SPE, difusão, oxidação) e a operação do dispositivo (portadores no grafeno, bandas, C-V, transferência, histerese, campo no óxido). Ela é montada a partir dos módulos do pacote.
+`animacao/gfet_animacao.html` é uma página única com quatro abas, montada a partir dos módulos do pacote.
+
+1. Fabricação 2D. Corte em escala na borda da máscara, com trajetórias do RustBCA, sombra de 7°, amorfização, SPE, recozimento 2D, precipitação acima de C_sat e oxidação por coluna.
+2. Dispositivo 3D. O GFET inteiro em Three.js, da lâmina à operação, com a CVD e a transferência com PMMA pela receita da seção 2.4 do artigo, corte A−A′ e exagero vertical ajustável.
+3. Átomos 3D. Cascatas completas de três íons do RustBCA com vacâncias e intersticiais, e o grafeno sobre SiO₂ amorfo com poças de carga, água na interface e uma ilha de bicamada.
+4. Operação. Modelo elétrico com C-V, transferência com histerese, curvas de saída, f_T, C_q, campo e tunelamento, bandas da pilha e 40 dispositivos sorteados nas faixas do params.yaml.
+
+Os scripts ficam em `animacao/js/` e o `montar.py` junta tudo num arquivo só.
 
 ```
 python animacao/exportar_dados.py   # alguns minutos; gera dados_animacao.json

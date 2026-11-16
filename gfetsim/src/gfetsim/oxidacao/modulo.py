@@ -44,6 +44,7 @@ class ResultadoOxidacao:
     ramo_aceleracao: str
     ramo_interface: str
     notas: list[str] = field(default_factory=list)
+    quadros: list[dict] = field(default_factory=list)
 
 
 def _deslocar(x, y, d):
@@ -54,7 +55,8 @@ def _deslocar(x, y, d):
 def oxidar(params, estado: EstadoDopante, T_C: float, t_min: float, x0_nm: float = 0.0,
            ramo_aceleracao: str = "ho_plummer", ramo_interface: str = "acumulo_classico",
            modelo: str = "massoud", n_passos: int = 120, espessura_retrograda_nm: float = 15.0,
-           largura_camada_oxido_nm: float = 3.0) -> ResultadoOxidacao:
+           largura_camada_oxido_nm: float = 3.0, instantes_min=None) -> ResultadoOxidacao:
+    """instantes_min, se dado, guarda o estado nesses tempos em ResultadoOxidacao.quadros."""
     e = estado.copia()
     x = e.x_nm
     dx = x[1] - x[0]
@@ -72,6 +74,8 @@ def oxidar(params, estado: EstadoDopante, T_C: float, t_min: float, x0_nm: float
     t, xox, consumido = 0.0, x0_nm, 0.0
     hist_t, hist_x, hist_F = [0.0], [x0_nm], []
     resto = 0.0
+    pend = sorted(instantes_min or [])
+    quadros = []
     for dt in passos:
         n_s = silicio.eletrons(np.array([min(e.ativo[0], ne)]), silicio.ni(params, T_C))[0]
         if ramo_aceleracao == "ho_plummer":
@@ -108,13 +112,16 @@ def oxidar(params, estado: EstadoDopante, T_C: float, t_min: float, x0_nm: float
         hist_t.append(t)
         hist_x.append(xox)
         hist_F.append(F)
+        while pend and t >= pend[0] - 1e-9:
+            quadros.append({"t_min": t, "x_ox": xox, "si": consumido, "F": F, "C": e.C.copy(), "A": e.ativo.copy()})
+            pend.pop(0)
     if ramo_interface == "silicio_inativo":
         frac = params.valor("oxidacao.ramos_interface.lado_do_pileup.silicio_inativo.fracao_ativa")
         perto = x <= espessura_retrograda_nm  # 10 a 20 nm (R20)
         e.ativo[perto] *= frac
     e.historico.append(f"oxidação {T_C:.0f} C {t_min:.0f} min: {xox:.1f} nm de óxido, {consumido:.1f} nm de Si consumidos")
     return ResultadoOxidacao(T_C, t_min, xox, consumido, e, no_oxido, np.array(hist_t), np.array(hist_x),
-                             np.array(hist_F), ramo_aceleracao, ramo_interface)
+                             np.array(hist_F), ramo_aceleracao, ramo_interface, quadros=quadros)
 
 
 def tempo_para_alvo(params, estado, T_C, alvo_nm=None, ramo_aceleracao="ho_plummer",

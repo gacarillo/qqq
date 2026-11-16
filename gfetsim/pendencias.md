@@ -61,7 +61,10 @@ Prioridade média
 4. Aglomerados P-defeito e sua cinética (R12, R12b).
 5. Oxidação acelerada por difusão (OED) do P durante a oxidação de porta.
 6. Estreitamento de banda no Si n+.
-7. Efeitos 2D na borda da máscara e na janela de contato da porta.
+7. Efeitos 2D na janela de contato da porta. A borda da máscara agora tem um modelo 2D em `recozimento/borda2d.py`, com a sombra de 7°, o espalhamento lateral do RustBCA, o recozimento por separação de operadores e a oxidação por coluna. Ele não tem difusão lateral durante a oxidação nem tensão mecânica na borda [C].
+7a. O modelo 2D mostra que com Ho e Plummer a 900 °C o óxido chega a 19,8 nm sobre a porta e fica em 6,8 nm sobre o substrato, um degrau de 13 nm na borda da região n⁺. Isso afeta a cobertura do grafeno e a isolação fora da porta e precisa de medida.
+7b. No forno B a 900 °C o P avança cerca de 110 nm por baixo da máscara a 10 nm de profundidade.
+7c. O desenho da janela da porta, a definição do canal, o metal e a ordem dos contatos não estão na receita. A cena 3D da animação supõe esses passos e os marca como [I].
 8. Ilhas de grafeno multicamada (17 % da área no artigo) e trincas.
 9. Histerese por água (R47, R49). O modelo de relaxação está em `eletrico/histerese.py`, mas alfa e tau só saem de medidas de ida e volta do dispositivo.
 

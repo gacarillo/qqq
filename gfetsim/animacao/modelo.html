@@ -2,10 +2,13 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
 <style>
-/* Layout: bancada de instrumento. Corte em escala à esquerda, leituras e gráficos à direita,
-   linha do tempo do processo embaixo. Um tema escuro só, escolhido como o de uma tela de
-   microscópio; todas as cores vêm destes tokens. */
+/* Layout: bancada de instrumento. Uma tela grande por aba, leituras e gráficos ao lado,
+   linha do tempo embaixo. Um tema escuro só, como a tela de um microscópio; todas as
+   cores vêm destes tokens. */
 :root {
   color-scheme: dark;
   --bg: #0e1215;
@@ -26,25 +29,31 @@
   --perigo: #ff6b5c;
   --ida: #4f97f0;
   --volta: #e8833f;
+  --oxigenio: #ff8f80;
   --f-titulo: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
   --f-texto: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-dado: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 html, body { background: var(--bg); color: var(--tinta); }
 body { font: 14px/1.5 var(--f-texto); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 32px; }
-.pagina { max-width: 1320px; margin: 0 auto; display: grid; gap: 16px; }
+.pagina { max-width: 1360px; margin: 0 auto; display: grid; gap: 16px; }
 header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
 h1 { font: 600 28px/1.1 var(--f-titulo); letter-spacing: .01em; margin: 0; text-wrap: balance; }
-.sub { color: var(--tinta2); margin: 4px 0 0; max-width: 72ch; }
-.abas { display: flex; gap: 4px; background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 3px; }
-.abas button { font: 500 14px var(--f-texto); color: var(--tinta2); background: transparent; border: 0; border-radius: 6px; padding: 7px 16px; cursor: pointer; }
+.sub { color: var(--tinta2); margin: 4px 0 0; max-width: 76ch; }
+.abas { display: flex; flex-wrap: wrap; gap: 4px; background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 3px; }
+.abas button { font: 500 14px var(--f-texto); color: var(--tinta2); background: transparent; border: 0; border-radius: 6px; padding: 7px 14px; cursor: pointer; }
 .abas button[aria-selected="true"] { background: var(--painel2); color: var(--tinta); box-shadow: inset 0 0 0 1px var(--linha); }
 button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--eletron); outline-offset: 2px; }
 .grade { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.grade.larga { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); }
 .coluna { display: grid; gap: 16px; min-width: 0; }
 .cartao { background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 12px 14px; min-width: 0; }
 .cartao h2 { font: 600 13px var(--f-titulo); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta2); margin: 0 0 8px; }
 .tela { width: 100%; display: block; border-radius: 6px; background: #0a0e11; }
+canvas.tela.toque { touch-action: none; }
+.palco { position: relative; }
+.palco .rotulos { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.rotulo3d { position: absolute; transform: translate(-50%, -100%); font: 500 11px var(--f-dado); color: var(--tinta); background: rgba(14,18,21,.72); border: 1px solid var(--linha); border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
 .legenda { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--tinta2); margin-top: 8px; }
 .legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .nota { font-size: 12px; color: var(--tinta3); margin: 6px 0 0; }
@@ -56,19 +65,19 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px s
 .num span { font-size: 11px; color: var(--tinta3); letter-spacing: .04em; text-transform: uppercase; }
 .etiqueta { display: inline-block; font: 500 11px var(--f-dado); padding: 1px 6px; border-radius: 4px; background: var(--painel2); color: var(--tinta2); border: 1px solid var(--linha); margin-left: 4px; }
 .linha-tempo { display: grid; gap: 10px; }
-.etapas { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.etapas { display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); gap: 4px; }
 .etapas button { font: 500 12px/1.25 var(--f-texto); color: var(--tinta2); background: var(--painel2); border: 1px solid var(--linha); border-radius: 6px; padding: 6px 6px; cursor: pointer; text-align: left; min-height: 44px; position: relative; overflow: hidden; }
 .etapas button .barra { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--p-ativo); width: 0; }
 .etapas button[aria-current="step"] { color: var(--tinta); border-color: var(--tinta3); }
 .etapas button small { display: block; font: 400 11px var(--f-dado); color: var(--tinta3); }
 .controles { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
-.campo { display: grid; gap: 3px; align-content: end; font-size: 12px; color: var(--tinta2); min-width: 0; }
+.campo { display: grid; gap: 3px; font-size: 12px; color: var(--tinta2); min-width: 0; align-content: end; }
 .campo output { font: 500 12px var(--f-dado); color: var(--tinta); }
 select, .botao { font: 500 13px var(--f-texto); color: var(--tinta); background: var(--painel2); border: 1px solid var(--linha); border-radius: 6px; padding: 6px 10px; }
 .botao { cursor: pointer; }
 .botao.primario { background: #23506f; border-color: #2f6b93; }
 input[type="range"] { width: 160px; accent-color: var(--eletron); }
-#tempo { width: 100%; }
+.tempo-faixa { width: 100%; }
 .leituras { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px 12px; }
 .leituras .num b { font-size: 15px; }
 .alerta { color: var(--perigo); }
@@ -76,16 +85,18 @@ input[type="range"] { width: 160px; accent-color: var(--eletron); }
 .interacoes label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--tinta2); background: var(--painel2); border: 1px solid var(--linha); border-radius: 999px; padding: 4px 10px 4px 8px; cursor: pointer; }
 .interacoes input { accent-color: var(--p-ativo); margin: 0; }
 .tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-footer { color: var(--tinta3); font-size: 12px; max-width: 110ch; }
+.aviso3d { padding: 24px; color: var(--tinta2); }
+footer { color: var(--tinta3); font-size: 12px; max-width: 120ch; }
 footer p { margin: 4px 0; }
 @media (max-width: 980px) {
-  .grade, .tres { grid-template-columns: minmax(0, 1fr); }
+  .grade, .grade.larga, .tres { grid-template-columns: minmax(0, 1fr); }
   .etapas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
   .etapas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   input[type="range"] { width: 130px; }
   h1 { font-size: 24px; }
+  .abas button { padding: 6px 10px; font-size: 13px; }
 }
 </style>
 
@@ -93,16 +104,18 @@ footer p { margin: 4px 0; }
 <header>
   <div>
     <h1>GFET de porta local</h1>
-    <p class="sub">Fabricação e operação da porta n<sup>+</sup> implantada, desenhadas a partir das saídas do gfetsim. Trajetórias de íons do RustBCA, perfis do recozimento e da oxidação e curvas elétricas do Poisson, todos com os mesmos parâmetros do relatório.</p>
+    <p class="sub">Fabricação e operação da porta n<sup>+</sup> implantada, desenhadas a partir das saídas do gfetsim. Trajetórias e cascatas do RustBCA, física 2D da borda da máscara, recozimento, oxidação, transferência do grafeno pelo protocolo do seu artigo e o dispositivo em operação, em 2D e em 3D.</p>
   </div>
-  <div class="abas" role="tablist" aria-label="Modo">
-    <button role="tab" id="aba-fab" aria-selected="true" aria-controls="fab">Fabricação</button>
-    <button role="tab" id="aba-op" aria-selected="false" aria-controls="op">Operação</button>
+  <div class="abas" role="tablist" aria-label="Vista">
+    <button role="tab" id="aba-corte" aria-selected="true" aria-controls="corte">Fabricação 2D</button>
+    <button role="tab" id="aba-d3" aria-selected="false" aria-controls="d3">Dispositivo 3D</button>
+    <button role="tab" id="aba-atomos" aria-selected="false" aria-controls="atomos">Átomos 3D</button>
+    <button role="tab" id="aba-operacao" aria-selected="false" aria-controls="operacao">Operação</button>
   </div>
 </header>
 
-<!-- ============================================================ FABRICAÇÃO -->
-<section id="fab" role="tabpanel" aria-labelledby="aba-fab" class="pagina">
+<!-- ============================================================ FABRICAÇÃO 2D -->
+<section id="corte" role="tabpanel" aria-labelledby="aba-corte" class="pagina">
   <div class="grade">
     <div class="cartao">
       <h2>Corte em escala na borda da máscara</h2>
@@ -112,9 +125,10 @@ footer p { margin: 4px 0; }
         <span><i style="background:var(--oxido)"></i>SiO<sub>2</sub></span>
         <span><i style="background:var(--p-inativo)"></i>P inativo</span>
         <span><i style="background:var(--p-ativo)"></i>P ativo (doador)</span>
-        <span><i style="background:#ffd27a"></i>íon em voo e cascata</span>
+        <span><i style="background:#ffd27a"></i>íon e cascata</span>
+        <span><i style="background:var(--oxigenio)"></i>O<sub>2</sub> difundindo</span>
       </div>
-      <p class="nota" id="nota-fab">Profundidade e largura na mesma escala. Os átomos de Si são desenhados a cada 7 nm; a rede real tem 0,54 nm.</p>
+      <p class="nota">Profundidade e largura na mesma escala. Toque no corte para escolher a coluna do perfil ao lado. Os átomos de Si são desenhados a cada 7 nm; a rede real tem 0,54 nm.</p>
     </div>
     <div class="coluna">
       <div class="cartao" aria-live="polite">
@@ -123,12 +137,12 @@ footer p { margin: 4px 0; }
         <div class="numeros" id="etapa-numeros"></div>
       </div>
       <div class="cartao">
-        <h2>Perfil de P na profundidade</h2>
+        <h2 id="titulo-perfil">Perfil de P na coluna escolhida</h2>
         <canvas id="cv-perfil" class="tela" height="240" aria-label="Concentração de fósforo total e ativa em função da profundidade"></canvas>
         <div class="legenda">
           <span><i style="background:var(--p-inativo)"></i>P total</span>
           <span><i style="background:var(--p-ativo)"></i>P ativo</span>
-          <span><i style="background:var(--tinta3)"></i>limite da etapa</span>
+          <span><i style="background:var(--tinta3)"></i>centro da janela (1D)</span>
         </div>
       </div>
       <div class="cartao">
@@ -138,12 +152,13 @@ footer p { margin: 4px 0; }
     </div>
   </div>
   <div class="cartao linha-tempo">
-    <div class="etapas" id="etapas"></div>
-    <input type="range" id="tempo" min="0" max="1000" value="0" step="1" aria-label="Posição no processo">
+    <div class="etapas" id="etapas-corte"></div>
+    <input type="range" class="tempo-faixa" id="tempo-corte" min="0" max="1000" value="0" step="1" aria-label="Posição no processo">
     <div class="controles">
-      <button class="botao primario" id="tocar">Pausar</button>
-      <label class="campo" for="vel"><span>Velocidade</span><select id="vel"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+      <button class="botao primario" id="tocar-corte">Pausar</button>
+      <label class="campo" for="vel-corte"><span>Velocidade</span><select id="vel-corte"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
       <label class="campo" for="sel-mascara"><span>Implantação</span><select id="sel-mascara"><option value="A">A, máscara de 150 nm</option><option value="B">B, lâmina inteira</option></select></label>
+      <label class="campo" for="sel-sombra"><span>Inclinação de 7° em relação à borda</span><select id="sel-sombra"><option value="sombra">em direção à janela, com sombra</option><option value="sem_sombra">paralela à borda, sem sombra</option></select></label>
       <label class="campo" for="sel-variante"><span>Recozimento</span><select id="sel-variante"><option value="A">A, 550 °C e RTA 1050 °C 10 s</option><option value="B850">B, 550 °C e forno 850 °C 30 min</option><option value="B900">B, 550 °C e forno 900 °C 30 min</option></select></label>
       <label class="campo" for="sel-ramo"><span>Aceleração da oxidação</span><select id="sel-ramo"><option value="ho_plummer">Ho e Plummer (R29)</option><option value="nomura">fator 2,1 (R23)</option><option value="sem_aceleracao">sem aceleração (N10)</option></select></label>
       <label class="campo" for="sel-T"><span>Oxidação seca</span><select id="sel-T"><option value="850">850 °C</option><option value="900" selected>900 °C</option><option value="950">950 °C</option></select></label>
@@ -151,8 +166,76 @@ footer p { margin: 4px 0; }
   </div>
 </section>
 
+<!-- ============================================================ DISPOSITIVO 3D -->
+<section id="d3" role="tabpanel" aria-labelledby="aba-d3" class="pagina" hidden>
+  <div class="grade larga">
+    <div class="cartao">
+      <h2>GFET em 3D</h2>
+      <div class="palco"><canvas id="cv-3d" class="tela toque" height="560" aria-label="Cena 3D do dispositivo; arraste para girar e use dois dedos ou a roda para aproximar"></canvas><div class="rotulos" id="rotulos-3d"></div></div>
+      <div class="controles" style="margin-top:10px">
+        <button class="botao" id="cam-geral">Vista geral</button>
+        <button class="botao" id="cam-corte">Corte A−A′</button>
+        <button class="botao" id="cam-cima">De cima</button>
+        <label class="campo" for="d3-cortar"><span>Cortar o dispositivo</span><select id="d3-cortar"><option value="sim" selected>mostrar o interior</option><option value="nao">peça inteira</option></select></label>
+        <label class="campo" for="d3-exagero"><span>Exagero vertical <output id="o-exagero"></output></span><input type="range" id="d3-exagero" min="5" max="150" step="5" value="50"></label>
+        <label class="campo" for="d3-L"><span>Comprimento do canal L <output id="o-L3"></output></span><input type="range" id="d3-L" min="4" max="30" step="1" value="10"></label>
+      </div>
+      <p class="nota" id="nota-3d">Dimensões no plano em µm. As espessuras dos filmes e das camadas dopadas são multiplicadas pelo exagero vertical. W e L não estão na receita; o canal usa W = L.</p>
+    </div>
+    <div class="coluna">
+      <div class="cartao" aria-live="polite">
+        <p class="etapa-titulo" id="d3-titulo"></p>
+        <p class="etapa-texto" id="d3-texto"></p>
+        <div class="numeros" id="d3-numeros"></div>
+      </div>
+      <div class="cartao">
+        <h2>Leituras da operação</h2>
+        <div class="leituras" id="d3-leituras"></div>
+        <p class="nota">Aparecem na última etapa, quando o dispositivo liga. Os controles elétricos ficam na aba Operação.</p>
+      </div>
+    </div>
+  </div>
+  <div class="cartao linha-tempo">
+    <div class="etapas" id="etapas-3d"></div>
+    <input type="range" class="tempo-faixa" id="tempo-3d" min="0" max="1000" value="0" step="1" aria-label="Posição no processo em 3D">
+    <div class="controles">
+      <button class="botao primario" id="tocar-3d">Pausar</button>
+      <label class="campo" for="vel-3d"><span>Velocidade</span><select id="vel-3d"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ÁTOMOS 3D -->
+<section id="atomos" role="tabpanel" aria-labelledby="aba-atomos" class="pagina" hidden>
+  <div class="grade larga">
+    <div class="cartao">
+      <h2 id="atomos-titulo">Cascata de um íon de P no Si</h2>
+      <div class="palco"><canvas id="cv-atomos" class="tela toque" height="560" aria-label="Cena atômica 3D"></canvas><div class="rotulos" id="rotulos-atomos"></div></div>
+      <div class="controles" style="margin-top:10px">
+        <label class="campo" for="at-cena"><span>Cena</span><select id="at-cena"><option value="cascata">cascata de um íon</option><option value="grafeno">grafeno sobre SiO₂</option></select></label>
+        <label class="campo" for="at-ion"><span>Íon do RustBCA</span><select id="at-ion"><option value="0">íon 1</option><option value="1">íon 2</option><option value="2">íon 3</option></select></label>
+        <button class="botao primario" id="at-tocar">Pausar</button>
+        <label class="campo" for="at-vel"><span>Velocidade</span><select id="at-vel"><option value="0.3">lenta</option><option value="1" selected>normal</option><option value="3">rápida</option></select></label>
+        <label class="campo" for="at-rede"><span>Rede de diamante</span><select id="at-rede"><option value="sim" selected>mostrar perto da trajetória</option><option value="nao">esconder</option></select></label>
+      </div>
+      <p class="nota" id="nota-atomos"></p>
+    </div>
+    <div class="coluna">
+      <div class="cartao" aria-live="polite">
+        <p class="etapa-titulo" id="at-cab"></p>
+        <p class="etapa-texto" id="at-texto"></p>
+        <div class="numeros" id="at-numeros"></div>
+      </div>
+      <div class="cartao">
+        <h2 id="at-graf-titulo">Energia do íon ao longo do caminho</h2>
+        <canvas id="cv-at-graf" class="tela" height="200" aria-label="Gráfico da cena atômica"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================ OPERAÇÃO -->
-<section id="op" role="tabpanel" aria-labelledby="aba-op" class="pagina" hidden>
+<section id="operacao" role="tabpanel" aria-labelledby="aba-operacao" class="pagina" hidden>
   <div class="grade">
     <div class="cartao">
       <h2>Dispositivo em operação</h2>
@@ -168,8 +251,8 @@ footer p { margin: 4px 0; }
     </div>
     <div class="coluna">
       <div class="cartao">
-        <h2>Bandas</h2>
-        <canvas id="cv-banda" class="tela" height="250" aria-label="Cone de Dirac do grafeno e bandas do Si junto à interface"></canvas>
+        <h2>Bandas da pilha</h2>
+        <canvas id="cv-banda" class="tela" height="300" aria-label="Diagrama de bandas grafeno, SiO2 e Si"></canvas>
       </div>
       <div class="cartao">
         <h2>Leituras</h2>
@@ -181,9 +264,15 @@ footer p { margin: 4px 0; }
     <div class="cartao"><h2>C-V da porta</h2><canvas id="cv-cv" class="tela" height="210" aria-label="Capacitância normalizada em função da tensão de porta"></canvas>
       <div class="legenda"><span><i style="background:var(--p-ativo)"></i>pilha com Si n<sup>+</sup></span><span><i style="background:var(--tinta3)"></i>mesma pilha com porta metálica</span></div></div>
     <div class="cartao"><h2>Transferência</h2><canvas id="cv-trans" class="tela" height="210" aria-label="Corrente de dreno por largura em função da tensão de porta"></canvas>
-      <div class="legenda"><span><i style="background:var(--tinta3)"></i>sem histerese</span><span><i style="background:var(--ida)"></i>ida</span><span><i style="background:var(--volta)"></i>volta</span></div></div>
+      <div class="legenda"><span><i style="background:var(--tinta3)"></i>sem histerese</span><span><i style="background:var(--ida)"></i>ida</span><span><i style="background:var(--volta)"></i>volta</span><span><i style="background:#5d6a73"></i>outros dispositivos</span></div></div>
+    <div class="cartao"><h2>Saída</h2><canvas id="cv-saida" class="tela" height="210" aria-label="Corrente de dreno em função da tensão de dreno para várias tensões de porta"></canvas>
+      <div class="legenda" id="leg-saida"></div></div>
     <div class="cartao"><h2>Campo no óxido</h2><canvas id="cv-campo" class="tela" height="210" aria-label="Campo elétrico no óxido e faixa de ruptura"></canvas>
       <div class="legenda"><span><i style="background:var(--oxido)"></i>campo</span><span><i style="background:var(--perigo)"></i>ruptura intrínseca (B1)</span></div></div>
+    <div class="cartao"><h2>Frequência de corte</h2><canvas id="cv-gm" class="tela" height="210" aria-label="Frequência de corte intrínseca em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--p-ativo)"></i>f<sub>T</sub> intrínseca, sem parasitas</span></div></div>
+    <div class="cartao"><h2>Capacitância quântica</h2><canvas id="cv-cq" class="tela" height="210" aria-label="Capacitância quântica do grafeno em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--eletron)"></i>C<sub>q</sub></span><span><i style="background:var(--oxido)"></i>C<sub>ox</sub></span></div></div>
   </div>
   <div class="cartao">
     <h2>Controles</h2>
@@ -192,8 +281,8 @@ footer p { margin: 4px 0; }
       <button class="botao primario" id="op-varrer">Parar varredura</button>
       <label class="campo" for="op-taxa"><span>Taxa de varredura <output id="o-taxa"></output></span><input type="range" id="op-taxa" min="-2" max="2" step="0.05" value="0"></label>
       <label class="campo" for="op-acel"><span>Tempo</span><select id="op-acel"><option value="1">real</option><option value="10" selected>10× mais rápido</option><option value="100">100× mais rápido</option></select></label>
-      <label class="campo" for="op-vg"><span>V<sub>G</sub> manual <output id="o-vg"></output></span><input type="range" id="op-vg" min="-12" max="12" step="0.05" value="2"></label>
-      <label class="campo" for="op-vds"><span>V<sub>DS</sub> <output id="o-vds"></output></span><input type="range" id="op-vds" min="0.02" max="2" step="0.01" value="0.1"></label>
+      <label class="campo" for="op-vg"><span>V<sub>G</sub> manual <output id="o-vg"></output></span><input type="range" id="op-vg" min="-14" max="14" step="0.05" value="2"></label>
+      <label class="campo" for="op-vds"><span>V<sub>DS</sub> <output id="o-vds"></output></span><input type="range" id="op-vds" min="0.02" max="3" step="0.01" value="0.1"></label>
       <label class="campo" for="op-dop"><span>Dopagem residual <output id="o-dop"></output></span><input type="range" id="op-dop" min="12.146" max="13" step="0.01" value="12.48"></label>
       <label class="campo" for="op-sinal"><span>Tipo</span><select id="op-sinal"><option value="-1">p (lacunas)</option><option value="1">n (elétrons)</option></select></label>
       <label class="campo" for="op-mu"><span>Mobilidade <output id="o-mu"></output></span><input type="range" id="op-mu" min="2.477" max="3.892" step="0.01" value="3.2"></label>
@@ -203,790 +292,22 @@ footer p { margin: 4px 0; }
       <label class="campo" for="op-alfa"><span>Histerese α <output id="o-alfa"></output></span><input type="range" id="op-alfa" min="0" max="0.4" step="0.01" value="0.15"></label>
       <label class="campo" for="op-tau"><span>Relaxação τ <output id="o-tau"></output></span><input type="range" id="op-tau" min="-1" max="2.5" step="0.05" value="1.3"></label>
       <label class="campo" for="op-rho"><span>Substrato fora da porta</span><select id="op-rho"><option value="0.001">0,001 Ω·cm</option><option value="0.01">0,01 Ω·cm</option><option value="0.1">0,1 Ω·cm</option><option value="1.0">1 Ω·cm</option><option value="10.0" selected>10 Ω·cm</option></select></label>
+      <label class="campo" for="op-disp"><span>Dispersão entre dispositivos</span><select id="op-disp"><option value="sim" selected>mostrar 40 dispositivos</option><option value="nao">esconder</option></select></label>
     </div>
     <h2 style="margin-top:14px">Interações no cálculo</h2>
     <div class="interacoes" id="interacoes"></div>
-    <p class="nota" id="nota-interacoes">Com todas ligadas, n(V) e C(V) são as do Poisson do gfetsim. Desligar a capacitância quântica ou a do Si refaz n(V) integrando a capacitância em série sem aquele termo, uma aproximação útil para comparar.</p>
+    <p class="nota">Com todas ligadas, n(V) e C(V) são as do Poisson do gfetsim. Desligar a capacitância quântica ou a do Si refaz n(V) integrando a capacitância em série sem aquele termo, uma aproximação útil para comparar. Os 40 dispositivos sorteiam mobilidade, dopagem residual, poças, R<sub>c</sub> e ħΩ dentro das faixas do params.yaml.</p>
   </div>
 </section>
 
 <footer>
-  <p>Fontes. Implantação pelo RustBCA (alvo amorfo, potencial Kr-C) com 48 trajetórias reais na janela e 16 na máscara, repetidas com ponto de entrada sorteado. Camada amorfa pelo limiar medido a 300 K (A2). Recozimento por Fair e Tsai com a solubilidade de Solmi (N24). Oxidação pelo modelo de Massoud (S1) com os ramos de Ho e Plummer (R29, S2), de Nomura (R23) e sem aceleração (N10). Elétrico pelo Poisson com Fermi-Dirac, grafeno com poças de carga (R40, N17), transporte de Kim (R34) e de Jiménez (R42), ruptura (B1) e Fowler-Nordheim (R45). Histerese pelo modelo de relaxação (R47), com α e τ a calibrar.</p>
-  <p>Valores provisórios [I] entram nas difusividades, na mobilidade do Si, em nᵢ(T), na SPE e nas permissividades. A lista está no relatório e no pendencias.md do pacote.</p>
+  <p>Fontes. Implantação pelo RustBCA (alvo amorfo, potencial Kr-C) com 48 trajetórias reais na janela, 16 na máscara e 1e5 posições finais para a borda 2D. Camada amorfa pelo limiar medido a 300 K (A2). Sombra da máscara a 7° e recozimento 2D por separação de operadores com Fair e Tsai e a solubilidade de Solmi (N24). Oxidação pelo modelo de Massoud (S1) com os ramos de Ho e Plummer (R29, S2), de Nomura (R23) e sem aceleração (N10), coluna a coluna na borda. Transferência do grafeno pelo protocolo do artigo do usuário. Elétrico pelo Poisson com Fermi-Dirac, grafeno com poças de carga (R40, N17), transporte de Kim (R34) e de Jiménez (R42), ruptura (B1) e Fowler-Nordheim (R45). Histerese pelo modelo de relaxação (R47), com α e τ a calibrar.</p>
+  <p>Valores provisórios [I] entram nas difusividades, na mobilidade do Si, em nᵢ(T), na SPE, nas permissividades e nas barreiras de energia. A lista está no relatório e no pendencias.md do pacote.</p>
 </footer>
 </div>
 
 <script type="application/json" id="dados">__DADOS__</script>
 <script>
 "use strict";
-const D = JSON.parse(document.getElementById("dados").textContent);
-const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const COR = {};
-["--bg","--painel","--linha","--tinta","--tinta2","--tinta3","--si","--si-atomo","--oxido","--p-inativo","--p-ativo","--eletron","--lacuna","--ouro","--perigo","--ida","--volta"].forEach(k => COR[k.slice(2)] = css(k));
-const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-/* ---------------------------------------------------------------- utilidades */
-function interp(xs, ys, x) {
-  const n = xs.length;
-  if (x <= xs[0]) return ys[0];
-  if (x >= xs[n - 1]) return ys[n - 1];
-  let lo = 0, hi = n - 1;
-  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (xs[m] > x) hi = m; else lo = m; }
-  const t = (x - xs[lo]) / (xs[hi] - xs[lo]);
-  return ys[lo] + t * (ys[hi] - ys[lo]);
-}
-function interpDesc(xs, ys, y) { // inverso de função monotônica crescente ys(xs)
-  return interp(ys, xs, y);
-}
-const SUP = {"-":"⁻","0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹"};
-function sci(v, c = 1) {
-  if (!isFinite(v) || v === 0) return "0";
-  const s = Math.sign(v) < 0 ? "−" : "";
-  v = Math.abs(v);
-  const e = Math.floor(Math.log10(v));
-  let m = v / Math.pow(10, e);
-  if (+m.toFixed(c) >= 10) { m /= 10; return s + m.toFixed(c).replace(".", ",") + "×10" + String(e + 1).split("").map(d => SUP[d]).join(""); }
-  return s + m.toFixed(c).replace(".", ",") + "×10" + String(e).split("").map(d => SUP[d]).join("");
-}
-function br(v, c = 1) { if (!isFinite(v)) return "n/d"; return (v < 0 ? "−" : "") + Math.abs(v).toFixed(c).replace(".", ","); }
-function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-function semente(s) { return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-
-function preparar(cv) {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const w = Math.max(240, cv.clientWidth);
-  if (!cv.dataset.h) cv.dataset.h = cv.getAttribute("height");
-  const base = +cv.dataset.h;
-  const H = cv.dataset.razao ? Math.round(w * +cv.dataset.razao) : Math.round(base * clamp(w / 560, 0.8, 1));
-  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(H * dpr)) {
-    cv.width = Math.round(w * dpr); cv.height = Math.round(H * dpr); cv.style.height = H + "px";
-  }
-  const ctx = cv.getContext("2d");
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return { ctx, w, h: H };
-}
-
-/* eixo genérico para gráficos */
-function eixos(ctx, caixa, xr, yr, o) {
-  const { x0, y0, x1, y1 } = caixa;
-  const X = v => x0 + (o.xlog ? (Math.log10(v) - Math.log10(xr[0])) / (Math.log10(xr[1]) - Math.log10(xr[0])) : (v - xr[0]) / (xr[1] - xr[0])) * (x1 - x0);
-  const Y = v => y1 - (o.ylog ? (Math.log10(Math.max(v, yr[0] * 1e-3)) - Math.log10(yr[0])) / (Math.log10(yr[1]) - Math.log10(yr[0])) : (v - yr[0]) / (yr[1] - yr[0])) * (y1 - y0);
-  ctx.save();
-  ctx.font = "11px " + css("--f-dado");
-  ctx.fillStyle = COR.tinta3; ctx.strokeStyle = COR.linha; ctx.lineWidth = 1;
-  (o.xt || []).forEach(t => { const px = X(t[0]); ctx.beginPath(); ctx.moveTo(px, y0); ctx.lineTo(px, y1); ctx.globalAlpha = .55; ctx.stroke(); ctx.globalAlpha = 1; ctx.textAlign = "center"; ctx.fillText(t[1], px, y1 + 14); });
-  (o.yt || []).forEach(t => { const py = Y(t[0]); ctx.beginPath(); ctx.moveTo(x0, py); ctx.lineTo(x1, py); ctx.globalAlpha = .55; ctx.stroke(); ctx.globalAlpha = 1; ctx.textAlign = "right"; ctx.fillText(t[1], x0 - 5, py + 4); });
-  ctx.fillStyle = COR.tinta2; ctx.textAlign = "center";
-  if (o.xl) ctx.fillText(o.xl, (x0 + x1) / 2, y1 + 29);
-  if (o.yl) { ctx.save(); ctx.translate(x0 - 40, (y0 + y1) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(o.yl, 0, 0); ctx.restore(); }
-  ctx.restore();
-  return { X, Y };
-}
-function curva(ctx, xs, ys, X, Y, cor, larg = 2, tracejado) {
-  ctx.save(); ctx.strokeStyle = cor; ctx.lineWidth = larg; ctx.lineJoin = "round"; if (tracejado) ctx.setLineDash(tracejado);
-  ctx.beginPath(); let ini = false;
-  for (let i = 0; i < xs.length; i++) { const px = X(xs[i]), py = Y(ys[i]); if (!isFinite(py)) continue; if (!ini) { ctx.moveTo(px, py); ini = true; } else ctx.lineTo(px, py); }
-  ctx.stroke(); ctx.restore();
-}
-const EXP = ["10¹⁶", "10¹⁷", "10¹⁸", "10¹⁹", "10²⁰", "10²¹"];
-
-/* ======================================================================= FABRICAÇÃO */
-const I = D.implante;
-const G = D.grade_nm;
-const LAT = 220;              // meia largura do campo lateral (nm)
-const Z0 = -175, Z1 = 255;    // faixa de profundidade desenhada (nm); 0 = superfície do Si
-const ETAPAS = [
-  { id: "lamina", nome: "Lâmina e máscara", dur: 3.5 },
-  { id: "implante", nome: "Implantação de P", dur: 15 },
-  { id: "remocao", nome: "Remoção da máscara", dur: 3 },
-  { id: "spe", nome: "SPE a 550 °C", dur: 6.5 },
-  { id: "quente", nome: "RTA ou forno", dur: 8 },
-  { id: "oxidacao", nome: "Oxidação de porta", dur: 10 },
-  { id: "grafeno", nome: "Grafeno e contatos", dur: 5 },
-];
-let inicio = 0; ETAPAS.forEach(e => { e.ini = inicio; inicio += e.dur; }); const T_TOTAL = inicio;
-
-const est = { t: 0, tocando: !reduzir, vel: 1, mascara: "A", variante: "A", ramo: "ho_plummer", T: "900" };
-
-/* perfil do implante e sua CDF */
-const cdfImp = (() => { const c = [0]; for (let i = 1; i < I.x.length; i++) c.push(c[i - 1] + 0.5 * (I.C[i] + I.C[i - 1]) * (I.x[i] - I.x[i - 1])); const tot = c[c.length - 1]; return c.map(v => v / tot); })();
-function cdfDe(Cs) { const c = [0]; for (let i = 1; i < G.length; i++) c.push(c[i - 1] + 0.5 * (Cs[i] + Cs[i - 1]) * (G[i] - G[i - 1])); const tot = c[c.length - 1] || 1; return c.map(v => v / tot); }
-const FnMax = Math.max(...I.Fn);
-const limiarCentral = 0.5 * (I.dose_limiar[0] + I.dose_limiar[1]);
-
-/* nuvem de P (posições finais reais) com entrada lateral sorteada */
-const rnd = semente(7);
-const NUVEM = I.nuvem.slice(0, 2600).map(p => {
-  const y0 = (rnd() * 2 - 1) * LAT;
-  return { x: p[0] - I.oxido_nativo, y: y0 + p[1], q: 0, r: rnd() };
-});
-NUVEM.forEach(p => { p.q = interp(I.x, cdfImp, Math.max(p.x, 0.25)); });
-const fimMascara = I.mascara.map(io => io.ion[io.ion.length - 1]);
-NUVEM.forEach((p, i) => { const f = fimMascara[i % fimMascara.length]; p.xm = f[0] - I.mascara_nm + (rnd() - .5) * 8; });
-
-/* trajetórias com tempo próprio, velocidade proporcional a sqrt(E) */
-function prepTraj(lista, deslocamento) {
-  return lista.map(io => {
-    const pts = io.ion.map(p => ({ x: p[0] - deslocamento, y: p[1], E: p[2] }));
-    const tt = [0];
-    for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); tt.push(tt[i - 1] + d / Math.sqrt(Math.max(pts[i - 1].E, 60))); }
-    const T = tt[tt.length - 1] || 1; const tn = tt.map(v => v / T);
-    const rec = io.rec.map(r => {
-      const o = r[0]; let melhor = 0, dm = 1e9;
-      pts.forEach((p, i) => { const d = Math.hypot(p.x - (o[0] - deslocamento), p.y - o[1]); if (d < dm) { dm = d; melhor = i; } });
-      return { t0: tn[melhor], pts: r.map(q => ({ x: q[0] - deslocamento, y: q[1] })) };
-    });
-    const dano = io.dano.map(d => ({ x: d[0] - deslocamento, y: d[1] }));
-    return { pts, tn, rec, dano };
-  });
-}
-const TRAJ_J = prepTraj(I.janela, I.oxido_nativo);
-const TRAJ_M = prepTraj(I.mascara, I.mascara_nm);
-
-/* rede de Si desenhada */
-const PASSO = 7;
-const REDE = [];
-for (let z = 1; z < Z1; z += PASSO) for (let y = -LAT + 2; y < LAT; y += PASSO) REDE.push({ z, y, jy: (rnd() - .5) * 2, jz: (rnd() - .5) * 2 });
-
-/* dados selecionados */
-function rec() { return D.recozimento[est.variante]; }
-function oxi() { return D.oxidacao[`${est.variante}|${est.ramo}|${est.T}`]; }
-function amorfoAteImplante(f) { // [z0, z1] da camada amorfa para fração f da dose
-  const lim = FnMax * limiarCentral / (I.dose * Math.max(f, 1e-6));
-  let a = null, b = null;
-  for (let i = 0; i < I.x.length; i++) if (I.Fn[i] >= lim) { if (a === null) a = I.x[i]; b = I.x[i]; }
-  return a === null ? null : [Math.max(0, a - I.oxido_nativo), b - I.oxido_nativo];
-}
-function lerpPerfil(qs, u, chave) { // interpolação log entre quadros
-  const n = qs.length - 1, s = clamp(u, 0, 1) * n, i = Math.min(Math.floor(s), n - 1), t = s - i;
-  const a = qs[i][chave], b = qs[i + 1][chave];
-  return a.map((v, k) => { const va = Math.max(v, 1e10), vb = Math.max(b[k], 1e10); return Math.exp(Math.log(va) * (1 - t) + Math.log(vb) * t) * ((v > 0 || b[k] > 0) ? 1 : 0); });
-}
-function lerpEscalar(qs, u, chave) { const n = qs.length - 1, s = clamp(u, 0, 1) * n, i = Math.min(Math.floor(s), n - 1), t = s - i; return qs[i][chave] * (1 - t) + qs[i + 1][chave] * t; }
-
-/* estado físico do processo no instante t */
-function estadoProcesso(t) {
-  const e = ETAPAS.find(x => t < x.ini + x.dur) || ETAPAS[ETAPAS.length - 1];
-  const u = clamp((t - e.ini) / e.dur, 0, 1);
-  const R = rec(), Q = R.quadros, Ox = oxi();
-  const nSpe = Q.findIndex(q => q.etapa !== "SPE");
-  const qSpe = Q.slice(0, nSpe), qQ = Q.slice(nSpe - 1);
-  const s = { etapa: e, u, mascaraVis: est.mascara === "A" ? 1 : 0, dose: 1, amorfo: null, C: null, A: null,
-              zInt: 0, xOx: 0, Tc: 25, tReal: 0, nativo: I.oxido_nativo, grafeno: 0, contatos: 0, ativoVis: false };
-  const ordem = ETAPAS.indexOf(e);
-  if (ordem === 0) { s.dose = 0; s.mascaraVis *= clamp(u * 1.6, 0, 1); }
-  if (ordem <= 1) { s.dose = ordem === 0 ? 0 : clamp(u / 0.94, 0, 1); s.amorfo = amorfoAteImplante(s.dose); s.Cimp = true; s.Tc = 25; }
-  if (ordem === 2) { s.mascaraVis *= 1 - u; s.amorfo = amorfoAteImplante(1); s.Cimp = true; s.Tc = 25; }
-  if (ordem === 3) {
-    const fr = lerpEscalar(qSpe, u, "frente_amorfa");
-    s.amorfo = fr > 0.5 ? [0, fr] : null; s.amorfoD0 = I.amorfo ? I.amorfo[1] : 0;
-    s.C = lerpPerfil(qSpe, u, "C"); s.A = lerpPerfil(qSpe, u, "A"); s.Tc = 550; s.tReal = lerpEscalar(qSpe, u, "t_s"); s.ativoVis = true; s.mascaraVis = 0;
-  }
-  if (ordem === 4) { s.C = lerpPerfil(qQ, u, "C"); s.A = lerpPerfil(qQ, u, "A"); s.Tc = qQ[qQ.length - 1].T; s.tReal = lerpEscalar(qQ, u, "t_s"); s.ativoVis = true; s.mascaraVis = 0; }
-  if (ordem >= 5) {
-    const uu = ordem === 5 ? u : 1;
-    const qo = Ox.quadros;
-    s.C = lerpPerfil(qo, uu, "C"); s.A = lerpPerfil(qo, uu, "A"); s.zInt = lerpEscalar(qo, uu, "si"); s.xOx = lerpEscalar(qo, uu, "x_ox");
-    s.Tc = ordem === 5 ? +est.T : 25; s.tReal = lerpEscalar(qo, uu, "t_min"); s.ativoVis = true; s.mascaraVis = 0; s.nativo = s.xOx > 0.3 ? 0 : I.oxido_nativo;
-    if (ordem === 5) s.F = qo[Math.min(qo.length - 1, Math.max(1, Math.round(uu * (qo.length - 1))))].F;
-  }
-  if (ordem === 6) { s.grafeno = clamp(u * 2, 0, 1); s.contatos = clamp(u * 2 - 1, 0, 1); }
-  return s;
-}
-
-/* -------------------------------------------------- desenho do corte em escala */
-const cvFab = document.getElementById("cv-fab");
-cvFab.dataset.razao = String((Z1 - Z0) / (2 * LAT));
-function desenharFab(s, tAnim) {
-  const { ctx, w, h } = preparar(cvFab);
-  const esc = Math.min(w / (2 * LAT), h / (Z1 - Z0));
-  const ox = w / 2, oz = -Z0 * esc + (h - (Z1 - Z0) * esc) / 2;
-  const P = (y, z) => [ox + y * esc, oz + z * esc];
-  ctx.fillStyle = "#0a0e11"; ctx.fillRect(0, 0, w, h);
-  const zInt = s.zInt || 0;
-  // substrato
-  const [sx0, sz0] = P(-LAT, zInt); ctx.fillStyle = "#20282e"; ctx.fillRect(sx0, sz0, 2 * LAT * esc, (Z1 - zInt) * esc);
-  // concentração ativa como brilho do n+
-  if (s.A || s.C) {
-    const perfA = s.A, perfC = s.C;
-    for (let i = 0; i < G.length - 1; i++) {
-      const z = zInt + G[i]; if (z > Z1) break;
-      const a = perfA ? perfA[i] : 0;
-      const al = a > 1e17 ? clamp((Math.log10(a) - 17) / 4, 0, 1) * 0.45 : 0;
-      if (al <= 0) continue;
-      ctx.fillStyle = `rgba(54,194,180,${al})`;
-      const xi = est.mascara === "A" && s.etapa.id !== "lamina" ? 0 : -LAT;
-      const [a0, b0] = P(xi, z); ctx.fillRect(a0, b0, (LAT - xi) * esc, 2 * esc + 0.5);
-    }
-  }
-  // rede de Si
-  const am = s.amorfo;
-  const amAte = am ? am[1] : -1;
-  const ladoAm = est.mascara === "A" ? 0 : -LAT;
-  ctx.fillStyle = COR["si-atomo"];
-  for (const a of REDE) {
-    const z = a.z;
-    if (z < zInt) continue;
-    let jy = 0, jz = 0;
-    if (am && a.y > ladoAm && z >= am[0] && z <= amAte) {
-      const borda = clamp(Math.min(z - am[0], amAte - z) / 6, 0, 1);
-      jy = a.jy * 3.2 * borda * PASSO * 0.45; jz = a.jz * 3.2 * borda * PASSO * 0.45;
-    }
-    const [px, pz] = P(a.y + jy, z + jz);
-    ctx.globalAlpha = am && a.y > ladoAm && z >= am[0] && z <= amAte ? 0.42 : 0.7;
-    ctx.fillRect(px - 1.1, pz - 1.1, 2.2, 2.2);
-  }
-  ctx.globalAlpha = 1;
-  // óxido nativo, máscara e óxido de porta
-  if (s.nativo > 0) { const [a, b] = P(-LAT, -s.nativo); ctx.fillStyle = "rgba(143,132,230,.75)"; ctx.fillRect(a, b, 2 * LAT * esc, Math.max(1.5, s.nativo * esc)); }
-  if (s.mascaraVis > 0.01) {
-    const [a, b] = P(-LAT, -I.mascara_nm); ctx.fillStyle = `rgba(143,132,230,${0.30 * s.mascaraVis})`; ctx.fillRect(a, b, LAT * esc, I.mascara_nm * esc);
-    ctx.strokeStyle = `rgba(143,132,230,${0.9 * s.mascaraVis})`; ctx.lineWidth = 1.5; ctx.strokeRect(a, b, LAT * esc, I.mascara_nm * esc);
-    ctx.fillStyle = `rgba(231,236,239,${0.85 * s.mascaraVis})`; ctx.font = "12px " + css("--f-texto"); ctx.textAlign = "center";
-    ctx.fillText("máscara de SiO₂, 150 nm", ox - LAT * esc / 2, b + 16);
-  }
-  if (s.xOx > 0.2) {
-    const [a, b] = P(-LAT, zInt - s.xOx); ctx.fillStyle = "rgba(143,132,230,.55)"; ctx.fillRect(a, b, 2 * LAT * esc, s.xOx * esc);
-    ctx.strokeStyle = "rgba(143,132,230,.95)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a, b + s.xOx * esc); ctx.lineTo(a + 2 * LAT * esc, b + s.xOx * esc); ctx.stroke();
-    // superfície original do Si
-    ctx.setLineDash([4, 4]); ctx.strokeStyle = "rgba(231,236,239,.35)"; const [, z0] = P(0, 0); ctx.beginPath(); ctx.moveTo(a, z0); ctx.lineTo(a + 2 * LAT * esc, z0); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = COR.tinta2; ctx.font = "11px " + css("--f-dado"); ctx.textAlign = "left"; ctx.fillText("superfície original", a + 6, z0 - 4);
-  }
-  // nuvem de P
-  const fr = s.dose;
-  const nMostra = s.Cimp ? Math.round(NUVEM.length * fr) : NUVEM.length;
-  let cdfF = null, AsobreC = null;
-  if (s.C) { cdfF = cdfDe(s.C); AsobreC = s.C.map((c, i) => c > 0 ? s.A[i] / c : 0); }
-  for (let i = 0; i < nMostra; i++) {
-    const p = NUVEM[i];
-    const naMascara = est.mascara === "A" && p.y < 0;
-    if (naMascara && s.mascaraVis <= 0.01) continue;
-    let z, ativo = false, y = p.y;
-    if (naMascara) { z = p.xm; }
-    else if (cdfF) {
-      const zz = interpDesc(G, cdfF, clamp(p.q, 1e-4, 0.9999));
-      z = zInt + zz;
-      const f = interp(G, AsobreC, zz); ativo = p.r < f;
-    } else { z = p.x; }
-    if (z < Z0 || z > Z1) continue;
-    const [px, pz] = P(y, z);
-    ctx.fillStyle = ativo ? COR["p-ativo"] : COR["p-inativo"];
-    ctx.globalAlpha = naMascara ? 0.55 * s.mascaraVis : 0.85;
-    ctx.beginPath(); ctx.arc(px, pz, ativo ? 1.6 : 1.4, 0, 6.283); ctx.fill();
-  }
-  ctx.globalAlpha = 1;
-  // íons em voo durante a implantação
-  if (s.etapa.id === "implante" && s.dose < 0.999) desenharIons(ctx, P, esc, tAnim, s);
-  // grafeno e contatos
-  if (s.grafeno > 0) {
-    const zt = zInt - s.xOx;
-    const desce = (1 - s.grafeno) * 60;
-    const [a, b] = P(-LAT, zt - 0.34 - desce);
-    ctx.fillStyle = `rgba(207,214,218,${0.4 + 0.6 * s.grafeno})`; ctx.fillRect(a, b - 1.5, 2 * LAT * esc, 3);
-    const rg = semente(3);
-    for (let y = -LAT; y < LAT; y += 22) if (rg() < D.constantes.ilhas_multicamada) { const [c, d] = P(y, zt - 0.34 - desce); ctx.fillStyle = "rgba(240,244,246,.9)"; ctx.fillRect(c, d - 3, 14 * esc, 5); }
-    if (s.contatos > 0) {
-      const [c, d] = P(120, zt - 60 * s.contatos); ctx.fillStyle = COR.ouro; ctx.globalAlpha = s.contatos; ctx.fillRect(c, d, 100 * esc, 60 * s.contatos * esc); ctx.globalAlpha = 1;
-      ctx.fillStyle = COR.bg; ctx.font = "600 12px " + css("--f-texto"); ctx.textAlign = "center"; if (s.contatos > .5) ctx.fillText("contato", c + 50 * esc, d + 30 * esc * s.contatos);
-    }
-  }
-  // régua de escala
-  ctx.strokeStyle = COR.tinta2; ctx.lineWidth = 1.5; const [r0, rz] = P(-LAT + 12, Z1 - 12); ctx.beginPath(); ctx.moveTo(r0, rz); ctx.lineTo(r0 + 50 * esc, rz); ctx.stroke();
-  ctx.fillStyle = COR.tinta2; ctx.font = "11px " + css("--f-dado"); ctx.textAlign = "left"; ctx.fillText("50 nm", r0, rz - 5);
-  // termômetro
-  ctx.textAlign = "right"; ctx.fillStyle = s.Tc > 100 ? "#ffb070" : COR.tinta2; ctx.font = "500 13px " + css("--f-dado");
-  ctx.fillText(`${Math.round(s.Tc)} °C`, w - 10, 20);
-  if (s.amorfo && s.etapa.id !== "lamina") {
-    const [, a0] = P(0, s.amorfo[0]); const [, a1] = P(0, s.amorfo[1]);
-    ctx.strokeStyle = "rgba(227,163,42,.7)"; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(w - 8, a0); ctx.lineTo(w - 8, a1); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(227,163,42,.95)"; ctx.font = "11px " + css("--f-dado"); ctx.fillText("amorfo", w - 12, (a0 + a1) / 2 + 4);
-  }
-}
-
-const VOO = 1.1, INTERVALO = 0.11;
-function desenharIons(ctx, P, esc, tAnim, s) {
-  const base = s.etapa.ini;
-  const tl = tAnim - base;
-  const kMax = Math.floor(tl / INTERVALO);
-  const rr = semente(99);
-  const ys = []; for (let k = 0; k <= kMax + 2; k++) ys.push((rr() * 2 - 1) * LAT);
-  for (let k = Math.max(0, kMax - 14); k <= kMax; k++) {
-    const age = (tl - k * INTERVALO) / VOO;
-    if (age < 0) continue;
-    const y0 = ys[k];
-    const naMascara = est.mascara === "A" && y0 < 0;
-    const lista = naMascara ? TRAJ_M : TRAJ_J;
-    const tr = lista[k % lista.length];
-    const fim = Math.min(age, 1);
-    // trilha do íon
-    ctx.strokeStyle = "rgba(255,210,122,.85)"; ctx.lineWidth = 1.4; ctx.beginPath();
-    let ultimo = null;
-    for (let i = 0; i < tr.pts.length; i++) {
-      if (tr.tn[i] > fim) { if (i > 0) { const t = (fim - tr.tn[i - 1]) / (tr.tn[i] - tr.tn[i - 1]); const a = tr.pts[i - 1], b = tr.pts[i]; ultimo = [a.y + t * (b.y - a.y), a.x + t * (b.x - a.x)]; const [px, pz] = P(y0 + ultimo[0], ultimo[1]); ctx.lineTo(px, pz); } break; }
-      const [qx, qz] = P(y0 + tr.pts[i].y, tr.pts[i].x);
-      if (i === 0) { ctx.moveTo(qx, qz - 0); } else ctx.lineTo(qx, qz);
-      ultimo = [tr.pts[i].y, tr.pts[i].x];
-    }
-    ctx.globalAlpha = clamp(1.6 - age, 0, 1); ctx.stroke();
-    // cascatas de recuo
-    ctx.strokeStyle = "rgba(255,190,120,.65)"; ctx.lineWidth = 0.9;
-    for (const r of tr.rec) {
-      const da = fim - r.t0; if (da < 0) continue;
-      ctx.globalAlpha = clamp(1 - (age - r.t0) * 1.2, 0, 0.9);
-      ctx.beginPath(); r.pts.forEach((q, i) => { const [px, pz] = P(y0 + q.y, q.x); if (i === 0) ctx.moveTo(px, pz); else ctx.lineTo(px, pz); }); ctx.stroke();
-    }
-    // sítios deslocados (Frenkel) piscam e somem
-    ctx.fillStyle = "rgba(255,170,90,.9)";
-    for (let j = 0; j < tr.dano.length; j += 2) { const d = tr.dano[j]; const al = clamp(1.4 - age, 0, 1) * 0.6; if (al <= 0) break; ctx.globalAlpha = al; const [px, pz] = P(y0 + d.y, d.x); ctx.fillRect(px - .7, pz - .7, 1.4, 1.4); }
-    ctx.globalAlpha = 1;
-    if (age < 1 && ultimo) { const [px, pz] = P(y0 + ultimo[0], ultimo[1]); ctx.fillStyle = "#fff0c8"; ctx.beginPath(); ctx.arc(px, pz, 2.6, 0, 6.283); ctx.fill(); }
-  }
-  ctx.globalAlpha = 1;
-}
-
-/* -------------------------------------------------- gráficos da fabricação */
-const cvPerfil = document.getElementById("cv-perfil"), cvEtapa = document.getElementById("cv-etapa");
-function desenharPerfil(s) {
-  const { ctx, w, h } = preparar(cvPerfil);
-  ctx.clearRect(0, 0, w, h);
-  const cx = { x0: 54, y0: 10, x1: w - 12, y1: h - 38 };
-  const { X, Y } = eixos(ctx, cx, [0, 300], [1e16, 2e21], { ylog: true, xt: [0, 50, 100, 150, 200, 250, 300].map(v => [v, String(v)]), yt: [1e16, 1e17, 1e18, 1e19, 1e20, 1e21].map((v, i) => [v, EXP[i]]), xl: "profundidade abaixo da superfície atual do Si (nm)", yl: "P (cm⁻³)" });
-  if (s.Cimp) {
-    curva(ctx, I.x.map(x => x - I.oxido_nativo), I.C.map(c => c * Math.max(s.dose, 1e-6)), X, Y, COR["p-inativo"], 2);
-  } else if (s.C) {
-    curva(ctx, G, s.C, X, Y, COR["p-inativo"], 2);
-    curva(ctx, G, s.A, X, Y, COR["p-ativo"], 2, [5, 3]);
-    if (s.etapa.id === "quente") { const ne = rec().n_e; curva(ctx, [0, 300], [ne, ne], X, Y, COR.tinta3, 1, [3, 4]); lab(ctx, X(298), Y(ne) - 5, "n_e(T), Solmi (N24)", "right"); }
-  }
-  if (s.amorfo) { ctx.fillStyle = "rgba(227,163,42,.10)"; ctx.fillRect(X(s.amorfo[0]), cx.y0, X(s.amorfo[1]) - X(s.amorfo[0]), cx.y1 - cx.y0); lab(ctx, X(s.amorfo[1]) + 4, cx.y0 + 12, "amorfo", "left"); }
-}
-function lab(ctx, x, y, t, al = "left", cor) { ctx.save(); ctx.fillStyle = cor || COR.tinta2; ctx.font = "11px " + css("--f-dado"); ctx.textAlign = al; ctx.fillText(t, x, y); ctx.restore(); }
-
-function desenharEtapa(s) {
-  const { ctx, w, h } = preparar(cvEtapa);
-  ctx.clearRect(0, 0, w, h);
-  const cx = { x0: 54, y0: 12, x1: w - 14, y1: h - 38 };
-  const tit = document.getElementById("titulo-etapa-grafico");
-  const id = s.etapa.id;
-  if (id === "lamina" || id === "implante" || id === "remocao") {
-    tit.textContent = "Dano no pico contra o limiar de amorfização";
-    const xs = [], ys = []; for (let i = 0; i <= 60; i++) { xs.push(i / 60); ys.push(i / 60 * I.dose); }
-    const { X, Y } = eixos(ctx, cx, [0, 1], [0, 3.2e15], { xt: [[0, "0"], [0.5, "50 %"], [1, "100 %"]], yt: [[0, "0"], [1e15, "1e15"], [2e15, "2e15"], [3e15, "3e15"]], xl: "fração da dose implantada", yl: "dose (cm⁻²)" });
-    ctx.fillStyle = "rgba(227,163,42,.12)"; ctx.fillRect(cx.x0, Y(I.dose_limiar[1]), cx.x1 - cx.x0, Y(I.dose_limiar[0]) - Y(I.dose_limiar[1]));
-    lab(ctx, cx.x0 + 6, Y(I.dose_limiar[1]) + 12, "limiar medido a 300 K, 1 a 3e15 (A2)");
-    curva(ctx, xs, ys, X, Y, COR["p-inativo"], 2);
-    const f = id === "lamina" ? 0 : s.dose;
-    ponto(ctx, X(f), Y(f * I.dose), COR["p-inativo"]);
-  } else if (id === "spe") {
-    tit.textContent = "Frente de recristalização a 550 °C";
-    const qs = rec().quadros.filter(q => q.etapa === "SPE");
-    const T = qs[qs.length - 2].t_s || 1;
-    const { X, Y } = eixos(ctx, cx, [0, T / 60], [0, Math.max(5, (I.amorfo ? I.amorfo[1] : 10) * 1.1)], { xt: ticks(0, T / 60, 4).map(v => [v, br(v, 1)]), yt: ticks(0, (I.amorfo ? I.amorfo[1] : 10), 4).map(v => [v, br(v, 0)]), xl: "tempo (min)", yl: "frente (nm)" });
-    curva(ctx, qs.map(q => q.t_s / 60), qs.map(q => q.frente_amorfa), X, Y, COR["p-ativo"], 2);
-    ponto(ctx, X(Math.min(s.tReal, T) / 60), Y(lerpEscalar(qs.slice(0, qs.length), s.u, "frente_amorfa")), COR["p-ativo"]);
-  } else if (id === "quente") {
-    const qs = rec().quadros.filter(q => q.etapa !== "SPE");
-    const tmax = qs[qs.length - 1].t_s;
-    tit.textContent = `Junção e pico ativo a ${Math.round(qs[0].T)} °C`;
-    const xj = qs.map(q => { const i = q.C.findIndex(c => c < 1e18); return G[Math.max(0, i)]; });
-    const ehMin = tmax > 120; const tt = qs.map(q => ehMin ? q.t_s / 60 : q.t_s);
-    const { X, Y } = eixos(ctx, cx, [0, ehMin ? tmax / 60 : tmax], [0, 260], { xt: ticks(0, ehMin ? tmax / 60 : tmax, 4).map(v => [v, br(v, 0)]), yt: [0, 100, 200].map(v => [v, String(v)]), xl: ehMin ? "tempo (min)" : "tempo (s)", yl: "prof. em 1e18 (nm)" });
-    curva(ctx, tt, xj, X, Y, COR["p-inativo"], 2);
-    const i = Math.round(s.u * (qs.length - 1)); ponto(ctx, X(tt[i]), Y(xj[i]), COR["p-inativo"]);
-  } else {
-    const o = oxi(); const c = o.curva;
-    tit.textContent = "Espessura do óxido e fator de aceleração";
-    const { X, Y } = eixos(ctx, cx, [0, o.t20_min], [0, 22], { xt: ticks(0, o.t20_min, 4).map(v => [v, br(v, 0)]), yt: [0, 5, 10, 15, 20].map(v => [v, String(v)]), xl: "tempo (min)", yl: "óxido (nm)" });
-    curva(ctx, c.t, c.x, X, Y, COR.oxido, 2);
-    const tr = id === "oxidacao" ? s.tReal : o.t20_min; ponto(ctx, X(tr), Y(id === "oxidacao" ? s.xOx : 20), COR.oxido);
-    curva(ctx, [0, o.t20_min], [20, 20], X, Y, COR.tinta3, 1, [3, 4]);
-    if (s.F) lab(ctx, cx.x1, cx.y0 + 12, `F no termo linear ${br(s.F, 2)}`, "right");
-  }
-}
-function ticks(a, b, n) { const p = Math.pow(10, Math.floor(Math.log10((b - a) / n || 1))); const passo = [1, 2, 5, 10].map(m => m * p).find(v => (b - a) / v <= n) || p * 10; const r = []; for (let v = Math.ceil(a / passo) * passo; v <= b + 1e-9; v += passo) r.push(+v.toFixed(6)); return r; }
-function ponto(ctx, x, y, cor) { ctx.save(); ctx.fillStyle = cor; ctx.strokeStyle = COR.painel; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 5, 0, 6.283); ctx.fill(); ctx.stroke(); ctx.restore(); }
-
-/* -------------------------------------------------- textos das etapas */
-function textoEtapa(s) {
-  const id = s.etapa.id, R = rec(), O = oxi();
-  const nomeRec = { A: "RTA a 1050 °C por 10 s", B850: "forno a 850 °C por 30 min", B900: "forno a 900 °C por 30 min" }[est.variante];
-  const ramoNome = { ho_plummer: "Ho e Plummer (R29)", nomura: "fator 2,1 de Nomura (R23)", sem_aceleracao: "sem aceleração, como o Si leve (N10)" }[est.ramo];
-  let t = "", nums = [];
-  if (id === "lamina") {
-    t = est.mascara === "A" ? "Si(100) tipo n com óxido nativo. A máscara de SiO₂ de 150 nm cobre a esquerda e deixa a janela da porta aberta à direita." : "Si(100) tipo n com óxido nativo, sem máscara. A lâmina inteira recebe o implante.";
-    nums = [["óxido nativo", `${br(I.oxido_nativo, 1)} nm`, "I"], ["substrato", "n, 0,001 a 10 Ω·cm", "B"]];
-  } else if (id === "implante") {
-    t = `P⁺ a ${br(I.energia_keV, 0)} keV e ${br(I.inclinacao, 0)}°. Cada íon segue uma trajetória real do RustBCA, perde energia em colisões nucleares e eletrônicas e desloca átomos de Si. A camada amorfa nasce no pico de dano quando a dose passa do limiar medido a 300 K e cresce até a superfície. Na máscara os íons param no óxido.`;
-    nums = [["dose", sci(I.dose * s.dose, 1) + " cm⁻²", "B"], ["Rp", `${br(I.Rp, 1)} nm`, "C"], ["ΔRp", `${br(I.dRp, 1)} nm`, "C"], ["amorfo", s.amorfo ? `${br(s.amorfo[0], 0)} a ${br(s.amorfo[1], 0)} nm` : "ainda não", "P"], ["passa pela máscara", "< 10⁻⁵", "C"]];
-  } else if (id === "remocao") {
-    t = "A máscara sai com o P que ficou nela. Fica a janela implantada, ainda amorfa e com o P inativo.";
-    nums = [["P no Si", sci(I.dose, 1) + " cm⁻²", "C"], ["pico", sci(Math.max(...I.C), 1) + " cm⁻³", "C"]];
-  } else if (id === "spe") {
-    t = `A 550 °C a camada amorfa recresce a partir da interface com o cristal, de baixo para cima. O P preso na frente que avança entra em sítio substitucional e fica ativo, acima da solubilidade de equilíbrio (R14).`;
-    nums = [["tempo de recrescimento", `${br(R.t_spe_s / 60, 1)} min`, "I"], ["velocidade", `${br(R.v_spe_nm_s * 60, 1)} nm/min`, "I"], ["etapa", "30 min", "B"]];
-  } else if (id === "quente") {
-    t = `No ${nomeRec} o P difunde pelo modelo de Fair e Tsai, mais rápido onde há mais elétrons, e o P acima da solubilidade precipita. A junção aprofunda e o pico ativo cai até n_e(T).`;
-    nums = [["n_e(T)", sci(R.n_e, 1) + " cm⁻³", "P"], ["C_sat(T)", sci(R.C_sat, 1) + " cm⁻³", "P"], ["fração ativa", `${br(100 * R.fracao_ativa, 0)} %`, "C"], ["Rs", `${br(R.Rs, 1)} Ω/□`, "I"], ["tempo", s.tReal > 120 ? `${br(s.tReal / 60, 1)} min` : `${br(s.tReal, 1)} s`, "B"]];
-  } else if (id === "oxidacao") {
-    t = `Oxidação seca a ${est.T} °C com o regime fino de Massoud e aceleração ${ramoNome}. Cada nm de óxido consome 0,44 nm de Si; o P da fatia consumida é rejeitado de volta para o Si (m > 1000, R17) e acumula na interface.`;
-    nums = [["óxido", `${br(s.xOx, 1)} nm`, "C"], ["Si consumido", `${br(s.zInt, 1)} nm`, "C"], ["tempo", `${br(s.tReal, 1)} min`, "C"], ["tempo para 20 nm", `${br(O.t20_min, 1)} min`, "C"], ["Rs da porta", `${br(O.Rs_final, 1)} Ω/□`, "I"]];
-  } else {
-    t = "Grafeno CVD transferido com PMMA sobre os 20 nm de óxido, com as ilhas de mais de uma camada que o seu Raman mostrou em 17 % da área, e contatos de fonte, dreno e porta. Passe para Operação para ver o dispositivo funcionando.";
-    nums = [["ilhas multicamada", "17 %", "B"], ["defeitos", sci(D.constantes.nD_defeitos, 1) + " cm⁻²", "B"], ["óxido final", `${br(20, 0)} nm`, "C"]];
-  }
-  document.getElementById("etapa-titulo").textContent = s.etapa.nome;
-  document.getElementById("etapa-texto").textContent = t;
-  document.getElementById("etapa-numeros").innerHTML = nums.map(n => `<div class="num"><b>${n[1]}</b><span>${n[0]} <span class="etiqueta">${n[2]}</span></span></div>`).join("");
-}
-
-/* -------------------------------------------------- linha do tempo */
-const elEtapas = document.getElementById("etapas");
-ETAPAS.forEach((e, i) => {
-  const b = document.createElement("button");
-  b.innerHTML = `${e.nome}<small>etapa ${i + 1}</small><span class="barra"></span>`;
-  b.addEventListener("click", () => { est.t = e.ini + 0.001; atualizarFab(); });
-  elEtapas.appendChild(b); e.botao = b;
-});
-const elTempo = document.getElementById("tempo");
-elTempo.addEventListener("input", () => { est.t = elTempo.value / 1000 * T_TOTAL; atualizarFab(); });
-const btTocar = document.getElementById("tocar");
-btTocar.addEventListener("click", () => { est.tocando = !est.tocando; if (est.tocando && est.t >= T_TOTAL - 0.01) est.t = 0; btTocar.textContent = est.tocando ? "Pausar" : "Tocar"; });
-btTocar.textContent = est.tocando ? "Pausar" : "Tocar";
-document.getElementById("vel").addEventListener("change", e => est.vel = +e.target.value);
-[["sel-mascara", "mascara"], ["sel-variante", "variante"], ["sel-ramo", "ramo"], ["sel-T", "T"]].forEach(([id, k]) => document.getElementById(id).addEventListener("change", e => { est[k] = e.target.value; sincronizarOp(); atualizarFab(); }));
-
-let sFab = null;
-function atualizarFab() {
-  sFab = estadoProcesso(est.t);
-  elTempo.value = Math.round(est.t / T_TOTAL * 1000);
-  ETAPAS.forEach(e => { const cur = e === sFab.etapa; e.botao.setAttribute("aria-current", cur ? "step" : "false"); e.botao.querySelector(".barra").style.width = (est.t >= e.ini + e.dur ? 100 : cur ? 100 * sFab.u : 0) + "%"; });
-  textoEtapa(sFab); desenharPerfil(sFab); desenharEtapa(sFab);
-}
-
-/* ======================================================================= OPERAÇÃO */
-const C = D.constantes;
-const q = C.q;
-const opEst = { varrer: !reduzir, Vg: 2, dir: 1, Vt: 0, hist: [], ativo: true };
-const ints = [
-  ["cq", "capacitância quântica", true], ["si", "depleção e acumulação do Si n⁺", true], ["poca", "poças de carga", true],
-  ["dop", "dopagem residual", true], ["rc", "resistência de contato", true], ["vsat", "saturação de velocidade", true],
-  ["hist", "histerese por água", true], ["fn", "tunelamento e ruptura", true], ["ilha", "ilhas multicamada (desenho)", true],
-];
-const LIG = {};
-const elInts = document.getElementById("interacoes");
-ints.forEach(([k, nome, v]) => { LIG[k] = v; const l = document.createElement("label"); l.innerHTML = `<input type="checkbox" id="int-${k}" ${v ? "checked" : ""}>${nome}`; l.querySelector("input").addEventListener("change", e => { LIG[k] = e.target.checked; recalcular(); }); elInts.appendChild(l); });
-
-const selProc = document.getElementById("op-processo");
-const nomesVar = { A: "A (RTA)", B850: "B 850 °C", B900: "B 900 °C" };
-const nomesRamo = { ho_plummer: "Ho e Plummer", nomura: "fator 2,1", sem_aceleracao: "sem aceleração" };
-Object.keys(D.eletrico).forEach(k => { const [v, r, T] = k.split("|"); const o = document.createElement("option"); o.value = k; o.textContent = `${nomesVar[v]}, óxido a ${T} °C, ${nomesRamo[r]}`; selProc.appendChild(o); });
-function sincronizarOp() { selProc.value = `${est.variante}|${est.ramo}|${est.T}`; recalcular(); }
-selProc.addEventListener("change", () => { const [v, r, T] = selProc.value.split("|"); est.variante = v; est.ramo = r; est.T = T; document.getElementById("sel-variante").value = v; document.getElementById("sel-ramo").value = r; document.getElementById("sel-T").value = T; recalcular(); atualizarFab(); });
-
-const ctl = {};
-["taxa", "vg", "vds", "dop", "mu", "rc", "L", "om", "alfa", "tau"].forEach(k => { ctl[k] = document.getElementById("op-" + k); ctl[k].addEventListener("input", recalcular); });
-ctl.sinal = document.getElementById("op-sinal"); ctl.sinal.addEventListener("change", recalcular);
-ctl.acel = document.getElementById("op-acel"); ctl.rho = document.getElementById("op-rho"); ctl.rho.addEventListener("change", recalcular);
-const btVarrer = document.getElementById("op-varrer");
-btVarrer.addEventListener("click", () => { opEst.varrer = !opEst.varrer; btVarrer.textContent = opEst.varrer ? "Parar varredura" : "Varrer V_G"; ctl.vg.disabled = opEst.varrer; });
-btVarrer.textContent = opEst.varrer ? "Parar varredura" : "Varrer V_G"; ctl.vg.disabled = opEst.varrer;
-ctl.vg.addEventListener("input", () => { opEst.Vg = +ctl.vg.value; });
-
-/* modelo elétrico em JS, sobre as curvas do gfetsim */
-let M = null;
-function recalcular() {
-  const E = D.eletrico[selProc.value];
-  const V = E.V, n = E.n.map(v => v * 1e4); // m^-2
-  const Cox = E.Cox_F_cm2 * 1e4; // F/m2
-  // capacitâncias por termo a partir das curvas exportadas
-  const Ctot = E.C.map(c => c * Cox), Cmet = E.Cm.map(c => c * Cox);
-  // termos em série tirados das curvas do Poisson, sem derivar n (C_metal = Cox em série com Cq)
-  const Cq = V.map((_, i) => 1 / Math.max(1e-12, 1 / Cmet[i] - 1 / Cox));
-  const Csi = V.map((_, i) => 1 / Math.max(1e-12, 1 / Ctot[i] - 1 / Cmet[i]));
-  let nV = n.slice(), Cv = E.C.slice();
-  if (!LIG.cq || !LIG.si) {
-    const Cef = V.map((_, i) => 1 / (1 / Cox + (LIG.cq ? 1 / Cq[i] : 0) + (LIG.si ? 1 / Csi[i] : 0)));
-    const i0 = V.findIndex(v => v >= 0); nV = new Array(V.length).fill(0);
-    for (let i = i0 + 1; i < V.length; i++) nV[i] = nV[i - 1] + 0.5 * (Cef[i] + Cef[i - 1]) * (V[i] - V[i - 1]) / q;
-    for (let i = i0 - 1; i >= 0; i--) nV[i] = nV[i + 1] - 0.5 * (Cef[i] + Cef[i + 1]) * (V[i + 1] - V[i]) / q;
-    Cv = Cef.map(c => c / Cox);
-  }
-  const sinal = +ctl.sinal.value, dop = Math.pow(10, +ctl.dop.value) * 1e4;
-  const VD0 = LIG.dop ? -interpDesc(V, nV, sinal * dop) : 0;
-  const mu = Math.pow(10, +ctl.mu.value) * 1e-4, RcW = LIG.rc ? Math.pow(10, +ctl.rc.value) * 1e-6 : 0;
-  const L = +ctl.L.value * 1e-6, Om = +ctl.om.value * 1e-3 * q / 1.054571817e-34;
-  const rho0 = LIG.poca ? C.n_estrela * 1e4 : 1e12;
-  const taxa = Math.pow(10, +ctl.taxa.value), alfa = LIG.hist ? +ctl.alfa.value : 0, tau = Math.pow(10, +ctl.tau.value);
-  M = { E, V, nV, Cv, Cq, Csi, Cox, VD0, mu, RcW, L, Om, rho0, taxa, alfa, tau, vds: +ctl.vds.value, eps: C.eps_ox };
-  M.curvaI = V.map(v => corrente(v + VD0, VD0).I);
-  document.getElementById("o-taxa").textContent = `${br(taxa, taxa < 1 ? 2 : 1)} V/s`;
-  document.getElementById("o-vg").textContent = `${br(+ctl.vg.value, 2)} V`;
-  document.getElementById("o-vds").textContent = `${br(M.vds, 2)} V`;
-  document.getElementById("o-dop").textContent = `${sci(Math.pow(10, +ctl.dop.value), 1)} cm⁻²`;
-  document.getElementById("o-mu").textContent = `${Math.round(Math.pow(10, +ctl.mu.value))} cm²/V·s`;
-  document.getElementById("o-rc").textContent = `${Math.round(Math.pow(10, +ctl.rc.value))} Ω·µm`;
-  document.getElementById("o-L").textContent = `${ctl.L.value} µm`;
-  document.getElementById("o-om").textContent = `${ctl.om.value} meV`;
-  document.getElementById("o-alfa").textContent = br(+ctl.alfa.value, 2);
-  document.getElementById("o-tau").textContent = `${br(tau, tau < 10 ? 1 : 0)} s`;
-  opEst.hist = [];
-}
-function nDe(Vrel) { return interp(M.V, M.nV, Vrel); }
-function corrente(Vg, VD) {
-  // Jiménez (R42): I/W = q mu int rho dV / (L + mu |int dV / vsat|), com Rc resolvido por ponto fixo
-  let Vi = M.vds, I = 0;
-  for (let it = 0; it < 14; it++) {
-    const N = 24; let s1 = 0, s2 = 0;
-    for (let k = 0; k <= N; k++) {
-      const Vc = Vi * k / N, w = (k === 0 || k === N) ? 0.5 : 1;
-      const rho = Math.abs(nDe(Vg - VD - Vc)) + M.rho0;
-      s1 += w * rho; s2 += w * (LIG.vsat ? Math.sqrt(Math.PI * rho) / M.Om : 0);
-    }
-    s1 *= Vi / N; s2 *= Vi / N;
-    const Inovo = q * M.mu * s1 / (M.L + M.mu * Math.abs(s2));
-    I = it === 0 ? Inovo : 0.5 * I + 0.5 * Inovo;
-    Vi = Math.max(1e-4, M.vds - 2 * I * M.RcW);
-  }
-  return { I, Vint: Vi };
-}
-function fn(E) { // A/cm2, E em V/m
-  const h = 6.62607015e-34, m0 = 9.1093837015e-31, mr = C.FN.m_rel, phi = C.FN.barreira_eV;
-  const A = q ** 3 / (8 * Math.PI * h * phi * q) / mr, B = 8 * Math.PI * Math.sqrt(2 * mr * m0) * Math.pow(phi * q, 1.5) / (3 * q * h);
-  return E < 1e6 ? 0 : A * E * E * Math.exp(-B / E) / C.FN.reducao * 1e-4;
-}
-
-/* passo de tempo da operação */
-let fase = 0;
-function passoOp(dt) {
-  const acel = +ctl.acel.value, dts = dt * acel;
-  const amp = 7;
-  if (opEst.varrer) {
-    opEst.Vg += opEst.dir * M.taxa * dts;
-    const lo = M.VD0 - amp, hi = M.VD0 + amp;
-    if (opEst.Vg > hi) { opEst.Vg = hi; opEst.dir = -1; }
-    if (opEst.Vg < lo) { opEst.Vg = lo; opEst.dir = 1; }
-    ctl.vg.value = opEst.Vg.toFixed(2); document.getElementById("o-vg").textContent = `${br(opEst.Vg, 2)} V`;
-  }
-  // relaxação das cargas de água (R47)
-  const alvo = M.alfa * (opEst.Vg - M.VD0);
-  opEst.Vt = alvo + (opEst.Vt - alvo) * Math.exp(-dts / M.tau);
-  if (!LIG.hist) opEst.Vt = 0;
-  const VD = M.VD0 + opEst.Vt;
-  const Vrel = opEst.Vg - VD;
-  const nn = nDe(Vrel);
-  const { I, Vint } = corrente(opEst.Vg, VD);
-  opEst.hist.push([opEst.Vg, I, opEst.dir]); if (opEst.hist.length > 900) opEst.hist.shift();
-  const E = Math.abs(q * nn) / M.eps;
-  fase += dt;
-  return { VD, Vrel, n: nn, I, Vint, E, Cn: interp(M.V, M.Cv, Vrel), Cq: interp(M.V, M.Cq, Vrel), phi: LIG.si ? interp(M.E.V, M.E.phi, Vrel) : 0, J: LIG.fn ? fn(E) : 0 };
-}
-
-/* desenho do dispositivo */
-const cvDisp = document.getElementById("cv-disp");
-const PORT = []; const rp = semente(11); for (let i = 0; i < 220; i++) PORT.push({ x: rp(), y: rp(), s: rp() });
-const AGUA = []; for (let i = 0; i < 26; i++) AGUA.push({ x: 0.06 + rp() * 0.88, f: rp() * 6.28 });
-const TUN = [];
-function desenharDisp(o, dt) {
-  const { ctx, w, h } = preparar(cvDisp);
-  ctx.fillStyle = "#0a0e11"; ctx.fillRect(0, 0, w, h);
-  const xS = w * 0.06, xD = w * 0.80, yG = h * 0.22, tOx = h * 0.19, yN = yG + tOx, hN = h * 0.24;
-  // Si e n+
-  ctx.fillStyle = "#20282e"; ctx.fillRect(0, yN, w, h - yN);
-  const grd = ctx.createLinearGradient(0, yN, 0, yN + hN); grd.addColorStop(0, "rgba(54,194,180,.42)"); grd.addColorStop(1, "rgba(54,194,180,.05)");
-  ctx.fillStyle = grd; ctx.fillRect(xS - 10, yN, xD - xS + 60, hN);
-  // óxido
-  ctx.fillStyle = "rgba(143,132,230,.30)"; ctx.fillRect(0, yG, w, tOx);
-  ctx.strokeStyle = "rgba(143,132,230,.8)"; ctx.lineWidth = 1; ctx.strokeRect(-1, yG, w + 2, tOx);
-  // linhas de campo (proporcionais a E, sentido pelo sinal da carga)
-  const nLin = Math.round(clamp(o.E / 1e8 * 2.6, 0, 30));
-  const sobe = o.n > 0; // elétrons no grafeno: campo do Si para o grafeno
-  const Ebd = C.ruptura_MVcm[0] * 1e8;
-  ctx.strokeStyle = o.E > 0.8 * Ebd && LIG.fn ? COR.perigo : "rgba(170,160,255,.85)"; ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 1.2;
-  for (let i = 0; i < nLin; i++) {
-    const x = xS + 20 + (xD - xS - 40) * (i + 0.5) / nLin;
-    ctx.beginPath(); ctx.moveTo(x, yG + 4); ctx.lineTo(x, yN - 4); ctx.stroke();
-    const yp = sobe ? yG + 8 : yN - 8, d = sobe ? -1 : 1;
-    ctx.beginPath(); ctx.moveTo(x, yp + d * -2); ctx.lineTo(x - 3, yp - d * 4); ctx.lineTo(x + 3, yp - d * 4); ctx.closePath(); ctx.fill();
-  }
-  // Si junto à interface: acumulação ou depleção
-  const phi = o.phi;
-  if (phi < -0.005) { // depleção: doadores expostos
-    const Wn = clamp(Math.sqrt(-phi) * 26, 2, hN * 0.8);
-    ctx.fillStyle = "rgba(10,14,17,.55)"; ctx.fillRect(xS - 10, yN, xD - xS + 60, Wn);
-    ctx.fillStyle = COR["p-ativo"]; ctx.font = "bold 10px " + css("--f-dado"); ctx.textAlign = "center";
-    for (let x = xS; x < xD + 40; x += 16) for (let y = yN + 6; y < yN + Wn; y += 9) ctx.fillText("+", x + ((y * 7) % 8), y + 3);
-  } else if (phi > 0.005) {
-    const Wa = clamp(phi * 30, 1.5, 8);
-    ctx.fillStyle = "rgba(79,151,240,.75)"; ctx.fillRect(xS - 10, yN, xD - xS + 60, Wa);
-  }
-  // contatos e porta
-  ctx.fillStyle = COR.ouro;
-  ctx.fillRect(xS - w * 0.05, yG - h * 0.12, w * 0.09, h * 0.12);
-  ctx.fillRect(xD - w * 0.04, yG - h * 0.12, w * 0.09, h * 0.12);
-  ctx.fillRect(w * 0.91, yG - h * 0.12, w * 0.07, yN - yG + h * 0.12 + 4);
-  ctx.fillStyle = COR.bg; ctx.font = "600 12px " + css("--f-texto"); ctx.textAlign = "center";
-  ctx.fillText("S", xS, yG - h * 0.05); ctx.fillText("D", xD + w * 0.005, yG - h * 0.05); ctx.fillText("G", w * 0.945, yG - h * 0.05);
-  // grafeno
-  ctx.strokeStyle = "#cfd6da"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xS, yG - 1); ctx.lineTo(xD, yG - 1); ctx.stroke();
-  if (LIG.ilha) { const ri = semente(5); for (let x = xS + 10; x < xD - 20; x += 26) if (ri() < C.ilhas_multicamada) { ctx.fillStyle = "rgba(240,244,246,.95)"; ctx.fillRect(x, yG - 3.5, 12, 4); } }
-  // poças de carga
-  if (LIG.poca) for (let i = 0; i < 9; i++) { const x = xS + (xD - xS) * (i + 0.5) / 9; const g = ctx.createRadialGradient(x, yG - 1, 0, x, yG - 1, 18); const c = i % 2 ? "79,151,240" : "238,111,111"; g.addColorStop(0, `rgba(${c},.20)`); g.addColorStop(1, `rgba(${c},0)`); ctx.fillStyle = g; ctx.fillRect(x - 18, yG - 19, 36, 36); }
-  // portadores no grafeno: elétrons e lacunas pelas poças, n_e,h = (±n + sqrt(n² + n*²))/2 [C]
-  const ns = LIG.poca ? C.n_estrela * 1e4 : 1e13;
-  const raiz = Math.sqrt(o.n * o.n + ns * ns);
-  const ne = (o.n + raiz) / 2, nh = (-o.n + raiz) / 2;
-  const totPts = 190, escala = 1.4e17;
-  const pe = Math.round(clamp(ne / escala * totPts, 0, totPts)), ph = Math.round(clamp(nh / escala * totPts, 0, totPts));
-  const rho = Math.abs(o.n) + M.rho0;
-  const v = o.I / (q * rho); // velocidade média de deriva (m/s)
-  const vis = clamp(v / 2e5, 0, 1.2) * 0.35; // fração do canal por segundo
-  const t = performance.now() / 1000;
-  for (let i = 0; i < PORT.length; i++) {
-    const p = PORT[i];
-    const eEletron = i < pe, eLacuna = i >= PORT.length - ph;
-    if (!eEletron && !eLacuna) continue;
-    const dir = eEletron ? 1 : -1;
-    const x = xS + ((p.x + dir * t * vis * (0.6 + p.s * 0.8)) % 1 + 1) % 1 * (xD - xS);
-    const y = yG - 1 + (p.y - 0.5) * 5;
-    ctx.fillStyle = eEletron ? COR.eletron : COR.lacuna;
-    ctx.beginPath(); ctx.arc(x, y, 2.1, 0, 6.283); ctx.fill();
-  }
-  // moléculas de água presas na interface, orientadas pelo deslocamento acumulado
-  if (LIG.hist) {
-    const ang = clamp(opEst.Vt / Math.max(0.05, M.alfa * 7), -1, 1) * 1.2;
-    ctx.strokeStyle = "#9fd3ff"; ctx.lineWidth = 1.2;
-    AGUA.forEach(a => { const x = xS + a.x * (xD - xS), y = yG + 5; const th = ang + Math.sin(t * 2 + a.f) * 0.25; ctx.beginPath(); ctx.moveTo(x - 3 * Math.cos(th - 0.9), y - 3 * Math.sin(th - 0.9)); ctx.lineTo(x, y); ctx.lineTo(x - 3 * Math.cos(th + 0.9), y - 3 * Math.sin(th + 0.9)); ctx.stroke(); });
-  }
-  // tunelamento Fowler-Nordheim: elétrons cruzando o óxido com taxa ligada a log(J)
-  if (LIG.fn && o.J > 1e-12) {
-    const taxa = clamp((Math.log10(o.J) + 12) * 1.2, 0, 14);
-    if (Math.random() < taxa * dt) TUN.push({ x: xS + Math.random() * (xD - xS), t: 0, sobe: !sobe });
-  }
-  for (let i = TUN.length - 1; i >= 0; i--) { const e = TUN[i]; e.t += dt * 1.6; if (e.t > 1) { TUN.splice(i, 1); continue; } const y = e.sobe ? yN - e.t * tOx : yG + e.t * tOx; ctx.fillStyle = "#fff6a0"; ctx.beginPath(); ctx.arc(e.x, y, 2.2, 0, 6.283); ctx.fill(); }
-  // rótulos
-  ctx.fillStyle = COR.tinta2; ctx.font = "11px " + css("--f-dado"); ctx.textAlign = "left";
-  ctx.fillText(`SiO₂ ${br(M.E.tox_nm, 1)} nm`, 8, yG + tOx / 2 + 4);
-  ctx.fillText("Si n⁺ (porta)", 8, yN + hN * 0.55);
-  ctx.fillText("Si tipo n", 8, h - 10);
-  if (LIG.fn && o.E > 0.8 * Ebd) { ctx.fillStyle = COR.perigo; ctx.font = "600 12px " + css("--f-texto"); ctx.textAlign = "right"; ctx.fillText("campo perto da ruptura", w - 10, h - 10); }
-}
-
-/* bandas: cone de Dirac e Si junto à interface */
-const cvBanda = document.getElementById("cv-banda");
-function desenharBanda(o) {
-  const { ctx, w, h } = preparar(cvBanda);
-  ctx.clearRect(0, 0, w, h);
-  // (a) cone de Dirac
-  const cx = w * 0.20, cy = h * 0.52, s = h * 0.36;
-  const mu = interp(M.E.V, M.E.mu, o.Vrel); // eV
-  const emax = 0.45;
-  ctx.strokeStyle = COR.tinta2; ctx.lineWidth = 1.2;
-  ctx.beginPath(); ctx.moveTo(cx - s * 0.75, cy - s); ctx.lineTo(cx, cy); ctx.lineTo(cx + s * 0.75, cy - s); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx - s * 0.75, cy + s); ctx.lineTo(cx, cy); ctx.lineTo(cx + s * 0.75, cy + s); ctx.stroke();
-  const yF = cy - clamp(mu / emax, -1, 1) * s;
-  // preenchimento até o nível de Fermi
-  ctx.fillStyle = "rgba(79,151,240,.35)";
-  ctx.beginPath(); ctx.moveTo(cx - s * 0.75, cy + s); ctx.lineTo(cx, cy); ctx.lineTo(cx + s * 0.75, cy + s); ctx.closePath(); ctx.fill();
-  if (mu > 0) { const d = (cy - yF) / s * s * 0.75; ctx.fillStyle = "rgba(79,151,240,.55)"; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - d, yF); ctx.lineTo(cx + d, yF); ctx.closePath(); ctx.fill(); }
-  else if (mu < 0) { const d = (yF - cy) / s * s * 0.75; ctx.fillStyle = "rgba(238,111,111,.6)"; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - d, yF); ctx.lineTo(cx + d, yF); ctx.closePath(); ctx.fill(); }
-  ctx.strokeStyle = COR.tinta; ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(cx - s, yF); ctx.lineTo(cx + s, yF); ctx.stroke(); ctx.setLineDash([]);
-  lab(ctx, cx + s * 0.8, yF - 4, `E_F ${mu >= 0 ? "+" : "−"}${br(Math.abs(mu * 1000), 0)} meV`, "left", COR.tinta);
-  lab(ctx, cx, h - 8, "grafeno, cone de Dirac", "center");
-  // (b) Si: E_c(x) junto à interface
-  const bx0 = w * 0.50, bx1 = w - 12, by0 = 14, by1 = h - 34;
-  const B = M.E.banda;
-  // interpola o perfil de potencial na tensão atual
-  const iv = clamp((o.Vrel - B.V[0]) / (B.V[1] - B.V[0]), 0, B.V.length - 1.001), i0 = Math.floor(iv), tt = iv - i0;
-  const psi = B.psi[i0].map((v, k) => v * (1 - tt) + B.psi[i0 + 1][k] * tt).map(v => LIG.si ? v : 0);
-  const kT = 0.025852, Ec0 = -kT * M.E.eta_sup;
-  const Ec = psi.map(p => Ec0 - p);
-  const xs = B.x_nm, xmax = 30;
-  const ylo = Math.min(-0.45, ...Ec.slice(0, 50)) - 0.05, yhi = Math.max(0.2, ...Ec.slice(0, 50)) + 0.08;
-  const X = x => bx0 + (x / xmax) * (bx1 - bx0), Y = e => by1 - (e - ylo) / (yhi - ylo) * (by1 - by0);
-  ctx.strokeStyle = COR.linha; ctx.strokeRect(bx0, by0, bx1 - bx0, by1 - by0);
-  // elétrons abaixo de E_F
-  ctx.fillStyle = "rgba(79,151,240,.30)"; ctx.beginPath(); ctx.moveTo(X(0), Y(0));
-  for (let k = 0; k < xs.length && xs[k] <= xmax; k++) ctx.lineTo(X(xs[k]), Y(Math.min(Ec[k], 0)));
-  ctx.lineTo(X(xmax), Y(0)); ctx.closePath(); ctx.fill();
-  ctx.strokeStyle = COR["p-ativo"]; ctx.lineWidth = 2; ctx.beginPath();
-  for (let k = 0; k < xs.length && xs[k] <= xmax; k++) { if (k === 0) ctx.moveTo(X(xs[k]), Y(Ec[k])); else ctx.lineTo(X(xs[k]), Y(Ec[k])); } ctx.stroke();
-  ctx.strokeStyle = COR.tinta; ctx.setLineDash([4, 3]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(bx0, Y(0)); ctx.lineTo(bx1, Y(0)); ctx.stroke(); ctx.setLineDash([]);
-  lab(ctx, bx1 - 4, Y(0) - 4, "E_F", "right", COR.tinta); lab(ctx, X(xmax * 0.6), Y(Ec[Ec.length - 1]) - 6, "E_c", "left", COR["p-ativo"]);
-  lab(ctx, (bx0 + bx1) / 2, h - 18, "Si n⁺, 0 a 30 nm da interface", "center");
-  lab(ctx, (bx0 + bx1) / 2, h - 5, `curvatura ${br(o.phi * 1000, 0)} mV`, "center");
-}
-
-/* gráficos da operação */
-const cvCV = document.getElementById("cv-cv"), cvTr = document.getElementById("cv-trans"), cvCampo = document.getElementById("cv-campo");
-function grafOp(o) {
-  const VG = M.V.map(v => v + o.VD);
-  const lim = [M.VD0 - 12, M.VD0 + 12];
-  const xt = ticks(lim[0], lim[1], 5).map(v => [v, br(v, 0)]);
-  { const { ctx, w, h } = preparar(cvCV); ctx.clearRect(0, 0, w, h);
-    const Cm = M.E.Cm; const ymin = Math.max(0, Math.min(...M.Cv, ...Cm) - 0.03);
-    const { X, Y } = eixos(ctx, { x0: 50, y0: 10, x1: w - 10, y1: h - 38 }, lim, [ymin, 1.0], { xt, yt: ticks(ymin, 1, 4).map(v => [v, br(v, 2)]), xl: "V_G (V)", yl: "C/Cox" });
-    ctx.save(); ctx.beginPath(); ctx.rect(50, 10, w - 60, h - 48); ctx.clip();
-    curva(ctx, M.V.map(v => v + M.VD0), Cm, X, Y, COR.tinta3, 1.5, [4, 3]);
-    curva(ctx, M.V.map(v => v + M.VD0), M.Cv, X, Y, COR["p-ativo"], 2);
-    ctx.restore();
-    ponto(ctx, X(opEst.Vg), Y(o.Cn), COR["p-ativo"]); }
-  { const { ctx, w, h } = preparar(cvTr); ctx.clearRect(0, 0, w, h);
-    const imax = Math.max(...M.curvaI) * 1.1;
-    const { X, Y } = eixos(ctx, { x0: 52, y0: 10, x1: w - 10, y1: h - 38 }, lim, [0, imax], { xt, yt: ticks(0, imax, 4).map(v => [v, imax < 10 ? br(v, 1) : br(v, 0)]), xl: "V_G (V)", yl: "I_D/W (µA/µm)" });
-    ctx.save(); ctx.beginPath(); ctx.rect(52, 10, w - 62, h - 48); ctx.clip();
-    curva(ctx, M.V.map(v => v + M.VD0), M.curvaI, X, Y, COR.tinta3, 1.5);
-    for (let i = 1; i < opEst.hist.length; i++) { const a = opEst.hist[i - 1], b = opEst.hist[i]; ctx.strokeStyle = b[2] > 0 ? COR.ida : COR.volta; ctx.lineWidth = 2; ctx.globalAlpha = 0.25 + 0.75 * i / opEst.hist.length; ctx.beginPath(); ctx.moveTo(X(a[0]), Y(a[1])); ctx.lineTo(X(b[0]), Y(b[1])); ctx.stroke(); }
-    ctx.globalAlpha = 1; ctx.restore();
-    ponto(ctx, X(opEst.Vg), Y(o.I), opEst.dir > 0 ? COR.ida : COR.volta); }
-  { const { ctx, w, h } = preparar(cvCampo); ctx.clearRect(0, 0, w, h);
-    const Es = M.V.map(v => Math.abs(q * nDe(v)) / M.eps / 1e8);
-    const { X, Y } = eixos(ctx, { x0: 46, y0: 10, x1: w - 10, y1: h - 38 }, lim, [0, 14], { xt, yt: [0, 4, 8, 12].map(v => [v, String(v)]), xl: "V_G (V)", yl: "E_ox (MV/cm)" });
-    ctx.fillStyle = "rgba(255,107,92,.14)"; ctx.fillRect(46, Y(C.ruptura_MVcm[1]), w - 56, Y(C.ruptura_MVcm[0]) - Y(C.ruptura_MVcm[1]));
-    lab(ctx, w - 14, Y(C.ruptura_MVcm[1]) + 12, "ruptura, 10 a 13 MV/cm", "right", COR.perigo);
-    ctx.save(); ctx.beginPath(); ctx.rect(46, 10, w - 56, h - 48); ctx.clip();
-    curva(ctx, M.V.map(v => v + M.VD0), Es, X, Y, COR.oxido, 2); ctx.restore();
-    ponto(ctx, X(opEst.Vg), Y(o.E / 1e8), COR.oxido); }
-}
-function leituras(o) {
-  const par = D.parasita[ctl.rho.value];
-  const Cpar = interp(par.V, par.C, opEst.Vg);
-  const L = [
-    ["V_G", `${br(opEst.Vg, 2)} V`], ["V_D efetivo", `${br(o.VD, 2)} V`], ["V_G − V_D", `${br(o.Vrel, 2)} V`],
-    ["n no grafeno", `${sci(o.n / 1e4, 2)} cm⁻²`], ["C/Cox", br(o.Cn, 3)], ["perda no Si", `${br(100 * (1 - interp(M.V, M.E.C, o.Vrel) / interp(M.V, M.E.Cm, o.Vrel)), 2)} %`],
-    ["Cq", `${br(o.Cq * 100, 2)} µF/cm²`], ["E_ox", `${br(o.E / 1e8, 2)} MV/cm`, o.E > 0.8 * C.ruptura_MVcm[0] * 1e8],
-    ["J Fowler-Nordheim", o.J > 1e-30 ? `${sci(o.J, 1)} A/cm²` : "abaixo de 10⁻³⁰ A/cm²"], ["I_D/W", `${br(o.I, 2)} µA/µm`], ["R·W total", `${br(M.vds / Math.max(o.I, 1e-12) * 1e6, 0)} Ω·µm`],
-    ["V_DS no canal", `${br(o.Vint, 3)} V`], ["fora da porta, C/Cox", br(Cpar, 2)],
-  ];
-  document.getElementById("leituras").innerHTML = L.map(l => `<div class="num"><b class="${l[2] ? "alerta" : ""}">${l[1]}</b><span>${l[0]}</span></div>`).join("");
-}
-
-/* ======================================================================= laço */
-const abaFab = document.getElementById("aba-fab"), abaOp = document.getElementById("aba-op");
-let modo = location.hash === "#operacao" ? "op" : "fab";
-function mudar(m) {
-  modo = m;
-  document.getElementById("fab").hidden = m !== "fab"; document.getElementById("op").hidden = m !== "op";
-  abaFab.setAttribute("aria-selected", m === "fab"); abaOp.setAttribute("aria-selected", m === "op");
-  try { history.replaceState(null, "", m === "op" ? "#operacao" : "#fabricacao"); } catch (e) {}
-  if (m === "op") recalcular(); else atualizarFab();
-}
-abaFab.addEventListener("click", () => mudar("fab")); abaOp.addEventListener("click", () => mudar("op"));
-sincronizarOp();
-mudar(modo);
-let tAnt = performance.now(), tAnim = 0;
-function laco(agora) {
-  const dt = Math.min(0.05, (agora - tAnt) / 1000); tAnt = agora;
-  if (modo === "fab") {
-    if (est.tocando) { est.t += dt * est.vel; if (est.t >= T_TOTAL) { est.t = T_TOTAL - 0.001; est.tocando = false; btTocar.textContent = "Tocar"; } atualizarFab(); }
-    desenharFab(sFab, est.t);
-  } else {
-    const o = passoOp(dt);
-    desenharDisp(o, dt); desenharBanda(o); grafOp(o); leituras(o);
-  }
-  requestAnimationFrame(laco);
-}
-if (reduzir) { est.t = ETAPAS[1].ini + ETAPAS[1].dur * 0.75; atualizarFab(); }
-else est.t = 0.001;
-requestAnimationFrame(laco);
-window.addEventListener("resize", () => { if (modo === "fab") atualizarFab(); });
+__JS__
 </script>
