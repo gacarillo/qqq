@@ -58,3 +58,12 @@ A receita YAML escolhe a variante de cada etapa e os ramos. O campo `aceitar_pro
 ## O que validou e o que não validou
 
 O relatório e o `pendencias.md` trazem a lista completa. Em resumo, os módulos 2 (duas etapas), 5 e 6 validam contra dado publicado. O módulo 1 valida contra o limiar medido a 300 K, depois que o critério de baixa temperatura falhou. O alcance só fica dentro da discordância entre fontes. O módulo 3 não tem dado publicado acessível para validação quantitativa, e o módulo 4 tem validação numérica e de forma, sem curva medida comparável.
+
+## Animação
+
+`animacao/gfet_animacao.html` é uma página única que mostra a fabricação (trajetórias do RustBCA, amorfização, SPE, difusão, oxidação) e a operação do dispositivo (portadores no grafeno, bandas, C-V, transferência, histerese, campo no óxido). Ela é montada a partir dos módulos do pacote.
+
+```
+python animacao/exportar_dados.py   # alguns minutos; gera dados_animacao.json
+python animacao/montar.py           # gera gfet_animacao.html
+```
