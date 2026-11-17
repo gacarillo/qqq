@@ -83,6 +83,14 @@ Prioridade média
 8. Ilhas de grafeno multicamada (17 % da área no artigo) e trincas.
 9. Histerese por água (R47, R49). O modelo de relaxação está em `eletrico/histerese.py`, mas alfa e tau só saem de medidas de ida e volta do dispositivo.
 
+## Previsão do estúdio
+
+O que a vista Previsão assume e ainda não resolve está em `estudio/docs/previsao.md`. Os pontos que dependem do laboratório
+
+1. A discrepância de modelo (`previsao.discrepancia`) e os erros típicos de medida (`previsao.erro_medida_tipico`) são [I]. Os primeiros cinco lotes medidos com previsão guardada antes dizem, pelo placar, se esses desvios estão largos ou estreitos.
+2. A dispersão da temperatura e do tempo do forno de oxidação não está no params.yaml, então a previsão a trata como zero.
+3. Dopagem residual e mobilidade do grafeno variam entre dispositivos; a calibração dá o valor típico. Com dez ou mais transferências medidas vale passar a um modelo hierárquico.
+
 ## Pedido prático
 
 A rede da sessão não alcança as editoras, e os livros de Sze e de física do estado sólido não estão disponíveis aqui. Os sites abertos que trazem tabelas de constantes (www.ioffe.ru e www.iue.tuwien.ac.at) estão bloqueados pela rede do ambiente e precisam ser liberados nas configurações dele. Para trocar [I] por [P], o mais rápido é subir os PDFs para `gfetsim/externo/pdfs/`. A ordem de prioridade é R6, R22, N14, R26, R28, R29, R12b, A1, N1, R2, R8, R36, R37, R24, R20, N10 e N23.

@@ -15,7 +15,7 @@ import TrabalhadorSimulacao from "./simulador.worker?worker&inline";
 
 type Ouvinte = (r: Resposta) => void;
 
-interface Canal {
+export interface Canal {
   enviar(p: Pedido): void;
   encerrar(): void;
   ocupado: boolean;
@@ -45,7 +45,7 @@ function canalLocal(ouvinte: Ouvinte): Canal {
 
 export let modoExecucao: "worker" | "local" = "worker";
 
-function novoCanal(ouvinte: Ouvinte): Canal {
+export function novoCanal(ouvinte: Ouvinte): Canal {
   if (modoExecucao === "worker") {
     try {
       const w = new TrabalhadorSimulacao();
@@ -60,7 +60,7 @@ function novoCanal(ouvinte: Ouvinte): Canal {
         },
       };
       w.onmessage = (ev: MessageEvent<Resposta>) => {
-        if (ev.data.tipo === "resultado" || ev.data.tipo === "erro" || ev.data.tipo === "fim_mc") c.ocupado = false;
+        if (ev.data.tipo === "resultado" || ev.data.tipo === "erro" || ev.data.tipo === "fim_mc" || ev.data.tipo === "previsao_resultado") c.ocupado = false;
         ouvinte(ev.data);
       };
       let pronto = false;
@@ -72,7 +72,7 @@ function novoCanal(ouvinte: Ouvinte): Canal {
       };
       w.addEventListener("message", (ev: MessageEvent<Resposta>) => {
         if (ev.data.tipo === "pronto") pronto = true;
-        if (ev.data.tipo === "resultado" || ev.data.tipo === "fim_mc") pendente = null;
+        if (ev.data.tipo === "resultado" || ev.data.tipo === "fim_mc" || ev.data.tipo === "previsao_resultado") pendente = null;
       });
       w.onerror = (ev) => {
         ev.preventDefault();

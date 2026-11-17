@@ -177,11 +177,12 @@ export function desenharBandas(p: Pincel, e: EstadoOperacao, el: Element): void 
   // grafeno
   p.linha([xG, xG], [Y(ED) - 18, Y(ED) + 18], { cor: C("--texto"), largura: 2 });
   p.circulo(xG, Y(ED), 3, C("--texto"));
-  p.texto("E_D", xG - 4, Y(ED) + 4, { cor: C("--texto-2"), tamanho: 11, alinhar: "right", fonte });
+  // E_D e E_F do grafeno ficam um acima e outro abaixo quando as linhas quase coincidem
+  const perto = Math.abs(Y(ED) - Y(0)) < 14;
+  p.texto("E_D", xG - 4, perto ? Math.max(Y(ED), Y(0)) + 14 : Y(ED) + 4, { cor: C("--texto-2"), tamanho: 11, alinhar: "right", fonte });
   p.linha([p0, xO0], [Y(0), Y(0)], { cor: C("--texto"), largura: 1, tracejado: [4, 3] });
   p.linha([xO1, p1], [Y(EFsi), Y(EFsi)], { cor: C("--texto"), largura: 1, tracejado: [4, 3] });
-  p.texto("E_F grafeno", p0 + 2, Y(0) - 4, { cor: C("--texto"), tamanho: 11, fonte });
-  p.texto("E_F Si", p1 - 2, Y(EFsi) + 13, { cor: C("--texto"), tamanho: 11, alinhar: "right", fonte });
+  p.texto("E_F grafeno", p0 + 2, (perto ? Math.min(Y(ED), Y(0)) : Y(0)) - 4, { cor: C("--texto"), tamanho: 11, fonte });
   // Si
   const xsS: number[] = [], ec: number[] = [], ev: number[] = [];
   for (let k = 0; k < xs.length && xs[k] <= fim; k++) {
@@ -191,9 +192,19 @@ export function desenharBandas(p: Pincel, e: EstadoOperacao, el: Element): void 
   }
   p.linha(xsS, ec, { cor: C("--p-ativo"), largura: 2 });
   p.linha(xsS, ev, { cor: C("--texto-3"), largura: 2 });
-  p.texto("E_c", p1 - 2, ec[ec.length - 1] - 4, { cor: C("--p-ativo"), tamanho: 11, alinhar: "right", fonte });
-  p.texto("E_v", p1 - 2, ev[ev.length - 1] - 4, { cor: C("--texto-3"), tamanho: 11, alinhar: "right", fonte });
-  p.texto(`V_G ${br(e.Vg, 2)} V, queda no óxido ${br(Vox, 2)} V`, (xO0 + p1) / 2, H - 10, { cor: C("--texto-2"), tamanho: 11, alinhar: "center", fonte });
+  // rótulos do lado do Si empilhados com espaço mínimo, para E_c, E_F e E_v não se sobreporem
+  const rotSi = [
+    { y: ec[ec.length - 1] - 4, t: "E_c", cor: C("--p-ativo") },
+    { y: Y(EFsi) + 13, t: "E_F Si", cor: C("--texto") },
+    { y: ev[ev.length - 1] - 4, t: "E_v", cor: C("--texto-3") },
+  ].sort((a, b) => a.y - b.y);
+  for (let k = 1; k < rotSi.length; k++) if (rotSi[k].y - rotSi[k - 1].y < 13) rotSi[k].y = rotSi[k - 1].y + 13;
+  const excesso = rotSi[rotSi.length - 1].y - (y1 - 2);
+  if (excesso > 0) rotSi.forEach((r) => (r.y -= excesso));
+  for (const r of rotSi) p.texto(r.t, p1 - 2, r.y, { cor: r.cor, tamanho: 11, alinhar: "right", fonte });
+  let rodape = `V_G ${br(e.Vg, 2)} V, queda no óxido ${br(Vox, 2)} V`;
+  if (p.medir(rodape, 11, fonte) > p1 - p0 - 8) rodape = `V_G ${br(e.Vg, 2)} V, óxido ${br(Vox, 2)} V`;
+  p.texto(rodape, (p0 + p1) / 2, H - 10, { cor: C("--texto-2"), tamanho: 11, alinhar: "center", fonte });
   if (estreito) return;
   // cone de Dirac
   const cx = W * 0.82, cy = H * 0.27, s = H * 0.17, emax = 0.45;

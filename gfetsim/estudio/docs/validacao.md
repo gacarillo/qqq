@@ -1,6 +1,6 @@
 # Validação do porte contra o gfetsim em Python
 
-Os testes ficam em `tests/` e rodam com `npm test`. As referências saem de `scripts/exportar_referencias.py`, que chama as funções originais do gfetsim com entradas fixas. Hoje são 59 testes e todos passam.
+Os testes ficam em `tests/` e rodam com `npm test`. As referências saem de `scripts/exportar_referencias.py`, que chama as funções originais do gfetsim com entradas fixas. Hoje são 81 testes e todos passam. Os da previsão, que não comparam com o Python porque o módulo só existe no estúdio, estão descritos em [previsao.md](previsao.md).
 
 ## Tolerâncias
 

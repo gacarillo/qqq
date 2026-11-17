@@ -286,6 +286,8 @@ export class Campo2D {
     if (this.o.isolinhas) {
       const corL = C("--texto");
       const vv = g.log ? Float64Array.from(q.v as ArrayLike<number>, (a) => Math.log10(Math.max(a, 1e-300))) : (q.v as ArrayLike<number>);
+      const caixas: [number, number, number, number][] = [];
+      const livre = (x: number, y: number, w: number, hh: number) => caixas.every(([a, b, c, d]) => x + w < a || x > a + c || y + hh < b || y > b + d);
       for (const nv of g.niveis) {
         const lvl = g.log ? Math.log10(nv) : nv;
         const segs = isolinhas(vv, nx, ny, lvl);
@@ -295,14 +297,21 @@ export class Campo2D {
           ys.push(PX(q.x[0] + s.a[0] * dx), PX(q.x[0] + s.b[0] * dx), NaN);
         }
         p.linha(xs, ys, { cor: corL, largura: 1, alfa: 0.75 });
-        // rótulo no segmento mais à direita dentro da vista
-        let melhor = -1, py = 0, px = 0;
-        for (let k = 0; k < xs.length; k += 3) if (xs[k] > melhor && xs[k] < m.e + aw - 40 && ys[k] > m.t + 10 && ys[k] < m.t + ah - 4) {
-          melhor = xs[k];
-          py = xs[k];
-          px = ys[k];
+        // rótulo no segmento mais à direita que não cai sobre outro rótulo; sem lugar, fica sem rótulo
+        const rot = g.log ? `10${sobrescrito(Math.round(Math.log10(nv)))}` : num(nv);
+        const tw = p.medir(rot, 10, fonte) + 4;
+        const cand: number[] = [];
+        for (let k = 0; k < xs.length; k += 3) if (xs[k] < m.e + aw - tw - 6 && xs[k] > m.e + 4 && ys[k] > m.t + 12 && ys[k] < m.t + ah - 4) cand.push(k);
+        cand.sort((a, b) => xs[b] - xs[a]);
+        for (const k of cand) {
+          const bx = xs[k] + 1;
+          const by = ys[k] - 12;
+          if (!livre(bx, by, tw, 12)) continue;
+          p.retangulo(bx, by, tw, 12, C("--tela"), 0.55);
+          p.texto(rot, bx + 2, ys[k] - 3, { cor: corL, tamanho: 10, fonte });
+          caixas.push([bx, by, tw, 12]);
+          break;
         }
-        if (melhor > 0) p.texto(g.log ? `10${sobrescrito(Math.round(Math.log10(nv)))}` : num(nv), py + 3, px - 3, { cor: corL, tamanho: 10, fonte });
       }
     }
     // malha da simulação
@@ -339,7 +348,13 @@ export class Campo2D {
       const mk = q.mascara_nm ?? 0;
       if (mk > 0) {
         p.retangulo(PY(v.y0), PX(-mk), PY(0) - PY(v.y0), PX(0) - PX(-mk), corOx, 0.45, corOx);
-        p.texto(`máscara de SiO₂, ${br(mk, 0)} nm`, (Math.max(PY(v.y0), m.e) + Math.max(PY(0), m.e)) / 2, PX(-mk / 2) + 4, { cor: C("--texto"), tamanho: 11, alinhar: "center" });
+        // o texto cabe na parte visível da máscara: encurta se for preciso e nunca sai pela esquerda
+        const ma = Math.max(PY(v.y0), m.e);
+        const mb = Math.min(Math.max(PY(0), m.e), m.e + aw);
+        let tm = `máscara de SiO₂, ${br(mk, 0)} nm`;
+        if (p.medir(tm, 11) > mb - ma - 8) tm = `SiO₂ ${br(mk, 0)} nm`;
+        const lt = p.medir(tm, 11);
+        if (lt <= mb - ma - 4) p.texto(tm, Math.max(ma + lt / 2 + 3, (ma + mb) / 2), PX(-mk / 2) + 4, { cor: C("--texto"), tamanho: 11, alinhar: "center" });
         if (q.sombra_nm && q.sombra_nm > 0) {
           p.linha([PY(0), PY(q.sombra_nm)], [PX(-mk), PX(0)], { cor: C("--p-inativo"), largura: 1, tracejado: [3, 3] });
           p.texto(`sombra ${br(q.sombra_nm, 1)} nm`, PY(q.sombra_nm) + 4, PX(-6), { cor: C("--p-inativo"), tamanho: 10, fonte });

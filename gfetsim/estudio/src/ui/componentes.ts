@@ -21,6 +21,9 @@ const ICONES: Record<string, string> = {
   corte: "M2 12 14 4M3 4h2M3 4v2",
   lupa: "M7 11.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zM10.3 10.3 13.5 13.5",
   painel: "M2.5 3.5h11v9h-11zM10 3.5v9",
+  mais: "M8 3v10M3 8h10",
+  alvo: "M8 13.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM8 10.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
+  grafico: "M2.5 13.5h11M4 11l3-4 2.5 2.5L13 4",
 };
 
 export function icone(nome: string): SVGSVGElement {
@@ -125,7 +128,7 @@ export function campoNumerico(o: OpcoesCampoNumerico): { el: HTMLElement; defini
     }
     return v;
   };
-  const fmt = (v: number) => (o.cientifico ? v.toExponential(2).replace("e+", "e") : o.casas !== undefined ? br(v, o.casas).replace(/\./g, "") : num(v, 4).replace(/\./g, ""));
+  const fmt = (v: number) => (o.cientifico ? v.toExponential(2).replace("e+", "e").replace(".", ",") : o.casas !== undefined ? br(v, o.casas).replace(/\./g, "") : num(v, 4).replace(/\./g, ""));
   const faixa = h("input", { type: "range", min: 0, max: N, step: 1, id: id + "-faixa", "aria-label": o.rotulo });
   const texto = h("input", { type: "text", inputmode: "decimal", id, spellcheck: false, "aria-label": `${o.rotulo}${o.unidade ? ` em ${o.unidade}` : ""}` });
   const caixa = h("div", { class: "entrada-num" }, texto, o.unidade ? h("span", null, o.unidade) : null);
@@ -175,7 +178,7 @@ export function campoNumerico(o: OpcoesCampoNumerico): { el: HTMLElement; defini
     "div",
     { class: "campo" },
     h("label", { class: "campo-rotulo", for: id }, h("span", { class: "nome", "data-dica": o.dica ?? null }, o.rotulo), o.etiqueta ? etiqueta(o.etiqueta, o.dica ?? "") : null),
-    h("div", { class: "campo-linha" }, faixa, caixa),
+    h("div", { class: `campo-linha${o.cientifico || (o.unidade?.length ?? 0) > 3 ? " larga" : ""}` }, faixa, caixa),
   );
   return { el, definir };
 }

@@ -10,6 +10,7 @@ import { vistaDispositivo } from "./ui/vistas/dispositivo";
 import { vistaRelatorio } from "./ui/vistas/relatorio";
 import { vistaParametros } from "./ui/vistas/parametros";
 import { vistaIncerteza } from "./ui/vistas/incerteza";
+import { vistaPrevisao } from "./ui/vistas/previsao";
 import { vistaAtomos } from "./ui/vistas/atomos";
 
 const fabricas: FabricaVistas = {
@@ -20,6 +21,7 @@ const fabricas: FabricaVistas = {
   eletrico: vistaEletrico,
   atomos: vistaAtomos,
   incerteza: vistaIncerteza,
+  previsao: vistaPrevisao,
   parametros: vistaParametros,
   relatorio: vistaRelatorio,
 };

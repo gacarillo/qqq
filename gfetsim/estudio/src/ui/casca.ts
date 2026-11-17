@@ -27,6 +27,7 @@ const ROTULOS: [Aba, string][] = [
   ["eletrico", "Elétrico"],
   ["atomos", "Átomos"],
   ["incerteza", "Incerteza"],
+  ["previsao", "Previsão"],
   ["parametros", "Parâmetros"],
   ["relatorio", "Relatório"],
 ];
@@ -281,9 +282,10 @@ export function montarCasca(raiz: HTMLElement, fabricas: FabricaVistas, apresent
     } else if ((e.ctrlKey || e.metaKey) && !emCampo && e.key.toLowerCase() === "y") {
       e.preventDefault();
       refazer();
-    } else if (e.altKey && /^[1-9]$/.test(e.key)) {
+    } else if (e.altKey && /^[0-9]$/.test(e.key)) {
       e.preventDefault();
-      irPara(ROTULOS[+e.key - 1][0]);
+      const i = e.key === "0" ? 9 : +e.key - 1;
+      if (ROTULOS[i]) irPara(ROTULOS[i][0]);
     }
   });
 

@@ -538,3 +538,40 @@ eletrico:
       n_1e19:   {valor: 0.17,  unidade: fracao, etiqueta: B}
       n_1e20:   {valor: 0.06,  unidade: fracao, etiqueta: B}
       n_3e20:   {valor: 0.035, unidade: fracao, etiqueta: B}
+
+# ---------------------------------------------------------------------------
+# Modulo 6  Previsao (emulador, calibracao com medidas, planejamento)
+# Nada aqui entra na cadeia nominal. Sao os fatores que a calibracao ajusta e os
+# desvios que a verossimilhanca usa. Todos [I] ate os primeiros lotes medidos.
+# ---------------------------------------------------------------------------
+previsao:
+  fator_taxa_oxidacao: {valor: 1.0, incerteza: {tipo: loguniforme, min: 0.8, max: 1.25}, etiqueta: I,
+                        nota: "multiplica a taxa de crescimento inteira do oxido. Um erro de 5 C no forno a 900 C muda B/A em cerca de 9 % com Ea de 2 eV [C]; a faixa cobre cerca de 10 C de desvio de calibracao do forno"}
+  fator_mobilidade_si: {valor: 1.0, incerteza: {tipo: loguniforme, min: 0.7, max: 1.3}, etiqueta: I,
+                        nota: "multiplica as quatro mobilidades de Masetti, o que escala mu(N) inteira. R52 concorda com Masetti em 4 % ate 1,7e20 e R24 mede menos acima de 1e20; a faixa cobre os dois"}
+  discrepancia:
+    nota: "desvio do modelo que nenhum parametro calibrado remove, somado em quadratura a medida e ao emulador. Forma simplificada de Kennedy e O'Hagan, sem correlacao entre lotes. Em log, o valor e o desvio relativo"
+    espessura_ox_nm:    {valor: 0.5,  unidade: nm,       etiqueta: I}
+    Rs_recozido:        {valor: 0.08, unidade: relativo, etiqueta: I}
+    Rs_final:           {valor: 0.08, unidade: relativo, etiqueta: I}
+    fracao_ativa:       {valor: 0.05, unidade: adim,     etiqueta: I}
+    ativo_superficie:   {valor: 0.2,  unidade: relativo, etiqueta: I}
+    amorfo_nm:          {valor: 2.0,  unidade: nm,       etiqueta: I}
+    V_D:                {valor: 0.3,  unidade: V,        etiqueta: I}
+    perda_si_5e12:      {valor: 0.1,  unidade: relativo, etiqueta: I}
+    C_min_sobre_Cox:    {valor: 0.02, unidade: adim,     etiqueta: I}
+    Rsq_grafeno_5e12:   {valor: 0.15, unidade: relativo, etiqueta: I}
+    E_ox_em_VD_mais_5V: {valor: 0.05, unidade: MV/cm,    etiqueta: I}
+  erro_medida_tipico:
+    nota: "desvio padrao sugerido quando o usuario nao informa o da medida; cada medida pode trazer o seu"
+    espessura_ox_nm:  {valor: 0.3,  unidade: nm,       etiqueta: I, nota: "elipsometria"}
+    Rs_recozido:      {valor: 0.03, unidade: relativo, etiqueta: I, nota: "quatro pontas"}
+    Rs_final:         {valor: 0.03, unidade: relativo, etiqueta: I, nota: "quatro pontas"}
+    fracao_ativa:     {valor: 0.05, unidade: adim,     etiqueta: I, nota: "Hall comparado com SIMS"}
+    ativo_superficie: {valor: 0.3,  unidade: relativo, etiqueta: I, nota: "ECV ou SIMS"}
+    amorfo_nm:        {valor: 2.0,  unidade: nm,       etiqueta: I, nota: "TEM ou RBS"}
+    V_D:              {valor: 0.2,  unidade: V,        etiqueta: I, nota: "minimo da curva de transferencia"}
+    C_min_sobre_Cox:  {valor: 0.01, unidade: adim,     etiqueta: I, nota: "C-V"}
+    Rsq_grafeno_5e12: {valor: 0.1,  unidade: relativo, etiqueta: I, nota: "transferencia em 5e12"}
+    n_dop:            {valor: 0.3,  unidade: relativo, etiqueta: I, nota: "Raman pela posicao do G (D1)"}
+    mu_grafeno:       {valor: 0.2,  unidade: relativo, etiqueta: I, nota: "ajuste da transferencia"}

@@ -51,6 +51,8 @@ export interface OpcoesOxidar {
   espessuraRetrograda_nm?: number;
   larguraCamadaOxido_nm?: number;
   instantes_min?: number[];
+  /** fator de calibração na taxa de crescimento inteira, 1 no modelo nominal (previsao.fator_taxa_oxidacao) */
+  fatorTaxa?: number;
 }
 
 /** Perfil visto de uma interface que avançou d nm para dentro do Si. */
@@ -75,6 +77,7 @@ export function oxidar(p: Parametros, estado: EstadoDopante, T_C: number, t_min:
   const ne = si.n_e(p, T_C);
   const ni_ = si.ni(p, T_C);
   const taxaF = cin.criarTaxa(p, T_C, modelo);
+  const ft = o.fatorTaxa ?? 1;
   const ctx = difusao.contexto(p, T_C);
   const area = new difusao.AreaDifusao(x.length);
   const passos = difusao.passosGeometricos(t_min, nPassos, 1.04);
@@ -93,8 +96,8 @@ export function oxidar(p: Parametros, estado: EstadoDopante, T_C: number, t_min:
     const dt = passos[k];
     const ns = si.eletrons(Math.min(e.ativo[0], ne), ni_);
     const F = ramoA === "ho_plummer" ? cin.fatorHoPlummer(p, T_C, ns) : ramoA === "nomura" ? Fnom : 1;
-    const k1 = taxaF(xox, t, F);
-    const k2 = taxaF(xox + 0.5 * dt * k1, t + 0.5 * dt, F);
+    const k1 = ft * taxaF(xox, t, F);
+    const k2 = ft * taxaF(xox + 0.5 * dt * k1, t + 0.5 * dt, F);
     const dxox = dt * k2;
     xox += dxox;
     t += dt;

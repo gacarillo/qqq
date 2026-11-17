@@ -7,6 +7,7 @@ import dadosParams from "@/dados/params.json";
 import { Simulador } from "@/fisica/cadeia";
 import type { TabelaBCA } from "@/fisica/implante/tabela";
 import { avaliar } from "@/fisica/incerteza/montecarlo";
+import { executarTarefa } from "@/previsao/tarefas";
 import type { Pedido, Resposta } from "./protocolo";
 
 export class Motor {
@@ -29,6 +30,32 @@ export class Motor {
       try {
         const resultado = this.sim.simular(m.receita, (etapa, fracao) => this.emitir({ tipo: "progresso", id: m.id, etapa, fracao }));
         this.emitir({ tipo: "resultado", id: m.id, resultado, ms: performance.now() - t0 });
+      } catch (e) {
+        const err = e as Error;
+        this.emitir({ tipo: "erro", id: m.id, mensagem: err.message, pilha: err.stack });
+      }
+      return;
+    }
+    if (m.tipo === "avaliar_pontos") {
+      const p = this.sim.parametros(m.receita);
+      m.pontos.forEach((pt, k) => {
+        if (this.cancelado.has(m.id)) return;
+        try {
+          const saida = avaliar(p, this.sim.interpolador, pt.receita, pt.t_ox_min, pt.amostra);
+          this.emitir({ tipo: "amostra_mc", id: m.id, indice: m.deslocamento + k, saida });
+        } catch (e) {
+          this.emitir({ tipo: "amostra_mc", id: m.id, indice: m.deslocamento + k, saida: null, erro: (e as Error).message });
+        }
+      });
+      this.emitir({ tipo: "fim_mc", id: m.id });
+      return;
+    }
+    if (m.tipo === "previsao") {
+      const t0 = performance.now();
+      try {
+        const p = this.sim.parametros(m.receita);
+        const resultado = executarTarefa(m.tarefa, p, (fracao, texto) => this.emitir({ tipo: "previsao_progresso", id: m.id, fracao, texto }));
+        this.emitir({ tipo: "previsao_resultado", id: m.id, resultado, ms: performance.now() - t0 });
       } catch (e) {
         const err = e as Error;
         this.emitir({ tipo: "erro", id: m.id, mensagem: err.message, pilha: err.stack });

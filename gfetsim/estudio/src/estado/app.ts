@@ -5,7 +5,7 @@ import type { ResultadoCadeia } from "@/fisica/cadeia";
 import type { Amostra, Saida } from "@/fisica/incerteza/montecarlo";
 import { Loja, Historico, armazenamento } from "./loja";
 
-export type Aba = "estrutura" | "perfis" | "oxidacao" | "dispositivo" | "eletrico" | "atomos" | "incerteza" | "parametros" | "relatorio";
+export type Aba = "estrutura" | "perfis" | "oxidacao" | "dispositivo" | "eletrico" | "atomos" | "incerteza" | "previsao" | "parametros" | "relatorio";
 export type Tema = "escuro" | "claro";
 export type NivelLog = "info" | "aviso" | "erro" | "ok";
 

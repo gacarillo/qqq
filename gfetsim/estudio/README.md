@@ -13,6 +13,7 @@ Aplicação de simulação do GFET de porta local que roda inteira no navegador.
 | Elétrico | Transistor em operação com varredura de V_G, histerese e tunelamento, bandas da pilha pelo Poisson, C-V, transferência com 40 dispositivos sorteados, saída, campo, f_T e capacitância quântica |
 | Átomos | Cascatas completas de três íons do RustBCA e o grafeno sobre SiO₂ amorfo com a densidade local da tensão de porta |
 | Incerteza | Monte Carlo da cadeia em vários workers, histogramas com percentis, sensibilidade por postos de Spearman e índices de Sobol com intervalo por reamostragem |
+| Previsão | Emulador por processo gaussiano treinado na cadeia, caderno de lotes com medidas, calibração bayesiana por MCMC, previsão do próximo lote com a chance de cumprir as especificações, ordem das medidas que mais reduzem a incerteza, mapa e receita ótima, e placar das previsões feitas antes da medida. Detalhes em [docs/previsao.md](docs/previsao.md) |
 | Parâmetros | O params.yaml inteiro com etiqueta, incerteza e fonte, filtros e sobrescrita de qualquer valor, e a tabela de referências conferidas |
 | Relatório | Documento da receita com tabelas, figuras, origem dos valores e limitações, baixado como HTML autocontido |
 
@@ -36,7 +37,7 @@ O `dist/index.html` abre direto no navegador, sem servidor. O Three.js vem do js
 |---|---|
 | Ctrl e Enter | simular agora |
 | Ctrl e Z, Ctrl, Shift e Z | desfazer e refazer a receita |
-| Alt e um número de 1 a 9 | trocar de vista |
+| Alt e um número de 1 a 9, e 0 para a décima | trocar de vista |
 | setas na barra de abas | vista anterior e seguinte |
 | duplo clique num gráfico ou no corte | voltar ao enquadramento original |
 | Ctrl e roda do mouse no corte | aproximar e afastar |

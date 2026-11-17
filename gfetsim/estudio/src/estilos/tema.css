@@ -169,6 +169,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .campo-rotulo .nome { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .campo-linha { display: grid; grid-template-columns: minmax(0, 1fr) 92px; gap: 8px; align-items: center; }
 .campo-linha.sem-faixa { grid-template-columns: minmax(0, 1fr); }
+.campo-linha.larga { grid-template-columns: minmax(0, 1fr) 122px; }
 .entrada-num { display: flex; align-items: center; background: var(--superficie-2); border: 1px solid var(--borda); border-radius: 4px; min-width: 0; }
 .entrada-num:focus-within { border-color: var(--acento); }
 .entrada-num input { width: 100%; min-width: 0; border: 0; background: transparent; padding: 4px 6px; font: 12px var(--f-dado); text-align: right; }
@@ -215,7 +216,7 @@ select:hover, .botao:hover { border-color: var(--borda-forte); }
 .insp-secao h3 { margin: 0; font: 600 11px var(--f-titulo); letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-3); }
 .metricas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
 .metrica { display: grid; gap: 1px; min-width: 0; }
-.metrica b { font: 500 15px var(--f-dado); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.metrica b { font: 500 15px var(--f-dado); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; line-height: 1.25; }
 .metrica span { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--texto-3); min-width: 0; }
 .metrica span em { font-style: normal; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .metrica.alerta b { color: var(--erro); }

@@ -38,7 +38,15 @@ export const ENTRADAS = [
 ] as const;
 
 export type NomeEntrada = (typeof ENTRADAS)[number][0];
-export type Amostra = Record<NomeEntrada, number> & { fator_eps_ox: number; espessura_sputter?: number };
+export type Amostra = Record<NomeEntrada, number> & {
+  fator_eps_ox: number;
+  espessura_sputter?: number;
+  /** fatores de calibração usados só pela previsão; ausentes valem 1 */
+  fator_taxa_ox?: number;
+  fator_mu_si?: number;
+};
+
+const CHAVES_MASETTI = ["mu_min1", "mu_min2", "mu1", "mu_max"].map((k) => `recozimento.mobilidade_si.masetti_eletrons_P.${k}`);
 
 export const SAIDAS = [
   ["fracao_ativa", "fração ativa após o recozimento", ""],
@@ -89,10 +97,13 @@ export function avaliar(p: Parametros, bca: InterpoladorBCA, r: Receita, t_ox_mi
     oxido_nativo_nm: Math.min(Math.max(th.oxido_nativo, 0), 5), dose_limiar_cm2: th.dose_limiar,
   });
   let e = estadoInicial(imp);
-  const Pm = p.copia({
+  const sobre: Record<string, number> = {
     "recozimento.solubilidade_P.A_ne": p.valor("recozimento.solubilidade_P.A_ne") * th.fator_ne,
     "recozimento.spe_550C.fator_aceleracao_P": th.fator_spe,
-  });
+  };
+  // Masetti é linear nas quatro mobilidades, então escalar as quatro escala µ(N) inteira
+  if (th.fator_mu_si !== undefined && th.fator_mu_si !== 1) for (const k of CHAVES_MASETTI) sobre[k] = p.valor(k) * th.fator_mu_si;
+  const Pm = p.copia(sobre);
   const rr = r.recozimento;
   const etapas: Etapa[] = [{ nome: "SPE", T_C: th.T_spe, t_s: rr.t_spe_min * 60 }];
   if (rr.variante === "A_rta") etapas.push({ nome: "RTA", T_C: th.T_rta, t_s: rr.t_rta_s, rapida: true });
@@ -101,7 +112,7 @@ export function avaliar(p: Parametros, bca: InterpoladorBCA, r: Receita, t_ox_mi
   const out = { fracao_ativa: fracaoAtiva(e), Rs_recozido: si.resistenciaFolha(Pm, e.x_nm, e.ativo), amorfo_nm: imp.amorfo_nm ? imp.amorfo_nm[1] : 0 } as Saida;
   let esp: number;
   if (r.oxidacao.metodo === "termico" && t_ox_min) {
-    const ox = oxidar(Pm, e, r.oxidacao.T_C, t_ox_min, { ramoAceleracao: r.oxidacao.ramoAceleracao, ramoInterface: r.oxidacao.ramoInterface, nPassos: 40 });
+    const ox = oxidar(Pm, e, r.oxidacao.T_C, t_ox_min, { ramoAceleracao: r.oxidacao.ramoAceleracao, ramoInterface: r.oxidacao.ramoInterface, nPassos: 40, fatorTaxa: th.fator_taxa_ox });
     e = ox.estado;
     esp = ox.espessura_nm;
   } else esp = th.espessura_sputter ?? r.oxidacao.alvo_nm;
