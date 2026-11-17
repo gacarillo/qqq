@@ -91,6 +91,7 @@ const SECOES: SecaoDef[] = [
       { tipo: "num", caminho: "eletrico.nEstrela_cm2", rotulo: "n* das poças", unidade: "cm⁻²", min: 1e10, max: 2e12, log: true, cientifico: true, chave: "eletrico.grafeno.n_residual.ju_lee" },
       { tipo: "num", caminho: "eletrico.Q_f_cm2", rotulo: "Carga fixa no óxido", unidade: "cm⁻²", min: 0, max: 2e12, passo: 1e10, cientifico: true, chave: "eletrico.oxido.carga_fixa_Qf" },
       { tipo: "num", caminho: "eletrico.D_it_cm2_eV", rotulo: "Densidade de armadilhas", unidade: "cm⁻²eV⁻¹", min: 0, max: 2e12, passo: 1e10, cientifico: true, chave: "eletrico.oxido.Dit" },
+      { tipo: "sel", caminho: "eletrico.ramoFN", rotulo: "Barreira do tunelamento", opcoes: [["williams", r("williams")], ["fukuda", r("fukuda")]], etiqueta: "C", dica: "fotoemissão menos o gap contra o par ajustado na corrente direta; cada par vem de uma fonte e é um ramo" },
     ],
   },
   {

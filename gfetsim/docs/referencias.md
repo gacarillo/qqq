@@ -118,6 +118,34 @@ Legenda da coluna Situação
 | IH | Ishigami T., Homma T., An importance quantification technique in uncertainty analysis for computer models, ISUMA (1990) | 10.1109/ISUMA.1990.151285 | função de teste do Sobol (verificação do módulo 5) |
 | ART | Carillo G., Teixeira V.K., Pereyra I., Óxido de porta de SiO₂ por sputtering reativo e transferência de grafeno CVD para um transistor de grafeno com porta local, manuscrito do usuário | sem DOI | dados de bancada [B]: calibração do sputtering, Raman, n_D, ilhas multicamada |
 
+## Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura
+
+O livro de Sze e os de física do estado sólido não estão acessíveis daqui, então a revisão foi atrás das medidas primárias que esses livros citam. Volume e página ficam de fora porque o índice não os mostrou; o DOI e o resumo foram conferidos.
+
+| ID | Referência | DOI | Por que importa |
+|---|---|---|---|
+| L1 | Dunlap W.C., Watters R.L., Direct Measurement of the Dielectric Constants of Silicon and Germanium, Phys. Rev. (1953) | 10.1103/PhysRev.92.1396 | εr do Si de 11,7 ± 0,2 a 1 MHz, constante em 1 % de 500 Hz a 30 MHz. Substitui o 11,7 de livro-texto |
+| L2 | Smakula A., Skribanowitz N., Szorc A., Dielectric Properties of Semiconductors at Low Temperatures, JAP (1972) | 10.1063/1.1661148 | εr do Si de 11,94 a 300 K acima de 10⁷ Hz, provável origem do 11,9 dos livros |
+| L3 | Seeger K., Microwave dielectric constants of silicon, gallium arsenide, and quartz, JAP (1988) | 10.1063/1.341153 | εr do Si de 11,6 ± 0,05 em micro-ondas |
+| L4 | Morin F.J., Maita J.P., Electrical Properties of Silicon Containing Arsenic and Boron, Phys. Rev. (1954) | 10.1103/PhysRev.96.28 | np = 1,5e33 T³ exp(−1,21/kT) abaixo de 700 K. Dá A = 3,873e16 e Eg_eff = 1,21 eV de nᵢ(T) |
+| L5 | Putley E.H., Mitchell W.H., The Electrical Conductivity and Hall Effect of Silicon, Proc. Phys. Soc. (1958) | 10.1088/0370-1328/72/2/303 | nᵢ = 3,10e16 T^1,5 exp(−0,603/kT) de 350 a 500 K, 18 % abaixo de L4 nas temperaturas de recozimento |
+| L6 | Green M.A., Intrinsic concentration, effective densities of states, and effective mass in silicon, JAP (1990) | 10.1063/1.345414 | Nv = 3,1e19 e nᵢ = 1,08e10 cm⁻³ a 300 K. Nc não está no resumo |
+| L7 | Bludau W., Onton A., Heinke W., Temperature dependence of the band gap of silicon, JAP (1974) | 10.1063/1.1663501 | Eg = 1,1785 − 9,025e-5 T − 3,05e-7 T² eV de 150 a 300 K, o que dá 1,124 eV a 300 K |
+| L8 | Gobeli G.W., Allen F.G., Direct and Indirect Excitation Processes in Photoelectric Emission from Silicon, Phys. Rev. (1962) | 10.1103/PhysRev.127.141 | limiar indireto de 5,15 eV igual a χ + Eg em Si(111) clivado. Com L7 dá χ = 4,03 eV |
+| L9 | Williams R., Photoemission of Electrons from Silicon into Silicon Dioxide, Phys. Rev. (1965) | 10.1103/PhysRev.140.A569 | limiar de 4,25 eV do Si para o SiO₂, 0,9 eV abaixo do limiar para o vácuo. Com L7 dá a barreira de 3,13 eV na banda de condução |
+| L10 | Goodman A.M., O'Neill J.J., Photoemission of Electrons from Metals into Silicon Dioxide, JAP (1966) | 10.1063/1.1708906 | afinidade eletrônica do SiO₂ de 1,0 eV. Com L8 confere a barreira de L9 dentro de 0,1 eV |
+| L11 | Fukuda M., Mizubayashi W., Kohno A., Miyazaki S., Hirose M., Analysis of Tunnel Current through Ultrathin Gate Oxides, JJAP (1998) | 10.1143/JJAP.37.L1534 | barreira de 3,34 eV em Si(100) e massa de tunelamento de 0,35 no regime direto. Ramo fukuda |
+| L12 | Custer J.S., Thompson M.O., Bucksbaum P.H., Solid phase epitaxy of laser amorphized silicon, APL (1988) | 10.1063/1.99990 | SPE de 1,7e-10 cm/s a 750 K e 1,9e-7 cm/s a 900 K com 2,71 eV. Dá o prefator [C] de 2,4e8 cm/s |
+| L13 | Lietoila A., Wakita A., Sigmon T.W., Gibbons J.F., Epitaxial regrowth of intrinsic, ³¹P-doped and compensated amorphous Si, JAP (1982) | 10.1063/1.331222 | Ea de 2,85 eV no intrínseco; P constante em 1,7e20 acelera a SPE de 6 a 8 vezes entre 477 e 576 °C |
+| L14 | Roth J.A., Olson G.L., Jacobson D.C., Poate J.M., Kinetics of solid phase epitaxy in thick amorphous Si layers formed by MeV ion implantation, APL (1990) | 10.1063/1.103477 | Ea de 2,70 eV, sem dependência da dose até 1000 vezes o limiar de amorfização |
+| L15 | Shannon J.M., D.C. measurement of the space charge capacitance and impurity profile beneath the gate of an MOST, SSE (1971) | 10.1016/0038-1101(71)90021-9 | coeficiente de segregação de cerca de 100 para P e 0,3 para B, pelo perfil sob a porta |
+| L16 | Suzuki K., Minakata H., Sakota T., Yamaguchi M., Tamura Y., Segregation coefficient of impurities at polycrystalline Si/HfO2 interfaces, SSE (2005) | 10.1016/j.sse.2004.06.018 | m de P perto de 1000 na interface de poli-Si com SiO₂ |
+| L17 | Deal B.E., Sklar M., Grove A.S., Snow E.H., Characteristics of the Surface-State Charge (Qss) of Thermally Oxidized Silicon, JES (1967) | 10.1149/1.2426565 | Qss controlado de forma reprodutível de 1e10 a 1e12 cm⁻². Dá a fonte da faixa da carga fixa |
+| L18 | Panchal V., Pearce R., Yakimova R., Tzalenchuk A., Kazakova O., Standardization of surface potential measurements of graphene domains, Sci. Rep. (2013) | 10.1038/srep02597 | função trabalho de 4,55 ± 0,02 eV na monocamada e 4,44 ± 0,02 eV na bicamada, em ar |
+| L19 | Ahmed K., Ibok E., Bains G., Chi D., Ogle B., Wortman J.J., Hauser J., Comparative physical and electrical metrology of ultrathin oxides in the 6 to 1.5 nm regime, IEEE TED (2000) | 10.1109/16.848276 | com εr = 3,9 a espessura do C-V quântico concorda com o HRTEM em 0,1 nm de 1,7 a 5,5 nm |
+| L20 | Slotboom J.W., de Graaff H.C., Measurements of bandgap narrowing in Si bipolar transistors, SSE (1976) | 10.1016/0038-1101(76)90043-5 | forma do ajuste do estreitamento de banda de 4e15 a 2,5e19. Constantes só no texto |
+| L21 | Lanyon H.P.D., Tuft R.A., Bandgap narrowing in heavily doped silicon, IEDM (1978) | 10.1109/IEDM.1978.189417 | ΔEg = 22,5 (N/1e18)^½ meV a TA de 3e17 a 3,3e19 |
+
 ## Discordâncias registradas
 
 | Tema | Lado 1 | Lado 2 | Tratamento |
@@ -136,3 +164,8 @@ Legenda da coluna Situação
 | aceleração da oxidação por P | Ho e Plummer, F de 3 a 5 (S2, R29) | taxa igual à do Si leve no início (N10); máximo de 2,1 (R23) | três ramos separados |
 | constantes de oxidação a 800 °C | B de Deal e Grove 3× maior que o de Massoud | B de Massoud (S1, tabela 2.3) | Massoud no regime fino, Deal e Grove só como comparação |
 | densidade residual no grafeno | soma em quadratura (R34) | soma linear (R42) | diferença de até 3 % na resistência; ambas implementadas |
+| εr do Si | 11,7 ± 0,2 a 1 MHz (L1) e 11,6 ± 0,05 em micro-ondas (L3) | 11,94 a 300 K acima de 10⁷ Hz (L2) | valor de L1 com faixa uniforme de 11,6 a 11,94; a diferença de 2 % não justifica ramo |
+| coeficiente de segregação de P | m de cerca de 100 (L15) | m > 1000 (R17), perto de 1000 em poli-Si (L16) | sem ramo, porque com m = 100 só 2,3 % do P consumido ficaria no óxido; a conta está no params.yaml |
+| barreira do Si para o SiO₂ | 3,13 eV por fotoemissão menos o gap (L9, L7) com m = 0,4 de FN (R45) | 3,34 eV com m = 0,35 no regime direto (L11) | dois ramos, cada um com o par barreira e massa da mesma fonte |
+| nᵢ(T) nos recozimentos | Morin e Maita, medido até 700 K (L4) | Putley e Mitchell, 18 % menor, medido até 500 K (L5) | L4 como padrão e L5 registrado; vira ramo só quando o nᵢ usado no ajuste de Fair e Tsai for lido |
+| prefator da SPE | 2,4e8 cm/s a partir de L12 com a Ea de N9 | 3,07e8 cm/s lembrado de Olson e Roth | L12 como [C]; a 550 °C a diferença é de 28 % e a SPE de 30 min completa nos dois |

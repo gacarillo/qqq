@@ -46,19 +46,26 @@ Prioridade alta
 
 1. Fair e Tsai, D0 e Ea das três difusividades (R6).
 2. Masetti para P, todos os parâmetros (R22).
-3. nᵢ(T) em temperatura de processo (forma A T^1,5 exp(−Eg/2kT)).
-4. Razões de vacâncias carregadas no modelo de Ho e Plummer (R29). Hoje usam as razões de difusividade de Fair e Tsai.
-5. Prefator da velocidade de SPE e fator de aceleração por P.
-6. εr do Si e do SiO₂, Nc do Si a 300 K, afinidade eletrônica do Si.
-7. Barreira Si/SiO₂ para Fowler-Nordheim.
-8. Fração da energia nuclear que vai para processos atômicos (só usada no critério de baixa temperatura).
+3. Razões de vacâncias carregadas no modelo de Ho e Plummer (R29). Hoje usam as razões de difusividade de Fair e Tsai.
+4. Fator de aceleração da SPE por P em função da concentração. L13 dá 6 a 8 só em 1,7e20; o provisório fica em 1 e a faixa vai até 8.
+5. Nc do Si a 300 K. O resumo de L6 traz Nv e nᵢ, mas não Nc.
+6. Fração da energia nuclear que vai para processos atômicos (só usada no critério de baixa temperatura).
+
+Saíram desta lista na revisão de literatura, com as fontes em docs/referencias.md
+
+* nᵢ(T), agora [C] e [P] de Morin e Maita (L4). Fica a dúvida de qual nᵢ(T) Fair e Tsai usaram no ajuste; Putley e Mitchell (L5) dão 18 % menos e mudariam o termo (n/nᵢ)² em cerca de 1,5 vez.
+* Prefator da SPE, agora [C] de Custer et al. (L12), 2,4e8 cm/s com a Ea de N9. A Ea de 2,7 eV foi confirmada por L12, L13 e L14.
+* εr do Si, agora [P] de Dunlap e Watters (L1) com a faixa de 11,6 a 11,94 de L2 e L3. εr do SiO₂, agora [C] pela concordância entre C-V e HRTEM de L19.
+* Afinidade eletrônica do Si, 4,03 eV [C] de L8 com o gap de L7.
+* Barreira Si/SiO₂, 3,13 eV [C] de L9 com L7, e o ramo novo de Fukuda et al. (L11) com 3,34 eV e m = 0,35. A corrente desse ramo fica 0,42 a 0,58 vez a do ramo padrão de 8 a 12 MV/cm.
+* Faixa da carga fixa de 1e10 a 1e12, agora [P] de Deal et al. (L17) para óxido térmico.
 
 Prioridade média
 
-1. Faixas de Qf e Dit para óxido seco de 20 nm sobre Si muito dopado com P.
+1. Dit para óxido seco de 20 nm sobre Si muito dopado com P, e Qf para o óxido de sputtering, que L17 não cobre.
 2. Faixa de resistência de contato e prior de mobilidade do grafeno CVD.
 3. Permissividade estática do óxido depositado por sputtering.
-4. Diferença de função trabalho entre grafeno e Si n+, que desloca a tensão de Dirac em algumas centenas de mV e hoje fica dentro da calibração de V_D.
+4. Diferença de função trabalho entre grafeno e Si n+. Com 4,55 eV do grafeno (L18) e 4,03 eV de afinidade do Si (L8, L7) ela dá 0,52 eV, ou 5,6e11 cm⁻² sob 20 nm de óxido, e hoje fica dentro da calibração de V_D.
 5. Cinética de desativação abaixo de 700 °C (R12b).
 
 ## Física que o modelo não tem
@@ -68,7 +75,7 @@ Prioridade média
 3. Cauda acelerada de Fair e Tsai (dissociação do par P-V).
 4. Aglomerados P-defeito e sua cinética (R12, R12b).
 5. Oxidação acelerada por difusão (OED) do P durante a oxidação de porta.
-6. Estreitamento de banda no Si n+.
+6. Estreitamento de banda no Si n+. L20 e L21 só cobrem até 2,5e19 e 3,3e19 cm⁻², abaixo do n+ da porta, e L20 diz que o efeito pesa sobretudo nos portadores minoritários.
 7. Efeitos 2D na janela de contato da porta. A borda da máscara agora tem um modelo 2D em `recozimento/borda2d.py`, com a sombra de 7°, o espalhamento lateral do RustBCA, o recozimento por separação de operadores e a oxidação por coluna. Ele não tem difusão lateral durante a oxidação nem tensão mecânica na borda [C].
 7a. O modelo 2D mostra que com Ho e Plummer a 900 °C o óxido chega a 19,8 nm sobre a porta e fica em 6,8 nm sobre o substrato, um degrau de 13 nm na borda da região n⁺. Isso afeta a cobertura do grafeno e a isolação fora da porta e precisa de medida.
 7b. No forno B a 900 °C o P avança cerca de 110 nm por baixo da máscara a 10 nm de profundidade.
@@ -78,4 +85,4 @@ Prioridade média
 
 ## Pedido prático
 
-A rede da sessão não alcança as editoras. Para trocar [I] por [P], o mais rápido é subir os PDFs para `gfetsim/externo/pdfs/`. A ordem de prioridade é R6, R22, N14, R26, R28, R29, R12b, A1, N1, R2, R8, R36, R37, R24, R20, N10 e N23.
+A rede da sessão não alcança as editoras, e os livros de Sze e de física do estado sólido não estão disponíveis aqui. Os sites abertos que trazem tabelas de constantes (www.ioffe.ru e www.iue.tuwien.ac.at) estão bloqueados pela rede do ambiente e precisam ser liberados nas configurações dele. Para trocar [I] por [P], o mais rápido é subir os PDFs para `gfetsim/externo/pdfs/`. A ordem de prioridade é R6, R22, N14, R26, R28, R29, R12b, A1, N1, R2, R8, R36, R37, R24, R20, N10 e N23.

@@ -168,6 +168,7 @@ def eletrico_casos():
         "x": lista(x), "ativo": lista(ativo), "psi0_0": float(si.psi0[0]), "psi_eq_0": float(si.psi_eq[0]), "Q": Qs, "curvatura": curv,
         "tab_mu": lista(mus[::50]), "tab_n": lista(ns[::50]), "V": V, "n": lista(n), "C": lista(Cv), "C_ox": pil.C_ox,
         "jimenez": I, "fn_E": E, "fn_J": lista(oxido.corrente_fn(P, np.array(E))),
+        "fn_J_fukuda": lista(oxido.corrente_fn(P, np.array(E), ramo="fukuda")),
         "sim": {"V_D": el.V_D, "V": lista(el.V), "n": lista(el.n_cm2), "C": lista(el.C_F_cm2), "Cm": lista(el.C_sem_si_F_cm2),
                 "E": lista(el.E_ox_MVcm), "Rsq": lista(el.R_quadrado_ohm), "Vr": list(el.V_ruptura)},
         "histerese": {"V": lista(Vh), "taxa": 0.2, "alfa": 0.15, "tau": 20.0, "VD": lista(histerese.varrer(Vh, 0.2, 0.15, 20.0)[1]),

@@ -17,10 +17,28 @@ def faixa_ruptura(params):
     return {"adams_MVcm": (a["min"], a["max"]), "oshea_MVcm": (o["valor"], o["incerteza"]["sigma"])}
 
 
-def corrente_fn(params, E_V_m, barreira_eV=None, fator_reducao=None):
-    """J = A E^2 exp(-B/E) (A/m2); m* de R45 no expoente, prefator teórico dividido pelo fator medido (R45)."""
-    mrel = params.valor("eletrico.oxido.fowler_nordheim.massa_efetiva_rel")
-    phi = barreira_eV if barreira_eV is not None else params.valor("eletrico.oxido.fowler_nordheim.barreira_Si_SiO2")
+RAMOS_FN = ("williams", "fukuda")
+
+
+def barreira_e_massa(params, ramo: str = "williams"):
+    """Par (barreira em eV, massa relativa) de cada ramo.
+
+    williams usa a barreira de L9 menos o gap de L7 com a massa de R45, que foi
+    tirada no regime de Fowler-Nordheim. fukuda usa o par de L11, tirado no
+    regime direto. Os dois pares vêm cada um de uma fonte e não se misturam.
+    """
+    r = "eletrico.oxido.fowler_nordheim."
+    if ramo == "williams":
+        return params.valor(r + "barreira_Si_SiO2"), params.valor(r + "massa_efetiva_rel")
+    if ramo == "fukuda":
+        return params.valor(r + "ramo_fukuda.barreira_Si_SiO2"), params.valor(r + "ramo_fukuda.massa_efetiva_rel")
+    raise ValueError(f"ramo de Fowler-Nordheim desconhecido: {ramo}")
+
+
+def corrente_fn(params, E_V_m, barreira_eV=None, fator_reducao=None, ramo: str = "williams"):
+    """J = A E^2 exp(-B/E) (A/m2); prefator teórico dividido pelo fator medido (R45)."""
+    phi_ramo, mrel = barreira_e_massa(params, ramo)
+    phi = barreira_eV if barreira_eV is not None else phi_ramo
     if fator_reducao is None:
         f = params.no("eletrico.oxido.fowler_nordheim.corrente_medida_abaixo_teoria")["faixa"]
         fator_reducao = np.sqrt(f["min"] * f["max"])

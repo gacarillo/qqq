@@ -146,7 +146,7 @@ export class Simulador {
       bordaR = medir("borda2d", () => this.memo(chave("borda", kOx, ri.ramoSombra), () => this.borda(p, r, imp, etapas, ox, (f) => progresso("borda 2D", 0.55 + 0.45 * f))));
     }
     progresso("pronto", 1);
-    const fn = parametrosFN(p);
+    const fn = parametrosFN(p, undefined, undefined, r.eletrico.ramoFN);
     const rup = faixaRuptura(p);
     const notas = [...imp.notas, ...rec.estado.historico, ...el.resultado.notas];
     return {

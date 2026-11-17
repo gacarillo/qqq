@@ -6,6 +6,7 @@ import type { Parametros } from "@/parametros/parametros";
 import type { RamoDesativacao, VarianteRecozimento } from "./recozimento/recozimento";
 import type { RamoAceleracao, RamoInterface } from "./oxidacao/oxidacao";
 import type { ModeloCinetica } from "./oxidacao/cinetica";
+import type { RamoFN } from "./eletrico/oxido";
 
 export type VarianteImplante = "A_mascara" | "B_lamina";
 export type RamoSombra = "sombra" | "sem_sombra";
@@ -53,6 +54,8 @@ export interface Receita {
     Q_f_cm2: number;
     nEstrela_cm2: number;
     D_it_cm2_eV: number;
+    /** par barreira e massa do tunelamento pelo óxido */
+    ramoFN: RamoFN;
   };
   dispositivo: {
     L_um: number;
@@ -116,7 +119,7 @@ export function receitaPadrao(p: Parametros): Receita {
       ramoInterface: "acumulo_classico",
       modelo: "massoud",
     },
-    eletrico: { rho_ohm_cm: 10, nDop_cm2: 3e12, sinalDop: -1, Q_f_cm2: 0, nEstrela_cm2: p.valor("eletrico.grafeno.n_residual.ju_lee"), D_it_cm2_eV: 0 },
+    eletrico: { rho_ohm_cm: 10, nDop_cm2: 3e12, sinalDop: -1, Q_f_cm2: 0, nEstrela_cm2: p.valor("eletrico.grafeno.n_residual.ju_lee"), D_it_cm2_eV: 0, ramoFN: "williams" },
     dispositivo: { L_um: 10, W_um: 10, mu_cm2Vs: 1600, RcW_ohm_um: 500, hbarOmega_meV: 55, VDS_V: 0.1, alfaHist: 0.15, tauHist_s: 20, vsat: true },
     borda: { calcular: true },
   };
@@ -161,4 +164,6 @@ export const NOMES_RAMO: Record<string, string> = {
   sem_sombra: "plano de inclinação paralelo à borda, sem sombra",
   massoud: "regime fino de Massoud (R26 a R28)",
   deal_grove: "Deal e Grove (R25)",
+  williams: "3,13 eV e m = 0,4 (L9, L7 e R45)",
+  fukuda: "3,34 eV e m = 0,35 (L11)",
 };

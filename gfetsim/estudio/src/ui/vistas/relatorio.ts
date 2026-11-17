@@ -110,6 +110,7 @@ export function vistaRelatorio(): Vista {
         ...(termico ? [linha("aceleração pela dopagem", NOMES_RAMO[r.oxidacao.ramoAceleracao], "C"), linha("P na interface", NOMES_RAMO[r.oxidacao.ramoInterface], "C")] : []),
         linha("substrato", `${br(r.eletrico.rho_ohm_cm, 3)} Ω·cm, ${sci(res.parasita.fundo_cm3, 2)} cm⁻³`, "B"),
         linha("grafeno", `dopagem residual ${sci(r.eletrico.nDop_cm2, 1)} cm⁻² tipo ${r.eletrico.sinalDop < 0 ? "p" : "n"}, n* ${sci(r.eletrico.nEstrela_cm2, 2)} cm⁻²`, "C"),
+        linha("barreira do tunelamento", NOMES_RAMO[r.eletrico.ramoFN], "C"),
         linha("transistor", `L = W = ${br(r.dispositivo.L_um, 1)} µm, µ ${br(r.dispositivo.mu_cm2Vs, 0)} cm²/V·s, Rc·W ${br(r.dispositivo.RcW_ohm_um, 0)} Ω·µm`, "B"),
       )),
       h("h2", null, "Resultados"),

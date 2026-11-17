@@ -6,6 +6,8 @@
   de perda com 1,1 V de curvatura (tolerância de meio ponto percentual).
 * Cq mínimo finito no ponto de Dirac (R39) e Cq igual a k|Vc| longe dele (R42).
 * Limite de baixa tensão de dreno do modelo de Jiménez (R42) igual ao de Kim (R34).
+* Os dois ramos de Fowler-Nordheim (L9 com R45 e L11) têm expoentes que diferem
+  menos de 5 %, porque cada par barreira e massa saiu de um ajuste a dados.
 """
 import numpy as np
 import pytest
@@ -74,3 +76,18 @@ def test_histerese_some_com_varredura_rapida():
     lento = largura(V, taxa_V_s=0.01, alfa=0.2, tau_s=30.0)
     rapido = largura(V, taxa_V_s=1e4, alfa=0.2, tau_s=30.0)
     assert abs(rapido) < 1e-3 and abs(lento) > 0.1
+
+
+def test_ramos_fowler_nordheim_coerentes(p):
+    from gfetsim.eletrico import oxido
+    pw, mw = oxido.barreira_e_massa(p, "williams")
+    pf, mf = oxido.barreira_e_massa(p, "fukuda")
+    assert (pw, mw) == (3.13, 0.4) and (pf, mf) == (3.34, 0.35)
+    razao = (np.sqrt(mf) * pf**1.5) / (np.sqrt(mw) * pw**1.5)
+    assert abs(razao - 1) < 0.05
+    E = np.array([8e8, 1e9, 1.2e9])
+    Jw = oxido.corrente_fn(p, E, ramo="williams")
+    Jf = oxido.corrente_fn(p, E, ramo="fukuda")
+    assert np.all(Jf < Jw) and np.all(Jf > Jw / 20)
+    with pytest.raises(ValueError):
+        oxido.corrente_fn(p, E, ramo="outro")

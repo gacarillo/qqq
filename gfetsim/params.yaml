@@ -217,14 +217,17 @@ recozimento:
   silicio:
     ni_T:
       forma: "ni = A T^1.5 exp(-Eg_eff / 2kT)"
-      A:      {valor: null, unidade: cm^-3 K^-1.5, etiqueta: I, valor_provisorio: 3.87e16,
-               nota: "valor usual em simuladores de processo; fonte original nao conferida"}
-      Eg_eff: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 1.21,
-               nota: "corresponde a 0,605 eV no expoente; nao conferido"}
+      ref: [L4]
+      A:      {valor: 3.873e16, unidade: cm^-3 K^-1.5, etiqueta: C, ref: [L4],
+               nota: "raiz de 1,5e33, do produto np = 1,5e33 T^3 exp(-1,21/kT) de Morin e Maita, medido abaixo de 700 K; nos recozimentos (823 a 1323 K) a forma e extrapolada"}
+      Eg_eff: {valor: 1.21, unidade: eV, etiqueta: P, ref: [L4],
+               nota: "Morin e Maita; 0,605 eV no expoente de ni"}
     ni_300K: {valor: 9.65e9, unidade: cm^-3, ref: [N25], etiqueta: P,
               nota: "N25 Altermatt et al., JAP 93, 1598, 10.1063/1.1529297; concorda com Misiakos e Tsamakis (9,7e9)"}
     ni_candidato_couderc: {ref: [N26], etiqueta: P,
               nota: "N26 Couderc et al., JAP 115, 093705, 10.1063/1.4867776: ni = 1,541e15 T^1,712 exp(-Eg0/2kT); Eg0 e faixa de validade nao lidos"}
+    ni_candidato_putley: {ref: [L5], etiqueta: P,
+              nota: "ni = 3,10e16 T^1,5 exp(-0,603/kT) medido de 350 a 500 K; da 18 % menos que Morin e Maita de 550 a 1050 C, o que mudaria o termo (n/ni)^2 de Fair e Tsai em cerca de 1,5 vez. Nao vira ramo porque as difusividades de Fair e Tsai foram ajustadas com um ni(T) que nao foi lido, e trocar so o ni misturaria fontes"}
 
   difusao_P:
     modelo_padrao: fair_tsai
@@ -264,12 +267,12 @@ recozimento:
 
   spe_550C:
     Ea_velocidade_spe: {valor: 2.7, unidade: eV, incerteza: {tipo: normal, sigma: 0.2}, ref: [N9], etiqueta: P,
-                        nota: "medido em RTA 475 a 600 C, com fator de aceleracao 4 frente a forno"}
-    prefator_velocidade: {valor: null, unidade: cm/s, etiqueta: I, valor_provisorio: 3.07e8,
-                          nota: "valor de Olson e Roth lembrado, com Ea 2,68 eV, para Si(100) intrinseco; nao conferido"}
-    fator_aceleracao_P: {valor: null, etiqueta: I, valor_provisorio: 1.0,
-                          incerteza: {tipo: loguniforme, min: 1.0, max: 6.0},
-                          nota: "P acelera a SPE em altas concentracoes; faixa [I] sem fonte conferida"}
+                        nota: "medido em RTA 475 a 600 C, com fator de aceleracao 4 frente a forno; Custer et al. (L12) dao 2,71 eV, Roth et al. (L14) 2,70 eV e Lietoila et al. (L13) 2,85 eV no intrinseco, todos dentro de 1 sigma"}
+    prefator_velocidade: {valor: 2.4e8, unidade: cm/s, etiqueta: C, ref: [L12],
+                          nota: "Custer et al. medem 1,7e-10 cm/s a 750 K e 1,9e-7 cm/s a 900 K em Si amorfizado por laser, que o resumo diz ser estruturalmente igual ao amorfo de implante. A reta de Arrhenius dos dois pontos da 7,1e-9 cm/s a 550 C, e com a Ea de 2,70 eV de N9 o prefator fica 2,4e8 (2,36e8 e 2,50e8 em cada ponto). O 3,07e8 lembrado de Olson e Roth daria 28 % mais a 550 C"}
+    fator_aceleracao_P: {valor: null, etiqueta: I, valor_provisorio: 1.0, ref: [L13],
+                          incerteza: {tipo: loguniforme, min: 1.0, max: 8.0},
+                          nota: "Lietoila et al. medem aceleracao de 6 a 8 com P constante em 1,7e20 entre 477 e 576 C, sem mudanca clara de Ea. A frente da SPE parte da interface entre amorfo e cristal, onde ha pouco P, entao o provisorio fica no limite intrinseco 1 e a faixa vai ate 8"}
     ativacao_apos_550C:
       valor: null
       ref: [R14, R13]
@@ -397,6 +400,10 @@ oxidacao:
       ref: [R17]
       etiqueta: P
       nota: "m = C_Si / C_SiO2; so limite inferior no resumo; abaixo de 1000 C extrapolacao [I]"
+    coef_segregacao_m_shannon: {valor: 100.0, unidade: adim, ref: [L15], etiqueta: P,
+                                nota: "C-V sob a porta depois de oxido de porta espesso; discorda do m > 1000 de R17 e do m perto de 1000 de L16 (poli-Si sobre SiO2)"}
+    efeito_de_m_no_modelo: {etiqueta: C,
+                            nota: "se o oxido recebe o P na razao 1/m, a fracao do P consumido que fica no oxido e 1/(0,44 m), 2,3 % com m = 100 e 0,23 % com m = 1000. O modelo devolve todo o P ao Si, o que superestima o acumulo em no maximo 2,3 % do P consumido; por isso a discordancia nao vira ramo"}
     coef_transporte_h_1100C: {valor: 5.0, unidade: um/min, ref: [R17], etiqueta: P}
     m_dependente_do_tempo: {valor: true, ref: [R21, R21b], etiqueta: P}
     camada_no_oxido: {valor: 2.0e21, unidade: cm^-3, faixa_T_C: [850, 1000], ref: [R32], etiqueta: P}
@@ -417,30 +424,48 @@ oxidacao:
 # ---------------------------------------------------------------------------
 eletrico:
   materiais:
-    eps_r_Si:   {valor: null, etiqueta: I, valor_provisorio: 11.7, nota: "valor de livro-texto; fonte primaria pendente"}
-    eps_r_SiO2: {valor: null, etiqueta: I, valor_provisorio: 3.9,  nota: "valor de livro-texto; fonte primaria pendente"}
+    eps_r_Si:   {valor: 11.7, etiqueta: P, ref: [L1], incerteza: {tipo: uniforme, min: 11.6, max: 11.94},
+                 nota: "Dunlap e Watters, 11,7 +- 0,2 a 1 MHz, constante em 1 % de 500 Hz a 30 MHz. Seeger (L3) mede 11,6 +- 0,05 em micro-ondas e Smakula et al. (L2) 11,94 a 300 K acima de 1e7 Hz; a faixa cobre os tres"}
+    eps_r_SiO2: {valor: 3.9, etiqueta: C, ref: [L19],
+                 nota: "sem medida direta conferida. Ahmed et al. mostram que, com 3,9, a espessura do C-V com correcao quantica concorda com o HRTEM em 0,1 nm de 1,7 a 5,5 nm, o que limita o erro de 3,9 a cerca de 2 % no oxido termico fino"}
   silicio_300K:
-    Nc: {valor: null, valor_provisorio: 2.86e19, unidade: cm^-3, etiqueta: I,
-         nota: "Green, JAP 67, 2944 (1990), lembrado e nao conferido"}
-    afinidade_eletronica: {valor: null, valor_provisorio: 4.05, unidade: eV, etiqueta: I}
-    bgn: {valor: null, etiqueta: I, nota: "estreitamento de banda nao incluido; R36 trata a densidade de estados, sem numero no resumo"}
+    Nc: {valor: null, valor_provisorio: 2.86e19, unidade: cm^-3, etiqueta: I, ref: [L6],
+         nota: "lembrado de Green (L6); o resumo de L6 so traz Nv = 3,1e19 e ni = 1,08e10, entao Nc continua sem conferencia"}
+    Nv: {valor: 3.1e19, unidade: cm^-3, ref: [L6], etiqueta: P, nota: "nao usado pelo modelo, que tira as lacunas de ni^2/Nc"}
+    Eg_300K: {valor: 1.124, unidade: eV, ref: [L7], etiqueta: C,
+              nota: "Bludau et al., Eg = 1,1785 - 9,025e-5 T - 3,05e-7 T^2 de 150 a 300 K, ajuste em 0,2 meV"}
+    afinidade_eletronica: {valor: 4.03, unidade: eV, ref: [L8, L7], etiqueta: C,
+                           nota: "limiar indireto de 5,15 eV = chi + Eg em Si(111) clivado no vacuo (Gobeli e Allen) menos Eg de L7; depende da superficie. Nao usada pelo modelo"}
+    bgn: {valor: null, etiqueta: I, ref: [L20, L21],
+          nota: "estreitamento de banda nao incluido. Slotboom e de Graaff (L20) ajustam dVg0 = V1 [ln(N/N0) + raiz(ln^2(N/N0) + C)] de 4e15 a 2,5e19 com as constantes so no texto, e dizem que o efeito pesa sobretudo nos portadores minoritarios. Lanyon e Tuft (L21) dao 22,5 (N/1e18)^0,5 meV a TA de 3e17 a 3,3e19. As duas faixas param abaixo do n+ da porta (1e20 a 1e21), entao incluir seria extrapolar"}
   ionizacao_incompleta:
     ref: [R35, R36, R37]
     fracao_nao_ionizada_max_mott: {valor: 0.25, unidade: fracao, ref: [R35], etiqueta: P}
     desprezivel_muito_acima_mott: {valor: true, ref: [R35], etiqueta: P}
     correcao_steinkemper: {valor: null, ref: [R37], etiqueta: I, nota: "forma corrigida so no texto"}
   oxido:
-    carga_fixa_Qf: {valor: null, unidade: cm^-2, incerteza: {tipo: loguniforme, min: 1.0e10, max: 1.0e12}, etiqueta: I}
+    carga_fixa_Qf: {valor: null, unidade: cm^-2, incerteza: {tipo: loguniforme, min: 1.0e10, max: 1.0e12}, ref: [L17], etiqueta: P,
+                    nota: "faixa em que Deal et al. controlam Qss de forma reprodutivel no oxido termico, conforme oxidacao, orientacao e recozimento; o oxido de sputtering nao e coberto"}
     Dit:           {valor: null, unidade: cm^-2 eV^-1, incerteza: {tipo: loguniforme, min: 1.0e10, max: 1.0e12}, etiqueta: I,
                     nota: "P aumenta Dit e carga (Snel, SSE 24, 135 (1981)); faixa [I]"}
     ruptura:
       adams: {faixa: {min: 10.0, max: 13.0}, unidade: MV/cm, espessura_nm: [3, 14], ref: [B1], etiqueta: P}
       oshea: {valor: 13.2, incerteza: {tipo: normal, sigma: 0.8}, unidade: MV/cm, espessura_nm: [7, 15], ref: [B2], etiqueta: P}
     fowler_nordheim:
-      massa_efetiva_rel: {valor: 0.4, unidade: adim, ref: [R45], etiqueta: P}
+      ramos: [williams, fukuda]
+      massa_efetiva_rel: {valor: 0.4, unidade: adim, ref: [R45], etiqueta: P,
+                          nota: "R45 tira 0,4 da inclinacao usando barreiras medidas antes; massa e barreira entram juntas no expoente como m^0,5 phi^1,5"}
       corrente_medida_abaixo_teoria: {faixa: {min: 5.0, max: 10.0}, unidade: vezes, ref: [R45], etiqueta: P}
-      barreira_Si_SiO2: {valor: null, unidade: eV, etiqueta: I, valor_provisorio: 3.1, nota: "conferir em R45 ou R46"}
+      barreira_Si_SiO2: {valor: 3.13, unidade: eV, etiqueta: C, ref: [L9, L7],
+                         nota: "limiar de fotoemissao do Si para o SiO2 de 4,25 eV (Williams), 0,9 eV abaixo do limiar para o vacuo, que e chi + Eg (L8); logo e medido da banda de valencia, e tirando Eg de 1,124 eV (L7) fica 3,13 eV. Confere com chi do Si menos chi do SiO2, 4,03 - 1,0 = 3,03 eV (L8, L10)"}
+      ramo_fukuda:
+        ref: [L11]
+        barreira_Si_SiO2: {valor: 3.34, unidade: eV, etiqueta: P, nota: "Si(100), a barreira que Fukuda et al. usam"}
+        massa_efetiva_rel: {valor: 0.35, unidade: adim, etiqueta: P, nota: "ajustada com 3,34 eV na corrente direta de oxidos de 1,27 a 8,12 nm"}
+        nota: "par da mesma fonte, tirado no regime direto e nao no de Fowler-Nordheim. m^0,5 phi^1,5 fica 3 % acima do par de R45 com L9; a corrente deste ramo fica 0,42 a 0,58 vez a do ramo williams de 8 a 12 MV/cm"
   grafeno:
+    funcao_trabalho_monocamada: {valor: 4.55, incerteza: {tipo: normal, sigma: 0.02}, unidade: eV, ref: [L18], etiqueta: P,
+                                 nota: "FM-KPFM calibrado em ar (Panchal et al.); bicamada 4,44 eV. O modelo nao usa, porque V_D vem da dopagem residual. A diferenca para o Si n+ (afinidade de 4,03 eV) e 0,52 eV, que sob 20 nm de oxido equivale a 5,6e11 cm^-2, menos que o piso de 1,4e12 do prior do Raman"}
     vF: {valor: 1.1e6, unidade: m/s, incerteza: {tipo: normal, sigma: 0.1e6}, ref: [D1], etiqueta: P,
          conferido_em: "D1, eq. 2 (cita Novoselov e Zhang); sigma de 0,1e6 [I] cobre o 1,0e6 usado em outros trabalhos"}
     raman_dopagem:

@@ -890,6 +890,195 @@
   "uso": "",
   "secao": "Referências novas encontradas na conferência"
  },
+ "L1": {
+  "id": "L1",
+  "texto": "Dunlap W.C., Watters R.L., Direct Measurement of the Dielectric Constants of Silicon and Germanium, Phys. Rev. (1953)",
+  "doi": "10.1103/PhysRev.92.1396",
+  "situacao": "εr do Si de 11,7 ± 0,2 a 1 MHz, constante em 1 % de 500 Hz a 30 MHz. Substitui o 11,7 de livro-texto",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L2": {
+  "id": "L2",
+  "texto": "Smakula A., Skribanowitz N., Szorc A., Dielectric Properties of Semiconductors at Low Temperatures, JAP (1972)",
+  "doi": "10.1063/1.1661148",
+  "situacao": "εr do Si de 11,94 a 300 K acima de 10⁷ Hz, provável origem do 11,9 dos livros",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L3": {
+  "id": "L3",
+  "texto": "Seeger K., Microwave dielectric constants of silicon, gallium arsenide, and quartz, JAP (1988)",
+  "doi": "10.1063/1.341153",
+  "situacao": "εr do Si de 11,6 ± 0,05 em micro-ondas",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L4": {
+  "id": "L4",
+  "texto": "Morin F.J., Maita J.P., Electrical Properties of Silicon Containing Arsenic and Boron, Phys. Rev. (1954)",
+  "doi": "10.1103/PhysRev.96.28",
+  "situacao": "np = 1,5e33 T³ exp(−1,21/kT) abaixo de 700 K. Dá A = 3,873e16 e Eg_eff = 1,21 eV de nᵢ(T)",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L5": {
+  "id": "L5",
+  "texto": "Putley E.H., Mitchell W.H., The Electrical Conductivity and Hall Effect of Silicon, Proc. Phys. Soc. (1958)",
+  "doi": "10.1088/0370-1328/72/2/303",
+  "situacao": "nᵢ = 3,10e16 T^1,5 exp(−0,603/kT) de 350 a 500 K, 18 % abaixo de L4 nas temperaturas de recozimento",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L6": {
+  "id": "L6",
+  "texto": "Green M.A., Intrinsic concentration, effective densities of states, and effective mass in silicon, JAP (1990)",
+  "doi": "10.1063/1.345414",
+  "situacao": "Nv = 3,1e19 e nᵢ = 1,08e10 cm⁻³ a 300 K. Nc não está no resumo",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L7": {
+  "id": "L7",
+  "texto": "Bludau W., Onton A., Heinke W., Temperature dependence of the band gap of silicon, JAP (1974)",
+  "doi": "10.1063/1.1663501",
+  "situacao": "Eg = 1,1785 − 9,025e-5 T − 3,05e-7 T² eV de 150 a 300 K, o que dá 1,124 eV a 300 K",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L8": {
+  "id": "L8",
+  "texto": "Gobeli G.W., Allen F.G., Direct and Indirect Excitation Processes in Photoelectric Emission from Silicon, Phys. Rev. (1962)",
+  "doi": "10.1103/PhysRev.127.141",
+  "situacao": "limiar indireto de 5,15 eV igual a χ + Eg em Si(111) clivado. Com L7 dá χ = 4,03 eV",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L9": {
+  "id": "L9",
+  "texto": "Williams R., Photoemission of Electrons from Silicon into Silicon Dioxide, Phys. Rev. (1965)",
+  "doi": "10.1103/PhysRev.140.A569",
+  "situacao": "limiar de 4,25 eV do Si para o SiO₂, 0,9 eV abaixo do limiar para o vácuo. Com L7 dá a barreira de 3,13 eV na banda de condução",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L10": {
+  "id": "L10",
+  "texto": "Goodman A.M., O'Neill J.J., Photoemission of Electrons from Metals into Silicon Dioxide, JAP (1966)",
+  "doi": "10.1063/1.1708906",
+  "situacao": "afinidade eletrônica do SiO₂ de 1,0 eV. Com L8 confere a barreira de L9 dentro de 0,1 eV",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L11": {
+  "id": "L11",
+  "texto": "Fukuda M., Mizubayashi W., Kohno A., Miyazaki S., Hirose M., Analysis of Tunnel Current through Ultrathin Gate Oxides, JJAP (1998)",
+  "doi": "10.1143/JJAP.37.L1534",
+  "situacao": "barreira de 3,34 eV em Si(100) e massa de tunelamento de 0,35 no regime direto. Ramo fukuda",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L12": {
+  "id": "L12",
+  "texto": "Custer J.S., Thompson M.O., Bucksbaum P.H., Solid phase epitaxy of laser amorphized silicon, APL (1988)",
+  "doi": "10.1063/1.99990",
+  "situacao": "SPE de 1,7e-10 cm/s a 750 K e 1,9e-7 cm/s a 900 K com 2,71 eV. Dá o prefator [C] de 2,4e8 cm/s",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L13": {
+  "id": "L13",
+  "texto": "Lietoila A., Wakita A., Sigmon T.W., Gibbons J.F., Epitaxial regrowth of intrinsic, ³¹P-doped and compensated amorphous Si, JAP (1982)",
+  "doi": "10.1063/1.331222",
+  "situacao": "Ea de 2,85 eV no intrínseco; P constante em 1,7e20 acelera a SPE de 6 a 8 vezes entre 477 e 576 °C",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L14": {
+  "id": "L14",
+  "texto": "Roth J.A., Olson G.L., Jacobson D.C., Poate J.M., Kinetics of solid phase epitaxy in thick amorphous Si layers formed by MeV ion implantation, APL (1990)",
+  "doi": "10.1063/1.103477",
+  "situacao": "Ea de 2,70 eV, sem dependência da dose até 1000 vezes o limiar de amorfização",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L15": {
+  "id": "L15",
+  "texto": "Shannon J.M., D.C. measurement of the space charge capacitance and impurity profile beneath the gate of an MOST, SSE (1971)",
+  "doi": "10.1016/0038-1101(71)90021-9",
+  "situacao": "coeficiente de segregação de cerca de 100 para P e 0,3 para B, pelo perfil sob a porta",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L16": {
+  "id": "L16",
+  "texto": "Suzuki K., Minakata H., Sakota T., Yamaguchi M., Tamura Y., Segregation coefficient of impurities at polycrystalline Si/HfO2 interfaces, SSE (2005)",
+  "doi": "10.1016/j.sse.2004.06.018",
+  "situacao": "m de P perto de 1000 na interface de poli-Si com SiO₂",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L17": {
+  "id": "L17",
+  "texto": "Deal B.E., Sklar M., Grove A.S., Snow E.H., Characteristics of the Surface-State Charge (Qss) of Thermally Oxidized Silicon, JES (1967)",
+  "doi": "10.1149/1.2426565",
+  "situacao": "Qss controlado de forma reprodutível de 1e10 a 1e12 cm⁻². Dá a fonte da faixa da carga fixa",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L18": {
+  "id": "L18",
+  "texto": "Panchal V., Pearce R., Yakimova R., Tzalenchuk A., Kazakova O., Standardization of surface potential measurements of graphene domains, Sci. Rep. (2013)",
+  "doi": "10.1038/srep02597",
+  "situacao": "função trabalho de 4,55 ± 0,02 eV na monocamada e 4,44 ± 0,02 eV na bicamada, em ar",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L19": {
+  "id": "L19",
+  "texto": "Ahmed K., Ibok E., Bains G., Chi D., Ogle B., Wortman J.J., Hauser J., Comparative physical and electrical metrology of ultrathin oxides in the 6 to 1.5 nm regime, IEEE TED (2000)",
+  "doi": "10.1109/16.848276",
+  "situacao": "com εr = 3,9 a espessura do C-V quântico concorda com o HRTEM em 0,1 nm de 1,7 a 5,5 nm",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L20": {
+  "id": "L20",
+  "texto": "Slotboom J.W., de Graaff H.C., Measurements of bandgap narrowing in Si bipolar transistors, SSE (1976)",
+  "doi": "10.1016/0038-1101(76)90043-5",
+  "situacao": "forma do ajuste do estreitamento de banda de 4e15 a 2,5e19. Constantes só no texto",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
+ "L21": {
+  "id": "L21",
+  "texto": "Lanyon H.P.D., Tuft R.A., Bandgap narrowing in heavily doped silicon, IEDM (1978)",
+  "doi": "10.1109/IEDM.1978.189417",
+  "situacao": "ΔEg = 22,5 (N/1e18)^½ meV a TA de 3e17 a 3,3e19",
+  "garante": "",
+  "uso": "",
+  "secao": "Constantes do Si, do óxido e do grafeno conferidas na revisão de literatura"
+ },
  "Tema": {
   "id": "Tema",
   "texto": "Lado 1",

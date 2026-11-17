@@ -24,9 +24,22 @@ export interface ParametrosFN {
   reducao: number;
 }
 
-export function parametrosFN(p: Parametros, barreira_eV?: number, fatorReducao?: number): ParametrosFN {
-  const mrel = p.valor("eletrico.oxido.fowler_nordheim.massa_efetiva_rel");
-  const phi = barreira_eV ?? p.valor("eletrico.oxido.fowler_nordheim.barreira_Si_SiO2");
+export type RamoFN = "williams" | "fukuda";
+
+/**
+ * Par barreira e massa de cada ramo. williams usa a barreira de L9 menos o gap de L7 com a
+ * massa de R45; fukuda usa o par de L11. Cada par vem de uma fonte e eles não se misturam.
+ */
+export function barreiraEMassa(p: Parametros, ramo: RamoFN = "williams"): [number, number] {
+  const r = "eletrico.oxido.fowler_nordheim.";
+  if (ramo === "williams") return [p.valor(r + "barreira_Si_SiO2"), p.valor(r + "massa_efetiva_rel")];
+  if (ramo === "fukuda") return [p.valor(r + "ramo_fukuda.barreira_Si_SiO2"), p.valor(r + "ramo_fukuda.massa_efetiva_rel")];
+  throw new Error(`ramo de Fowler-Nordheim desconhecido: ${String(ramo)}`);
+}
+
+export function parametrosFN(p: Parametros, barreira_eV?: number, fatorReducao?: number, ramo: RamoFN = "williams"): ParametrosFN {
+  const [phiRamo, mrel] = barreiraEMassa(p, ramo);
+  const phi = barreira_eV ?? phiRamo;
   let red = fatorReducao;
   if (red === undefined) {
     const f = p.metadados("eletrico.oxido.fowler_nordheim.corrente_medida_abaixo_teoria").faixa!;

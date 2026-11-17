@@ -43,6 +43,12 @@ describe("grafeno contra eletrico/grafeno.py", () => {
     const fn = parametrosFN(p);
     expect(erroRel(F.fn_E.map((E: number) => correnteFN(fn, E)), F.fn_J)).toBeLessThan(1e-10);
   });
+  it("Fowler e Nordheim no ramo de Fukuda", () => {
+    const fn = parametrosFN(p, undefined, undefined, "fukuda");
+    expect(fn.barreira_eV).toBe(3.34);
+    expect(fn.mrel).toBe(0.35);
+    expect(erroRel(F.fn_E.map((E: number) => correnteFN(fn, E)), F.fn_J_fukuda)).toBeLessThan(1e-10);
+  });
   it("histerese por relaxação", () => {
     const h = F.histerese;
     expect(erroRel(varrer(h.V, h.taxa, h.alfa, h.tau).VD, h.VD, 1e-9)).toBeLessThan(1e-12);
