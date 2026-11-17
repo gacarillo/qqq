@@ -1,0 +1,30 @@
+# Receita padrão do gfetsim. Valores físicos vêm do params.yaml; aqui ficam só as
+# escolhas de processo, os ramos e as varreduras.
+nome: porta_local_GFET
+aceitar_provisorios: true      # usa os valor_provisorio [I] e lista cada um no relatório
+sobrescrever: {}               # exemplo: {"receita.implantacao.rotacao_twist": 22.0}
+
+implantacao:
+  variante: A_mascara          # A_mascara (óxido de 150 nm com janela) ou B_lamina
+  n_ions: 100000
+  semente: 1
+
+recozimento:
+  variante: A_rta              # A_rta (550 C + 1050 C 10 s) ou B_forno (550 C + forno)
+  T_forno_C: null              # obrigatório na variante B, entre 850 e 900 C
+  ramo_desativacao: equilibrio # equilibrio ou metaestavel
+
+oxidacao:
+  metodo: termico              # termico ou sputtering
+  T_C: 900.0
+  t_min: null                  # null = procura o tempo que dá alvo_nm
+  alvo_nm: 20.0
+  ramo_aceleracao: ho_plummer  # ho_plummer, sem_aceleracao ou nomura
+  ramo_interface: acumulo_classico  # acumulo_classico, lado_oxido ou silicio_inativo
+
+eletrico:
+  rho_substrato_ohm_cm: [0.001, 0.01, 0.1, 1.0, 10.0]
+  n_dop_cm2: -3.0e12           # dopagem residual do grafeno; sinal desconhecido (Raman)
+  Q_f_cm2: 1.0e11
+  n_estrela_cm2: null          # null usa Ju e Lee (N17)
+  mu_grafeno: null             # null usa Kim et al. (R34), teto otimista para CVD

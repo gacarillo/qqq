@@ -1,0 +1,2303 @@
+{
+ "implantacao": {
+  "Rp_nm": 40.111799058207964,
+  "dRp_nm": 18.36187360958255,
+  "assimetria": 0.280812439858461,
+  "curtose": 2.727701168641203,
+  "tipo_pearson": "I",
+  "erro_Rp_nm": 0.05814301552139181,
+  "pico_cm3": 6.23607202622317e+20,
+  "dose_si": 2991990000000000.5,
+  "dose_oxido_nativo": 3660000000000.0,
+  "dose_refletida": 4350000000000.0,
+  "amorfo_nm_limiar_central": [
+   0.25,
+   35.25
+  ],
+  "transmissao_mascara_150nm": 0.0,
+  "n_ions": 100000,
+  "amorfo_faixa_A2": [
+   [
+    0.25,
+    50.25
+   ],
+   [
+    0.25,
+    0.25
+   ]
+  ]
+ },
+ "recozimento": {
+  "A (RTA)": {
+   "fracao_ativa": 1.0,
+   "Rs_ohm_sq": 39.48608583773613,
+   "Rs_limite_Li_Han": 49.30239882649337,
+   "ativo_superficie_cm3": 3.128145919869929e+20,
+   "pico_ativo_cm3": 3.128145919869929e+20,
+   "xj_1e17_nm": 140.75,
+   "historico": [
+    "implantado",
+    "SPE: SPE completa em 390 s",
+    "SPE: cinética de desativação abaixo de 700 C desconhecida (R12b); ativo mantido",
+    "SPE: 550 C por 1800 s, fração ativa 0.424",
+    "RTA: 1050 C por 10 s, fração ativa 1.000"
+   ]
+  },
+  "A metaestável": {
+   "fracao_ativa": 1.0,
+   "Rs_ohm_sq": 39.48608583773613,
+   "Rs_limite_Li_Han": 49.30239882649337,
+   "ativo_superficie_cm3": 3.128145919869929e+20,
+   "pico_ativo_cm3": 3.128145919869929e+20,
+   "xj_1e17_nm": 140.75,
+   "historico": [
+    "implantado",
+    "SPE: SPE completa em 390 s",
+    "SPE: 550 C por 1800 s, fração ativa 0.424",
+    "RTA: 1050 C por 10 s, fração ativa 1.000"
+   ]
+  },
+  "B 850 C": {
+   "fracao_ativa": 1.0,
+   "Rs_ohm_sq": 37.3649044191957,
+   "Rs_limite_Li_Han": 47.527267702006846,
+   "ativo_superficie_cm3": 2.7840658297554757e+20,
+   "pico_ativo_cm3": 2.7840658297554757e+20,
+   "xj_1e17_nm": 149.25,
+   "historico": [
+    "implantado",
+    "SPE: SPE completa em 390 s",
+    "SPE: cinética de desativação abaixo de 700 C desconhecida (R12b); ativo mantido",
+    "SPE: 550 C por 1800 s, fração ativa 0.424",
+    "forno: 850 C por 1800 s, fração ativa 1.000"
+   ]
+  },
+  "B 900 C": {
+   "fracao_ativa": 1.0,
+   "Rs_ohm_sq": 32.681501015643754,
+   "Rs_limite_Li_Han": 43.46975448659509,
+   "ativo_superficie_cm3": 2.0421801480676907e+20,
+   "pico_ativo_cm3": 2.0421801480676907e+20,
+   "xj_1e17_nm": 214.75,
+   "historico": [
+    "implantado",
+    "SPE: SPE completa em 390 s",
+    "SPE: cinética de desativação abaixo de 700 C desconhecida (R12b); ativo mantido",
+    "SPE: 550 C por 1800 s, fração ativa 0.424",
+    "forno: 900 C por 1800 s, fração ativa 1.000"
+   ]
+  }
+ },
+ "oxidacao": {
+  "t20": {
+   "A|sem_aceleracao|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.1970308897719874e+20,
+     "Rs_ohm_sq": 33.70871929113874
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.9454473649566e+20,
+     "Rs_ohm_sq": 32.00959128183485
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.7221294376163443e+20,
+     "Rs_ohm_sq": 30.734074793558516
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.527124455376103e+20,
+     "Rs_ohm_sq": 29.625932105879546
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.3549776859338508e+20,
+     "Rs_ohm_sq": 28.642577920345623
+    }
+   ],
+   "A|sem_aceleracao|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 214432373047510.34,
+     "ativo_interface_cm3": 2.0169752431623507e+20,
+     "Rs_ohm_sq": 35.17652737671635
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 196570604728928.72,
+     "ativo_interface_cm3": 1.799484018941307e+20,
+     "Rs_ohm_sq": 33.57266625530186
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 181758570009591.12,
+     "ativo_interface_cm3": 1.606390258290804e+20,
+     "Rs_ohm_sq": 32.19536018751854
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 167714577445331.44,
+     "ativo_interface_cm3": 1.4339365759979441e+20,
+     "Rs_ohm_sq": 30.972608809783964
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 154147417012818.06,
+     "ativo_interface_cm3": 1.2791568959768139e+20,
+     "Rs_ohm_sq": 29.867362589801743
+    }
+   ],
+   "A|sem_aceleracao|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.3182185338631925e+20,
+     "Rs_ohm_sq": 34.681548240289956
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.16726841897396e+20,
+     "Rs_ohm_sq": 32.8758889874608
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0332776625698066e+20,
+     "Rs_ohm_sq": 31.508034549176383
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 9.162746732256618e+19,
+     "Rs_ohm_sq": 30.31213180940001
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 8.129866115603104e+19,
+     "Rs_ohm_sq": 29.2466770571631
+    }
+   ],
+   "A|ho_plummer|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 135.5803138133771,
+     "espessura_nm": 20.198931700775034,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.3786564155248892e+20,
+     "Rs_ohm_sq": 37.55400027011227
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 37.37085626970179,
+     "espessura_nm": 19.90687059343619,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.6352930662994185e+20,
+     "Rs_ohm_sq": 35.93153556141724
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 13.594904266306273,
+     "espessura_nm": 20.082742072630992,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.4848943691796962e+20,
+     "Rs_ohm_sq": 35.03877113217376
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 5.7844759343529635,
+     "espessura_nm": 19.897566686259143,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.316444123958119e+20,
+     "Rs_ohm_sq": 33.99146276747026
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 2.7218218429742986,
+     "espessura_nm": 19.823447381846368,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.1437123581818592e+20,
+     "Rs_ohm_sq": 32.91604059094922
+    }
+   ],
+   "A|ho_plummer|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 135.5803138133771,
+     "espessura_nm": 20.198931700775034,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 241369328048029.44,
+     "ativo_interface_cm3": 2.3786564155248892e+20,
+     "Rs_ohm_sq": 38.07454959407704
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 40.473865804950016,
+     "espessura_nm": 20.05349756949521,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 233589132085343.9,
+     "ativo_interface_cm3": 2.324021532593847e+20,
+     "Rs_ohm_sq": 37.35320903021766
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 15.466693317500045,
+     "espessura_nm": 20.06889798234991,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 226989914226128.78,
+     "ativo_interface_cm3": 2.1935273400946023e+20,
+     "Rs_ohm_sq": 36.3441293502906
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 6.685665336948009,
+     "espessura_nm": 20.081441735425916,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 218762406043795.38,
+     "ativo_interface_cm3": 2.0496830422048234e+20,
+     "Rs_ohm_sq": 35.24068294558997
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 3.1802992504817382,
+     "espessura_nm": 20.180899527814454,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 209866188671375.44,
+     "ativo_interface_cm3": 1.8993276115709605e+20,
+     "Rs_ohm_sq": 34.110696402740054
+    }
+   ],
+   "A|ho_plummer|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 135.5803138133771,
+     "espessura_nm": 20.198931700775034,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.4271938493149335e+20,
+     "Rs_ohm_sq": 38.759825029120485
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 37.37085626970179,
+     "espessura_nm": 19.90687059343619,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.581175839779651e+20,
+     "Rs_ohm_sq": 37.012111209778105
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 13.594904266306273,
+     "espessura_nm": 20.082742072630992,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.4909366215078176e+20,
+     "Rs_ohm_sq": 36.079671055723196
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 5.7844759343529635,
+     "espessura_nm": 19.897566686259143,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.3898664743748713e+20,
+     "Rs_ohm_sq": 34.97912476658001
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 2.7218218429742986,
+     "espessura_nm": 19.823447381846368,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.2862274149091154e+20,
+     "Rs_ohm_sq": 33.84249670938581
+    }
+   ],
+   "A|nomura|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.3786564155248892e+20,
+     "Rs_ohm_sq": 36.921116091024565
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.378289526871592e+20,
+     "Rs_ohm_sq": 34.452471071899346
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.1539469906812902e+20,
+     "Rs_ohm_sq": 33.11120259837494
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.952333059342906e+20,
+     "Rs_ohm_sq": 31.912257007165834
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.769033556486691e+20,
+     "Rs_ohm_sq": 30.839808739230634
+    }
+   ],
+   "A|nomura|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 237851428399496.03,
+     "ativo_interface_cm3": 2.3564181149598672e+20,
+     "Rs_ohm_sq": 37.646085479423625
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 222107305239629.12,
+     "ativo_interface_cm3": 2.1576764545016644e+20,
+     "Rs_ohm_sq": 36.11224980201256
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 210247026973966.12,
+     "ativo_interface_cm3": 1.9749993845063598e+20,
+     "Rs_ohm_sq": 34.73986547117206
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 198128761893635.28,
+     "ativo_interface_cm3": 1.8046644009308042e+20,
+     "Rs_ohm_sq": 33.47499953865725
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 186217298337242.9,
+     "ativo_interface_cm3": 1.647199420764591e+20,
+     "Rs_ohm_sq": 32.319093031995564
+    }
+   ],
+   "A|nomura|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.4271938493149335e+20,
+     "Rs_ohm_sq": 38.0860102975407
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.4269737161229553e+20,
+     "Rs_ohm_sq": 35.464972614243194
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.292368194408774e+20,
+     "Rs_ohm_sq": 34.049002586798416
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.1713998356057437e+20,
+     "Rs_ohm_sq": 32.77374007969777
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0614201338920146e+20,
+     "Rs_ohm_sq": 31.625576944314695
+    }
+   ],
+   "B900|sem_aceleracao|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.9186760575237177e+20,
+     "Rs_ohm_sq": 31.682483244878725
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.7608695750618625e+20,
+     "Rs_ohm_sq": 30.89501331421938
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.604294919567958e+20,
+     "Rs_ohm_sq": 30.053383729179917
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.4521375235682299e+20,
+     "Rs_ohm_sq": 29.205146939298306
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.306835488220115e+20,
+     "Rs_ohm_sq": 28.375889423356437
+    }
+   ],
+   "B900|sem_aceleracao|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 161507195269709.88,
+     "ativo_interface_cm3": 1.736228347042116e+20,
+     "Rs_ohm_sq": 32.82166115928632
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 155964025061413.53,
+     "ativo_interface_cm3": 1.6192990228514613e+20,
+     "Rs_ohm_sq": 32.04230883096738
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 149398325715445.2,
+     "ativo_interface_cm3": 1.4924936550276766e+20,
+     "Rs_ohm_sq": 31.18411482851562
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 142074172735551.72,
+     "ativo_interface_cm3": 1.3624871736671668e+20,
+     "Rs_ohm_sq": 30.29605775896103
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 134100359851365.98,
+     "ativo_interface_cm3": 1.2340707994525127e+20,
+     "Rs_ohm_sq": 29.40741388230929
+    }
+   ],
+   "B900|sem_aceleracao|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 356.46310083685034,
+     "espessura_nm": 19.999360598505053,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.1512056345142306e+20,
+     "Rs_ohm_sq": 32.52866573178979
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 147.01052651513925,
+     "espessura_nm": 19.999362503106763,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0565217450371175e+20,
+     "Rs_ohm_sq": 31.68249554211182
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 65.53705043693343,
+     "espessura_nm": 19.99935361553111,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 9.625769517407748e+19,
+     "Rs_ohm_sq": 30.774460680479994
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 31.243076557663006,
+     "espessura_nm": 19.999337311628217,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 8.712825141409379e+19,
+     "Rs_ohm_sq": 29.85632145503574
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 15.788427956936335,
+     "espessura_nm": 19.99931580467632,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 7.84101292932069e+19,
+     "Rs_ohm_sq": 28.956828705240017
+    }
+   ],
+   "B900|ho_plummer|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 145.39732656997592,
+     "espessura_nm": 19.96341461037486,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.158993233587699e+20,
+     "Rs_ohm_sq": 32.60248318642906
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 53.920240457692344,
+     "espessura_nm": 19.965270868916445,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.0500836615861653e+20,
+     "Rs_ohm_sq": 32.1859436904585
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 21.550007733879802,
+     "espessura_nm": 19.871075933858776,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.947153522526552e+20,
+     "Rs_ohm_sq": 31.705172917276148
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 9.614530895381908,
+     "espessura_nm": 20.175143252472477,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.8305663541391973e+20,
+     "Rs_ohm_sq": 31.113571552517904
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 4.4411121211271976,
+     "espessura_nm": 20.047064671844094,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.726869225911203e+20,
+     "Rs_ohm_sq": 30.526118306997347
+    }
+   ],
+   "B900|ho_plummer|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 165.03135208317354,
+     "espessura_nm": 20.089304775487797,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 167266965983361.84,
+     "ativo_interface_cm3": 1.8645916175716123e+20,
+     "Rs_ohm_sq": 33.596841639488225
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 60.126259528188804,
+     "espessura_nm": 19.95107569358206,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 164862830268601.06,
+     "ativo_interface_cm3": 1.8043326662917154e+20,
+     "Rs_ohm_sq": 33.1923085397528
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 24.35769131067046,
+     "espessura_nm": 20.07391613022157,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 162060971211500.47,
+     "ativo_interface_cm3": 1.731526951423442e+20,
+     "Rs_ohm_sq": 32.687399214607616
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 10.515720297976953,
+     "espessura_nm": 20.047499518969126,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 158624377713287.12,
+     "ativo_interface_cm3": 1.6537469558592635e+20,
+     "Rs_ohm_sq": 32.12940797925353
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 4.784970176757778,
+     "espessura_nm": 19.815370988907734,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 154782548534054.1,
+     "ativo_interface_cm3": 1.5738972708518914e+20,
+     "Rs_ohm_sq": 31.547124879141236
+    }
+   ],
+   "B900|ho_plummer|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 145.39732656997592,
+     "espessura_nm": 19.96341461037486,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.2953959401526193e+20,
+     "Rs_ohm_sq": 33.511275498936364
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 53.920240457692344,
+     "espessura_nm": 19.965270868916445,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.2300501969516991e+20,
+     "Rs_ohm_sq": 33.06820356349291
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 21.550007733879802,
+     "espessura_nm": 19.871075933858776,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.1682921135159312e+20,
+     "Rs_ohm_sq": 32.5548517766334
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 9.614530895381908,
+     "espessura_nm": 20.175143252472477,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0983398124835183e+20,
+     "Rs_ohm_sq": 31.920856923828
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 4.4411121211271976,
+     "espessura_nm": 20.047064671844094,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0361215355467217e+20,
+     "Rs_ohm_sq": 31.290106542586567
+    }
+   ],
+   "B900|nomura|acumulo_classico": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.1410791044194098e+20,
+     "Rs_ohm_sq": 32.54702114860003
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 2.0144980784803178e+20,
+     "Rs_ohm_sq": 32.04552700148903
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.8888793698137938e+20,
+     "Rs_ohm_sq": 31.442608808181575
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.762818447497739e+20,
+     "Rs_ohm_sq": 30.770557932717033
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.6348852093670002e+20,
+     "Rs_ohm_sq": 30.06070372396848
+    }
+   ],
+   "B900|nomura|lado_oxido": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 167539977557569.56,
+     "ativo_interface_cm3": 1.8723206446604734e+20,
+     "Rs_ohm_sq": 33.64160682845035
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 164656915801766.0,
+     "ativo_interface_cm3": 1.8006335414252732e+20,
+     "Rs_ohm_sq": 33.16895416461918
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 160981913715140.84,
+     "ativo_interface_cm3": 1.715770994196687e+20,
+     "Rs_ohm_sq": 32.58350024170247
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 156517714583274.12,
+     "ativo_interface_cm3": 1.6205831735979927e+20,
+     "Rs_ohm_sq": 31.91373933522344
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 151434389745170.2,
+     "ativo_interface_cm3": 1.5181253372864666e+20,
+     "Rs_ohm_sq": 31.190886531881226
+    }
+   ],
+   "B900|nomura|silicio_inativo": [
+    {
+     "T_C": 800.0,
+     "t_min": 155.67107215253625,
+     "espessura_nm": 20.128330059040973,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.2846474626516458e+20,
+     "Rs_ohm_sq": 33.45238687554355
+    },
+    {
+     "T_C": 850.0,
+     "t_min": 61.46591790336486,
+     "espessura_nm": 20.139356673535108,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.2086988470881906e+20,
+     "Rs_ohm_sq": 32.91823226708252
+    },
+    {
+     "T_C": 900.0,
+     "t_min": 26.320509767002143,
+     "espessura_nm": 20.149038977344574,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.1333276218882762e+20,
+     "Rs_ohm_sq": 32.27324598222316
+    },
+    {
+     "T_C": 950.0,
+     "t_min": 12.082532990530524,
+     "espessura_nm": 20.157756968475418,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 1.0576910684986434e+20,
+     "Rs_ohm_sq": 31.551876891906772
+    },
+    {
+     "T_C": 1000.0,
+     "t_min": 5.892963189396127,
+     "espessura_nm": 20.166001465155894,
+     "si_consumido_nm": 8.5,
+     "dose_no_oxido": 0.0,
+     "ativo_interface_cm3": 9.809311256202e+19,
+     "Rs_ohm_sq": 30.787394605266112
+    }
+   ]
+  },
+  "t20_cinetica_pura": {
+   "massoud": {
+    "800.0": 356.46310083685034,
+    "850.0": 147.01052651513925,
+    "900.0": 65.53705043693343,
+    "950.0": 31.243076557663006,
+    "1000.0": 15.788427956936335
+   },
+   "deal_grove": {
+    "800.0": 817.4870831909199,
+    "850.0": 315.32254879685183,
+    "900.0": 132.41607346010755,
+    "950.0": 59.95502128207516,
+    "1000.0": 29.030688691461066
+   }
+  }
+ },
+ "eletrico": {
+  "perdas_si": {
+   "perfil simulado (A, 900 C)": {
+    "2e+12": 0.008055296457370577,
+    "5e+12": 0.0084548628345306,
+    "1e+13": 0.008942591257287691,
+    "-5e+12": 0.007585882705739182,
+    "-1e+13": 0.007422956920439594
+   },
+   "uniforme 1e+19": {
+    "2e+12": 0.03597880577946854,
+    "5e+12": 0.0754065422759654,
+    "1e+13": 0.11226830596234927,
+    "-5e+12": 0.011975824915147489,
+    "-1e+13": 0.010305590239180207
+   },
+   "uniforme 1e+20": {
+    "2e+12": 0.010251301408475818,
+    "5e+12": 0.011814819722896224,
+    "1e+13": 0.014497520302961031,
+    "-5e+12": 0.008709672384374225,
+    "-1e+13": 0.0083284564024384
+   },
+   "uniforme 3e+20": {
+    "2e+12": 0.007740825193700798,
+    "5e+12": 0.008059178191567137,
+    "1e+13": 0.00841679825415953,
+    "-5e+12": 0.007372201990357787,
+    "-1e+13": 0.00723730776841669
+   }
+  },
+  "deplecao_1p1V": {
+   "1e+19": 0.16581842388541837,
+   "1e+20": 0.05914203385062522,
+   "3e+20": 0.03502106856566017
+  },
+  "anterior_usuario": {
+   "1e+19": 0.17,
+   "1e+20": 0.06,
+   "3e+20": 0.035
+  },
+  "curvatura_1p1V": {
+   "1e+19": {
+    "Q_C_m2": 0.020256845693321215,
+    "n_grafeno_cm2": 12643328621481.58,
+    "E_ox_MVcm": 5.866221842797364
+   },
+   "1e+20": {
+    "Q_C_m2": 0.05929310961601796,
+    "n_grafeno_cm2": 37007848172137.29,
+    "E_ox_MVcm": 17.1708142532548
+   },
+   "3e+20": {
+    "Q_C_m2": 0.10142852324523383,
+    "n_grafeno_cm2": 63306704824428.13,
+    "E_ox_MVcm": 29.372895837383318
+   }
+  },
+  "V_D": {
+   "1.4e+12": -1.4343860466314378,
+   "-1.4e+12": 1.433877553276196,
+   "3.0e+12": -3.0103823594455537,
+   "-3.0e+12": 3.0094242055082296,
+   "1.0e+13": -9.756148809364833,
+   "-1.0e+13": 9.747305738170194
+  },
+  "ruptura_MVcm": {
+   "adams_MVcm": [
+    10.0,
+    13.0
+   ],
+   "oshea_MVcm": [
+    13.2,
+    0.8
+   ]
+  },
+  "V_ruptura_20nm": [
+   20.0,
+   26.0
+  ],
+  "FN_A_cm2": {
+   "2 MV/cm": 4.39593143349139e-46,
+   "4 MV/cm": 7.032739765760728e-20,
+   "6 MV/cm": 5.411424633425107e-11,
+   "8 MV/cm": 1.7790631405862675e-06,
+   "10 MV/cm": 0.0010097474207703952
+  },
+  "parasita_fora_do_n+": {
+   "0.001": {
+    "N_sub_cm3": 8.213280941225212e+19,
+    "C_min_sobre_Cox": 0.8814415436848213,
+    "C_em_mais8V": 0.959269668365775,
+    "C_em_menos8V": 0.9674343327073396
+   },
+   "0.01": {
+    "N_sub_cm3": 4.0568783379357967e+18,
+    "C_min_sobre_Cox": 0.7727205076813031,
+    "C_em_mais8V": 0.8046873683429686,
+    "C_em_menos8V": 0.9652334589166258
+   },
+   "0.1": {
+    "N_sub_cm3": 8.082876168702198e+16,
+    "C_min_sobre_Cox": 0.472080683748868,
+    "C_em_mais8V": 0.9664768908344735,
+    "C_em_menos8V": 0.9645070080810085
+   },
+   "1.0": {
+    "N_sub_cm3": 4935722400641896.0,
+    "C_min_sobre_Cox": 0.4233138848253098,
+    "C_em_mais8V": 0.9668052011360591,
+    "C_em_menos8V": 0.9643217112819574
+   },
+   "10.0": {
+    "N_sub_cm3": 450972059304260.1,
+    "C_min_sobre_Cox": 0.4421860571022687,
+    "C_em_mais8V": 0.9669934455249594,
+    "C_em_menos8V": 0.9641770766077524
+   }
+  }
+ },
+ "sputtering": {
+  "inclinacao": 0.08803235515425133,
+  "ic95": [
+   0.07176153985782224,
+   0.10430317045068041
+  ],
+  "r2": 0.9963230175471663,
+  "p": 0.0018401843656666431,
+  "intercepto": -0.5124793077501888,
+  "p_intercepto": 0.18834544138964274,
+  "tempo_20nm_30W": {
+   "tempo": 9.396326665523649,
+   "ic95": [
+    7.080222246139558,
+    13.964407159623681
+   ],
+   "ip95": [
+    6.188058058580223,
+    19.51312865803548
+   ]
+  },
+  "tempo_20nm_40W": {
+   "tempo": 6.647135392244759,
+   "ic95": [
+    5.578004782341391,
+    8.22328403694695
+   ],
+   "ip95": [
+    4.949169056744226,
+    10.118654424201106
+   ]
+  },
+  "tempo_20nm_50W": {
+   "tempo": 5.142527132247882,
+   "ic95": [
+    4.574406884497492,
+    5.871774451108707
+   ],
+   "ip95": [
+    4.10496940729543,
+    6.881996530032087
+   ]
+  }
+ },
+ "montecarlo": {
+  "A|sem_aceleracao|acumulo|n": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "sem_aceleracao",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": 1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 19.995604169729642,
+    "mediana": 19.995604169729642,
+    "p97.5": 19.995604169729642
+   },
+   "Rs_final": {
+    "p2.5": 28.321023218334844,
+    "mediana": 30.790597722763117,
+    "p97.5": 33.59563228544536
+   },
+   "ativo_superficie": {
+    "p2.5": 1.6200071851007086e+20,
+    "mediana": 1.711749937140684e+20,
+    "p97.5": 1.8049533661944978e+20
+   },
+   "V_D": {
+    "p2.5": -9.374133125417803,
+    "mediana": -3.745794634176643,
+    "p97.5": -1.5223315174038505
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.009195106404387619,
+    "mediana": 0.009416290346993428,
+    "p97.5": 0.009626121754961225
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8273264806463206,
+    "mediana": 0.8822615458908998,
+    "p97.5": 0.9204879948248169
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 173.2439302994779,
+    "mediana": 788.0384303857813,
+    "p97.5": 3759.2304710847598
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.316288682829441,
+    "mediana": 2.343590434438223,
+    "p97.5": 2.367448119904209
+   }
+  },
+  "A|sem_aceleracao|acumulo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "sem_aceleracao",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 19.995604169729642,
+    "mediana": 19.995604169729642,
+    "p97.5": 19.995604169729642
+   },
+   "Rs_final": {
+    "p2.5": 28.321023218334844,
+    "mediana": 30.790597722763117,
+    "p97.5": 33.59563228544536
+   },
+   "ativo_superficie": {
+    "p2.5": 1.6200071851007086e+20,
+    "mediana": 1.711749937140684e+20,
+    "p97.5": 1.8049533661944978e+20
+   },
+   "V_D": {
+    "p2.5": 1.5216750554429501,
+    "mediana": 3.7438679539140978,
+    "p97.5": 9.36113524421723
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.009195106402859813,
+    "mediana": 0.009416290347566636,
+    "p97.5": 0.009626121754957978
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8273264806463566,
+    "mediana": 0.8822615458909018,
+    "p97.5": 0.9204879948247704
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 173.2439302994779,
+    "mediana": 788.0384303857816,
+    "p97.5": 3759.2304710847593
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.316288682829441,
+    "mediana": 2.343590434438223,
+    "p97.5": 2.3674481199042092
+   }
+  },
+  "A|ho_plummer|acumulo|n": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": 1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 16.518136886887625,
+    "mediana": 19.695098495550837,
+    "p97.5": 21.122177223254997
+   },
+   "Rs_final": {
+    "p2.5": 32.49422974911521,
+    "mediana": 35.093223593736184,
+    "p97.5": 38.13265547507821
+   },
+   "ativo_superficie": {
+    "p2.5": 2.319916840170287e+20,
+    "mediana": 2.457546766236461e+20,
+    "p97.5": 2.6538134576638267e+20
+   },
+   "V_D": {
+    "p2.5": -9.310881032854757,
+    "mediana": -3.6446257833681717,
+    "p97.5": -1.477052974795488
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.00785648539447488,
+    "mediana": 0.008569710564573452,
+    "p97.5": 0.01035954456582558
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8226708672643374,
+    "mediana": 0.8801582173565514,
+    "p97.5": 0.9194229423720109
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 174.881807894889,
+    "mediana": 790.0365486434051,
+    "p97.5": 3790.917528819048
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.2244007964460044,
+    "mediana": 2.3760298019839805,
+    "p97.5": 2.816984249025467
+   }
+  },
+  "A|ho_plummer|acumulo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 16.518136886887625,
+    "mediana": 19.695098495550837,
+    "p97.5": 21.122177223254997
+   },
+   "Rs_final": {
+    "p2.5": 32.49422974911521,
+    "mediana": 35.093223593736184,
+    "p97.5": 38.13265547507821
+   },
+   "ativo_superficie": {
+    "p2.5": 2.319916840170287e+20,
+    "mediana": 2.457546766236461e+20,
+    "p97.5": 2.6538134576638267e+20
+   },
+   "V_D": {
+    "p2.5": 1.4766551118626374,
+    "mediana": 3.643300989868642,
+    "p97.5": 9.303742491109958
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.007856485393290416,
+    "mediana": 0.008569710565145161,
+    "p97.5": 0.010359544565201158
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8226708672643539,
+    "mediana": 0.880158217356515,
+    "p97.5": 0.9194229423718315
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 174.88180789488902,
+    "mediana": 790.0365486434052,
+    "p97.5": 3790.917528819045
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.2244007964460053,
+    "mediana": 2.3760298019839796,
+    "p97.5": 2.816984249025467
+   }
+  },
+  "A|nomura|acumulo|n": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "nomura",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": 1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 20.147160025630836,
+    "mediana": 20.147160025630836,
+    "p97.5": 20.147160025630836
+   },
+   "Rs_final": {
+    "p2.5": 30.591772167316567,
+    "mediana": 33.148784699228685,
+    "p97.5": 36.080256752886044
+   },
+   "ativo_superficie": {
+    "p2.5": 2.0152487141948264e+20,
+    "mediana": 2.129460280392055e+20,
+    "p97.5": 2.248569266052058e+20
+   },
+   "V_D": {
+    "p2.5": -9.435613367721425,
+    "mediana": -3.7706958794789953,
+    "p97.5": -1.532400478528615
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.00855841992007866,
+    "mediana": 0.008730237686138786,
+    "p97.5": 0.008903506020818294
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8286629462400924,
+    "mediana": 0.883331272043372,
+    "p97.5": 0.9213530185559968
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 174.41437753078506,
+    "mediana": 793.4319388499122,
+    "p97.5": 3784.2690481136456
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.3006790682995883,
+    "mediana": 2.327777291032045,
+    "p97.5": 2.3513884999184853
+   }
+  },
+  "A|nomura|acumulo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "nomura",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 20.147160025630836,
+    "mediana": 20.147160025630836,
+    "p97.5": 20.147160025630836
+   },
+   "Rs_final": {
+    "p2.5": 30.591772167316567,
+    "mediana": 33.148784699228685,
+    "p97.5": 36.080256752886044
+   },
+   "ativo_superficie": {
+    "p2.5": 2.0152487141948264e+20,
+    "mediana": 2.129460280392055e+20,
+    "p97.5": 2.248569266052058e+20
+   },
+   "V_D": {
+    "p2.5": 1.5318055788318277,
+    "mediana": 3.7692091959924,
+    "p97.5": 9.426032860068043
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.008558419920807508,
+    "mediana": 0.008730237685562692,
+    "p97.5": 0.00890350602381045
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8286629462401209,
+    "mediana": 0.8833312720432982,
+    "p97.5": 0.9213530185560145
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 174.41437753078498,
+    "mediana": 793.4319388499123,
+    "p97.5": 3784.2690481136456
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.3006790682995875,
+    "mediana": 2.327777291032045,
+    "p97.5": 2.351388499918485
+   }
+  },
+  "A|ho_plummer|lado_oxido|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "lado_oxido",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 16.50665656156975,
+    "mediana": 18.640431924911887,
+    "p97.5": 19.909923668549286
+   },
+   "Rs_final": {
+    "p2.5": 33.74670712048489,
+    "mediana": 36.56239753348793,
+    "p97.5": 39.60523822651358
+   },
+   "ativo_superficie": {
+    "p2.5": 2.111242506230892e+20,
+    "mediana": 2.247882223318665e+20,
+    "p97.5": 2.3853037098204427e+20
+   },
+   "V_D": {
+    "p2.5": 1.4061006003404415,
+    "mediana": 3.485960033719473,
+    "p97.5": 8.795949366480286
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.008567387439103232,
+    "mediana": 0.00926765746545083,
+    "p97.5": 0.010464876311409188
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8156551182988624,
+    "mediana": 0.8743648312611304,
+    "p97.5": 0.9152464417857076
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 177.22258522121277,
+    "mediana": 796.8892197641311,
+    "p97.5": 3786.4737735369713
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.354482035064376,
+    "mediana": 2.5054575116475464,
+    "p97.5": 2.8193828053584307
+   }
+  },
+  "A|ho_plummer|silicio_inativo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "silicio_inativo",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 16.518136886887625,
+    "mediana": 19.695098495550837,
+    "p97.5": 21.122177223254997
+   },
+   "Rs_final": {
+    "p2.5": 33.368428021792155,
+    "mediana": 36.12170110386157,
+    "p97.5": 39.356115658563944
+   },
+   "ativo_superficie": {
+    "p2.5": 1.3919501041021723e+20,
+    "mediana": 1.4745280597418764e+20,
+    "p97.5": 1.592288074598296e+20
+   },
+   "V_D": {
+    "p2.5": 1.4777856988878486,
+    "mediana": 3.6460010751732286,
+    "p97.5": 9.30939001845694
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.009150197661380218,
+    "mediana": 0.010044179716848955,
+    "p97.5": 0.01224456108339691
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8220527310266027,
+    "mediana": 0.8793492768221415,
+    "p97.5": 0.918705180366075
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 174.81153584422424,
+    "mediana": 787.9456250577355,
+    "p97.5": 3791.7921360635464
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.2222695867408797,
+    "mediana": 2.3733592003748427,
+    "p97.5": 2.8127012338710307
+   }
+  },
+  "B850|ho_plummer|acumulo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 0.7827347472707928,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 35.34277091363687,
+    "mediana": 37.95945002203788,
+    "p97.5": 42.95902559386669
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 21.78980180834354,
+    "mediana": 23.733434425660178,
+    "p97.5": 25.010319003212523
+   },
+   "Rs_final": {
+    "p2.5": 31.04207309142238,
+    "mediana": 33.54790426882346,
+    "p97.5": 36.33287320696999
+   },
+   "ativo_superficie": {
+    "p2.5": 2.060141249536417e+20,
+    "mediana": 2.2200697434204642e+20,
+    "p97.5": 2.384229256730286e+20
+   },
+   "V_D": {
+    "p2.5": 1.7428223755625485,
+    "mediana": 4.4209199413180205,
+    "p97.5": 11.031117883378283
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.006857389347581233,
+    "mediana": 0.0073520220845164075,
+    "p97.5": 0.008010118730090878
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8487744472806852,
+    "mediana": 0.898802387294692,
+    "p97.5": 0.9319984634132886
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 175.79564196615755,
+    "mediana": 797.3129184703103,
+    "p97.5": 3784.054478770479
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 1.8885666402719667,
+    "mediana": 1.9893603077134159,
+    "p97.5": 2.155761753250491
+   }
+  },
+  "B900|ho_plummer|acumulo|p": {
+   "n": 1000,
+   "ramos": {
+    "aceleracao": "ho_plummer",
+    "interface": "acumulo_classico",
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 30.286793329235376,
+    "mediana": 32.8031114594753,
+    "p97.5": 35.65157801230745
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 18.80536283831483,
+    "mediana": 19.745207524758982,
+    "p97.5": 20.695836228626963
+   },
+   "Rs_final": {
+    "p2.5": 29.33023298079,
+    "mediana": 31.779490892296558,
+    "p97.5": 34.65912426945426
+   },
+   "ativo_superficie": {
+    "p2.5": 1.8507608854784433e+20,
+    "mediana": 1.9299879588268127e+20,
+    "p97.5": 2.094844156109452e+20
+   },
+   "V_D": {
+    "p2.5": 1.5100404104719827,
+    "mediana": 3.719046912055177,
+    "p97.5": 9.203376664036128
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.008538265410382148,
+    "mediana": 0.009162814617645176,
+    "p97.5": 0.009730681933298369
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8240615042301033,
+    "mediana": 0.881397067355041,
+    "p97.5": 0.9187249343124075
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 175.23598611923214,
+    "mediana": 799.4766913227087,
+    "p97.5": 3779.6074396365198
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 2.265071229488499,
+    "mediana": 2.370664192455349,
+    "p97.5": 2.4873906582488994
+   }
+  },
+  "A|sputtering|p": {
+   "n": 1000,
+   "ramos": {
+    "sinal_dopagem": -1
+   },
+   "fracao_ativa": {
+    "p2.5": 1.0,
+    "mediana": 1.0,
+    "p97.5": 1.0
+   },
+   "Rs_recozido": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "amorfo_nm": {
+    "p2.5": 0.0,
+    "mediana": 37.5,
+    "p97.5": 49.5
+   },
+   "espessura_ox_nm": {
+    "p2.5": 15.469948798738557,
+    "mediana": 19.99096144495728,
+    "p97.5": 25.903592499120823
+   },
+   "Rs_final": {
+    "p2.5": 36.63888835688916,
+    "mediana": 39.603600661723775,
+    "p97.5": 42.76768067296121
+   },
+   "ativo_superficie": {
+    "p2.5": 2.8393076164350476e+20,
+    "mediana": 3.1251077541828284e+20,
+    "p97.5": 3.436936442011328e+20
+   },
+   "V_D": {
+    "p2.5": 1.4619312214769282,
+    "mediana": 3.8115189906434077,
+    "p97.5": 9.824943616263665
+   },
+   "perda_si_5e12": {
+    "p2.5": 0.00606642150146382,
+    "mediana": 0.007938125888028835,
+    "p97.5": 0.01029894577760665
+   },
+   "C_min_sobre_Cox": {
+    "p2.5": 0.8169167685926907,
+    "mediana": 0.8835987166582104,
+    "p97.5": 0.928000926621034
+   },
+   "Rsq_grafeno_5e12": {
+    "p2.5": 176.525179167726,
+    "mediana": 794.5257438250369,
+    "p97.5": 3766.3964079275142
+   },
+   "E_ox_em_VD_mais_5V": {
+    "p2.5": 1.8284615982228873,
+    "mediana": 2.342149209536431,
+    "p97.5": 2.99126659692475
+   }
+  }
+ },
+ "sobol": {
+  "espessura_ox_nm": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    0.0013091644801333667,
+    0.18351358013206212,
+    -0.00910547366527054,
+    0.0,
+    0.5738515211427213,
+    0.0,
+    0.022373088650667883,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ST": [
+    0.0008197821886473561,
+    0.25186331764120456,
+    0.0011804811893129667,
+    0.0,
+    0.637922090921054,
+    0.0,
+    0.10112605091549275,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "S1_ic": [
+    0.006415195274572999,
+    0.2327625358047011,
+    0.01498838643548168,
+    0.0,
+    0.4468232621613183,
+    0.0,
+    0.09905731858063394,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ST_ic": [
+    0.0005634789183904794,
+    0.14500612431175564,
+    0.0005528019871204715,
+    0.0,
+    0.2465762668105005,
+    0.0,
+    0.05593159404174294,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "Rs_final": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    -0.0011623486449077775,
+    1.1078864265132626,
+    0.0008104859688025301,
+    0.0,
+    0.005050952991895705,
+    0.0,
+    0.033721638295622726,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ST": [
+    0.0001650919277052329,
+    1.0618907000915507,
+    0.00020702756524371932,
+    0.0,
+    0.011187901510777698,
+    0.0,
+    0.015347076651039265,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "S1_ic": [
+    0.003966134651878924,
+    0.37340854624870523,
+    0.00345100342456952,
+    0.0,
+    0.02609892620328332,
+    0.0,
+    0.04065855026811211,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ST_ic": [
+    0.00016994918567498688,
+    0.17208638608520174,
+    0.00016848158968842505,
+    0.0,
+    0.017442135686130792,
+    0.0,
+    0.006439174237886704,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "V_D": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    -0.0013127590885370452,
+    0.00277918358780596,
+    -8.28056603496573e-05,
+    0.0,
+    0.025132705542461026,
+    0.0,
+    0.004287540908099581,
+    0.0,
+    -2.40191391543328e-06,
+    0.0005176109436326917,
+    0.9952635690575706,
+    0.0010083994960664797,
+    0.0
+   ],
+   "ST": [
+    7.541839162511769e-06,
+    0.002887219270372535,
+    1.140225860246182e-05,
+    0.0,
+    0.008646831171916936,
+    0.0,
+    0.0008200863573832827,
+    0.0,
+    1.1692300249884665e-09,
+    1.937944824080001e-05,
+    0.9932772667891901,
+    7.15536024466906e-05,
+    0.0
+   ],
+   "S1_ic": [
+    0.0007096156812062847,
+    0.018406238631310905,
+    0.0011684778972866768,
+    0.0,
+    0.03278387853377495,
+    0.0,
+    0.01203044037657875,
+    0.0,
+    1.1759297810155106e-05,
+    0.001448942547271866,
+    0.2987903646997291,
+    0.0030023040589860907,
+    0.0
+   ],
+   "ST_ic": [
+    5.057218077116574e-06,
+    0.0018948964899292635,
+    6.500600256326003e-06,
+    0.0,
+    0.008449398001895663,
+    0.0,
+    0.0002854368904682593,
+    0.0,
+    5.688133556553345e-10,
+    1.0688456877219322e-05,
+    0.23775049279167965,
+    3.7058741979677226e-05,
+    0.0
+   ]
+  },
+  "perda_si_5e12": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    -9.836785356516033e-05,
+    0.1795625959963759,
+    -0.009711841652310607,
+    0.0,
+    0.6263577218309899,
+    0.0,
+    0.009087462995972273,
+    0.0,
+    0.004214085064730919,
+    0.00010527364087829033,
+    9.801617191025216e-11,
+    0.0005247093199178707,
+    0.0
+   ],
+   "ST": [
+    0.0006585775468857044,
+    0.25523333118635777,
+    0.0009806137251074912,
+    0.0,
+    0.6779291185974897,
+    0.0,
+    0.07741709471453154,
+    0.0,
+    0.002368942633938306,
+    4.626215187782216e-05,
+    1.4009561603746536e-18,
+    0.000590471237678846,
+    0.0
+   ],
+   "S1_ic": [
+    0.005418258517621711,
+    0.2766900195139201,
+    0.011215881934897828,
+    0.0,
+    0.5562871603810651,
+    0.0,
+    0.08590997587323544,
+    0.0,
+    0.013401932530975557,
+    0.001683151327586925,
+    2.980369817135234e-10,
+    0.009223000006576524,
+    0.0
+   ],
+   "ST_ic": [
+    0.0006597559427584738,
+    0.18571081156373626,
+    0.0006780591383976219,
+    0.0,
+    0.27608380051662673,
+    0.0,
+    0.056310292615113694,
+    0.0,
+    0.0018711545417744776,
+    3.2572988838040915e-05,
+    1.087141554692916e-18,
+    0.00039632202771395733,
+    0.0
+   ]
+  },
+  "Rsq_grafeno_5e12": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    0.00044570607521466477,
+    3.458929507462803e-05,
+    0.0006603858694269744,
+    0.0,
+    0.0005215347411850759,
+    0.0,
+    -0.000291142709423422,
+    0.0,
+    1.070383574456199e-06,
+    0.002359377530618305,
+    1.3138045116691106e-17,
+    -0.0028567009205414293,
+    1.0316397752487876
+   ],
+   "ST": [
+    1.9516084438496106e-05,
+    0.0002835971093168238,
+    0.00018593958977837518,
+    0.0,
+    0.00010997542608157339,
+    0.0,
+    0.00056085065168813,
+    0.0,
+    1.0237595358404166e-09,
+    5.614591013584886e-05,
+    1.3641028188241447e-31,
+    0.0003415095797353358,
+    1.0340265245856655
+   ],
+   "S1_ic": [
+    0.0009777985934674748,
+    0.0034473462241098258,
+    0.002886387810250286,
+    0.0,
+    0.0051454299113457905,
+    0.0,
+    0.007665150021031107,
+    0.0,
+    1.0076965788012255e-05,
+    0.001995421595735229,
+    1.2105170399175698e-16,
+    0.006208799297589069,
+    0.39118079694043156
+   ],
+   "ST_ic": [
+    2.3320942369555708e-05,
+    0.00016925252258276967,
+    0.0002322340248085627,
+    0.0,
+    0.00011059379812444879,
+    0.0,
+    0.0003949589174020798,
+    0.0,
+    6.960262490455893e-10,
+    2.859264702625321e-05,
+    1.2081865396480306e-31,
+    0.0004026213442326343,
+    0.25506636821795575
+   ]
+  },
+  "C_min_sobre_Cox": {
+   "nomes": [
+    "energia",
+    "dose",
+    "oxido_nativo",
+    "dose_limiar",
+    "fator_ne",
+    "fator_spe",
+    "T_rta",
+    "T_spe",
+    "Q_f",
+    "n_estrela",
+    "n_dop",
+    "vF",
+    "mu_grafeno"
+   ],
+   "S1": [
+    0.0007592481792693024,
+    -0.017496767890550356,
+    -0.0008343192792149408,
+    0.0,
+    0.0267598911565048,
+    0.0,
+    0.0079075421204559,
+    0.0,
+    -0.00015911664224399255,
+    0.8052472514847758,
+    3.8750038076076127e-13,
+    0.25106896740926926,
+    0.0
+   ],
+   "ST": [
+    2.981732996082829e-05,
+    0.009546950484181633,
+    4.7787153482578475e-05,
+    0.0,
+    0.030130344208534932,
+    0.0,
+    0.004215681311900882,
+    0.0,
+    3.0052644572018375e-07,
+    0.8231242872561096,
+    1.277826377718838e-22,
+    0.1649248165728149,
+    0.0
+   ],
+   "S1_ic": [
+    0.0022914927984394964,
+    0.034079834201349954,
+    0.0027627800484210643,
+    0.0,
+    0.06098903915912997,
+    0.0,
+    0.022113966061546267,
+    0.0,
+    0.00017951631428236473,
+    0.2454872557857252,
+    3.66397973016043e-12,
+    0.15752406162407193,
+    0.0
+   ],
+   "ST_ic": [
+    1.4370219342989218e-05,
+    0.00470631046639801,
+    2.1512756563361798e-05,
+    0.0,
+    0.018846906437600657,
+    0.0,
+    0.0017570858649227522,
+    0.0,
+    1.5566350713115087e-07,
+    0.22513541891811012,
+    7.721891042689946e-23,
+    0.0473281368049123,
+    0.0
+   ]
+  }
+ },
+ "provisorios_usados": [
+  "eletrico.materiais.eps_r_Si",
+  "eletrico.materiais.eps_r_SiO2",
+  "eletrico.oxido.fowler_nordheim.barreira_Si_SiO2",
+  "eletrico.silicio_300K.Nc",
+  "recozimento.difusao_P.fair_tsai.D0_duplo",
+  "recozimento.difusao_P.fair_tsai.D0_menos",
+  "recozimento.difusao_P.fair_tsai.D0_neutro",
+  "recozimento.difusao_P.fair_tsai.Ea_duplo",
+  "recozimento.difusao_P.fair_tsai.Ea_menos",
+  "recozimento.difusao_P.fair_tsai.Ea_neutro",
+  "recozimento.mobilidade_si.masetti_eletrons_P.Cr",
+  "recozimento.mobilidade_si.masetti_eletrons_P.Cs",
+  "recozimento.mobilidade_si.masetti_eletrons_P.Pc",
+  "recozimento.mobilidade_si.masetti_eletrons_P.alpha",
+  "recozimento.mobilidade_si.masetti_eletrons_P.beta",
+  "recozimento.mobilidade_si.masetti_eletrons_P.mu1",
+  "recozimento.mobilidade_si.masetti_eletrons_P.mu_max",
+  "recozimento.mobilidade_si.masetti_eletrons_P.mu_min1",
+  "recozimento.mobilidade_si.masetti_eletrons_P.mu_min2",
+  "recozimento.silicio.ni_T.A",
+  "recozimento.silicio.ni_T.Eg_eff",
+  "recozimento.spe_550C.fator_aceleracao_P",
+  "recozimento.spe_550C.prefator_velocidade"
+ ]
+}

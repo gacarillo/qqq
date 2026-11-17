@@ -1,0 +1,2174 @@
+{
+ "meta": {
+  "versao_esquema": 1,
+  "conferencia_referencias": "docs/referencias.md",
+  "notas_de_conferencia": "docs/notas_conferencia.md",
+  "pendencias": "pendencias.md",
+  "limitacao_da_conferencia": "A rede desta sessao bloqueia Crossref, doi.org e as editoras. A conferencia foi feita pelo indice SciSpace (DOI, autores, revista, resumo) e pelo bibcode ADS. Numeros que so existem no texto completo ficaram [I] ou null.\n",
+  "fontes_secundarias": "Alguns valores [P] foram lidos em fontes secundarias abertas (teses da TU Wien, artigos do arXiv) que tabelam os numeros e citam a fonte primaria. Nesses casos o campo conferido_em diz onde o numero foi lido, e a fonte primaria continua listada em ref. O numero e [P] porque foi lido em texto publicado, mas a transcricao entre a fonte primaria e a secundaria nao foi conferida. S1 Filipovic L., dissertacao TU Wien, iue.tuwien.ac.at/phd/filipovic (tabelas 2.2 a 2.4) S2 Radi M., dissertacao TU Wien, iue.tuwien.ac.at/phd/radi/node23.html (eq. 2.38 a 2.42) D1 Das A. et al., Nat. Nanotechnol. 3, 210 (2008), 10.1038/nnano.2008.67, texto aberto arXiv 0709.1174 ART artigo do usuario (Carillo, Teixeira, Pereyra), dados de bancada [B]\n"
+ },
+ "constantes": {
+  "fonte": "CODATA 2018 via scipy.constants (DOI do CODATA a conferir, ver pendencias)",
+  "q": {
+   "valor": 1.602176634e-19,
+   "unidade": "C",
+   "incerteza": null,
+   "etiqueta": "P"
+  },
+  "k_B": {
+   "valor": 1.380649e-23,
+   "unidade": "J/K",
+   "incerteza": null,
+   "etiqueta": "P"
+  },
+  "eps0": {
+   "valor": 8.8541878128e-12,
+   "unidade": "F/m",
+   "incerteza": null,
+   "etiqueta": "P"
+  },
+  "h": {
+   "valor": 6.62607015e-34,
+   "unidade": "J*s",
+   "incerteza": null,
+   "etiqueta": "P"
+  },
+  "m0": {
+   "valor": 9.1093837015e-31,
+   "unidade": "kg",
+   "incerteza": null,
+   "etiqueta": "P"
+  }
+ },
+ "receita": {
+  "substrato": {
+   "tipo": {
+    "valor": "n",
+    "etiqueta": "B"
+   },
+   "orientacao": {
+    "valor": "(100)",
+    "etiqueta": "B"
+   },
+   "resistividade": {
+    "valor": null,
+    "unidade": "ohm*cm",
+    "incerteza": {
+     "tipo": "varredura",
+     "min": 0.001,
+     "max": 10.0
+    },
+    "etiqueta": "B",
+    "nota": "desconhecida; varrer de 0,001 a 10 ohm cm"
+   },
+   "dopante_fundo": {
+    "valor": null,
+    "etiqueta": "B",
+    "nota": "P ou As ou Sb? pendente; afeta Masetti e Fermi"
+   }
+  },
+  "implantacao": {
+   "ion": {
+    "valor": "P",
+    "carga": 1,
+    "etiqueta": "B"
+   },
+   "energia": {
+    "valor": 30.0,
+    "unidade": "keV",
+    "incerteza": {
+     "tipo": "normal_rel",
+     "sigma_rel": 0.01
+    },
+    "etiqueta": "B",
+    "nota": "incerteza de 1 % e [I], convencao de implantador; confirmar com o operador"
+   },
+   "dose": {
+    "valor": 3000000000000000.0,
+    "unidade": "cm^-2",
+    "incerteza": {
+     "tipo": "normal_rel",
+     "sigma_rel": 0.05
+    },
+    "etiqueta": "B",
+    "nota": "incerteza de 5 % e [I]; integrador de corrente e eletrons secundarios"
+   },
+   "inclinacao": {
+    "valor": 7.0,
+    "unidade": "grau",
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 0.5
+    },
+    "etiqueta": "B",
+    "nota": "sigma 0,5 grau e [I]"
+   },
+   "rotacao_twist": {
+    "valor": null,
+    "unidade": "grau",
+    "etiqueta": "B",
+    "nota": "NAO informado; decide canalizacao planar (110) a 7 graus (ver N1 Ghante)"
+   },
+   "temperatura": {
+    "valor": 25.0,
+    "unidade": "C",
+    "incerteza": {
+     "tipo": "uniforme",
+     "min": 20.0,
+     "max": 80.0
+    },
+    "etiqueta": "B",
+    "nota": "ambiente; limite superior [I] por aquecimento do feixe"
+   },
+   "densidade_corrente": {
+    "valor": null,
+    "unidade": "uA/cm^2",
+    "etiqueta": "B",
+    "nota": "afeta autorrecozimento e amorfizacao (Berti et al. pss(a) 97, 77 (1986))"
+   },
+   "variantes": {
+    "A_mascara": {
+     "oxido_mascara_nm": 150.0,
+     "janela": true,
+     "etiqueta": "B"
+    },
+    "B_lamina": {
+     "oxido_mascara_nm": 0.0,
+     "janela": false,
+     "etiqueta": "B"
+    }
+   },
+   "oxido_nativo": {
+    "valor": 1.5,
+    "unidade": "nm",
+    "incerteza": {
+     "tipo": "uniforme",
+     "min": 0.5,
+     "max": 2.5
+    },
+    "etiqueta": "I",
+    "nota": "nao informado se ha HF antes da implantacao"
+   }
+  },
+  "recozimento": {
+   "spe": {
+    "temperatura": {
+     "valor": 550.0,
+     "unidade": "C",
+     "incerteza": {
+      "tipo": "normal",
+      "sigma": 5.0
+     },
+     "etiqueta": "B"
+    },
+    "tempo": {
+     "valor": 30.0,
+     "unidade": "min",
+     "incerteza": null,
+     "etiqueta": "B"
+    },
+    "ambiente": {
+     "valor": "N2",
+     "etiqueta": "I",
+     "nota": "ambiente da etapa de 550 C nao informado"
+    }
+   },
+   "variante_A_rta": {
+    "temperatura": {
+     "valor": 1050.0,
+     "unidade": "C",
+     "incerteza": {
+      "tipo": "normal",
+      "sigma": 10.0
+     },
+     "etiqueta": "B",
+     "nota": "sigma de pirometro [I]"
+    },
+    "tempo": {
+     "valor": 10.0,
+     "unidade": "s",
+     "incerteza": null,
+     "etiqueta": "B"
+    },
+    "rampa_subida": {
+     "valor": null,
+     "unidade": "C/s",
+     "etiqueta": "B",
+     "nota": "pendente; contribui ao orcamento termico"
+    },
+    "rampa_descida": {
+     "valor": null,
+     "unidade": "C/s",
+     "etiqueta": "B",
+     "nota": "pendente"
+    }
+   },
+   "variante_B_forno": {
+    "temperatura": {
+     "valor": null,
+     "unidade": "C",
+     "incerteza": {
+      "tipo": "varredura",
+      "min": 850.0,
+      "max": 900.0
+     },
+     "etiqueta": "B"
+    },
+    "tempo": {
+     "valor": 30.0,
+     "unidade": "min",
+     "incerteza": null,
+     "etiqueta": "B"
+    },
+    "ambiente": {
+     "valor": "N2",
+     "etiqueta": "B"
+    },
+    "rampa": {
+     "valor": null,
+     "unidade": "C/min",
+     "etiqueta": "B",
+     "nota": "entrada e saida do forno pendentes"
+    }
+   }
+  },
+  "oxidacao_porta": {
+   "ambiente": {
+    "valor": "O2_seco",
+    "etiqueta": "B"
+   },
+   "espessura_alvo": {
+    "valor": 20.0,
+    "unidade": "nm",
+    "etiqueta": "B"
+   },
+   "temperatura": {
+    "valor": null,
+    "unidade": "C",
+    "incerteza": {
+     "tipo": "varredura",
+     "min": 800.0,
+     "max": 1000.0
+    },
+    "etiqueta": "B",
+    "nota": "entrada; a faixa 800 a 1000 C e a faixa dos dados de Massoud (R26 a R28)"
+   },
+   "tempo": {
+    "valor": null,
+    "unidade": "min",
+    "incerteza": {
+     "tipo": "varredura",
+     "min": 1.0,
+     "max": 600.0
+    },
+    "etiqueta": "B"
+   },
+   "consumo_si_por_oxido": {
+    "valor": 0.44,
+    "unidade": "nm/nm",
+    "incerteza": null,
+    "etiqueta": "B",
+    "nota": "fornecido pelo usuario"
+   },
+   "pressao_O2": {
+    "valor": 1.0,
+    "unidade": "atm",
+    "incerteza": null,
+    "etiqueta": "B"
+   },
+   "cloro": {
+    "valor": false,
+    "etiqueta": "B",
+    "nota": "sem HCl ou TCA, confirmar"
+   },
+   "metodo": {
+    "valor": "termico",
+    "opcoes": [
+     "termico",
+     "sputtering"
+    ],
+    "etiqueta": "B",
+    "nota": "o artigo do usuario (ART) calibra a alternativa por sputtering RF reativo"
+   },
+   "sputtering": {
+    "ref": [
+     "ART"
+    ],
+    "inclinacao_taxa_potencia": {
+     "valor": 0.088,
+     "unidade": "nm/(min*W)",
+     "ic95": [
+      0.072,
+      0.104
+     ],
+     "etiqueta": "B",
+     "nota": "ajuste linear da elipsometria, 4 niveis de potencia, 5 mTorr"
+    },
+    "tempo_20nm_50W": {
+     "valor": 5.1,
+     "unidade": "min",
+     "ic95": [
+      4.6,
+      5.9
+     ],
+     "ip95": [
+      4.1,
+      6.9
+     ],
+     "etiqueta": "B"
+    },
+    "indice_refracao": {
+     "valor": 1.464,
+     "incerteza": {
+      "tipo": "normal",
+      "sigma": 0.008
+     },
+     "etiqueta": "B"
+    },
+    "consome_si": {
+     "valor": false,
+     "etiqueta": "B",
+     "nota": "oxido depositado nao consome Si nem segrega P"
+    },
+    "eps_r": {
+     "valor": null,
+     "etiqueta": "I",
+     "nota": "permissividade estatica do oxido depositado nao medida; usar a do SiO2 termico com incerteza maior"
+    },
+    "eps_r_sigma_rel_extra": {
+     "valor": 0.05,
+     "etiqueta": "I",
+     "nota": "densidade relativa de -1 a +3 % pela Lorentz-Lorenz (ART); 5 % cobre isso com folga"
+    }
+   }
+  },
+  "dispositivo": {
+   "grafeno": {
+    "valor": "CVD_transferido",
+    "etiqueta": "B"
+   },
+   "metodo_transferencia": {
+    "valor": "umido_PMMA_reagente_Marble",
+    "ref": [
+     "ART"
+    ],
+    "etiqueta": "B",
+    "nota": "PMMA 4,9 % em acetona, recozimento final 170 C por 30 min ou mais (ART secao 2.4)"
+   },
+   "largura_canal": {
+    "valor": null,
+    "unidade": "um",
+    "etiqueta": "B"
+   },
+   "comprimento_canal": {
+    "valor": null,
+    "unidade": "um",
+    "etiqueta": "B"
+   },
+   "metal_contato": {
+    "valor": null,
+    "etiqueta": "B"
+   }
+  }
+ },
+ "implantacao": {
+  "rustbca": {
+   "n_ions_minimo": {
+    "valor": 100000,
+    "etiqueta": "B"
+   },
+   "validacao_previa_P_100keV": {
+    "Rp_rustbca": {
+     "valor": 135.0,
+     "unidade": "nm",
+     "etiqueta": "B",
+     "nota": "resultado do usuario"
+    },
+    "Rp_referencia": {
+     "valor": 133.0,
+     "unidade": "nm",
+     "etiqueta": "B",
+     "ref": [
+      "R5"
+     ],
+     "nota": "Lie et al.; numero NAO conferido (R5 nao encontrado); possivel que seja em GeSi"
+    }
+   },
+   "boro_invalido": {
+    "valor": true,
+    "etiqueta": "B",
+    "nota": "398 nm contra 297 nm; nao usar para B"
+   },
+   "binario": {
+    "valor": "/opt/ext/RustBCA/target/release/RustBCA",
+    "etiqueta": "B",
+    "nota": "compilado de github.com/lcpp-org/RustBCA, commit a356280; pode ser trocado pela variavel GFETSIM_RUSTBCA"
+   },
+   "potencial": {
+    "valor": "KR_C",
+    "etiqueta": "B",
+    "nota": "Kr-C, padrao dos exemplos do RustBCA"
+   },
+   "parada_eletronica": {
+    "valor": "LOW_ENERGY_NONLOCAL",
+    "etiqueta": "B",
+    "nota": "Lindhard-Scharff, padrao do RustBCA"
+   },
+   "Si": {
+    "Z": 14,
+    "m": 28.0855,
+    "densidade_at_cm3": 4.996e+22,
+    "Eb": 0.0,
+    "Es": 4.72,
+    "Ec": 1.5,
+    "etiqueta": "B",
+    "nota": "valores do exemplo layered_geometry do RustBCA; Es e a energia de ligacao de superficie"
+   },
+   "SiO2": {
+    "densidade_O_cm3": 4.6e+22,
+    "densidade_Si_cm3": 2.3e+22,
+    "etiqueta": "I",
+    "nota": "2,2 g/cm3 de silica; estequiometria 1:2; densidade nao conferida em fonte primaria"
+   }
+  },
+  "validacao": {
+   "alcance_grant": {
+    "ref": [
+     "G1"
+    ],
+    "forma": "rho_p = 1,75 eps^(2/3), valida para 0,02 < eps < 0,5 (reduzidas de LSS)",
+    "coeficiente": {
+     "valor": 1.75,
+     "etiqueta": "P"
+    },
+    "expoente": {
+     "valor": 0.6667,
+     "etiqueta": "P"
+    },
+    "faixa_eps": {
+     "min": 0.02,
+     "max": 0.5,
+     "etiqueta": "P"
+    },
+    "nota": "Grant, Williams e Dodds, 10.1007/978-1-4615-8876-4_19, so o resumo. Definicoes de eps e rho de LSS sao [C]. A 30 keV P em Si eps ~ 0,6, fora da faixa; o teste usa 15 e 20 keV"
+   },
+   "kobayashi_gibson": {
+    "ref": [
+     "K1"
+    ],
+    "etiqueta": "P",
+    "nota": "P em Si 5 a 80 keV, 3e14; Rp e dRp medidos por NRA concordam com TRIM (10.1016/S0168-583X(99)00182-2)"
+   }
+  },
+  "amorfizacao": {
+   "densidade_energia_critica": {
+    "valor": 6e+23,
+    "unidade": "eV/cm^3",
+    "incerteza": {
+     "tipo": "normal_rel",
+     "sigma_rel": 0.3
+    },
+    "ref": [
+     "A4"
+    ],
+    "etiqueta": "P",
+    "nota": "do resumo de Dennis e Hale; sigma de 30 % e [I]; criterio sobre energia em processos atomicos"
+   },
+   "dose_limiar_ions_massa_proxima_Si": {
+    "valor": null,
+    "faixa": {
+     "min": 1000000000000000.0,
+     "max": 3000000000000000.0
+    },
+    "unidade": "cm^-2",
+    "ref": [
+     "A2"
+    ],
+    "etiqueta": "P",
+    "nota": "Si+ 10 a 60 keV a 300 K; P+ 'valores similares' (resumo)"
+   },
+   "observacao_P_30keV_1e16_amorfo": {
+    "valor": true,
+    "ref": [
+     "A3"
+    ],
+    "etiqueta": "P"
+   },
+   "criterio_vale_a_baixa_T": {
+    "valor": true,
+    "ref": [
+     "A4",
+     "A6"
+    ],
+    "etiqueta": "P",
+    "nota": "A6 (Narayan et al., JVST 2, 1303, 10.1116/1.572399) da 6,0e23 eV/cm3 = 12 eV/atomo a 4 K sem recozimento. A4 diz que a TA a difusao da energia do dano muda o limiar"
+   },
+   "falha_validacao_criterio_baixa_T": {
+    "etiqueta": "C",
+    "nota": "com o RustBCA, 6e23 eV/cm3 preve limiar de 1,1e14 a 1,7e14 cm-2 para P 10 a 60 keV, dez vezes abaixo do medido a 300 K (A2). Por isso o modelo usa o limiar de dose medido a TA (ramo limiar_TA)"
+   },
+   "ramos": [
+    "limiar_TA",
+    "energia_critica_baixa_T"
+   ],
+   "limiar_TA": {
+    "dose_limiar": {
+     "valor": null,
+     "incerteza": {
+      "tipo": "uniforme",
+      "min": 1000000000000000.0,
+      "max": 3000000000000000.0
+     },
+     "unidade": "cm^-2",
+     "ref": [
+      "A2",
+      "A5"
+     ],
+     "etiqueta": "P",
+     "nota": "A2 da 1 a 3e15 para Si+ e diz que P e similar; A5 ve camada amorfa com P 1e15 de 25 a 180 keV. Regiao amorfa onde Fn(x) >= Fn_max * dose_limiar / dose [C]; a fracao de energia atomica se cancela"
+    }
+   },
+   "limiar_P_30keV_especifico": {
+    "valor": null,
+    "ref": [
+     "A1"
+    ],
+    "etiqueta": "P",
+    "nota": "Eklund e Andersson medem exatamente P 30 keV; numero so no texto"
+   },
+   "fracao_energia_atomica": {
+    "valor": null,
+    "valor_provisorio": 0.85,
+    "incerteza": {
+     "tipo": "uniforme",
+     "min": 0.7,
+     "max": 1.0
+    },
+    "etiqueta": "I",
+    "nota": "o RustBCA registra so a perda nuclear do ion incidente; parte da energia dos recuos vai para excitacao eletronica. Fracao [I] ate usar uma particao publicada"
+   }
+  },
+  "canalizacao": {
+   "ramo_imsil": {
+    "disponivel": false,
+    "ref": [
+     "R1"
+    ],
+    "etiqueta": "B",
+    "nota": "licenca com G. Hobler pendente"
+   },
+   "cauda_exponencial": {
+    "comprimento_decaimento": {
+     "valor": null,
+     "unidade": "nm",
+     "ref": [
+      "R2",
+      "R3",
+      "R4",
+      "N1"
+     ],
+     "etiqueta": "I",
+     "nota": "ajustar a SIMS digitalizado; nenhum numero nos resumos"
+    },
+    "fracao_canalizada": {
+     "valor": null,
+     "ref": [
+      "R2",
+      "R4",
+      "N3"
+     ],
+     "etiqueta": "I",
+     "nota": "diminui com a dose por descanalizacao (R2, N3)"
+    }
+   },
+   "sete_graus_nao_evita_canalizacao_axial": {
+    "valor": true,
+    "ref": [
+     "R4"
+    ],
+    "etiqueta": "P",
+    "nota": "P 80 a 150 keV, 2e14 a 2e15; nossa energia e menor"
+   },
+   "canalizacao_planar_110_a_5_graus": {
+    "valor": true,
+    "ref": [
+     "N1"
+    ],
+    "etiqueta": "P"
+   }
+  }
+ },
+ "recozimento": {
+  "silicio": {
+   "ni_T": {
+    "forma": "ni = A T^1.5 exp(-Eg_eff / 2kT)",
+    "ref": [
+     "L4"
+    ],
+    "A": {
+     "valor": 3.873e+16,
+     "unidade": "cm^-3 K^-1.5",
+     "etiqueta": "C",
+     "ref": [
+      "L4"
+     ],
+     "nota": "raiz de 1,5e33, do produto np = 1,5e33 T^3 exp(-1,21/kT) de Morin e Maita, medido abaixo de 700 K; nos recozimentos (823 a 1323 K) a forma e extrapolada"
+    },
+    "Eg_eff": {
+     "valor": 1.21,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "ref": [
+      "L4"
+     ],
+     "nota": "Morin e Maita; 0,605 eV no expoente de ni"
+    }
+   },
+   "ni_300K": {
+    "valor": 9650000000.0,
+    "unidade": "cm^-3",
+    "ref": [
+     "N25"
+    ],
+    "etiqueta": "P",
+    "nota": "N25 Altermatt et al., JAP 93, 1598, 10.1063/1.1529297; concorda com Misiakos e Tsamakis (9,7e9)"
+   },
+   "ni_candidato_couderc": {
+    "ref": [
+     "N26"
+    ],
+    "etiqueta": "P",
+    "nota": "N26 Couderc et al., JAP 115, 093705, 10.1063/1.4867776: ni = 1,541e15 T^1,712 exp(-Eg0/2kT); Eg0 e faixa de validade nao lidos"
+   },
+   "ni_candidato_putley": {
+    "ref": [
+     "L5"
+    ],
+    "etiqueta": "P",
+    "nota": "ni = 3,10e16 T^1,5 exp(-0,603/kT) medido de 350 a 500 K; da 18 % menos que Morin e Maita de 550 a 1050 C, o que mudaria o termo (n/ni)^2 de Fair e Tsai em cerca de 1,5 vez. Nao vira ramo porque as difusividades de Fair e Tsai foram ajustadas com um ni(T) que nao foi lido, e trocar so o ni misturaria fontes"
+   }
+  },
+  "difusao_P": {
+   "modelo_padrao": "fair_tsai",
+   "ramos": [
+    "fair_tsai",
+    "mathiot_pfister"
+   ],
+   "fair_tsai": {
+    "ref": [
+     "R6"
+    ],
+    "nota": "tres difusividades intrinsecas (P com V0, V-, V=); fator de cauda ate 135 a 900 C (resumo)",
+    "D0_neutro": {
+     "valor": null,
+     "unidade": "cm^2/s",
+     "etiqueta": "I",
+     "valor_provisorio": 3.85
+    },
+    "Ea_neutro": {
+     "valor": null,
+     "unidade": "eV",
+     "etiqueta": "I",
+     "valor_provisorio": 3.66
+    },
+    "D0_menos": {
+     "valor": null,
+     "unidade": "cm^2/s",
+     "etiqueta": "I",
+     "valor_provisorio": 4.44
+    },
+    "Ea_menos": {
+     "valor": null,
+     "unidade": "eV",
+     "etiqueta": "I",
+     "valor_provisorio": 4.0
+    },
+    "D0_duplo": {
+     "valor": null,
+     "unidade": "cm^2/s",
+     "etiqueta": "I",
+     "valor_provisorio": 44.2
+    },
+    "Ea_duplo": {
+     "valor": null,
+     "unidade": "eV",
+     "etiqueta": "I",
+     "valor_provisorio": 4.37
+    },
+    "fator_cauda_max_900C": {
+     "valor": 135.0,
+     "unidade": "adim",
+     "ref": [
+      "R6"
+     ],
+     "etiqueta": "P"
+    },
+    "nota_valores": "valores provisorios lembrados de implementacoes do modelo; conferir no texto de R6"
+   },
+   "mathiot_pfister": {
+    "ref": [
+     "R7",
+     "R7b",
+     "R7c"
+    ],
+    "nota": "o DOI de R7 aponta para a critica numerica a Fair-Tsai; o modelo de percolacao esta em R7b e R7c",
+    "parametros": {
+     "valor": null,
+     "etiqueta": "I"
+    }
+   }
+  },
+  "ted": {
+   "fator_mais_n": {
+    "valor": null,
+    "faixa": {
+     "min": 1.0,
+     "max": 4.0
+    },
+    "unidade": "adim",
+    "ref": [
+     "R8",
+     "N7"
+    ],
+    "etiqueta": "P",
+    "nota": "R8 da maximo ~4 para As 1 keV; valor para P 30 keV 3e15 so no texto. R8 e Hobler-Moroz valem para implante NAO amorfizante"
+   },
+   "camada_amorfa_varre_intersticiais": {
+    "valor": true,
+    "ref": [
+     "N8"
+    ],
+    "etiqueta": "P"
+   },
+   "dissolucao_311_Ea": {
+    "valor": 3.8,
+    "unidade": "eV",
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 0.2
+    },
+    "ref": [
+     "R10"
+    ],
+    "etiqueta": "P"
+   },
+   "recombinacao_superficie": {
+    "ramos": {
+     "lim": {
+      "valor": 100.0,
+      "unidade": "nm",
+      "temperatura_C": 800,
+      "ref": [
+       "R9"
+      ],
+      "etiqueta": "P"
+     },
+     "agarwal": {
+      "valor": 10.0,
+      "unidade": "nm",
+      "tipo_limite": "superior",
+      "temperaturas_C": [
+       810,
+       950,
+       1050
+      ],
+      "ref": [
+       "N5"
+      ],
+      "etiqueta": "P"
+     },
+     "lamrani": {
+      "valor": 200.0,
+      "unidade": "nm",
+      "tipo_limite": "superior",
+      "temperatura_C": 850,
+      "ref": [
+       "N5b"
+      ],
+      "etiqueta": "P"
+     }
+    },
+    "nota": "discordancia de uma ordem de grandeza; Law et al. (N5c) discutem a origem"
+   }
+  },
+  "spe_550C": {
+   "Ea_velocidade_spe": {
+    "valor": 2.7,
+    "unidade": "eV",
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 0.2
+    },
+    "ref": [
+     "N9"
+    ],
+    "etiqueta": "P",
+    "nota": "medido em RTA 475 a 600 C, com fator de aceleracao 4 frente a forno; Custer et al. (L12) dao 2,71 eV, Roth et al. (L14) 2,70 eV e Lietoila et al. (L13) 2,85 eV no intrinseco, todos dentro de 1 sigma"
+   },
+   "prefator_velocidade": {
+    "valor": 240000000.0,
+    "unidade": "cm/s",
+    "etiqueta": "C",
+    "ref": [
+     "L12"
+    ],
+    "nota": "Custer et al. medem 1,7e-10 cm/s a 750 K e 1,9e-7 cm/s a 900 K em Si amorfizado por laser, que o resumo diz ser estruturalmente igual ao amorfo de implante. A reta de Arrhenius dos dois pontos da 7,1e-9 cm/s a 550 C, e com a Ea de 2,70 eV de N9 o prefator fica 2,4e8 (2,36e8 e 2,50e8 em cada ponto). O 3,07e8 lembrado de Olson e Roth daria 28 % mais a 550 C"
+   },
+   "fator_aceleracao_P": {
+    "valor": null,
+    "etiqueta": "I",
+    "valor_provisorio": 1.0,
+    "ref": [
+     "L13"
+    ],
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 1.0,
+     "max": 8.0
+    },
+    "nota": "Lietoila et al. medem aceleracao de 6 a 8 com P constante em 1,7e20 entre 477 e 576 C, sem mudanca clara de Ea. A frente da SPE parte da interface entre amorfo e cristal, onde ha pouco P, entao o provisorio fica no limite intrinseco 1 e a faixa vai ate 8"
+   },
+   "ativacao_apos_550C": {
+    "valor": null,
+    "ref": [
+     "R14",
+     "R13"
+    ],
+    "etiqueta": "I",
+    "nota": "R14 diz que P atinge ativacao maxima a 550 C, sem numero no resumo"
+   }
+  },
+  "ativacao_dados_validacao": {
+   "yu_dois_passos": {
+    "faixa": {
+     "min": 0.75,
+     "max": 1.0
+    },
+    "unidade": "fracao",
+    "ref": [
+     "R13"
+    ],
+    "etiqueta": "P",
+    "condicao": "P 50 e 100 keV; 550 C 30 min + 1050 C 10 s"
+   },
+   "yu_um_passo": {
+    "faixa": {
+     "min": 0.4,
+     "max": 0.6
+    },
+    "unidade": "fracao",
+    "ref": [
+     "R13"
+    ],
+    "etiqueta": "P",
+    "condicao": "so 1050 C 10 s"
+   },
+   "li_han_850C": {
+    "valor": 0.67,
+    "unidade": "fracao",
+    "ref": [
+     "R19"
+    ],
+    "etiqueta": "P",
+    "condicao": "P 55 keV 3e15; maximo na serie de T"
+   },
+   "shannon_650C": {
+    "valor": 5e+20,
+    "unidade": "cm^-3",
+    "ref": [
+     "R18"
+    ],
+    "etiqueta": "P",
+    "condicao": "40 e 100 keV, implante a TA"
+   },
+   "shannon_850C": {
+    "valor": 1.5e+21,
+    "unidade": "cm^-3",
+    "ref": [
+     "R18"
+    ],
+    "etiqueta": "P",
+    "nota": "eletrons livres; DISCORDA da solubilidade de equilibrio de Nobili"
+   }
+  },
+  "solubilidade_P": {
+   "ref": [
+    "R15",
+    "N24"
+   ],
+   "forma": "n_e(T) = A_ne exp(-Ea_ne/kT) ativo em equilibrio; C_sat(T) = A_sat exp(-Ea_sat/kT) total em equilibrio com SiP",
+   "A_ne": {
+    "valor": 1.3e+22,
+    "unidade": "cm^-3",
+    "ref": [
+     "N24"
+    ],
+    "etiqueta": "P"
+   },
+   "Ea_ne": {
+    "valor": 0.37,
+    "unidade": "eV",
+    "ref": [
+     "N24"
+    ],
+    "etiqueta": "P"
+   },
+   "A_sat": {
+    "valor": 2.45e+23,
+    "unidade": "cm^-3",
+    "ref": [
+     "N24"
+    ],
+    "etiqueta": "P"
+   },
+   "Ea_sat": {
+    "valor": 0.62,
+    "unidade": "eV",
+    "ref": [
+     "N24"
+    ],
+    "etiqueta": "P"
+   },
+   "nota": "N24 Solmi, Parisini, Angelucci, Armigliato, Nobili, Moro, PRB 53, 7836, 10.1103/PhysRevB.53.7836 (resumo). n_e medido em polissilicio; C_sat de 800 a 1000 C. Para T > 750 C, C_sat > n_e e a diferenca e P inativo movel",
+   "incerteza_ne": {
+    "valor": null,
+    "incerteza": {
+     "tipo": "normal_rel",
+     "sigma_rel": 0.15
+    },
+    "etiqueta": "I",
+    "nota": "o resumo nao da incerteza; 15 % [I] cobre a diferenca de 5 % contra o valor que arXiv 1905.10667 atribui a Solmi a 890 C (3,42e20)"
+   },
+   "valor_900C_antigo": {
+    "valor": null,
+    "unidade": "cm^-3",
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 1e+20,
+     "max": 5e+20
+    },
+    "etiqueta": "I",
+    "nota": "faixa anterior, mantida so como referencia; N24 da 3,4e20 a 900 C, dentro dela"
+   },
+   "mobilidade_independe_de_P_inativo": {
+    "valor": true,
+    "ref": [
+     "N4"
+    ],
+    "etiqueta": "P"
+   },
+   "discordancia_shannon": {
+    "etiqueta": "C",
+    "nota": "R18 mede 1,5e21 eletrons apos 850 C; N24 da 2,8e20. O ramo metaestavel (sem desativacao) cobre o lado de R18"
+   }
+  },
+  "desativacao": {
+   "ref": [
+    "R12",
+    "R12b"
+   ],
+   "inicio_P": {
+    "valor": 500.0,
+    "unidade": "C",
+    "ref": [
+     "R12"
+    ],
+    "etiqueta": "P",
+    "nota": "P desativa a partir de ~500 C"
+   },
+   "mecanismo": {
+    "valor": "aglomerados_dopante_defeito",
+    "ref": [
+     "R12"
+    ],
+    "etiqueta": "P"
+   },
+   "cinetica": {
+    "valor": null,
+    "etiqueta": "I",
+    "nota": "constantes de tempo e Ea so no texto de R12b"
+   }
+  },
+  "mobilidade_si": {
+   "modelo_padrao": "masetti",
+   "ramos": [
+    "masetti",
+    "klaassen",
+    "limite_inferior_qin"
+   ],
+   "masetti_eletrons_P": {
+    "ref": [
+     "R22"
+    ],
+    "nota": "parametros provisorios lembrados; conferir na tabela de R22",
+    "mu_min1": {
+     "valor": null,
+     "unidade": "cm^2/Vs",
+     "etiqueta": "I",
+     "valor_provisorio": 68.5
+    },
+    "mu_min2": {
+     "valor": null,
+     "unidade": "cm^2/Vs",
+     "etiqueta": "I",
+     "valor_provisorio": 68.5
+    },
+    "mu1": {
+     "valor": null,
+     "unidade": "cm^2/Vs",
+     "etiqueta": "I",
+     "valor_provisorio": 56.1
+    },
+    "mu_max": {
+     "valor": null,
+     "unidade": "cm^2/Vs",
+     "etiqueta": "I",
+     "valor_provisorio": 1414.0
+    },
+    "Cr": {
+     "valor": null,
+     "unidade": "cm^-3",
+     "etiqueta": "I",
+     "valor_provisorio": 9.2e+16
+    },
+    "Cs": {
+     "valor": null,
+     "unidade": "cm^-3",
+     "etiqueta": "I",
+     "valor_provisorio": 3.41e+20
+    },
+    "alpha": {
+     "valor": null,
+     "unidade": "adim",
+     "etiqueta": "I",
+     "valor_provisorio": 0.711
+    },
+    "beta": {
+     "valor": null,
+     "unidade": "adim",
+     "etiqueta": "I",
+     "valor_provisorio": 1.98
+    },
+    "Pc": {
+     "valor": null,
+     "unidade": "cm^-3",
+     "etiqueta": "I",
+     "valor_provisorio": 0.0
+    }
+   },
+   "concordancia_del_alamo": {
+    "valor": 0.04,
+    "unidade": "fracao",
+    "faixa_n": [
+     1.8e+19,
+     1.7e+20
+    ],
+    "ref": [
+     "R52"
+    ],
+    "etiqueta": "P"
+   },
+   "qin_limite_inferior": {
+    "mu_acima_1e21": {
+     "valor": 40.0,
+     "unidade": "cm^2/Vs",
+     "ref": [
+      "R24"
+     ],
+     "etiqueta": "P"
+    },
+    "abaixo_dos_modelos_acima_de": {
+     "valor": 1e+20,
+     "unidade": "cm^-3",
+     "ref": [
+      "R24"
+     ],
+     "etiqueta": "P"
+    },
+    "curva_completa": {
+     "valor": null,
+     "etiqueta": "I",
+     "nota": "digitalizar figura de R24"
+    }
+   }
+  }
+ },
+ "oxidacao": {
+  "deal_grove": {
+   "ref": [
+    "R25"
+   ],
+   "conferido_em": "S1, tabela 2.2, que cita Plummer, Deal e Griffin (2000)",
+   "faixa_validada_espessura": {
+    "min": 30.0,
+    "max": 2000.0,
+    "unidade": "nm",
+    "ref": [
+     "R25"
+    ],
+    "etiqueta": "P"
+   },
+   "faixa_validada_T": {
+    "min": 700.0,
+    "max": 1300.0,
+    "unidade": "C",
+    "ref": [
+     "R25"
+    ],
+    "etiqueta": "P"
+   },
+   "B_seco": {
+    "C": {
+     "valor": 772.0,
+     "unidade": "um^2/h",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "Ea": {
+     "valor": 1.23,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    }
+   },
+   "B_sobre_A_seco_111": {
+    "C": {
+     "valor": 6230000.0,
+     "unidade": "um/h",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "Ea": {
+     "valor": 2.0,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    }
+   },
+   "razao_111_100": {
+    "valor": 1.68,
+    "unidade": "adim",
+    "etiqueta": "P",
+    "conferido_em": "S1",
+    "nota": "so B/A muda com a orientacao; B e o mesmo (S1)"
+   },
+   "nota": "N14 (Massoud, Plummer, Irene, JES 132, 1745) continua sendo a fonte preferida para Si(100) seco e ainda nao foi lida"
+  },
+  "massoud_regime_fino": {
+   "ref": [
+    "R26",
+    "R27",
+    "R28"
+   ],
+   "conferido_em": "S1, tabelas 2.3 e 2.4, que citam Massoud et al. (1985)",
+   "forma": "dx/dt = [B + K1 exp(-t/tau1) + K2 exp(-t/tau2)] / (2x + A)  (R28, eq. 2.40 de S1)",
+   "faixa_T": {
+    "min": 800.0,
+    "max": 1000.0,
+    "unidade": "C",
+    "etiqueta": "P",
+    "conferido_em": "S1"
+   },
+   "Si100_T_menor_1000C": {
+    "C_B": {
+     "valor": 170000000000.0,
+     "unidade": "nm^2/min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_B": {
+     "valor": 2.22,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "C_BA": {
+     "valor": 7350000.0,
+     "unidade": "nm/min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_BA": {
+     "valor": 1.76,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "K1_0": {
+     "valor": 249000000000.0,
+     "unidade": "nm^2/min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_K1": {
+     "valor": 2.18,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "K2_0": {
+     "valor": 372000000000.0,
+     "unidade": "nm^2/min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_K2": {
+     "valor": 2.28,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "tau1_0": {
+     "valor": 4.14e-06,
+     "unidade": "min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_tau1": {
+     "valor": 1.38,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "tau2_0": {
+     "valor": 2.71e-07,
+     "unidade": "min",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    },
+    "E_tau2": {
+     "valor": 1.88,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S1"
+    }
+   },
+   "sinal_tau": {
+    "valor": "+",
+    "etiqueta": "C",
+    "nota": "S1 escreve tau = tau0 exp(-E/kT), o que da tau de 1e-12 min a 900 C. Com exp(+E/kT) tau1 fica em minutos e decresce com T, como o efeito fisico exige. Usamos +E/kT [C]"
+   },
+   "L_ordem": {
+    "L1": 1.0,
+    "L2": 7.0,
+    "unidade": "nm",
+    "etiqueta": "P",
+    "conferido_em": "S1",
+    "nota": "comprimentos caracteristicos da forma em x (eq. 2.37 de S1), so ordem de grandeza"
+   }
+  },
+  "oxidacao_acelerada_dopagem": {
+   "ramos": [
+    "ho_plummer",
+    "uematsu"
+   ],
+   "ho_plummer": {
+    "ref": [
+     "R29"
+    ],
+    "conferido_em": "S2, eq. 2.38 a 2.42",
+    "forma": "(B/A) = (B/A)i [1 + gamma (CV/CVi - 1)], gamma = gamma0 exp(-gammaE/kT)",
+    "gamma0": {
+     "valor": 2630.0,
+     "unidade": "adim",
+     "etiqueta": "P",
+     "conferido_em": "S2"
+    },
+    "gammaE": {
+     "valor": 1.1,
+     "unidade": "eV",
+     "etiqueta": "P",
+     "conferido_em": "S2"
+    },
+    "razoes_vacancias_intrinsecas": {
+     "valor": null,
+     "etiqueta": "I",
+     "nota": "CV+/CV0, CV-/CV0 e CV=/CV0 em condicao intrinseca nao foram lidos. Provisoriamente usam-se as razoes de difusividade de Fair-Tsai D-/D0 e D=/D0, que medem a mesma populacao de vacancias carregadas [I]; CV+ desprezado em material n"
+    },
+    "aumento_parabolico": {
+     "valor": null,
+     "etiqueta": "I",
+     "nota": "o termo de B dependente da dopagem nao foi lido; B fica intrinseco"
+    }
+   },
+   "uematsu": {
+    "ref": [
+     "R30"
+    ],
+    "parametros": null,
+    "etiqueta": "I"
+   },
+   "nomura_fator_max_implantado": {
+    "valor": 2.1,
+    "unidade": "adim",
+    "ref": [
+     "R23"
+    ],
+    "etiqueta": "P",
+    "condicao": "P+, Sb+, Sn+, Ar+ com dose > 5e14; efeito quimico"
+   },
+   "massoud_redistribuicao_reversa": {
+    "valor": true,
+    "ref": [
+     "N10"
+    ],
+    "etiqueta": "P",
+    "nota": "no inicio da oxidacao seca P acumula, ativo cai e taxa se iguala a Si leve"
+   }
+  },
+  "segregacao_P": {
+   "coef_segregacao_m": {
+    "valor": null,
+    "limite_inferior": 1000.0,
+    "faixa_T_C": [
+     1000,
+     1100
+    ],
+    "unidade": "adim",
+    "ref": [
+     "R17"
+    ],
+    "etiqueta": "P",
+    "nota": "m = C_Si / C_SiO2; so limite inferior no resumo; abaixo de 1000 C extrapolacao [I]"
+   },
+   "coef_segregacao_m_shannon": {
+    "valor": 100.0,
+    "unidade": "adim",
+    "ref": [
+     "L15"
+    ],
+    "etiqueta": "P",
+    "nota": "C-V sob a porta depois de oxido de porta espesso; discorda do m > 1000 de R17 e do m perto de 1000 de L16 (poli-Si sobre SiO2)"
+   },
+   "efeito_de_m_no_modelo": {
+    "etiqueta": "C",
+    "nota": "se o oxido recebe o P na razao 1/m, a fracao do P consumido que fica no oxido e 1/(0,44 m), 2,3 % com m = 100 e 0,23 % com m = 1000. O modelo devolve todo o P ao Si, o que superestima o acumulo em no maximo 2,3 % do P consumido; por isso a discordancia nao vira ramo"
+   },
+   "coef_transporte_h_1100C": {
+    "valor": 5.0,
+    "unidade": "um/min",
+    "ref": [
+     "R17"
+    ],
+    "etiqueta": "P"
+   },
+   "m_dependente_do_tempo": {
+    "valor": true,
+    "ref": [
+     "R21",
+     "R21b"
+    ],
+    "etiqueta": "P"
+   },
+   "camada_no_oxido": {
+    "valor": 2e+21,
+    "unidade": "cm^-3",
+    "faixa_T_C": [
+     850,
+     1000
+    ],
+    "ref": [
+     "R32"
+    ],
+    "etiqueta": "P"
+   },
+   "saturacao_pileup_espessura": {
+    "valor": 5.0,
+    "unidade": "nm",
+    "ref": [
+     "N12"
+    ],
+    "etiqueta": "P",
+    "nota": "~50 A da interface"
+   }
+  },
+  "ramos_interface": {
+   "acumulo_classico": {
+    "ref": [
+     "R16",
+     "R17",
+     "R32"
+    ],
+    "etiqueta": "P"
+   },
+   "retrogrado_horzel": {
+    "ref": [
+     "R20"
+    ],
+    "etiqueta": "P",
+    "espessura_retrograda_nm": {
+     "min": 10.0,
+     "max": 20.0
+    },
+    "nota": "medido apos difusao POCl3, nao implantacao"
+   },
+   "quimico_acumula_ativo_depleta": {
+    "ref": [
+     "N20"
+    ],
+    "etiqueta": "P",
+    "nota": "Nicollian e Chatterjee; P ativo erfc crescente para o volume"
+   },
+   "lado_do_pileup": {
+    "oxido": {
+     "ref": [
+      "N21",
+      "N21b"
+     ],
+     "etiqueta": "P"
+    },
+    "silicio_inativo": {
+     "ref": [
+      "N22"
+     ],
+     "etiqueta": "P",
+     "nota": "ativo no lado Si cai a ~60 %",
+     "fracao_ativa": {
+      "valor": 0.6,
+      "etiqueta": "P",
+      "ref": [
+       "N22"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "eletrico": {
+  "materiais": {
+   "eps_r_Si": {
+    "valor": 11.7,
+    "etiqueta": "P",
+    "ref": [
+     "L1"
+    ],
+    "incerteza": {
+     "tipo": "uniforme",
+     "min": 11.6,
+     "max": 11.94
+    },
+    "nota": "Dunlap e Watters, 11,7 +- 0,2 a 1 MHz, constante em 1 % de 500 Hz a 30 MHz. Seeger (L3) mede 11,6 +- 0,05 em micro-ondas e Smakula et al. (L2) 11,94 a 300 K acima de 1e7 Hz; a faixa cobre os tres"
+   },
+   "eps_r_SiO2": {
+    "valor": 3.9,
+    "etiqueta": "C",
+    "ref": [
+     "L19"
+    ],
+    "nota": "sem medida direta conferida. Ahmed et al. mostram que, com 3,9, a espessura do C-V com correcao quantica concorda com o HRTEM em 0,1 nm de 1,7 a 5,5 nm, o que limita o erro de 3,9 a cerca de 2 % no oxido termico fino"
+   }
+  },
+  "silicio_300K": {
+   "Nc": {
+    "valor": null,
+    "valor_provisorio": 2.86e+19,
+    "unidade": "cm^-3",
+    "etiqueta": "I",
+    "ref": [
+     "L6"
+    ],
+    "nota": "lembrado de Green (L6); o resumo de L6 so traz Nv = 3,1e19 e ni = 1,08e10, entao Nc continua sem conferencia"
+   },
+   "Nv": {
+    "valor": 3.1e+19,
+    "unidade": "cm^-3",
+    "ref": [
+     "L6"
+    ],
+    "etiqueta": "P",
+    "nota": "nao usado pelo modelo, que tira as lacunas de ni^2/Nc"
+   },
+   "Eg_300K": {
+    "valor": 1.124,
+    "unidade": "eV",
+    "ref": [
+     "L7"
+    ],
+    "etiqueta": "C",
+    "nota": "Bludau et al., Eg = 1,1785 - 9,025e-5 T - 3,05e-7 T^2 de 150 a 300 K, ajuste em 0,2 meV"
+   },
+   "afinidade_eletronica": {
+    "valor": 4.03,
+    "unidade": "eV",
+    "ref": [
+     "L8",
+     "L7"
+    ],
+    "etiqueta": "C",
+    "nota": "limiar indireto de 5,15 eV = chi + Eg em Si(111) clivado no vacuo (Gobeli e Allen) menos Eg de L7; depende da superficie. Nao usada pelo modelo"
+   },
+   "bgn": {
+    "valor": null,
+    "etiqueta": "I",
+    "ref": [
+     "L20",
+     "L21"
+    ],
+    "nota": "estreitamento de banda nao incluido. Slotboom e de Graaff (L20) ajustam dVg0 = V1 [ln(N/N0) + raiz(ln^2(N/N0) + C)] de 4e15 a 2,5e19 com as constantes so no texto, e dizem que o efeito pesa sobretudo nos portadores minoritarios. Lanyon e Tuft (L21) dao 22,5 (N/1e18)^0,5 meV a TA de 3e17 a 3,3e19. As duas faixas param abaixo do n+ da porta (1e20 a 1e21), entao incluir seria extrapolar"
+   }
+  },
+  "ionizacao_incompleta": {
+   "ref": [
+    "R35",
+    "R36",
+    "R37"
+   ],
+   "fracao_nao_ionizada_max_mott": {
+    "valor": 0.25,
+    "unidade": "fracao",
+    "ref": [
+     "R35"
+    ],
+    "etiqueta": "P"
+   },
+   "desprezivel_muito_acima_mott": {
+    "valor": true,
+    "ref": [
+     "R35"
+    ],
+    "etiqueta": "P"
+   },
+   "correcao_steinkemper": {
+    "valor": null,
+    "ref": [
+     "R37"
+    ],
+    "etiqueta": "I",
+    "nota": "forma corrigida so no texto"
+   }
+  },
+  "oxido": {
+   "carga_fixa_Qf": {
+    "valor": null,
+    "unidade": "cm^-2",
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 10000000000.0,
+     "max": 1000000000000.0
+    },
+    "ref": [
+     "L17"
+    ],
+    "etiqueta": "P",
+    "nota": "faixa em que Deal et al. controlam Qss de forma reprodutivel no oxido termico, conforme oxidacao, orientacao e recozimento; o oxido de sputtering nao e coberto"
+   },
+   "Dit": {
+    "valor": null,
+    "unidade": "cm^-2 eV^-1",
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 10000000000.0,
+     "max": 1000000000000.0
+    },
+    "etiqueta": "I",
+    "nota": "P aumenta Dit e carga (Snel, SSE 24, 135 (1981)); faixa [I]"
+   },
+   "ruptura": {
+    "adams": {
+     "faixa": {
+      "min": 10.0,
+      "max": 13.0
+     },
+     "unidade": "MV/cm",
+     "espessura_nm": [
+      3,
+      14
+     ],
+     "ref": [
+      "B1"
+     ],
+     "etiqueta": "P"
+    },
+    "oshea": {
+     "valor": 13.2,
+     "incerteza": {
+      "tipo": "normal",
+      "sigma": 0.8
+     },
+     "unidade": "MV/cm",
+     "espessura_nm": [
+      7,
+      15
+     ],
+     "ref": [
+      "B2"
+     ],
+     "etiqueta": "P"
+    }
+   },
+   "fowler_nordheim": {
+    "ramos": [
+     "williams",
+     "fukuda"
+    ],
+    "massa_efetiva_rel": {
+     "valor": 0.4,
+     "unidade": "adim",
+     "ref": [
+      "R45"
+     ],
+     "etiqueta": "P",
+     "nota": "R45 tira 0,4 da inclinacao usando barreiras medidas antes; massa e barreira entram juntas no expoente como m^0,5 phi^1,5"
+    },
+    "corrente_medida_abaixo_teoria": {
+     "faixa": {
+      "min": 5.0,
+      "max": 10.0
+     },
+     "unidade": "vezes",
+     "ref": [
+      "R45"
+     ],
+     "etiqueta": "P"
+    },
+    "barreira_Si_SiO2": {
+     "valor": 3.13,
+     "unidade": "eV",
+     "etiqueta": "C",
+     "ref": [
+      "L9",
+      "L7"
+     ],
+     "nota": "limiar de fotoemissao do Si para o SiO2 de 4,25 eV (Williams), 0,9 eV abaixo do limiar para o vacuo, que e chi + Eg (L8); logo e medido da banda de valencia, e tirando Eg de 1,124 eV (L7) fica 3,13 eV. Confere com chi do Si menos chi do SiO2, 4,03 - 1,0 = 3,03 eV (L8, L10)"
+    },
+    "ramo_fukuda": {
+     "ref": [
+      "L11"
+     ],
+     "barreira_Si_SiO2": {
+      "valor": 3.34,
+      "unidade": "eV",
+      "etiqueta": "P",
+      "nota": "Si(100), a barreira que Fukuda et al. usam"
+     },
+     "massa_efetiva_rel": {
+      "valor": 0.35,
+      "unidade": "adim",
+      "etiqueta": "P",
+      "nota": "ajustada com 3,34 eV na corrente direta de oxidos de 1,27 a 8,12 nm"
+     },
+     "nota": "par da mesma fonte, tirado no regime direto e nao no de Fowler-Nordheim. m^0,5 phi^1,5 fica 3 % acima do par de R45 com L9; a corrente deste ramo fica 0,42 a 0,58 vez a do ramo williams de 8 a 12 MV/cm"
+    }
+   }
+  },
+  "grafeno": {
+   "funcao_trabalho_monocamada": {
+    "valor": 4.55,
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 0.02
+    },
+    "unidade": "eV",
+    "ref": [
+     "L18"
+    ],
+    "etiqueta": "P",
+    "nota": "FM-KPFM calibrado em ar (Panchal et al.); bicamada 4,44 eV. O modelo nao usa, porque V_D vem da dopagem residual. A diferenca para o Si n+ (afinidade de 4,03 eV) e 0,52 eV, que sob 20 nm de oxido equivale a 5,6e11 cm^-2, menos que o piso de 1,4e12 do prior do Raman"
+   },
+   "vF": {
+    "valor": 1100000.0,
+    "unidade": "m/s",
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 100000.0
+    },
+    "ref": [
+     "D1"
+    ],
+    "etiqueta": "P",
+    "conferido_em": "D1, eq. 2 (cita Novoselov e Zhang); sigma de 0,1e6 [I] cobre o 1,0e6 usado em outros trabalhos"
+   },
+   "raman_dopagem": {
+    "ref": [
+     "D1"
+    ],
+    "nota": "D1 usa laser de 514,5 nm; o mapa do usuario usa 532 nm, e a resolucao do espectrometro do usuario e 11 cm-1 contra 1,9 e 9,4 cm-1 em D1",
+    "posG_ponto_dirac": {
+     "faixa": {
+      "min": 1583.1,
+      "max": 1584.0
+     },
+     "unidade": "cm^-1",
+     "etiqueta": "P"
+    },
+    "posG_lacunas_1p44e12": {
+     "valor": 1586.7,
+     "unidade": "cm^-1",
+     "etiqueta": "P",
+     "nota": "V_BG = 0 com V_Dirac = 20 V e eta = 7,2e10 cm^-2/V, isto e 1,44e12 cm^-2 de lacunas [C]"
+    },
+    "I2D_IG_ponto_dirac": {
+     "faixa": {
+      "min": 3.1,
+      "max": 3.3
+     },
+     "etiqueta": "P"
+    },
+    "I2D_IG_lacunas_1p44e12": {
+     "valor": 2.0,
+     "etiqueta": "P"
+    },
+    "deslocamento_G_max": {
+     "lacunas": 30.0,
+     "eletrons": 25.0,
+     "unidade": "cm^-1",
+     "densidade_max": 30000000000000.0,
+     "etiqueta": "P"
+    }
+   },
+   "dopagem_residual_prior": {
+    "valor": null,
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 1400000000000.0,
+     "max": 10000000000000.0
+    },
+    "unidade": "cm^-2",
+    "etiqueta": "C",
+    "nota": "ART mede Pos(G) = 1592,6 cm-1 (eixo com erro de ~3 cm-1) e I(2D)/I(G) = 1,9. Os dois indicam dopagem igual ou maior que a da amostra de D1 em V_BG = 0 (1,44e12). O teto de 1e13 vem do deslocamento de G de ~9 cm-1 contra 30 cm-1 em 3e13 (D1). Sinal desconhecido; 2D em 2691 cm-1 nao decide"
+   },
+   "n_residual": {
+    "ju_lee": {
+     "valor": 358000000000.0,
+     "unidade": "cm^-2",
+     "ref": [
+      "N17"
+     ],
+     "etiqueta": "P",
+     "nota": "um dispositivo com AlOx"
+    },
+    "faixa_calibracao": {
+     "incerteza": {
+      "tipo": "loguniforme",
+      "min": 100000000000.0,
+      "max": 1000000000000.0
+     },
+     "unidade": "cm^-2",
+     "etiqueta": "I"
+    }
+   },
+   "kim_ajuste": {
+    "ref": [
+     "R34"
+    ],
+    "forma": "n_tot = sqrt(n0^2 + n*^2); V - V_D = e n*/C_ox + hbar vF sqrt(pi n*)/e; R = Rc + Nsq/(e mu n_tot)",
+    "n0": {
+     "valor": 230000000000.0,
+     "unidade": "cm^-2",
+     "etiqueta": "P",
+     "conferido_em": "texto aberto arXiv 0901.2901"
+    },
+    "mu": {
+     "valor": 8600.0,
+     "unidade": "cm^2/Vs",
+     "etiqueta": "P"
+    },
+    "C_ox": {
+     "valor": 306.0,
+     "unidade": "nF/cm^2",
+     "etiqueta": "P"
+    },
+    "Rc_faixa": {
+     "min": 500.0,
+     "max": 1500.0,
+     "unidade": "ohm",
+     "etiqueta": "P",
+     "nota": "lido do inset da fig. 3, aproximado"
+    }
+   },
+   "jimenez_ajuste": {
+    "ref": [
+     "R42"
+    ],
+    "forma": "Ids = q W mu int rho dV / (L + mu |int dV/vsat|), vsat = Omega / sqrt(pi rho)",
+    "hbar_Omega": {
+     "faixa": {
+      "min": 0.015,
+      "max": 0.1
+     },
+     "unidade": "eV",
+     "etiqueta": "P",
+     "nota": "55 meV (Meric, transferencia), 15 meV (Meric, saida), 100 meV (Kedzierski)"
+    },
+    "rho0": {
+     "faixa": {
+      "min": 100000000000.0,
+      "max": 300000000000.0
+     },
+     "unidade": "cm^-2",
+     "etiqueta": "P"
+    },
+    "meric": {
+     "L_um": 1.0,
+     "W_um": 2.1,
+     "mu": 1200.0,
+     "R_SD_ohm": 800.0,
+     "hbar_Omega_eV": 0.055,
+     "rho0_cm2": 100000000000.0,
+     "etiqueta": "P"
+    },
+    "kedzierski": {
+     "L_um": 10.0,
+     "W_um": 5.0,
+     "mu": 7500.0,
+     "R_SD_ohm": 300.0,
+     "hbar_Omega_eV": 0.1,
+     "rho0_cm2": 300000000000.0,
+     "etiqueta": "P"
+    }
+   },
+   "hbar_Omega_prior": {
+    "valor": null,
+    "incerteza": {
+     "tipo": "uniforme",
+     "min": 0.015,
+     "max": 0.1
+    },
+    "unidade": "eV",
+    "ref": [
+     "R42"
+    ],
+    "etiqueta": "P"
+   },
+   "impurezas_carregadas_adam": {
+    "sujo": {
+     "faixa": {
+      "min": 2500000000000.0,
+      "max": 4000000000000.0
+     },
+     "unidade": "cm^-2",
+     "sigma_min": "4e2/h",
+     "ref": [
+      "R38"
+     ],
+     "etiqueta": "P"
+    },
+    "limpo": {
+     "valor": 200000000000.0,
+     "unidade": "cm^-2",
+     "sigma_min": "8e2/h",
+     "ref": [
+      "R38"
+     ],
+     "etiqueta": "P"
+    }
+   },
+   "flutuacao_potencial": {
+    "valor": 0.1,
+    "unidade": "eV",
+    "ref": [
+     "R40"
+    ],
+    "etiqueta": "P",
+    "nota": "ordem de 100 meV"
+   },
+   "mobilidade": {
+    "limite_fonons_SiO2": {
+     "valor": 40000.0,
+     "unidade": "cm^2/Vs",
+     "ref": [
+      "R44"
+     ],
+     "etiqueta": "P"
+    },
+    "limite_intrinseco_1e12": {
+     "valor": 200000.0,
+     "unidade": "cm^2/Vs",
+     "ref": [
+      "R44"
+     ],
+     "etiqueta": "P"
+    },
+    "resistividade_fonons_acusticos": {
+     "valor": 30.0,
+     "unidade": "ohm",
+     "ref": [
+      "R44"
+     ],
+     "etiqueta": "P"
+    },
+    "cvd_sobre_SiO2_melhor_caso": {
+     "valor": 7800.0,
+     "unidade": "cm^2/Vs",
+     "ref": [
+      "R33"
+     ],
+     "etiqueta": "P"
+    },
+    "prior_calibracao": {
+     "incerteza": {
+      "tipo": "loguniforme",
+      "min": 300.0,
+      "max": 7800.0
+     },
+     "unidade": "cm^2/Vs",
+     "etiqueta": "I"
+    }
+   },
+   "resistencia_contato": {
+    "valor": null,
+    "unidade": "ohm*um",
+    "incerteza": {
+     "tipo": "loguniforme",
+     "min": 100.0,
+     "max": 5000.0
+    },
+    "etiqueta": "I"
+   }
+  },
+  "histerese": {
+   "ref": [
+    "R47",
+    "R48",
+    "R49",
+    "N18"
+   ],
+   "some_com_varredura_rapida_em_SiO2": {
+    "valor": true,
+    "ref": [
+     "R47"
+    ],
+    "etiqueta": "P"
+   },
+   "dados_brutos_bartosik": {
+    "doi": "10.5281/zenodo.4518319",
+    "ref": [
+     "R49"
+    ],
+    "etiqueta": "P"
+   },
+   "parametros": {
+    "valor": null,
+    "etiqueta": "B",
+    "nota": "calibrados com as medidas de ida e volta"
+   }
+  },
+  "grafeno_artigo_usuario": {
+   "ref": [
+    "ART"
+   ],
+   "densidade_defeitos_nD": {
+    "valor": 22000000000.0,
+    "incerteza": {
+     "tipo": "normal",
+     "sigma": 6000000000.0
+    },
+    "unidade": "cm^-2",
+    "etiqueta": "B",
+    "nota": "relacao de Cancado com laser de 532 nm, mediana do mapa"
+   },
+   "fracao_ilhas_multicamada": {
+    "valor": 0.17,
+    "faixa": {
+     "min": 0.1,
+     "max": 0.21
+    },
+    "unidade": "fracao",
+    "etiqueta": "B",
+    "nota": "17 % pela segmentacao optica; 10 a 21 % pelo Raman (percentis 99 e 95 da largura do 2D)"
+   },
+   "distancia_tipica_ilhas": {
+    "valor": 6.0,
+    "unidade": "um",
+    "etiqueta": "B"
+   },
+   "I2D_IG_mediana": {
+    "valor": 1.93,
+    "faixa": {
+     "min": 1.5,
+     "max": 2.27
+    },
+    "etiqueta": "B"
+   },
+   "posG_mediana": {
+    "valor": 1592.6,
+    "faixa": {
+     "min": 1591.4,
+     "max": 1593.8
+    },
+    "unidade": "cm^-1",
+    "etiqueta": "B",
+    "nota": "erro de eixo de cerca de 3 cm-1; resolucao de 11 cm-1"
+   },
+   "contraste_monocamada_20nm": {
+    "vermelho": 0.003,
+    "verde": 0.006,
+    "etiqueta": "B",
+    "nota": "modelo de matrizes de transferencia do ART; grafeno invisivel sobre 20 nm"
+   }
+  },
+  "calculo_anterior_usuario": {
+   "curvatura_bandas": {
+    "valor": 1.1,
+    "unidade": "V",
+    "etiqueta": "B"
+   },
+   "perda_capacitancia": {
+    "n_1e19": {
+     "valor": 0.17,
+     "unidade": "fracao",
+     "etiqueta": "B"
+    },
+    "n_1e20": {
+     "valor": 0.06,
+     "unidade": "fracao",
+     "etiqueta": "B"
+    },
+    "n_3e20": {
+     "valor": 0.035,
+     "unidade": "fracao",
+     "etiqueta": "B"
+    }
+   }
+  }
+ },
+ "previsao": {
+  "fator_taxa_oxidacao": {
+   "valor": 1.0,
+   "incerteza": {
+    "tipo": "loguniforme",
+    "min": 0.8,
+    "max": 1.25
+   },
+   "etiqueta": "I",
+   "nota": "multiplica a taxa de crescimento inteira do oxido. Um erro de 5 C no forno a 900 C muda B/A em cerca de 9 % com Ea de 2 eV [C]; a faixa cobre cerca de 10 C de desvio de calibracao do forno"
+  },
+  "fator_mobilidade_si": {
+   "valor": 1.0,
+   "incerteza": {
+    "tipo": "loguniforme",
+    "min": 0.7,
+    "max": 1.3
+   },
+   "etiqueta": "I",
+   "nota": "multiplica as quatro mobilidades de Masetti, o que escala mu(N) inteira. R52 concorda com Masetti em 4 % ate 1,7e20 e R24 mede menos acima de 1e20; a faixa cobre os dois"
+  },
+  "discrepancia": {
+   "nota": "desvio do modelo que nenhum parametro calibrado remove, somado em quadratura a medida e ao emulador. Forma simplificada de Kennedy e O'Hagan, sem correlacao entre lotes. Em log, o valor e o desvio relativo",
+   "espessura_ox_nm": {
+    "valor": 0.5,
+    "unidade": "nm",
+    "etiqueta": "I"
+   },
+   "Rs_recozido": {
+    "valor": 0.08,
+    "unidade": "relativo",
+    "etiqueta": "I"
+   },
+   "Rs_final": {
+    "valor": 0.08,
+    "unidade": "relativo",
+    "etiqueta": "I"
+   },
+   "fracao_ativa": {
+    "valor": 0.05,
+    "unidade": "adim",
+    "etiqueta": "I"
+   },
+   "ativo_superficie": {
+    "valor": 0.2,
+    "unidade": "relativo",
+    "etiqueta": "I"
+   },
+   "amorfo_nm": {
+    "valor": 2.0,
+    "unidade": "nm",
+    "etiqueta": "I"
+   },
+   "V_D": {
+    "valor": 0.3,
+    "unidade": "V",
+    "etiqueta": "I"
+   },
+   "perda_si_5e12": {
+    "valor": 0.1,
+    "unidade": "relativo",
+    "etiqueta": "I"
+   },
+   "C_min_sobre_Cox": {
+    "valor": 0.02,
+    "unidade": "adim",
+    "etiqueta": "I"
+   },
+   "Rsq_grafeno_5e12": {
+    "valor": 0.15,
+    "unidade": "relativo",
+    "etiqueta": "I"
+   },
+   "E_ox_em_VD_mais_5V": {
+    "valor": 0.05,
+    "unidade": "MV/cm",
+    "etiqueta": "I"
+   }
+  },
+  "erro_medida_tipico": {
+   "nota": "desvio padrao sugerido quando o usuario nao informa o da medida; cada medida pode trazer o seu",
+   "espessura_ox_nm": {
+    "valor": 0.3,
+    "unidade": "nm",
+    "etiqueta": "I",
+    "nota": "elipsometria"
+   },
+   "Rs_recozido": {
+    "valor": 0.03,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "quatro pontas"
+   },
+   "Rs_final": {
+    "valor": 0.03,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "quatro pontas"
+   },
+   "fracao_ativa": {
+    "valor": 0.05,
+    "unidade": "adim",
+    "etiqueta": "I",
+    "nota": "Hall comparado com SIMS"
+   },
+   "ativo_superficie": {
+    "valor": 0.3,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "ECV ou SIMS"
+   },
+   "amorfo_nm": {
+    "valor": 2.0,
+    "unidade": "nm",
+    "etiqueta": "I",
+    "nota": "TEM ou RBS"
+   },
+   "V_D": {
+    "valor": 0.2,
+    "unidade": "V",
+    "etiqueta": "I",
+    "nota": "minimo da curva de transferencia"
+   },
+   "C_min_sobre_Cox": {
+    "valor": 0.01,
+    "unidade": "adim",
+    "etiqueta": "I",
+    "nota": "C-V"
+   },
+   "Rsq_grafeno_5e12": {
+    "valor": 0.1,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "transferencia em 5e12"
+   },
+   "n_dop": {
+    "valor": 0.3,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "Raman pela posicao do G (D1)"
+   },
+   "mu_grafeno": {
+    "valor": 0.2,
+    "unidade": "relativo",
+    "etiqueta": "I",
+    "nota": "ajuste da transferencia"
+   }
+  }
+ }
+}

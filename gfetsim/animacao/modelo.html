@@ -1,0 +1,313 @@
+<title>GFET de porta local</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
+<style>
+/* Layout: bancada de instrumento. Uma tela grande por aba, leituras e gráficos ao lado,
+   linha do tempo embaixo. Um tema escuro só, como a tela de um microscópio; todas as
+   cores vêm destes tokens. */
+:root {
+  color-scheme: dark;
+  --bg: #0e1215;
+  --painel: #151b20;
+  --painel2: #1b232a;
+  --linha: #2a343c;
+  --tinta: #e7ecef;
+  --tinta2: #a9b5bc;
+  --tinta3: #74828b;
+  --si: #56616a;
+  --si-atomo: #8a98a2;
+  --oxido: #8f84e6;
+  --p-inativo: #e3a32a;
+  --p-ativo: #36c2b4;
+  --eletron: #4f97f0;
+  --lacuna: #ee6f6f;
+  --ouro: #d4ad3c;
+  --perigo: #ff6b5c;
+  --ida: #4f97f0;
+  --volta: #e8833f;
+  --oxigenio: #ff8f80;
+  --f-titulo: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-texto: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-dado: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+html, body { background: var(--bg); color: var(--tinta); }
+body { font: 14px/1.5 var(--f-texto); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 32px; }
+.pagina { max-width: 1360px; margin: 0 auto; display: grid; gap: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+h1 { font: 600 28px/1.1 var(--f-titulo); letter-spacing: .01em; margin: 0; text-wrap: balance; }
+.sub { color: var(--tinta2); margin: 4px 0 0; max-width: 76ch; }
+.abas { display: flex; flex-wrap: wrap; gap: 4px; background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 3px; }
+.abas button { font: 500 14px var(--f-texto); color: var(--tinta2); background: transparent; border: 0; border-radius: 6px; padding: 7px 14px; cursor: pointer; }
+.abas button[aria-selected="true"] { background: var(--painel2); color: var(--tinta); box-shadow: inset 0 0 0 1px var(--linha); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--eletron); outline-offset: 2px; }
+.grade { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.grade.larga { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); }
+.coluna { display: grid; gap: 16px; min-width: 0; }
+.cartao { background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.cartao h2 { font: 600 13px var(--f-titulo); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta2); margin: 0 0 8px; }
+.tela { width: 100%; display: block; border-radius: 6px; background: #0a0e11; }
+canvas.tela.toque { touch-action: none; }
+.palco { position: relative; }
+.palco .rotulos { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.rotulo3d { position: absolute; transform: translate(-50%, -100%); font: 500 11px var(--f-dado); color: var(--tinta); background: rgba(14,18,21,.72); border: 1px solid var(--linha); border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+.legenda { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--tinta2); margin-top: 8px; }
+.legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.nota { font-size: 12px; color: var(--tinta3); margin: 6px 0 0; }
+.etapa-titulo { font: 600 20px/1.2 var(--f-titulo); margin: 0 0 6px; text-wrap: balance; }
+.etapa-texto { color: var(--tinta2); margin: 0; max-width: 62ch; }
+.numeros { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px 14px; margin-top: 10px; }
+.num { display: grid; gap: 1px; }
+.num b { font: 500 16px var(--f-dado); color: var(--tinta); font-variant-numeric: tabular-nums; }
+.num span { font-size: 11px; color: var(--tinta3); letter-spacing: .04em; text-transform: uppercase; }
+.etiqueta { display: inline-block; font: 500 11px var(--f-dado); padding: 1px 6px; border-radius: 4px; background: var(--painel2); color: var(--tinta2); border: 1px solid var(--linha); margin-left: 4px; }
+.linha-tempo { display: grid; gap: 10px; }
+.etapas { display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); gap: 4px; }
+.etapas button { font: 500 12px/1.25 var(--f-texto); color: var(--tinta2); background: var(--painel2); border: 1px solid var(--linha); border-radius: 6px; padding: 6px 6px; cursor: pointer; text-align: left; min-height: 44px; position: relative; overflow: hidden; }
+.etapas button .barra { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--p-ativo); width: 0; }
+.etapas button[aria-current="step"] { color: var(--tinta); border-color: var(--tinta3); }
+.etapas button small { display: block; font: 400 11px var(--f-dado); color: var(--tinta3); }
+.controles { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+.campo { display: grid; gap: 3px; font-size: 12px; color: var(--tinta2); min-width: 0; align-content: end; }
+.campo output { font: 500 12px var(--f-dado); color: var(--tinta); }
+select, .botao { font: 500 13px var(--f-texto); color: var(--tinta); background: var(--painel2); border: 1px solid var(--linha); border-radius: 6px; padding: 6px 10px; }
+.botao { cursor: pointer; }
+.botao.primario { background: #23506f; border-color: #2f6b93; }
+input[type="range"] { width: 160px; accent-color: var(--eletron); }
+.tempo-faixa { width: 100%; }
+.leituras { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px 12px; }
+.leituras .num b { font-size: 15px; }
+.alerta { color: var(--perigo); }
+.interacoes { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.interacoes label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--tinta2); background: var(--painel2); border: 1px solid var(--linha); border-radius: 999px; padding: 4px 10px 4px 8px; cursor: pointer; }
+.interacoes input { accent-color: var(--p-ativo); margin: 0; }
+.tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.aviso3d { padding: 24px; color: var(--tinta2); }
+footer { color: var(--tinta3); font-size: 12px; max-width: 120ch; }
+footer p { margin: 4px 0; }
+@media (max-width: 980px) {
+  .grade, .grade.larga, .tres { grid-template-columns: minmax(0, 1fr); }
+  .etapas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .etapas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  input[type="range"] { width: 130px; }
+  h1 { font-size: 24px; }
+  .abas button { padding: 6px 10px; font-size: 13px; }
+}
+</style>
+
+<div class="pagina">
+<header>
+  <div>
+    <h1>GFET de porta local</h1>
+    <p class="sub">Fabricação e operação da porta n<sup>+</sup> implantada, desenhadas a partir das saídas do gfetsim. Trajetórias e cascatas do RustBCA, física 2D da borda da máscara, recozimento, oxidação, transferência do grafeno pelo protocolo do seu artigo e o dispositivo em operação, em 2D e em 3D.</p>
+  </div>
+  <div class="abas" role="tablist" aria-label="Vista">
+    <button role="tab" id="aba-corte" aria-selected="true" aria-controls="corte">Fabricação 2D</button>
+    <button role="tab" id="aba-d3" aria-selected="false" aria-controls="d3">Dispositivo 3D</button>
+    <button role="tab" id="aba-atomos" aria-selected="false" aria-controls="atomos">Átomos 3D</button>
+    <button role="tab" id="aba-operacao" aria-selected="false" aria-controls="operacao">Operação</button>
+  </div>
+</header>
+
+<!-- ============================================================ FABRICAÇÃO 2D -->
+<section id="corte" role="tabpanel" aria-labelledby="aba-corte" class="pagina">
+  <div class="grade">
+    <div class="cartao">
+      <h2>Corte em escala na borda da máscara</h2>
+      <canvas id="cv-fab" class="tela" aria-label="Corte transversal animado do processo" height="520"></canvas>
+      <div class="legenda">
+        <span><i style="background:var(--si-atomo)"></i>Si cristalino</span>
+        <span><i style="background:var(--oxido)"></i>SiO<sub>2</sub></span>
+        <span><i style="background:var(--p-inativo)"></i>P inativo</span>
+        <span><i style="background:var(--p-ativo)"></i>P ativo (doador)</span>
+        <span><i style="background:#ffd27a"></i>íon e cascata</span>
+        <span><i style="background:var(--oxigenio)"></i>O<sub>2</sub> difundindo</span>
+      </div>
+      <p class="nota">Profundidade e largura na mesma escala. Toque no corte para escolher a coluna do perfil ao lado. Os átomos de Si são desenhados a cada 7 nm; a rede real tem 0,54 nm.</p>
+    </div>
+    <div class="coluna">
+      <div class="cartao" aria-live="polite">
+        <p class="etapa-titulo" id="etapa-titulo">Lâmina e máscara</p>
+        <p class="etapa-texto" id="etapa-texto"></p>
+        <div class="numeros" id="etapa-numeros"></div>
+      </div>
+      <div class="cartao">
+        <h2 id="titulo-perfil">Perfil de P na coluna escolhida</h2>
+        <canvas id="cv-perfil" class="tela" height="240" aria-label="Concentração de fósforo total e ativa em função da profundidade"></canvas>
+        <div class="legenda">
+          <span><i style="background:var(--p-inativo)"></i>P total</span>
+          <span><i style="background:var(--p-ativo)"></i>P ativo</span>
+          <span><i style="background:var(--tinta3)"></i>centro da janela (1D)</span>
+        </div>
+      </div>
+      <div class="cartao">
+        <h2 id="titulo-etapa-grafico">Andamento da etapa</h2>
+        <canvas id="cv-etapa" class="tela" height="170" aria-label="Grandeza principal da etapa ao longo do tempo"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="cartao linha-tempo">
+    <div class="etapas" id="etapas-corte"></div>
+    <input type="range" class="tempo-faixa" id="tempo-corte" min="0" max="1000" value="0" step="1" aria-label="Posição no processo">
+    <div class="controles">
+      <button class="botao primario" id="tocar-corte">Pausar</button>
+      <label class="campo" for="vel-corte"><span>Velocidade</span><select id="vel-corte"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+      <label class="campo" for="sel-mascara"><span>Implantação</span><select id="sel-mascara"><option value="A">A, máscara de 150 nm</option><option value="B">B, lâmina inteira</option></select></label>
+      <label class="campo" for="sel-sombra"><span>Inclinação de 7° em relação à borda</span><select id="sel-sombra"><option value="sombra">em direção à janela, com sombra</option><option value="sem_sombra">paralela à borda, sem sombra</option></select></label>
+      <label class="campo" for="sel-variante"><span>Recozimento</span><select id="sel-variante"><option value="A">A, 550 °C e RTA 1050 °C 10 s</option><option value="B850">B, 550 °C e forno 850 °C 30 min</option><option value="B900">B, 550 °C e forno 900 °C 30 min</option></select></label>
+      <label class="campo" for="sel-ramo"><span>Aceleração da oxidação</span><select id="sel-ramo"><option value="ho_plummer">Ho e Plummer (R29)</option><option value="nomura">fator 2,1 (R23)</option><option value="sem_aceleracao">sem aceleração (N10)</option></select></label>
+      <label class="campo" for="sel-T"><span>Oxidação seca</span><select id="sel-T"><option value="850">850 °C</option><option value="900" selected>900 °C</option><option value="950">950 °C</option></select></label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DISPOSITIVO 3D -->
+<section id="d3" role="tabpanel" aria-labelledby="aba-d3" class="pagina" hidden>
+  <div class="grade larga">
+    <div class="cartao">
+      <h2>GFET em 3D</h2>
+      <div class="palco"><canvas id="cv-3d" class="tela toque" height="560" aria-label="Cena 3D do dispositivo; arraste para girar e use dois dedos ou a roda para aproximar"></canvas><div class="rotulos" id="rotulos-3d"></div></div>
+      <div class="controles" style="margin-top:10px">
+        <button class="botao" id="cam-geral">Vista geral</button>
+        <button class="botao" id="cam-corte">Corte A−A′</button>
+        <button class="botao" id="cam-cima">De cima</button>
+        <label class="campo" for="d3-cortar"><span>Cortar o dispositivo</span><select id="d3-cortar"><option value="sim" selected>mostrar o interior</option><option value="nao">peça inteira</option></select></label>
+        <label class="campo" for="d3-exagero"><span>Exagero vertical <output id="o-exagero"></output></span><input type="range" id="d3-exagero" min="5" max="150" step="5" value="50"></label>
+        <label class="campo" for="d3-L"><span>Comprimento do canal L <output id="o-L3"></output></span><input type="range" id="d3-L" min="4" max="30" step="1" value="10"></label>
+      </div>
+      <p class="nota" id="nota-3d">Dimensões no plano em µm. As espessuras dos filmes e das camadas dopadas são multiplicadas pelo exagero vertical. W e L não estão na receita; o canal usa W = L.</p>
+    </div>
+    <div class="coluna">
+      <div class="cartao" aria-live="polite">
+        <p class="etapa-titulo" id="d3-titulo"></p>
+        <p class="etapa-texto" id="d3-texto"></p>
+        <div class="numeros" id="d3-numeros"></div>
+      </div>
+      <div class="cartao">
+        <h2>Leituras da operação</h2>
+        <div class="leituras" id="d3-leituras"></div>
+        <p class="nota">Aparecem na última etapa, quando o dispositivo liga. Os controles elétricos ficam na aba Operação.</p>
+      </div>
+    </div>
+  </div>
+  <div class="cartao linha-tempo">
+    <div class="etapas" id="etapas-3d"></div>
+    <input type="range" class="tempo-faixa" id="tempo-3d" min="0" max="1000" value="0" step="1" aria-label="Posição no processo em 3D">
+    <div class="controles">
+      <button class="botao primario" id="tocar-3d">Pausar</button>
+      <label class="campo" for="vel-3d"><span>Velocidade</span><select id="vel-3d"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ÁTOMOS 3D -->
+<section id="atomos" role="tabpanel" aria-labelledby="aba-atomos" class="pagina" hidden>
+  <div class="grade larga">
+    <div class="cartao">
+      <h2 id="atomos-titulo">Cascata de um íon de P no Si</h2>
+      <div class="palco"><canvas id="cv-atomos" class="tela toque" height="560" aria-label="Cena atômica 3D"></canvas><div class="rotulos" id="rotulos-atomos"></div></div>
+      <div class="controles" style="margin-top:10px">
+        <label class="campo" for="at-cena"><span>Cena</span><select id="at-cena"><option value="cascata">cascata de um íon</option><option value="grafeno">grafeno sobre SiO₂</option></select></label>
+        <label class="campo" for="at-ion"><span>Íon do RustBCA</span><select id="at-ion"><option value="0">íon 1</option><option value="1">íon 2</option><option value="2">íon 3</option></select></label>
+        <button class="botao primario" id="at-tocar">Pausar</button>
+        <label class="campo" for="at-vel"><span>Velocidade</span><select id="at-vel"><option value="0.3">lenta</option><option value="1" selected>normal</option><option value="3">rápida</option></select></label>
+        <label class="campo" for="at-rede"><span>Rede de diamante</span><select id="at-rede"><option value="sim" selected>mostrar perto da trajetória</option><option value="nao">esconder</option></select></label>
+      </div>
+      <p class="nota" id="nota-atomos"></p>
+    </div>
+    <div class="coluna">
+      <div class="cartao" aria-live="polite">
+        <p class="etapa-titulo" id="at-cab"></p>
+        <p class="etapa-texto" id="at-texto"></p>
+        <div class="numeros" id="at-numeros"></div>
+      </div>
+      <div class="cartao">
+        <h2 id="at-graf-titulo">Energia do íon ao longo do caminho</h2>
+        <canvas id="cv-at-graf" class="tela" height="200" aria-label="Gráfico da cena atômica"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ OPERAÇÃO -->
+<section id="operacao" role="tabpanel" aria-labelledby="aba-operacao" class="pagina" hidden>
+  <div class="grade">
+    <div class="cartao">
+      <h2>Dispositivo em operação</h2>
+      <canvas id="cv-disp" class="tela" height="330" aria-label="Corte do GFET com portadores, campo no óxido e Si da porta"></canvas>
+      <div class="legenda">
+        <span><i style="background:var(--eletron)"></i>elétron</span>
+        <span><i style="background:var(--lacuna)"></i>lacuna</span>
+        <span><i style="background:var(--p-ativo)"></i>doador exposto na depleção</span>
+        <span><i style="background:#9fd3ff"></i>molécula de água na interface</span>
+        <span><i style="background:var(--oxido)"></i>linhas de campo no SiO<sub>2</sub></span>
+      </div>
+      <p class="nota">Espessuras verticais exageradas e canal fora de escala. Densidades, campo e velocidades vêm do modelo.</p>
+    </div>
+    <div class="coluna">
+      <div class="cartao">
+        <h2>Bandas da pilha</h2>
+        <canvas id="cv-banda" class="tela" height="300" aria-label="Diagrama de bandas grafeno, SiO2 e Si"></canvas>
+      </div>
+      <div class="cartao">
+        <h2>Leituras</h2>
+        <div class="leituras" id="leituras"></div>
+      </div>
+    </div>
+  </div>
+  <div class="tres">
+    <div class="cartao"><h2>C-V da porta</h2><canvas id="cv-cv" class="tela" height="210" aria-label="Capacitância normalizada em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--p-ativo)"></i>pilha com Si n<sup>+</sup></span><span><i style="background:var(--tinta3)"></i>mesma pilha com porta metálica</span></div></div>
+    <div class="cartao"><h2>Transferência</h2><canvas id="cv-trans" class="tela" height="210" aria-label="Corrente de dreno por largura em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--tinta3)"></i>sem histerese</span><span><i style="background:var(--ida)"></i>ida</span><span><i style="background:var(--volta)"></i>volta</span><span><i style="background:#5d6a73"></i>outros dispositivos</span></div></div>
+    <div class="cartao"><h2>Saída</h2><canvas id="cv-saida" class="tela" height="210" aria-label="Corrente de dreno em função da tensão de dreno para várias tensões de porta"></canvas>
+      <div class="legenda" id="leg-saida"></div></div>
+    <div class="cartao"><h2>Campo no óxido</h2><canvas id="cv-campo" class="tela" height="210" aria-label="Campo elétrico no óxido e faixa de ruptura"></canvas>
+      <div class="legenda"><span><i style="background:var(--oxido)"></i>campo</span><span><i style="background:var(--perigo)"></i>ruptura intrínseca (B1)</span></div></div>
+    <div class="cartao"><h2>Frequência de corte</h2><canvas id="cv-gm" class="tela" height="210" aria-label="Frequência de corte intrínseca em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--p-ativo)"></i>f<sub>T</sub> intrínseca, sem parasitas</span></div></div>
+    <div class="cartao"><h2>Capacitância quântica</h2><canvas id="cv-cq" class="tela" height="210" aria-label="Capacitância quântica do grafeno em função da tensão de porta"></canvas>
+      <div class="legenda"><span><i style="background:var(--eletron)"></i>C<sub>q</sub></span><span><i style="background:var(--oxido)"></i>C<sub>ox</sub></span></div></div>
+  </div>
+  <div class="cartao">
+    <h2>Controles</h2>
+    <div class="controles">
+      <label class="campo" for="op-processo"><span>Processo da porta</span><select id="op-processo"></select></label>
+      <button class="botao primario" id="op-varrer">Parar varredura</button>
+      <label class="campo" for="op-taxa"><span>Taxa de varredura <output id="o-taxa"></output></span><input type="range" id="op-taxa" min="-2" max="2" step="0.05" value="0"></label>
+      <label class="campo" for="op-acel"><span>Tempo</span><select id="op-acel"><option value="1">real</option><option value="10" selected>10× mais rápido</option><option value="100">100× mais rápido</option></select></label>
+      <label class="campo" for="op-vg"><span>V<sub>G</sub> manual <output id="o-vg"></output></span><input type="range" id="op-vg" min="-14" max="14" step="0.05" value="2"></label>
+      <label class="campo" for="op-vds"><span>V<sub>DS</sub> <output id="o-vds"></output></span><input type="range" id="op-vds" min="0.02" max="3" step="0.01" value="0.1"></label>
+      <label class="campo" for="op-dop"><span>Dopagem residual <output id="o-dop"></output></span><input type="range" id="op-dop" min="12.146" max="13" step="0.01" value="12.48"></label>
+      <label class="campo" for="op-sinal"><span>Tipo</span><select id="op-sinal"><option value="-1">p (lacunas)</option><option value="1">n (elétrons)</option></select></label>
+      <label class="campo" for="op-mu"><span>Mobilidade <output id="o-mu"></output></span><input type="range" id="op-mu" min="2.477" max="3.892" step="0.01" value="3.2"></label>
+      <label class="campo" for="op-rc"><span>R<sub>c</sub>·W <output id="o-rc"></output></span><input type="range" id="op-rc" min="2" max="3.699" step="0.01" value="2.7"></label>
+      <label class="campo" for="op-L"><span>Comprimento L <output id="o-L"></output></span><input type="range" id="op-L" min="1" max="50" step="1" value="10"></label>
+      <label class="campo" for="op-om"><span>ħΩ <output id="o-om"></output></span><input type="range" id="op-om" min="15" max="100" step="1" value="55"></label>
+      <label class="campo" for="op-alfa"><span>Histerese α <output id="o-alfa"></output></span><input type="range" id="op-alfa" min="0" max="0.4" step="0.01" value="0.15"></label>
+      <label class="campo" for="op-tau"><span>Relaxação τ <output id="o-tau"></output></span><input type="range" id="op-tau" min="-1" max="2.5" step="0.05" value="1.3"></label>
+      <label class="campo" for="op-rho"><span>Substrato fora da porta</span><select id="op-rho"><option value="0.001">0,001 Ω·cm</option><option value="0.01">0,01 Ω·cm</option><option value="0.1">0,1 Ω·cm</option><option value="1.0">1 Ω·cm</option><option value="10.0" selected>10 Ω·cm</option></select></label>
+      <label class="campo" for="op-disp"><span>Dispersão entre dispositivos</span><select id="op-disp"><option value="sim" selected>mostrar 40 dispositivos</option><option value="nao">esconder</option></select></label>
+    </div>
+    <h2 style="margin-top:14px">Interações no cálculo</h2>
+    <div class="interacoes" id="interacoes"></div>
+    <p class="nota">Com todas ligadas, n(V) e C(V) são as do Poisson do gfetsim. Desligar a capacitância quântica ou a do Si refaz n(V) integrando a capacitância em série sem aquele termo, uma aproximação útil para comparar. Os 40 dispositivos sorteiam mobilidade, dopagem residual, poças, R<sub>c</sub> e ħΩ dentro das faixas do params.yaml.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Fontes. Implantação pelo RustBCA (alvo amorfo, potencial Kr-C) com 48 trajetórias reais na janela, 16 na máscara e 1e5 posições finais para a borda 2D. Camada amorfa pelo limiar medido a 300 K (A2). Sombra da máscara a 7° e recozimento 2D por separação de operadores com Fair e Tsai e a solubilidade de Solmi (N24). Oxidação pelo modelo de Massoud (S1) com os ramos de Ho e Plummer (R29, S2), de Nomura (R23) e sem aceleração (N10), coluna a coluna na borda. Transferência do grafeno pelo protocolo do artigo do usuário. Elétrico pelo Poisson com Fermi-Dirac, grafeno com poças de carga (R40, N17), transporte de Kim (R34) e de Jiménez (R42), ruptura (B1) e Fowler-Nordheim (R45). Histerese pelo modelo de relaxação (R47), com α e τ a calibrar.</p>
+  <p>Valores provisórios [I] entram nas difusividades, na mobilidade do Si, em nᵢ(T), na SPE, nas permissividades e nas barreiras de energia. A lista está no relatório e no pendencias.md do pacote.</p>
+</footer>
+</div>
+
+<script type="application/json" id="dados">__DADOS__</script>
+<script>
+"use strict";
+__JS__
+</script>

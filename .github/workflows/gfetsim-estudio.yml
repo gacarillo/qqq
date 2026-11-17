@@ -1,0 +1,30 @@
+name: gfetsim estudio
+
+on:
+  push:
+    paths: ["gfetsim/estudio/**", ".github/workflows/gfetsim-estudio.yml"]
+  pull_request:
+    paths: ["gfetsim/estudio/**", ".github/workflows/gfetsim-estudio.yml"]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: gfetsim/estudio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: gfetsim/estudio/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gfetsim-estudio
+          path: gfetsim/estudio/dist/index.html
