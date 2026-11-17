@@ -232,7 +232,7 @@ select:hover, .botao:hover { border-color: var(--borda-forte); }
 .legenda i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
 .legenda i.ponto { width: 9px; height: 9px; border-radius: 50%; vertical-align: -1px; }
 .linha-tempo { display: grid; gap: 8px; }
-.etapas { display: grid; grid-template-columns: repeat(var(--n, 8), minmax(0, 1fr)); gap: 3px; }
+.etapas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 108px), 1fr)); gap: 3px; }
 .etapas button { text-align: left; font: 500 12px/1.2 var(--f-texto); background: var(--superficie-2); color: var(--texto-2); border: 1px solid var(--borda); border-radius: 4px; padding: 6px 7px 8px; cursor: pointer; position: relative; overflow: hidden; min-height: 42px; }
 .etapas button small { display: block; font: 10px var(--f-dado); color: var(--texto-3); margin-top: 2px; }
 .etapas button[aria-current="step"] { color: var(--texto); border-color: var(--acento); }
@@ -285,6 +285,10 @@ table.tabela code { font: 11px var(--f-dado); color: var(--texto-2); }
 
 /* ---------------------------------------------------------------- responsivo */
 .so-celular, .so-celular-bloco { display: none !important; }
+@media (max-width: 1480px) {
+  .marca span { display: none; }
+  .botao kbd { display: none; }
+}
 @media (max-width: 1240px) {
   .app { grid-template-columns: 290px minmax(0, 1fr) 0; --largura-receita: 290px; }
   .inspetor { display: none; }
@@ -305,14 +309,12 @@ table.tabela code { font: 11px var(--f-dado); color: var(--texto-2); }
   .vista { padding-block: 12px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); overflow: visible; }
   .inspetor, .app.inspetor-aberto .inspetor { display: block; border-left: 0; border-top: 1px solid var(--borda); }
   .grade-2, .grade-3, .grade-principal { grid-template-columns: minmax(0, 1fr); }
-  .etapas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .estado-sim { min-width: 0; }
   .estado-sim .barra { width: 60px; }
   .apresentacao .quadro { grid-template-columns: minmax(0, 1fr); overflow: auto; }
   .relatorio { padding: 18px 16px; }
 }
 @media (max-width: 480px) {
-  .etapas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .marca span { display: none; }
   .topo .rotulo-longo { display: none; }
 }

@@ -52,6 +52,18 @@ export interface Estado {
 }
 
 const p0 = carregar(true);
+
+/** Sem escolha guardada, segue o tema de quem abre a página. */
+function temaInicial(): Tema {
+  try {
+    const t = document.documentElement.getAttribute("data-theme");
+    if (t === "light") return "claro";
+    if (t === "dark") return "escuro";
+    return matchMedia("(prefers-color-scheme: light)").matches ? "claro" : "escuro";
+  } catch {
+    return "escuro";
+  }
+}
 const receitaInicial = armazenamento.ler<Receita | null>("gfetsim.receita", null);
 
 function receitaValida(r: Receita | null): Receita {
@@ -75,7 +87,7 @@ export const loja = new Loja<Estado>({
   progresso: { etapa: "", fracao: 0 },
   automatico: true,
   aba: armazenamento.ler<Aba>("gfetsim.aba", "estrutura"),
-  tema: armazenamento.ler<Tema>("gfetsim.tema", "escuro"),
+  tema: armazenamento.ler<Tema>("gfetsim.tema", temaInicial()),
   log: [],
   mc: null,
   comparacao: [],
