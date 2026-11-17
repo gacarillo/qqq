@@ -59,6 +59,14 @@ A receita YAML escolhe a variante de cada etapa e os ramos. O campo `aceitar_pro
 
 O relatório e o `pendencias.md` trazem a lista completa. Em resumo, os módulos 2 (duas etapas), 5 e 6 validam contra dado publicado. O módulo 1 valida contra o limiar medido a 300 K, depois que o critério de baixa temperatura falhou. O alcance só fica dentro da discordância entre fontes. O módulo 3 não tem dado publicado acessível para validação quantitativa, e o módulo 4 tem validação numérica e de forma, sem curva medida comparável.
 
+## Estúdio
+
+`estudio/` é uma aplicação em TypeScript com os modelos do gfetsim portados para o navegador e validados contra este pacote por 58 testes. A receita muda e a cadeia inteira é recalculada ao vivo, com corte 2D no estilo dos simuladores de processo, dispositivo 3D, escala atômica, operação do transistor, Monte Carlo com índices de Sobol, parâmetros com etiquetas e relatório. Veja `estudio/README.md`.
+
+```
+cd estudio && npm install && npm run dev
+```
+
 ## Animação
 
 `animacao/gfet_animacao.html` é uma página única com quatro abas, montada a partir dos módulos do pacote.

@@ -1,0 +1,902 @@
+{
+ "R1": {
+  "id": "R1",
+  "texto": "IMSIL, TU Wien, licença com G. Hobler",
+  "doi": null,
+  "situacao": "sem conferência possível",
+  "garante": "nada",
+  "uso": "canalização com alvo cristalino",
+  "secao": "Referências da lista original"
+ },
+ "R2": {
+  "id": "R2",
+  "texto": "Herzog S., Simionescu A., Hobler G., Palmetshofer L., Piplits K., Grasserbauer M., Monte Carlo Simulation of Channeled Phosphorus Implantations in Silicon, ESSDERC 1995, IEEE Xplore 5435975",
+  "doi": null,
+  "situacao": "OK",
+  "garante": "P 25 keV, 1e13 a 1e15 cm⁻², Si(100) a 7°, SIMS e IMSIL",
+  "uso": "SIMS de validação da cauda",
+  "secao": "Referências da lista original"
+ },
+ "R3": {
+  "id": "R3",
+  "texto": "Ning (ou Yu) N., Chu W.-K., Patnaik B.K., Parikh N.R., Corcoran S., Kirschbaum C., Varahramyan K., Channeling effect of P implantation in Si(100), NIMB 59, 1061 (1991)",
+  "doi": "10.1016/0168-583X(91)95765-6",
+  "situacao": "OK*",
+  "garante": "P 5 a 200 keV no eixo [001], no plano (310) a 7° e em direção aleatória equivalente, também em Si amorfo e através de SiO₂ fino",
+  "uso": "SIMS de validação. A ordem do nome do primeiro autor varia entre as bases",
+  "secao": "Referências da lista original"
+ },
+ "R4": {
+  "id": "R4",
+  "texto": "Bresolin C., Zaccherini C., Anderle M., Canteri R., A comparison between zero and seven degrees of tilt implantation of As+, P+ and BF2+, NIMB 51, 122 (1990)",
+  "doi": "10.1016/0168-583X(90)90511-R",
+  "situacao": "OK",
+  "garante": "7° não evita canalização axial; P de 80 a 150 keV, 2e14 a 2e15 cm⁻²",
+  "uso": "argumento da cauda. Energia acima da receita",
+  "secao": "Referências da lista original"
+ },
+ "R5": {
+  "id": "R5",
+  "texto": "Lie et al., MRS Proc. 342, 51 (1994)",
+  "doi": "10.1557/PROC-342-51",
+  "situacao": "NÃO",
+  "garante": "não encontrado em duas buscas. Achei Lie D.Y.C. et al., MRS 321, 485 (1993), 10.1557/PROC-321-485, com P 100 keV e Rp de ~125 nm, porém em Ge₀.₁₂Si₀.₈₈",
+  "uso": "validação do alcance. Confirmar se o Rp de 133 nm é em Si puro",
+  "secao": "Referências da lista original"
+ },
+ "R6": {
+  "id": "R6",
+  "texto": "Fair R.B., Tsai J.C.C., A Quantitative Model for the Diffusion of Phosphorus in Silicon and the Emitter Dip Effect, JES 124(7), 1107 (1977)",
+  "doi": "10.1149/1.2133492",
+  "situacao": "OK",
+  "garante": "três difusividades intrínsecas ligadas a V⁰, V⁻ e V⁼; cauda acelerada até 135× a 900 °C",
+  "uso": "difusão de P",
+  "secao": "Referências da lista original"
+ },
+ "R7": {
+  "id": "R7",
+  "texto": "Mathiot D., Pfister J.C., Influence of the nonequilibrium vacancies on the diffusion of phosphorus into silicon, JAP 53, 3053 (1982)",
+  "doi": "10.1063/1.331049",
+  "situacao": "DIVERGE",
+  "garante": "é uma solução numérica do próprio Fair e Tsai mostrando que os centros E não explicam o platô",
+  "uso": "o modelo alternativo de percolação está em R7b e R7c",
+  "secao": "Referências da lista original"
+ },
+ "R8": {
+  "id": "R8",
+  "texto": "Hobler G., Pelaz L., Rafferty C.S., Dose, Energy, and Ion Species Dependence of the Effective Plus Factor for Transient Enhanced Diffusion, JES 147, 3494 (2000)",
+  "doi": "10.1149/1.1393926",
+  "situacao": "OK",
+  "garante": "fator +n de 1 keV a 1 MeV para B, Si, P e As, máximo ~4 para As de 1 keV",
+  "uso": "TED. O modelo vale para implante não amorfizante",
+  "secao": "Referências da lista original"
+ },
+ "R9": {
+  "id": "R9",
+  "texto": "Lim D.R., Rafferty C.S., Klemens F.P., The role of the surface in transient enhanced diffusion, APL 67, 2302 (1995)",
+  "doi": "10.1063/1.115133",
+  "situacao": "OK",
+  "garante": "comprimento de recombinação de intersticiais na superfície igual a 0,1 µm a 800 °C",
+  "uso": "TED",
+  "secao": "Referências da lista original"
+ },
+ "R10": {
+  "id": "R10",
+  "texto": "Stolk P.A., Gossmann H.-J., Eaglesham D.J., Jacobson D.C., Rafferty C.S., Gilmer G.H., Jaraíz M., Poate J.M., Luftman H.S., Haynes T.E., Physical mechanisms of transient enhanced dopant diffusion in ion-implanted silicon, JAP 81, 6031 (1997)",
+  "doi": "10.1063/1.364452",
+  "situacao": "OK",
+  "garante": "defeitos {311} guardam ~uma dose de intersticiais; dissolução com Ea de 3,8 ± 0,2 eV",
+  "uso": "mecanismo da TED",
+  "secao": "Referências da lista original"
+ },
+ "R11": {
+  "id": "R11",
+  "texto": "Jaraíz M., Gilmer G.H., Poate J.M., Diaz de la Rubia T., Atomistic calculations of ion implantation in Si, APL 68, 409 (1996)",
+  "doi": "10.1063/1.116701",
+  "situacao": "OK",
+  "garante": "origem atomística do modelo +1",
+  "uso": "mecanismo",
+  "secao": "Referências da lista original"
+ },
+ "R12": {
+  "id": "R12",
+  "texto": "Takamura Y., Griffin P.B., Plummer J.D., Physical processes associated with the deactivation of dopants in laser annealed silicon, JAP 92, 235 (2002)",
+  "doi": "10.1063/1.1481974",
+  "situacao": "OK",
+  "garante": "P desativa a partir de ~500 °C por aglomerados dopante e defeito",
+  "uso": "desativação",
+  "secao": "Referências da lista original"
+ },
+ "R13": {
+  "id": "R13",
+  "texto": "Yu N., Ma K.B., Kirschbaum C., Varahramyan K., Chu W.-K., Enhancement of electrical activation of ion-implanted phosphorus in Si(100) through two-step thermal annealing, APL 63, 1125 (1993)",
+  "doi": "10.1063/1.109801",
+  "situacao": "OK",
+  "garante": "P 50 e 100 keV; 550 °C 30 min + 1050 °C 10 s ativa 75 a 100 %; só 1050 °C 10 s ativa 40 a 60 %",
+  "uso": "validação direta da variante A",
+  "secao": "Referências da lista original"
+ },
+ "R14": {
+  "id": "R14",
+  "texto": "Wu S., Hodel M.W., Samadpour F., High conductivity, shallow doping in silicon by ion implantation and furnace annealing, NIMB 6, 330 (1985)",
+  "doi": "10.1016/0168-583X(85)90654-8",
+  "situacao": "OK",
+  "garante": "P e As de alta dose atingem ativação máxima já a 550 °C",
+  "uso": "etapa de 550 °C",
+  "secao": "Referências da lista original"
+ },
+ "R15": {
+  "id": "R15",
+  "texto": "Nobili D., Armigliato A., Finnetti M., Solmi S., Precipitation as the phenomenon responsible for the electrically inactive phosphorus in silicon, JAP 53, 1484 (1982)",
+  "doi": "10.1063/1.330646",
+  "situacao": "OK",
+  "garante": "P inativo é precipitado coerente; solubilidade é a concentração ativa em equilíbrio com ele",
+  "uso": "P inativo",
+  "secao": "Referências da lista original"
+ },
+ "R16": {
+  "id": "R16",
+  "texto": "Johannessen J.S., Spicer W.E., Gibbons J.F., Plummer J.D., Taylor N.J., Observation of phosphorus pile-up at the SiO2-Si interface, JAP 49, 4453 (1978)",
+  "doi": "10.1063/1.325502",
+  "situacao": "OK",
+  "garante": "oxidação a 900 °C, Cs de 2e18 a 3,2e20; acúmulo até 10× acima da teoria de redistribuição",
+  "uso": "ramo de acúmulo",
+  "secao": "Referências da lista original"
+ },
+ "R17": {
+  "id": "R17",
+  "texto": "Sakamoto K., Nishi K., Ichikawa F., Ushio S., Segregation and transport coefficients of impurities at the Si/SiO2 interface, JAP 61, 1553 (1987)",
+  "doi": "10.1063/1.338089",
+  "situacao": "OK",
+  "garante": "h(P) = 5,0 µm/min a 1100 °C; m(P) > 1000 entre 1000 e 1100 °C",
+  "uso": "segregação",
+  "secao": "Referências da lista original"
+ },
+ "R18": {
+  "id": "R18",
+  "texto": "Shannon J.M., Ford R.A., Gard G.A., Annealing characteristics of highly doped ion implanted phosphorus layers in silicon, Radiation Effects (1970)",
+  "doi": "10.1080/00337577008236300",
+  "situacao": "OK*",
+  "garante": "40 e 100 keV, 1e15 a 5e16; perfil ativo plano de ~5e20 após 650 °C e ~1,5e21 após 850 °C",
+  "uso": "validação. Volume e página não constam no índice",
+  "secao": "Referências da lista original"
+ },
+ "R19": {
+  "id": "R19",
+  "texto": "Li S., Han P., Effects of high temperature annealing and laser irradiation on activation rate of phosphorus, J. Semicond. 41(12), 122701 (2020)",
+  "doi": "10.1088/1674-4926/41/12/122701",
+  "situacao": "OK",
+  "garante": "P 55 keV 3e15; ativação máxima de 67 % a 850 °C",
+  "uso": "validação da variante B",
+  "secao": "Referências da lista original"
+ },
+ "R20": {
+  "id": "R20",
+  "texto": "Horzel J., Mack S., Meßmer M., Schmidt J., Richter S., Wolf A., Schön J., Rentsch J., On retrograde phosphorus concentration depth profiles in silicon after POCl3 diffusion and thermal oxidation, AIP Conf. Proc. (2022)",
+  "doi": "10.1063/5.0089692",
+  "situacao": "OK*",
+  "garante": "perfil retrógrado nos primeiros 10 a 20 nm após oxidação seca; ECV, SIMS e Sentaurus",
+  "uso": "ramo retrógrado. Medido após difusão de POCl₃, não implantação. Volume e página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R21": {
+  "id": "R21",
+  "texto": "Aleksandrov O.V., Afonin N.N., Effect of Thermal Oxidation on the Segregation of Phosphorus Implanted into Silicon, Inorg. Mater. 41(9) (2005)",
+  "doi": "10.1007/s10789-005-0247-1",
+  "situacao": "OK*",
+  "garante": "m depende do tempo; SIMS em Si(111), 950 a 1150 °C. A fórmula de m(T) em O₂ seco veio ilegível",
+  "uso": "segregação dependente do tempo",
+  "secao": "Referências da lista original"
+ },
+ "R22": {
+  "id": "R22",
+  "texto": "Masetti G., Severi M., Solmi S., Modeling of carrier mobility against carrier concentration in arsenic-, phosphorus-, and boron-doped silicon, IEEE TED 30(7), 764 (1983)",
+  "doi": "10.1109/T-ED.1983.21207",
+  "situacao": "OK",
+  "garante": "modelo empírico em oito décadas de concentração, separando As e P",
+  "uso": "mobilidade. Parâmetros só no texto",
+  "secao": "Referências da lista original"
+ },
+ "R23": {
+  "id": "R23",
+  "texto": "Nomura K., Hirose Y., Akasaka Y., Horie K., Kawazu S., Enhanced Oxidation of Silicon by Ion Implantation and its Novel Applications, em Ion Implantation in Semiconductors, Springer (1975)",
+  "doi": "10.1007/978-1-4684-2151-4_86",
+  "situacao": "OK",
+  "garante": "aumento de até 2,1× para P⁺ acima de 5e14; recozer antes não muda a taxa",
+  "uso": "validação da oxidação",
+  "secao": "Referências da lista original"
+ },
+ "R24": {
+  "id": "R24",
+  "texto": "Qin S., Prussin S., Reyes J., Hu Y.J., McTeer A., Study of Carrier Mobility of Low-Energy High-Dose Ion Implantations, IEEE Trans. Plasma Sci. 39 (2011)",
+  "doi": "10.1109/TPS.2010.2089702",
+  "situacao": "OK*",
+  "garante": "acima de 1e20 a mobilidade fica abaixo dos modelos; acima de 1e21 elétrons em Si:P chegam a ~40 cm²/Vs",
+  "uso": "limite inferior. Volume e página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R25": {
+  "id": "R25",
+  "texto": "Deal B.E., Grove A.S., General Relationship for the Thermal Oxidation of Silicon, JAP 36(12), 3770 (1965)",
+  "doi": "10.1063/1.1713945",
+  "situacao": "OK",
+  "garante": "x² + Ax = B(t + τ), validado de 700 a 1300 °C e de 30 nm a 2 µm",
+  "uso": "oxidação. DOI encontrado",
+  "secao": "Referências da lista original"
+ },
+ "R26": {
+  "id": "R26",
+  "texto": "Massoud H.Z., Plummer J.D., Irene E.A., Thermal oxidation of silicon in dry oxygen growth-rate enhancement in the thin regime I. Experimental results, JES 132(11), 2685 (1985)",
+  "doi": "10.1149/1.2113648",
+  "situacao": "OK",
+  "garante": "elipsometria in situ de 800 a 1000 °C",
+  "uso": "regime fino",
+  "secao": "Referências da lista original"
+ },
+ "R27": {
+  "id": "R27",
+  "texto": "Mesmos autores, ... II. Physical mechanisms, JES 132(11), 2693 (1985)",
+  "doi": "10.1149/1.2113649",
+  "situacao": "OK",
+  "garante": "nenhum modelo único explica todos os casos",
+  "uso": "regime fino",
+  "secao": "Referências da lista original"
+ },
+ "R28": {
+  "id": "R28",
+  "texto": "Massoud H.Z., Plummer J.D., Analytical relationship for the oxidation of silicon in dry oxygen in the thin-film regime, JAP 62, 3416 (1987)",
+  "doi": "10.1063/1.339305",
+  "situacao": "OK",
+  "garante": "aceleração com dois termos exponenciais no tempo",
+  "uso": "forma analítica",
+  "secao": "Referências da lista original"
+ },
+ "R29": {
+  "id": "R29",
+  "texto": "Ho C.P., Plummer J.D., Si/SiO2 Interface Oxidation Kinetics, A Physical Model for the Influence of High Substrate Doping Levels I. Theory, JES 126(9) (1979)",
+  "doi": "10.1149/1.2129320",
+  "situacao": "OK*",
+  "garante": "aceleração atribuída a vacâncias carregadas via nível de Fermi",
+  "uso": "oxidação acelerada. Página a conferir. Parte II não encontrada",
+  "secao": "Referências da lista original"
+ },
+ "R30": {
+  "id": "R30",
+  "texto": "Uematsu M., Kageshima H., Shiraishi K., Oxidation Simulation of Heavily Phosphorus-Doped Silicon based on the Interfacial Silicon Emission Model, JJAP 40, 5197 (2001)",
+  "doi": "10.1143/JJAP.40.5197",
+  "situacao": "OK",
+  "garante": "V²⁻ reduz a emissão de Si; O no óxido cresce com P",
+  "uso": "alternativa",
+  "secao": "Referências da lista original"
+ },
+ "R31": {
+  "id": "R31",
+  "texto": "Kamiura Y., Hasegawa K., Sano Y., Mizokawa Y., Kawamoto K., Initial oxidation phenomena of heavily phosphorus-doped silicon in dry oxygen, JVST B 20(6), 2187 (2002)",
+  "doi": "10.1116/1.1513792",
+  "situacao": "OK*",
+  "garante": "regime de monocamadas, exposições em Langmuir, até 800 °C",
+  "uso": "uso só qualitativo, escopo muito inicial",
+  "secao": "Referências da lista original"
+ },
+ "R32": {
+  "id": "R32",
+  "texto": "Chou N.J., van der Meulen Y.J., Hammer R., Cahill J.G., Auger and ellipsometric study of phosphorus segregation in oxidized degenerate silicon, APL 24, 200 (1974)",
+  "doi": "10.1063/1.1655152",
+  "situacao": "OK",
+  "garante": "camada fina no lado do óxido com ~2e21 P/cm³, de 850 a 1000 °C",
+  "uso": "acúmulo no óxido",
+  "secao": "Referências da lista original"
+ },
+ "R33": {
+  "id": "R33",
+  "texto": "Chan J., Venugopal A., Pirkle A., McDonnell S., Hinojos D., Magnuson C.W., Ruoff R.S., Colombo L., Wallace R.M., Vogel E.M., Reducing extrinsic performance-limiting factors in graphene grown by chemical vapor deposition, ACS Nano 6 (2012)",
+  "doi": "10.1021/nn300107f",
+  "situacao": "OK*",
+  "garante": "água presa, resíduos e adsorvatos limitam o CVD; µ máx de 7800 cm²/Vs a TA",
+  "uso": "limites do CVD. Página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R34": {
+  "id": "R34",
+  "texto": "Kim S., Nah J., Jo I., Shahrjerdi D., Colombo L., Yao Z., Tutuc E., Banerjee S.K., Realization of a high mobility dual-gated graphene field-effect transistor with Al2O3 dielectric, APL 94(6) (2009)",
+  "doi": "10.1063/1.3077021",
+  "situacao": "OK*",
+  "garante": "modelo de dispositivo com mobilidade única. Texto aberto em arXiv 0901.2901",
+  "uso": "modelo com n₀ e Rc. Número do artigo não confirmado",
+  "secao": "Referências da lista original"
+ },
+ "R35": {
+  "id": "R35",
+  "texto": "Altermatt P.P., Schenk A., Heiser G., A simulation model for the density of states and for incomplete ionization in crystalline silicon. I. Establishing the model in Si:P, JAP 100, 113714 (2006)",
+  "doi": "10.1063/1.2386934",
+  "situacao": "OK",
+  "garante": "até 25 % de P não ionizado perto da transição de Mott; desprezível muito acima",
+  "uso": "ionização incompleta",
+  "secao": "Referências da lista original"
+ },
+ "R36": {
+  "id": "R36",
+  "texto": "Altermatt P.P., Schenk A., Schmithüsen B., Heiser G., ... II. Investigation of Si:As and Si:B and usage in device simulation, JAP 100, 113715 (2006)",
+  "doi": "10.1063/1.2386935",
+  "situacao": "OK*",
+  "garante": "equações para simuladores. Faltava Schmithüsen na lista de autores",
+  "uso": "ionização incompleta",
+  "secao": "Referências da lista original"
+ },
+ "R37": {
+  "id": "R37",
+  "texto": "Steinkemper H., Altermatt P.P., Hermle M., Physically sound parameterization of incomplete ionization in aluminum-doped silicon, AIP Adv. 6, 125202 (2016)",
+  "doi": "10.1063/1.4971155",
+  "situacao": "OK*",
+  "garante": "trata de Si:Al, mas o resumo diz que corrige um erro do formalismo de R36",
+  "uso": "forma corrigida. A correção exata exige o texto",
+  "secao": "Referências da lista original"
+ },
+ "R38": {
+  "id": "R38",
+  "texto": "Adam S., Hwang E.H., Galitski V.M., Das Sarma S., A self-consistent theory for graphene transport, PNAS 104(47), 18392 (2007)",
+  "doi": "10.1073/pnas.0704772104",
+  "situacao": "OK",
+  "garante": "σ mínima de 4e²/h para n_imp de 2,5e12 a 4e12 cm⁻²; até 8e²/h para ~2e11",
+  "uso": "poças de carga e n₀",
+  "secao": "Referências da lista original"
+ },
+ "R39": {
+  "id": "R39",
+  "texto": "Xia J., Chen F., Li J., Tao N., Measurement of the quantum capacitance of graphene, Nat. Nanotechnol. 4 (2009)",
+  "doi": "10.1038/nnano.2009.177",
+  "situacao": "OK*",
+  "garante": "Cq mínimo não nulo no ponto de Dirac",
+  "uso": "Cq. Página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R40": {
+  "id": "R40",
+  "texto": "Dröscher S., Roulleau P., Molitor F., Studerus P., Stampfer C., Ensslin K., Ihn T., Quantum capacitance and density of states of graphene, APL 96, 152104 (2010)",
+  "doi": "10.1063/1.3391670",
+  "situacao": "OK",
+  "garante": "flutuações de potencial da ordem de 100 meV",
+  "uso": "Cq",
+  "secao": "Referências da lista original"
+ },
+ "R41": {
+  "id": "R41",
+  "texto": "Thiele S., Schaefer J.A., Schwierz F., Modeling of graphene metal-oxide-semiconductor field-effect transistors with gapless large-area graphene channels, JAP 107, 094505 (2010)",
+  "doi": "10.1063/1.3357398",
+  "situacao": "OK",
+  "garante": "validado contra Meric e Kedzierski",
+  "uso": "modelo de GFET",
+  "secao": "Referências da lista original"
+ },
+ "R42": {
+  "id": "R42",
+  "texto": "Jiménez D., Moldovan O., Explicit Drain-Current Model of Graphene Field-Effect Transistors Targeting Analog and Radio-Frequency Applications, IEEE TED 58 (2011)",
+  "doi": "10.1109/TED.2011.2163517",
+  "situacao": "OK*",
+  "garante": "deriva e difusão com expressões explícitas. Texto aberto em arXiv 1103.1599",
+  "uso": "modelo compacto. Página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R43": {
+  "id": "R43",
+  "texto": "Meric I., Han M.Y., Young A.F., Özyilmaz B., Kim P., Shepard K.L., Current saturation in zero-bandgap, top-gated graphene field-effect transistors, Nat. Nanotechnol. 3, 654 (2008)",
+  "doi": "10.1038/nnano.2008.268",
+  "situacao": "OK",
+  "garante": "saturação atribuída a fônons interfaciais do SiO₂",
+  "uso": "dados de validação",
+  "secao": "Referências da lista original"
+ },
+ "R44": {
+  "id": "R44",
+  "texto": "Chen J.-H., Jang C., Xiao S., Ishigami M., Fuhrer M.S., Intrinsic and extrinsic performance limits of graphene devices on SiO2, Nat. Nanotechnol. 3 (2008)",
+  "doi": "10.1038/nnano.2008.58",
+  "situacao": "OK*",
+  "garante": "fônons acústicos dão 30 Ω; fônons de superfície do SiO₂ limitam µ a ~4e4 cm²/Vs a TA. Texto aberto em arXiv 0711.3646",
+  "uso": "teto de mobilidade. Página a conferir",
+  "secao": "Referências da lista original"
+ },
+ "R45": {
+  "id": "R45",
+  "texto": "Lenzlinger M., Snow E.H., Fowler-Nordheim Tunneling into Thermally Grown SiO2, JAP 40(1), 278 (1969)",
+  "doi": "10.1063/1.1657043",
+  "situacao": "OK",
+  "garante": "massa efetiva ~0,4; correntes 5 a 10× abaixo da teoria",
+  "uso": "Fowler-Nordheim",
+  "secao": "Referências da lista original"
+ },
+ "R46": {
+  "id": "R46",
+  "texto": "Krieger G., Swanson R.M., Fowler-Nordheim electron tunneling in thin Si-SiO2-Al structures, JAP 52(9), 5710 (1981)",
+  "doi": "10.1063/1.329510",
+  "situacao": "OK",
+  "garante": "injeção a partir de Si ⟨100⟩ acumulado, com estrutura de bandas e camada de acumulação",
+  "uso": "Fowler-Nordheim do Si",
+  "secao": "Referências da lista original"
+ },
+ "R47": {
+  "id": "R47",
+  "texto": "Kurchak A.I., Morozovska A.N., Strikha M.V., Hysteretic phenomena in GFET, Comprehensive theory and experiment, JAP 122, 044504 (2017)",
+  "doi": "10.1063/1.4996095",
+  "situacao": "OK*",
+  "garante": "dipolos de água adsorvida; varredura rápida faz a histerese sumir em SiO₂. O título difere do da lista. Texto aberto em arXiv 1608.01139",
+  "uso": "histerese",
+  "secao": "Referências da lista original"
+ },
+ "R48": {
+  "id": "R48",
+  "texto": "Kim W., Javey A., Vermesh O., Wang Q., Li Y., Dai H., Hysteresis caused by water molecules in carbon nanotube field-effect transistors, Nano Lett. 3, 193 (2003)",
+  "doi": "10.1021/nl0259232",
+  "situacao": "OK*",
+  "garante": "água ligada a silanol do SiO₂, não sai em vácuo a TA; PMMA passiva. É sobre nanotubos, não grafeno",
+  "uso": "mecanismo da água por analogia",
+  "secao": "Referências da lista original"
+ },
+ "R49": {
+  "id": "R49",
+  "texto": "Bartošík M., Mach J., Piastek J., Nezval D., Konečný M., Švarc V., Ensslin K., Šikola T., Mechanism and Suppression of Physisorbed-Water-Caused Hysteresis in Graphene FET Sensors, ACS Sens. 5(9), 2940 (2020)",
+  "doi": "10.1021/acssensors.0c01441",
+  "situacao": "OK",
+  "garante": "água fisissorvida aprisiona elétrons. Dados brutos abertos em 10.5281/zenodo.4518319",
+  "uso": "histerese e validação",
+  "secao": "Referências da lista original"
+ },
+ "R50": {
+  "id": "R50",
+  "texto": "DEVSIM, pacote devsim no PyPI",
+  "doi": null,
+  "situacao": "OK",
+  "garante": "versão 2.11.0 disponível por pip",
+  "uso": "solver de Si opcional",
+  "secao": "Referências da lista original"
+ },
+ "R51": {
+  "id": "R51",
+  "texto": "Klaassen D.B.M., A unified mobility model for device simulation I, SSE 35, 953 (1992)",
+  "doi": "10.1016/0038-1101(92)90325-7",
+  "situacao": "OK",
+  "garante": "modelo físico unificado",
+  "uso": "mobilidade, alternativa",
+  "secao": "Referências da lista original"
+ },
+ "R52": {
+  "id": "R52",
+  "texto": "del Alamo J.A., Swanson R.M., Measurement of electron mobility in epitaxial heavily-phosphorus-doped silicon, JAP 56, 2250 (1984)",
+  "doi": "10.1063/1.334258",
+  "situacao": "OK*",
+  "garante": "1,8e19 a 1,7e20; concorda com Masetti em 4 %. O título difere do da lista",
+  "uso": "mobilidade",
+  "secao": "Referências da lista original"
+ },
+ "R53": {
+  "id": "R53",
+  "texto": "Dabrowski J., Müssig H.-J., Zavodinsky V., Baierle R., Caldas M.J., Mechanism of dopant segregation to SiO2/Si(001) interfaces, PRB 65, 245305 (2002)",
+  "doi": "10.1103/PhysRevB.65.245305",
+  "situacao": "OK",
+  "garante": "P preso na interface com coordenação tripla e desativado",
+  "uso": "P inativo na interface",
+  "secao": "Referências da lista original"
+ },
+ "R54": {
+  "id": "R54",
+  "texto": "Vedda A., Martini M., Spinolo G., Crivelli B., Cazzaniga F., Ghidini G., Vitali M.E., Phosphorous implantation in silicon through thin SiO2 layers, Oxide damage and postoxidation thermal treatments, JAP 90, 5013 (2001)",
+  "doi": "10.1063/1.1410880",
+  "situacao": "OK*",
+  "garante": "óxido de 15 nm, P de 270 a 500 keV, 3e12 a 5e13",
+  "uso": "dano no óxido. Regime muito diferente, uso qualitativo",
+  "secao": "Referências da lista original"
+ },
+ "R7b": {
+  "id": "R7b",
+  "texto": "Mathiot D., Pfister J.C., Physica B+C 116, 95 (1983)",
+  "doi": "10.1016/0378-4363(83)90233-4",
+  "situacao": "modelo de percolação de vacâncias para P e As",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "R7c": {
+  "id": "R7c",
+  "texto": "Mathiot D., Pfister J.C., Dopant redistribution in heavily doped silicon, Confirmation of the validity of the vacancy-percolation model, JAP 66, 970 (1989)",
+  "doi": "10.1063/1.343476",
+  "situacao": "idem",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "R12b": {
+  "id": "R12b",
+  "texto": "Takamura Y., Jain S.H., Griffin P.B., Plummer J.D., Thermal stability of dopants in laser annealed silicon, JAP 92, 230 (2002)",
+  "doi": "10.1063/1.1481975",
+  "situacao": "artigo irmão de R12 com a cinética de desativação",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "R21b": {
+  "id": "R21b",
+  "texto": "Aleksandrov O.V., Afonin N.N., Semiconductors 39, 615 (2005)",
+  "doi": "10.1134/1.1944848",
+  "situacao": "m(t) segue a eficiência da TED",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N1": {
+  "id": "N1",
+  "texto": "Ghante V. et al., The Detailed Dependence of Implanted Phosphorus Profiles in (100) Single-Crystal Si on Key Implant Parameters, MRS Proc. 396, 715 (1995)",
+  "doi": "10.1557/PROC-396-715",
+  "situacao": "P de 15 a 180 keV, até 8e15, inclinação de 0 a 10° e rotação de 0 a 360°. É a melhor base para a cauda",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N2": {
+  "id": "N2",
+  "texto": "Yu N., Ma K.B., Zhang Z.H., Chu W.-K., Kirschbaum C., Varahramyan K., Thermal Annealing of Shallow Implanted Phosphorus in Si(100), MRS Proc. 235, 211 (1991)",
+  "doi": "10.1557/PROC-235-211",
+  "situacao": "P de 25 a 100 keV com RTA de 1050 °C 10 s, SIMS e SRP",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N3": {
+  "id": "N3",
+  "texto": "Raineri V., Setola R., Priolo F., Rimini E., Galvagno G., PRB 44, 10568 (1991)",
+  "doi": "10.1103/PhysRevB.44.10568",
+  "situacao": "cauda em implante \"aleatório\" de 7° por feeding-in",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N4": {
+  "id": "N4",
+  "texto": "Finetti M., Negrini P., Solmi S., Nobili D., JES 128, 1313 (1981)",
+  "doi": "10.1149/1.2127626",
+  "situacao": "a mobilidade não depende do P inativo",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N5": {
+  "id": "N5",
+  "texto": "Agarwal A. et al., APL 71, 3141 (1997)",
+  "doi": "10.1063/1.120552",
+  "situacao": "recombinação na superfície com comprimento < 10 nm",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N5b": {
+  "id": "N5b",
+  "texto": "Lamrani Y. et al., NIMB 216, 281 (2004)",
+  "doi": "10.1016/j.nimb.2003.11.047",
+  "situacao": "limite superior de ~200 nm a 850 °C",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N5c": {
+  "id": "N5c",
+  "texto": "Law M.E., Haddara Y.M., Jones K.S., JAP 84, 3555 (1998)",
+  "doi": "10.1063/1.368530",
+  "situacao": "explica a divergência entre TED e OED",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N7": {
+  "id": "N7",
+  "texto": "Pelaz L. et al., APL 73, 1421 (1998)",
+  "doi": "10.1063/1.121963",
+  "situacao": "fator +n cresce com a massa do íon",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N8": {
+  "id": "N8",
+  "texto": "Pelaz L., Marqués L.A., Gilmer G.H., Jaraíz M., Barbolla J., NIMB 180, 12 (2001)",
+  "doi": "10.1016/S0168-583X(01)00390-1",
+  "situacao": "camada amorfa contínua varre intersticiais para a superfície e reduz a TED",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N9": {
+  "id": "N9",
+  "texto": "Adekoya W.O., Hage Ali M., Muller J.-K., Siffert P., APL 50, 1736 (1987)",
+  "doi": "10.1063/1.97732",
+  "situacao": "SPE de Si amorfizado por P com Ea de 2,7 ± 0,2 eV",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N10": {
+  "id": "N10",
+  "texto": "Massoud H.Z., Reverse dopant redistribution during the initial stages of the oxidation of heavily doped silicon in dry oxygen, APL 53(6) (1988)",
+  "doi": "10.1063/1.100618",
+  "situacao": "no início da oxidação seca o P ativo superficial cai e a taxa se iguala à do Si leve. Decide o regime de 20 nm. Página a conferir",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N11": {
+  "id": "N11",
+  "texto": "Lau F., Mader L., Mazure C., Werner Ch., Orlowski M., Appl. Phys. A 49, 671 (1989)",
+  "doi": "10.1007/BF00616992",
+  "situacao": "modelo de três fases para a segregação de P",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N12": {
+  "id": "N12",
+  "texto": "Schwarz S.A., Barton R.W., Ho C.P., Helms C.R., JES 128, 1101 (1981)",
+  "doi": "10.1149/1.2127559",
+  "situacao": "acúmulo satura a ~5 nm da interface",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N14": {
+  "id": "N14",
+  "texto": "Massoud H.Z., Plummer J.D., Irene E.A., Thermal oxidation of silicon in dry oxygen, accurate determination of the kinetic rate constants, JES 132, 1745 (1985)",
+  "doi": "não encontrado",
+  "situacao": "fonte preferida das constantes de Deal e Grove para Si(100) seco",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N16": {
+  "id": "N16",
+  "texto": "Irene E.A., Dong D.W., JES 125 (1978)",
+  "doi": "10.1149/1.2131638",
+  "situacao": "oxidação seca de Si com 0,001 Ω·cm de P entre 780 e 1150 °C",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N17": {
+  "id": "N17",
+  "texto": "Ju W., Lee S., J. Korean Phys. Soc. 76, 243 (2020)",
+  "doi": "10.3938/jkps.76.243",
+  "situacao": "n* = 3,58e11 cm⁻² extraído de Cq",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N18": {
+  "id": "N18",
+  "texto": "Wang H., Wu Y., Cong C., Shang J., Yu T., Hysteresis of electronic transport in graphene transistors, ACS Nano 4 (2010)",
+  "doi": "10.1021/nn101950n",
+  "situacao": "histerese positiva e negativa em GFET sobre SiO₂",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N20": {
+  "id": "N20",
+  "texto": "Nicollian E.H., Chatterjee A., The Profile of Electrically Active Phosphorus in Silicon after Thermal Oxidation, JES 141, 3580 (1994)",
+  "doi": "10.1149/1.2059373",
+  "situacao": "P ativo cresce da superfície para o volume, enquanto o P químico acumula",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N21": {
+  "id": "N21",
+  "texto": "Sato Y., Watanabe M., Imai K., JES 140, 2679 (1993)",
+  "doi": "10.1149/1.2220885",
+  "situacao": "acúmulo do lado do óxido",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N21b": {
+  "id": "N21b",
+  "texto": "Sato Y. et al., JES 140, L176 (1993)",
+  "doi": "10.1149/1.2221156",
+  "situacao": "idem, por ativação neutrônica",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N22": {
+  "id": "N22",
+  "texto": "Sato H. et al., JES 146, 367 (1999)",
+  "doi": "10.1149/1.1391615",
+  "situacao": "acúmulo do lado do Si, inativo, ativo cai a ~60 %",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N23": {
+  "id": "N23",
+  "texto": "Dutta T., Ravindra N.M., pss(a) 134, 447 (1992)",
+  "doi": "10.1002/pssa.2211340214",
+  "situacao": "óxido seco de 2 a 20 nm a 800 °C (HRTEM e elipsometria)",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A1": {
+  "id": "A1",
+  "texto": "Eklund K.H., Andersson Å., Amorphization of Silicon Crystals Bombarded by 30 keV Phosphorus Ions at Different Temperatures, Springer (1971)",
+  "doi": "10.1007/978-3-642-80660-5_15",
+  "situacao": "limiar de amorfização exatamente para P de 30 keV. Número só no texto",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A2": {
+  "id": "A2",
+  "texto": "Prisslinger R., Kalbitzer S., Grob J.J., Siffert P., J. Phys. Colloq. (1973)",
+  "doi": "DOI malformado no índice",
+  "situacao": "dose de amorfização de 1 a 3e15 para Si⁺ de 10 a 60 keV, P⁺ similar",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A3": {
+  "id": "A3",
+  "texto": "Truche R., Dupuy M., Lafeuille D., J. Phys. Colloq. (1973)",
+  "doi": "DOI malformado no índice",
+  "situacao": "P 30 keV 1e16 forma camada amorfa que recristaliza a 650 °C",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A4": {
+  "id": "A4",
+  "texto": "Dennis J.R., Hale E.B., JAP 49, 1119 (1978)",
+  "doi": "10.1063/1.325049",
+  "situacao": "critério de densidade de energia crítica de 6e23 eV/cm³",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A5": {
+  "id": "A5",
+  "texto": "Prussin S., Jones K.S., MRS Proc. 71, 191 (1986)",
+  "doi": "10.1557/PROC-71-191",
+  "situacao": "P de 25 a 180 keV 1e15 com 550 °C + 900 °C 30 min, muito perto da variante B",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "B1": {
+  "id": "B1",
+  "texto": "Adams A.C., Smith T.E., Chang C.C., JES 127, 1787 (1980)",
+  "doi": "10.1149/1.2130002",
+  "situacao": "ruptura intrínseca de 10 a 13 MV/cm em óxidos de 3 a 14 nm",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "B2": {
+  "id": "B2",
+  "texto": "O'Shea S.J., Atta R.M., Murrell M.P., Welland M.E., JVST B 13, 1945 (1995)",
+  "doi": "10.1116/1.588113",
+  "situacao": "13,2 ± 0,8 MV/cm em óxidos de 7 a 15 nm",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "B3": {
+  "id": "B3",
+  "texto": "Harari E., JAP 49, 2478 (1978)",
+  "doi": "10.1063/1.325096",
+  "situacao": "ruptura em óxidos de 3 a 30 nm",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "A6": {
+  "id": "A6",
+  "texto": "Narayan J., Fathy D., Oen O.S., Holland O.W., Atomic structure of ion implantation damage and process of amorphization in semiconductors, JVST A 2, 1303 (1984)",
+  "doi": "10.1116/1.572399",
+  "situacao": "6,0e23 eV/cm³ = 12 eV/átomo a 4 K sem recozimento. Mostra que o critério de A4 é de baixa temperatura",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "G1": {
+  "id": "G1",
+  "texto": "Grant W.A., Williams J.S., Dodds D., Measurement of Projected and Lateral Range Parameters for Low Energy Heavy Ions in Silicon by Rutherford Backscattering, capítulo Springer (1976)",
+  "doi": "10.1007/978-1-4615-8876-4_19",
+  "situacao": "ρp = 1,75 ε^(2/3) para 0,02 < ε < 0,5; Rp medido 15 a 70 % acima de LSS",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "K1": {
+  "id": "K1",
+  "texto": "Kobayashi H., Gibson W.M., Depth profiling of ultrashallow implanted P using NRA, NIMB 152, 365 (1999)",
+  "doi": "10.1016/S0168-583X(99)00182-2",
+  "situacao": "Rp e ΔRp de P de 5 a 80 keV concordam com o TRIM",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N24": {
+  "id": "N24",
+  "texto": "Solmi S., Parisini A., Angelucci R., Armigliato A., Nobili D., Moro L., Dopant and carrier concentration in Si in equilibrium with monoclinic SiP precipitates, PRB 53, 7836 (1996)",
+  "doi": "10.1103/PhysRevB.53.7836",
+  "situacao": "n_e = 1,3e22 exp(−0,37/kT) e C_sat = 2,45e23 exp(−0,62/kT) cm⁻³ no resumo. Substitui a faixa [I] da solubilidade",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N25": {
+  "id": "N25",
+  "texto": "Altermatt P.P., Schenk A., Geelhaar F., Heiser G., Reassessment of the intrinsic carrier density in crystalline silicon in view of band-gap narrowing, JAP 93, 1598 (2003)",
+  "doi": "10.1063/1.1529297",
+  "situacao": "nᵢ = 9,65e9 cm⁻³ a 300 K",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "N26": {
+  "id": "N26",
+  "texto": "Couderc R., Amara M., Lemiti M., Reassessment of the intrinsic carrier density temperature dependence in crystalline silicon, JAP 115, 093705 (2014)",
+  "doi": "10.1063/1.4867776",
+  "situacao": "nᵢ(T) = 1,541e15 T^1,712 exp(−Eg0/2kT). Eg0 e faixa de validade não lidos",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "D1": {
+  "id": "D1",
+  "texto": "Das A. et al., Monitoring dopants by Raman scattering in an electrochemically top-gated graphene transistor, Nat. Nanotechnol. 3, 210 (2008)",
+  "doi": "10.1038/nnano.2008.67",
+  "situacao": "texto aberto arXiv 0709.1174. Pos(G) no Dirac 1583 a 1584 cm⁻¹; 1586,7 cm⁻¹ e I(2D)/I(G) = 2,0 com 1,44e12 cm⁻² de lacunas; vF = 1,1e6 m/s. É a referência [22] do artigo do usuário",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "S1": {
+  "id": "S1",
+  "texto": "Filipović L., Topography Simulation of Novel Processing Techniques, dissertação, TU Wien",
+  "doi": "sem DOI, iue.tuwien.ac.at/phd/filipovic",
+  "situacao": "tabelas de Deal e Grove (cita Plummer, Deal e Griffin) e de Massoud (cita Massoud et al. 1985), lidas no texto aberto",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "S2": {
+  "id": "S2",
+  "texto": "Radi M., dissertação, TU Wien",
+  "doi": "sem DOI, iue.tuwien.ac.at/phd/radi",
+  "situacao": "modelo de Ho e Plummer com γ₀ = 2,63e3 e γ_E = 1,1 eV",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "IH": {
+  "id": "IH",
+  "texto": "Ishigami T., Homma T., An importance quantification technique in uncertainty analysis for computer models, ISUMA (1990)",
+  "doi": "10.1109/ISUMA.1990.151285",
+  "situacao": "função de teste do Sobol (verificação do módulo 5)",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "ART": {
+  "id": "ART",
+  "texto": "Carillo G., Teixeira V.K., Pereyra I., Óxido de porta de SiO₂ por sputtering reativo e transferência de grafeno CVD para um transistor de grafeno com porta local, manuscrito do usuário",
+  "doi": null,
+  "situacao": "dados de bancada [B]: calibração do sputtering, Raman, n_D, ilhas multicamada",
+  "garante": "",
+  "uso": "",
+  "secao": "Referências novas encontradas na conferência"
+ },
+ "Tema": {
+  "id": "Tema",
+  "texto": "Lado 1",
+  "doi": "Lado 2",
+  "situacao": "Tratamento",
+  "garante": "",
+  "uso": "",
+  "secao": "Discordâncias registradas"
+ }
+}

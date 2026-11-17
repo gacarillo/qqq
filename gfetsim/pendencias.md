@@ -10,6 +10,14 @@ Tudo o que ainda está [I], null ou sem conferência. Cada item diz o que falta 
 4. **Módulo 3 sem validação quantitativa.** Nenhum resumo acessível traz espessura contra tempo de óxido seco fino em Si(100). Os testes conferem a implementação e o comportamento qualitativo. Resolve uma medida do usuário (`dados/medidas_espessura_oxido.csv`) ou o texto de N14, R26 ou N23.
 5. **Módulo 4.** A validação é numérica (Poisson contra Boltzmann analítico) e de forma (R34, R39, R42). Não há curva medida de GFET com porta de Si n+ para comparar. Resolve a medida de transferência do próprio dispositivo (`dados/medidas_transferencia.csv`).
 
+## Achados da validação do estúdio
+
+1. Camada amorfa sensível ao ruído. `implantacao.modulo.camada_amorfa` usa o máximo bruto da perda nuclear num histograma de 0,5 nm, que com 10⁵ íons tem cerca de 5 % de ruído por faixa. Na rodada de 30 keV o máximo caiu num pico de ruído junto à superfície e o fim da camada amorfa ficou em 35,25 nm; com a perda suavizada em 3,5 nm ele vai para 37,8 nm. Sugestão para o pacote, suavizar a perda nuclear antes de tomar o máximo [C].
+2. Constantes. O params.yaml diz CODATA 2018, mas o scipy 1.18 já usa o CODATA 2022. ε₀ e m₀ mudam menos de 10⁻⁹ relativo; vale atualizar o texto do params.yaml.
+3. Integrador da oxidação. `cinetica.espessura` usa LSODA com rtol de 10⁻⁸ e atol de 10⁻⁶, que erra até 7×10⁻⁶ relativo no primeiro minuto. É desprezível para a receita, mas um atol de 10⁻⁹ custa pouco.
+4. Fator de Ho e Plummer acima do máximo de Nomura. Com as razões de vacâncias provisórias [I], o fator F começa perto de 4,5 a 900 °C e cai para 2,6 no fim da oxidação, acima do máximo de 2,1 que R23 mede em Si implantado. Os dois ramos seguem separados, mas isso reforça a necessidade de ler as razões intrínsecas em R29.
+5. Fator F em dente de serra. Na oxidação acoplada o Si consumido sai em fatias inteiras de 0,5 nm, e o P ativo na interface salta a cada fatia. A espessura final não muda, mas a curva de F fica serrilhada. Uma interpolação da interface dentro da célula resolveria [C].
+
 ## Entradas que dependem do usuário
 
 1. `simulacao_implantacao.zip` (roda.py e LEIAME.txt) e `Implantacao_porta_GFET.pdf`. O módulo 1 usa um embrulho próprio do RustBCA (commit a356280); falta conciliar com o roda.py.
