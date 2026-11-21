@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Currículo Aprovado</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: workbench de duas colunas. Esquerda = entradas (vaga, currículo). Direita = painel fixo com nota, palavras-chave e prévia em folha A4. */
+:root {
+  --bg: #f3f4f1;
+  --surface: #ffffff;
+  --surface-2: #eceee9;
+  --fg: #1c211d;
+  --muted: #5f6861;
+  --line: #d6dad3;
+  --accent: #1f5c4a;
+  --accent-soft: #dcebe5;
+  --accent-fg: #ffffff;
+  --good: #1f7a4d;
+  --good-soft: #dff1e6;
+  --warn: #9a6400;
+  --warn-soft: #fbefd6;
+  --bad: #b23a2e;
+  --bad-soft: #f9e1dd;
+  --paper: #ffffff;
+  --paper-fg: #1a1a1a;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141815; --surface: #1c211e; --surface-2: #242a26; --fg: #e6ebe6; --muted: #9aa59c; --line: #333b35;
+    --accent: #6cc3a3; --accent-soft: #1f3a31; --accent-fg: #0f1a15;
+    --good: #6fd19c; --good-soft: #1b3326; --warn: #e5b25a; --warn-soft: #3a2e17; --bad: #f08a7c; --bad-soft: #3d221e;
+    --paper: #fbfbf8; --paper-fg: #1a1a1a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141815; --surface: #1c211e; --surface-2: #242a26; --fg: #e6ebe6; --muted: #9aa59c; --line: #333b35;
+  --accent: #6cc3a3; --accent-soft: #1f3a31; --accent-fg: #0f1a15;
+  --good: #6fd19c; --good-soft: #1b3326; --warn: #e5b25a; --warn-soft: #3a2e17; --bad: #f08a7c; --bad-soft: #3d221e;
+  --paper: #fbfbf8; --paper-fg: #1a1a1a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 48px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+header.top h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.01em; }
+header.top p { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
+.example-note { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; background: var(--warn-soft); color: var(--warn); }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.side { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+@media (max-width: 900px) { .side { position: static; } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.panel h2 { font-size: 1.15rem; font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+.step { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 500; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+
+label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 500; color: var(--muted); min-width: 0; }
+input, textarea { font: inherit; font-size: 14px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 8px 10px; width: 100%; min-width: 0; }
+textarea { resize: vertical; line-height: 1.45; }
+input:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+#vaga { min-height: 220px; }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+
+fieldset { border: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+legend { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; padding: 0; margin-bottom: 8px; }
+.sep { border: none; border-top: 1px solid var(--line); margin: 6px 0; width: 100%; }
+.item { border: 1px dashed var(--line); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.item-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+
+button { font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border-radius: 7px; padding: 8px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+button:hover { background: var(--surface-2); }
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+button.primary:hover { filter: brightness(1.08); }
+button.link { border: none; background: none; padding: 2px 4px; color: var(--muted); font-size: 12px; text-decoration: underline; }
+button.link:hover { color: var(--bad); background: none; }
+button.add { align-self: flex-start; font-size: 13px; padding: 6px 12px; border-style: dashed; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Painel de nota */
+.score { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
+.ring { width: 108px; height: 108px; position: relative; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring .track { stroke: var(--surface-2); }
+.ring .val { transition: stroke-dashoffset .5s ease, stroke .3s; }
+.ring .num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 1px; font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; font-variant-numeric: tabular-nums; }
+.ring .num small { font-size: 0.9rem; font-weight: 500; }
+.verdict { display: flex; flex-direction: column; gap: 4px; }
+.verdict strong { font-family: var(--font-display); font-size: 1.15rem; }
+.verdict span { color: var(--muted); font-size: 13px; }
+.lvl-good { color: var(--good); } .lvl-warn { color: var(--warn); } .lvl-bad { color: var(--bad); }
+
+.tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 8px; }
+.tabs button { flex: 1; border: none; background: none; font-size: 13px; padding: 7px 10px; color: var(--muted); }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+.kw-group { display: flex; flex-direction: column; gap: 8px; }
+.kw-group h3 { font-size: 13px; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--font-mono); font-size: 12.5px; padding: 4px 9px; border-radius: 999px; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 6px; line-height: 1.3; }
+.chip.ok { background: var(--good-soft); color: var(--good); }
+.chip.miss { background: var(--bad-soft); color: var(--bad); cursor: pointer; }
+.chip.miss:hover { border-color: var(--bad); }
+.chip .w { opacity: .7; font-size: 11px; }
+.empty { font-size: 13px; color: var(--muted); font-style: italic; }
+
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checks li { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 8px; font-size: 14px; align-items: start; }
+.checks .ic { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 1px; }
+.checks .pass .ic { background: var(--good-soft); color: var(--good); }
+.checks .fail .ic { background: var(--warn-soft); color: var(--warn); }
+.checks small { display: block; color: var(--muted); font-size: 12.5px; }
+
+/* Folha do currículo: sempre papel claro, como o PDF final */
+.sheet-wrap { overflow-x: auto; border-radius: 8px; background: var(--surface-2); padding: 14px; }
+#sheet { background: var(--paper); color: var(--paper-fg); font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; line-height: 1.4; padding: 32px 36px; max-width: 760px; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+#sheet h1 { font-family: Arial, Helvetica, sans-serif; font-size: 19pt; margin: 0; color: #111; }
+#sheet .cv-title { font-size: 11.5pt; margin: 2px 0 4px; color: #333; }
+#sheet .cv-contact { font-size: 9.5pt; color: #333; margin: 0 0 6px; word-break: break-word; }
+#sheet h2 { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #999; padding-bottom: 2px; margin: 14px 0 6px; color: #111; }
+#sheet p { margin: 0 0 6px; }
+#sheet .cv-job { margin-bottom: 9px; }
+#sheet .cv-job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 700; }
+#sheet .cv-job-head span:last-child { font-weight: 400; color: #444; }
+#sheet .cv-org { font-style: italic; color: #333; }
+#sheet ul { margin: 3px 0 0; padding-left: 18px; }
+#sheet li { margin-bottom: 2px; }
+#sheet .cv-empty { color: #888; font-style: italic; }
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 20; max-width: calc(100% - 32px); }
+.toast.show { opacity: 1; }
+#copy-fallback { width: 100%; min-height: 140px; font-family: var(--font-mono); font-size: 12px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff !important; }
+  body * { visibility: hidden; }
+  #sheet, #sheet * { visibility: visible; }
+  #sheet { position: absolute; left: 0; top: 0; width: 100%; max-width: none; box-shadow: none; padding: 0; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Currículo Aprovado</h1>
+      <p>Cole a vaga, monte seu currículo e veja o que um filtro automático (ATS) vai encontrar ou deixar de encontrar antes de você se candidatar.</p>
+    </div>
+    <div class="example-note">
+      <span class="tag" id="example-tag">Dados de exemplo</span>
+      <button type="button" id="btn-clear">Começar do zero</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- Entradas -->
+    <div class="col">
+      <section class="panel" aria-labelledby="h-vaga">
+        <div class="panel-head">
+          <h2 id="h-vaga"><span class="step">01</span> A vaga</h2>
+        </div>
+        <p class="hint">Cole a descrição completa: responsabilidades, requisitos e diferenciais. É daqui que saem as palavras-chave.</p>
+        <label for="vaga">Descrição da vaga
+          <textarea id="vaga" spellcheck="false"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" aria-labelledby="h-cv">
+        <div class="panel-head">
+          <h2 id="h-cv"><span class="step">02</span> Seu currículo</h2>
+        </div>
+
+        <fieldset>
+          <legend>Dados pessoais</legend>
+          <div class="row">
+            <label for="f-nome">Nome completo<input id="f-nome" data-k="nome" autocomplete="name"></label>
+            <label for="f-titulo">Cargo / título<input id="f-titulo" data-k="titulo"></label>
+          </div>
+          <div class="row">
+            <label for="f-email">E-mail<input id="f-email" data-k="email" type="email" autocomplete="email"></label>
+            <label for="f-telefone">Telefone<input id="f-telefone" data-k="telefone" autocomplete="tel"></label>
+          </div>
+          <div class="row">
+            <label for="f-local">Cidade / UF<input id="f-local" data-k="local"></label>
+            <label for="f-linkedin">LinkedIn ou portfólio<input id="f-linkedin" data-k="linkedin"></label>
+          </div>
+          <label for="f-resumo">Resumo profissional (2 a 4 frases)<textarea id="f-resumo" data-k="resumo" rows="4"></textarea></label>
+        </fieldset>
+
+        <hr class="sep">
+        <fieldset>
+          <legend>Experiência</legend>
+          <p class="hint">Uma conquista por linha. Comece com um verbo e coloque números sempre que der.</p>
+          <div id="exp-list" class="col" style="gap:12px"></div>
+          <button type="button" class="add" id="add-exp">+ Adicionar experiência</button>
+        </fieldset>
+
+        <hr class="sep">
+        <fieldset>
+          <legend>Formação</legend>
+          <div id="edu-list" class="col" style="gap:12px"></div>
+          <button type="button" class="add" id="add-edu">+ Adicionar formação</button>
+        </fieldset>
+
+        <hr class="sep">
+        <fieldset>
+          <legend>Habilidades e idiomas</legend>
+          <label for="f-habilidades">Habilidades (separe por vírgula)<textarea id="f-habilidades" data-k="habilidades" rows="3"></textarea></label>
+          <label for="f-idiomas">Idiomas<input id="f-idiomas" data-k="idiomas"></label>
+        </fieldset>
+      </section>
+    </div>
+
+    <!-- Resultado -->
+    <div class="col side">
+      <section class="panel" aria-labelledby="h-res">
+        <div class="panel-head">
+          <h2 id="h-res"><span class="step">03</span> Resultado</h2>
+        </div>
+        <div class="score">
+          <div class="ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="val" id="ring-val" cx="60" cy="60" r="52" fill="none" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+            <div class="num"><span id="score-num">0</span><small>%</small></div>
+          </div>
+          <div class="verdict" aria-live="polite">
+            <strong id="verdict-title">Cole uma vaga</strong>
+            <span id="verdict-sub">A nota mostra quantas palavras-chave da vaga aparecem no seu currículo, com peso maior para as ferramentas e técnicas citadas.</span>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" id="tab-kw" aria-selected="true" aria-controls="pane-kw">Palavras-chave</button>
+          <button type="button" role="tab" id="tab-ck" aria-selected="false" aria-controls="pane-ck">Checklist</button>
+          <button type="button" role="tab" id="tab-pv" aria-selected="false" aria-controls="pane-pv">Prévia</button>
+        </div>
+
+        <div id="pane-kw" role="tabpanel" aria-labelledby="tab-kw" class="col" style="gap:16px">
+          <div class="kw-group">
+            <h3>Faltando no currículo</h3>
+            <p class="hint">Clique numa palavra para colocá-la nas suas habilidades. Só adicione o que você realmente sabe fazer.</p>
+            <div class="chips" id="kw-miss"></div>
+          </div>
+          <div class="kw-group">
+            <h3>Já aparecem</h3>
+            <div class="chips" id="kw-ok"></div>
+          </div>
+        </div>
+
+        <div id="pane-ck" role="tabpanel" aria-labelledby="tab-ck" hidden>
+          <ul class="checks" id="checks"></ul>
+        </div>
+
+        <div id="pane-pv" role="tabpanel" aria-labelledby="tab-pv" class="col" style="gap:12px" hidden>
+          <div class="actions">
+            <button type="button" class="primary" id="btn-print">Baixar PDF</button>
+            <button type="button" id="btn-copy">Copiar como texto</button>
+          </div>
+          <p class="hint" id="print-hint" hidden>Para baixar o PDF, abra o site direto no navegador (arquivo <code>curriculo-ats/index.html</code>). Aqui dentro, use "Copiar como texto".</p>
+          <textarea id="copy-fallback" readonly hidden></textarea>
+          <div class="sheet-wrap"><div id="sheet"></div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Dados de exemplo (fictícios) ----------
+  const SAMPLE_JOB = `Analista de Dados Pleno (empresa de logística, híbrido em São Paulo)
+
+Responsabilidades
+• Construir e manter dashboards em Power BI para as áreas de operações e financeiro
+• Escrever consultas SQL complexas e otimizar pipelines de ETL
+• Automatizar relatórios com Python (Pandas)
+• Definir e acompanhar KPIs junto aos gestores
+• Garantir a qualidade dos dados no data warehouse
+
+Requisitos
+• 3+ anos de experiência com análise de dados
+• SQL avançado e Python
+• Power BI ou Tableau
+• Experiência com BigQuery ou outro data warehouse em nuvem
+• Inglês intermediário
+
+Diferenciais
+• Conhecimento em Airflow
+• Noções de estatística e testes A/B
+• Vivência com metodologias ágeis (Scrum)`;
+
+  const SAMPLE_CV = {
+    nome: "Mariana Souza", titulo: "Analista de Dados",
+    email: "mariana.souza@exemplo.com", telefone: "(11) 90000-0000",
+    local: "São Paulo, SP", linkedin: "linkedin.com/in/exemplo",
+    resumo: "Analista de dados com 4 anos de experiência em varejo e serviços financeiros. Transformo dados operacionais em relatórios e indicadores que orientam decisões de gestores. Forte em SQL, Python e visualização de dados.",
+    experiencias: [
+      { cargo: "Analista de Dados", empresa: "Rede Varejo Sul", periodo: "mar/2022 – atual",
+        itens: "Criei 12 painéis no Tableau usados semanalmente por 40 gerentes de loja\nReduzi em 70% o tempo de fechamento mensal ao automatizar relatórios com Python e Pandas\nModelei consultas SQL que consolidam vendas de 85 lojas\nDefini os KPIs de ruptura de estoque junto à diretoria de operações" },
+      { cargo: "Assistente de BI", empresa: "Fintech Pago", periodo: "jan/2020 – fev/2022",
+        itens: "Mantive rotinas de ETL em SQL Server com 99% de entregas no prazo\nProduzi relatórios em Excel para as áreas de crédito e cobrança" }
+    ],
+    formacao: [
+      { curso: "Bacharelado em Estatística", instituicao: "Universidade Federal (exemplo)", periodo: "2016 – 2020" }
+    ],
+    habilidades: "SQL, Python, Pandas, Tableau, Excel avançado, ETL, Git",
+    idiomas: "Português (nativo), Inglês (intermediário)"
+  };
+
+  const EMPTY_CV = { nome: "", titulo: "", email: "", telefone: "", local: "", linkedin: "", resumo: "",
+    experiencias: [{ cargo: "", empresa: "", periodo: "", itens: "" }],
+    formacao: [{ curso: "", instituicao: "", periodo: "" }], habilidades: "", idiomas: "" };
+
+  // ---------- Vocabulário ----------
+  const norm = s => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const TOKEN_RE = /[\p{L}\p{N}][\p{L}\p{N}+#.\-]*[\p{L}\p{N}+#]|[\p{L}\p{N}]/gu;
+  const tokens = s => (norm(s).match(TOKEN_RE) || []).map(t => t.replace(/\.+$/, ""));
+
+  // Termos técnicos e competências que recebem peso maior (chave normalizada -> como exibir)
+  const DICT = {};
+  [
+    "SQL","Python","Pandas","NumPy","Power BI","Tableau","Looker","Excel","Excel avançado","VBA","ETL","KPI","OKR","Data warehouse","BigQuery","Snowflake","Redshift","Airflow","Spark","Databricks","dbt",
+    "Estatística","Testes A/B","Machine learning","Deep learning","Data science","R",
+    "Scrum","Kanban","Metodologias ágeis","Jira","Confluence","Git","GitHub","CI/CD","Docker","Kubernetes","Linux",
+    "AWS","Azure","GCP","Google Cloud","Java","JavaScript","TypeScript","Node.js","React","Angular","Vue","HTML","CSS","C#",".NET","PHP","Go","Kotlin","Swift","Flutter",
+    "PostgreSQL","MySQL","SQL Server","Oracle","MongoDB","NoSQL","Redis","API","REST","GraphQL","Microsserviços","Testes automatizados",
+    "Figma","Photoshop","Illustrator","UX","UI","Design system","Pesquisa com usuários",
+    "SEO","Google Ads","Meta Ads","Marketing digital","Google Analytics","CRM","Salesforce","HubSpot","SAP","ERP","Power Apps",
+    "Inglês","Espanhol","Liderança","Comunicação","Negociação","Gestão de projetos","Gestão de pessoas","Atendimento ao cliente","Vendas","Prospecção","Pacote Office","PowerPoint","Lean","Six Sigma"
+  ].forEach(d => { const k = tokens(d.replace(/\//g, " ")).join(" "); if (k) DICT[k] = d; });
+
+  const STOP = new Set((
+    "a o e é de da do das dos em no na nos nas um uma uns umas para pra por com sem sob sobre ao aos à às que se ou como mais menos muito muita muitos muitas " +
+    "seu sua seus suas nosso nossa nossos nossas você voce vocês ser ter estar foi são sao será sera não nao já ja também tambem entre até ate pelo pela pelos pelas " +
+    "este esta estes estas esse essa esses essas isso isto aquele aquela cada todo toda todos todas outro outra outros outras qual quais quando onde bem anos ano mes meses " +
+    "vaga vagas empresa empresas experiencia experiencias conhecimento conhecimentos requisitos requisito desejavel desejaveis diferencial diferenciais atividades atividade " +
+    "responsabilidades responsabilidade area areas trabalho trabalhar buscamos procuramos profissional profissionais time equipe equipes oferecemos beneficios junto " +
+    "garantir construir manter escrever definir acompanhar otimizar automatizar realizar apoiar atuar atuacao nocoes nocao vivencia pleno junior senior sr jr " +
+    "avancado avancada intermediario intermediaria basico basica fluente desejado desejada obrigatorio necessario boa bom boas bons forte capacidade habilidade habilidades " +
+    "hibrido remoto presencial modelo regime clt pj contratacao local salario vale ou e/ou etc ex sp rj mg tais tal sobre dentro novo nova novos novas principais principal " +
+    "the and or of to in for with an on at by is are be as we you our your will this that from have has experience skills years year plus strong good ability work team"
+  ).split(/\s+/).map(norm));
+
+  const isWord = t => t.length > 1 && !STOP.has(t) && !/^\d+[+]?$/.test(t);
+
+  function phraseCount(hay, phrase) {
+    const forms = [phrase];
+    if (phrase.endsWith("s")) forms.push(phrase.slice(0, -1)); else forms.push(phrase + "s");
+    let n = 0;
+    for (const f of forms) { let i = hay.indexOf(" " + f + " "); while (i !== -1) { n++; i = hay.indexOf(" " + f + " ", i + 1); } }
+    return n;
+  }
+
+  // Extrai palavras-chave da vaga: termos do dicionário + palavras e pares que se repetem
+  function extractKeywords(text) {
+    const flat = " " + tokens(text.replace(/\//g, " ")).join(" ") + " ";
+    const found = new Map();
+    const covered = new Set();
+    // 1. Termos do dicionário (mais longos primeiro)
+    Object.keys(DICT).sort((a, b) => b.length - a.length).forEach(k => {
+      if (k.length === 1) return;
+      const n = phraseCount(flat, k);
+      if (!n) return;
+      if ([...found.keys()].some(f => (" " + f + " ").includes(" " + k + " "))) return; // já coberto por termo maior
+      found.set(k, { key: k, label: DICT[k], weight: 3, freq: n });
+      k.split(" ").forEach(w => covered.add(w));
+    });
+    // 2. Palavras e pares que se repetem
+    const segs = norm(text).split(/[\n;,()•|!?]+|\.\s|:\s|\s[–-]\s/);
+    const uni = new Map(), bi = new Map(), firstSeen = new Map();
+    segs.forEach(seg => {
+      const tk = (seg.match(TOKEN_RE) || []).map(t => t.replace(/\.+$/, ""));
+      tk.forEach((t, i) => {
+        if (!isWord(t)) return;
+        uni.set(t, (uni.get(t) || 0) + 1);
+        const nx = tk[i + 1];
+        if (nx && isWord(nx)) { const b = t + " " + nx; bi.set(b, (bi.get(b) || 0) + 1); }
+      });
+    });
+    const generic = [];
+    bi.forEach((n, b) => { if (n >= 2 && !found.has(b)) generic.push({ key: b, label: b, weight: 1.5, freq: n }); });
+    const biWords = new Set(generic.flatMap(g => g.key.split(" ")));
+    uni.forEach((n, u) => {
+      if (covered.has(u) || found.has(u)) return;
+      if (biWords.has(u) && n <= 2) return;
+      if (n >= 2) generic.push({ key: u, label: u, weight: 1, freq: n });
+    });
+    if (found.size + generic.length < 10) {
+      uni.forEach((n, u) => { if (n === 1 && u.length >= 6 && !covered.has(u) && !generic.some(g => g.key === u)) generic.push({ key: u, label: u, weight: 0.6, freq: 1 }); });
+    }
+    generic.sort((a, b) => b.freq * b.weight - a.freq * a.weight);
+    const list = [...found.values(), ...generic].slice(0, 24);
+    // rótulos com acento: recupera a grafia original da vaga para termos genéricos
+    const orig = (text.toLowerCase().match(TOKEN_RE) || []);
+    orig.forEach(o => { const k = norm(o); if (!firstSeen.has(k)) firstSeen.set(k, o); });
+    list.forEach(t => { if (t.weight < 3) t.label = t.key.split(" ").map(w => firstSeen.get(w) || w).join(" "); });
+    return list;
+  }
+
+  // ---------- Estado ----------
+  const LS_KEY = "curriculo-aprovado:v1";
+  let state = load() || { vaga: SAMPLE_JOB, cv: structuredClone(SAMPLE_CV), example: true };
+
+  function load() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+  function save() { try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {} }
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // ---------- Formulário ----------
+  function bindSimple() {
+    $("vaga").value = state.vaga;
+    document.querySelectorAll("[data-k]").forEach(el => {
+      el.value = state.cv[el.dataset.k] || "";
+      el.addEventListener("input", () => { state.cv[el.dataset.k] = el.value; changed(); });
+    });
+    $("vaga").addEventListener("input", e => { state.vaga = e.target.value; changed(); });
+  }
+
+  function renderList(kind) {
+    const isExp = kind === "exp";
+    const arr = isExp ? state.cv.experiencias : state.cv.formacao;
+    const box = $(isExp ? "exp-list" : "edu-list");
+    box.innerHTML = arr.map((it, i) => isExp ? `
+      <div class="item">
+        <div class="item-head"><span>Experiência ${i + 1}</span><button type="button" class="link" data-rm="exp" data-i="${i}">Remover</button></div>
+        <div class="row">
+          <label for="exp-${i}-cargo">Cargo<input id="exp-${i}-cargo" data-l="exp" data-i="${i}" data-f="cargo" value="${esc(it.cargo)}"></label>
+          <label for="exp-${i}-empresa">Empresa<input id="exp-${i}-empresa" data-l="exp" data-i="${i}" data-f="empresa" value="${esc(it.empresa)}"></label>
+        </div>
+        <label for="exp-${i}-periodo">Período<input id="exp-${i}-periodo" data-l="exp" data-i="${i}" data-f="periodo" placeholder="mar/2022 – atual" value="${esc(it.periodo)}"></label>
+        <label for="exp-${i}-itens">Conquistas (uma por linha)<textarea id="exp-${i}-itens" rows="4" data-l="exp" data-i="${i}" data-f="itens">${esc(it.itens)}</textarea></label>
+      </div>` : `
+      <div class="item">
+        <div class="item-head"><span>Formação ${i + 1}</span><button type="button" class="link" data-rm="edu" data-i="${i}">Remover</button></div>
+        <div class="row">
+          <label for="edu-${i}-curso">Curso<input id="edu-${i}-curso" data-l="edu" data-i="${i}" data-f="curso" value="${esc(it.curso)}"></label>
+          <label for="edu-${i}-inst">Instituição<input id="edu-${i}-inst" data-l="edu" data-i="${i}" data-f="instituicao" value="${esc(it.instituicao)}"></label>
+        </div>
+        <label for="edu-${i}-periodo">Período<input id="edu-${i}-periodo" data-l="edu" data-i="${i}" data-f="periodo" placeholder="2016 – 2020" value="${esc(it.periodo)}"></label>
+      </div>`).join("");
+  }
+
+  document.addEventListener("input", e => {
+    const el = e.target;
+    if (!el.dataset.l) return;
+    const arr = el.dataset.l === "exp" ? state.cv.experiencias : state.cv.formacao;
+    arr[+el.dataset.i][el.dataset.f] = el.value;
+    changed();
+  });
+  document.addEventListener("click", e => {
+    const rm = e.target.closest("[data-rm]");
+    if (!rm) return;
+    const arr = rm.dataset.rm === "exp" ? state.cv.experiencias : state.cv.formacao;
+    arr.splice(+rm.dataset.i, 1);
+    renderList(rm.dataset.rm); changed();
+  });
+  $("add-exp").addEventListener("click", () => { state.cv.experiencias.push({ cargo: "", empresa: "", periodo: "", itens: "" }); renderList("exp"); changed(); $("exp-" + (state.cv.experiencias.length - 1) + "-cargo").focus(); });
+  $("add-edu").addEventListener("click", () => { state.cv.formacao.push({ curso: "", instituicao: "", periodo: "" }); renderList("edu"); changed(); $("edu-" + (state.cv.formacao.length - 1) + "-curso").focus(); });
+
+  const clearBtn = $("btn-clear");
+  let clearArmed = false;
+  clearBtn.addEventListener("click", () => {
+    if (!clearArmed) { clearArmed = true; clearBtn.textContent = "Confirmar: apagar tudo?"; setTimeout(() => { clearArmed = false; clearBtn.textContent = state.example ? "Começar do zero" : "Limpar tudo"; }, 3500); return; }
+    clearArmed = false;
+    state = { vaga: "", cv: structuredClone(EMPTY_CV), example: false };
+    bindAll(); changed(); toast("Tudo limpo. Comece colando a vaga.");
+  });
+
+  // ---------- Texto do currículo ----------
+  function cvPlain(cv) {
+    const L = [];
+    if (cv.nome) L.push(cv.nome.toUpperCase());
+    if (cv.titulo) L.push(cv.titulo);
+    const ct = [cv.email, cv.telefone, cv.local, cv.linkedin].filter(Boolean).join(" | ");
+    if (ct) L.push(ct);
+    if (cv.resumo) L.push("", "RESUMO", cv.resumo);
+    const ex = cv.experiencias.filter(x => x.cargo || x.empresa || x.itens);
+    if (ex.length) { L.push("", "EXPERIÊNCIA"); ex.forEach(x => { L.push([x.cargo, x.empresa].filter(Boolean).join(" – ") + (x.periodo ? " (" + x.periodo + ")" : "")); x.itens.split("\n").map(s => s.trim()).filter(Boolean).forEach(b => L.push("- " + b.replace(/^[-•*]\s*/, ""))); L.push(""); }); L.pop(); }
+    const ed = cv.formacao.filter(x => x.curso || x.instituicao);
+    if (ed.length) { L.push("", "FORMAÇÃO"); ed.forEach(x => L.push([x.curso, x.instituicao].filter(Boolean).join(" – ") + (x.periodo ? " (" + x.periodo + ")" : ""))); }
+    if (cv.habilidades) L.push("", "HABILIDADES", cv.habilidades);
+    if (cv.idiomas) L.push("", "IDIOMAS", cv.idiomas);
+    return L.join("\n");
+  }
+
+  function renderSheet(cv) {
+    const ct = [cv.email, cv.telefone, cv.local, cv.linkedin].filter(Boolean).map(esc).join(" &nbsp;|&nbsp; ");
+    const ex = cv.experiencias.filter(x => x.cargo || x.empresa || x.itens);
+    const ed = cv.formacao.filter(x => x.curso || x.instituicao);
+    let h = `<h1>${esc(cv.nome) || '<span class="cv-empty">Seu nome</span>'}</h1>`;
+    if (cv.titulo) h += `<div class="cv-title">${esc(cv.titulo)}</div>`;
+    if (ct) h += `<div class="cv-contact">${ct}</div>`;
+    if (cv.resumo) h += `<h2>Resumo</h2><p>${esc(cv.resumo)}</p>`;
+    if (ex.length) {
+      h += `<h2>Experiência</h2>` + ex.map(x => {
+        const bl = x.itens.split("\n").map(s => s.trim().replace(/^[-•*]\s*/, "")).filter(Boolean);
+        return `<div class="cv-job"><div class="cv-job-head"><span>${esc(x.cargo)}</span><span>${esc(x.periodo)}</span></div>${x.empresa ? `<div class="cv-org">${esc(x.empresa)}</div>` : ""}${bl.length ? "<ul>" + bl.map(b => `<li>${esc(b)}</li>`).join("") + "</ul>" : ""}</div>`;
+      }).join("");
+    }
+    if (ed.length) h += `<h2>Formação</h2>` + ed.map(x => `<div class="cv-job"><div class="cv-job-head"><span>${esc(x.curso)}</span><span>${esc(x.periodo)}</span></div>${x.instituicao ? `<div class="cv-org">${esc(x.instituicao)}</div>` : ""}</div>`).join("");
+    if (cv.habilidades) h += `<h2>Habilidades</h2><p>${esc(cv.habilidades)}</p>`;
+    if (cv.idiomas) h += `<h2>Idiomas</h2><p>${esc(cv.idiomas)}</p>`;
+    $("sheet").innerHTML = h;
+  }
+
+  // ---------- Análise ----------
+  const ACTION_VERBS = ["criei","desenvolvi","implementei","reduzi","aumentei","liderei","gerenciei","automatizei","conduzi","entreguei","estruturei","otimizei","coordenei","lancei","modelei","defini","produzi","mantive","negociei","treinei","construi","migrei","projetei","elaborei","melhorei","implantei","organizei","atendi","vendi","economizei","cresci","analisei"];
+
+  function checklist(cv) {
+    const bullets = cv.experiencias.flatMap(x => x.itens.split("\n").map(s => s.trim()).filter(Boolean));
+    const withNum = bullets.filter(b => /\d/.test(b)).length;
+    const verbStart = bullets.filter(b => ACTION_VERBS.includes(norm(b.replace(/^[-•*]\s*/, "").split(/\s+/)[0]))).length;
+    const resumoSent = (cv.resumo.match(/[.!?](\s|$)/g) || []).length || (cv.resumo.trim() ? 1 : 0);
+    const words = cvPlain(cv).split(/\s+/).filter(Boolean).length;
+    const special = /[★☆✓✔►▶◆■●♦→]/.test(cvPlain(cv));
+    return [
+      { ok: /\S+@\S+\.\S+/.test(cv.email) && /\d{4}/.test(cv.telefone), t: "Contato completo", d: "E-mail e telefone em texto simples, sem ícones." },
+      { ok: !!cv.titulo.trim(), t: "Título alinhado à vaga", d: "Use o mesmo nome de cargo que a vaga usa, quando for verdade." },
+      { ok: resumoSent >= 2 && resumoSent <= 4, t: "Resumo de 2 a 4 frases", d: resumoSent ? `Hoje: ${resumoSent} frase${resumoSent > 1 ? "s" : ""}.` : "Ainda vazio." },
+      { ok: bullets.length > 0 && withNum / bullets.length >= 0.5, t: "Resultados com números", d: bullets.length ? `${withNum} de ${bullets.length} conquistas têm números. Meta: pelo menos metade.` : "Adicione conquistas na experiência." },
+      { ok: bullets.length > 0 && verbStart / bullets.length >= 0.6, t: "Conquistas começam com verbo", d: "Ex.: Reduzi, Criei, Automatizei, Liderei." },
+      { ok: cv.habilidades.split(",").filter(s => s.trim()).length >= 5, t: "Seção de habilidades", d: "Pelo menos 5 itens, separados por vírgula." },
+      { ok: words >= 150 && words <= 800, t: "Tamanho de 1 a 2 páginas", d: `${words} palavras. Faixa boa: 150 a 800.` },
+      { ok: !special, t: "Sem símbolos especiais", d: "Estrelas, setas e ícones confundem a leitura automática." }
+    ];
+  }
+
+  function analyze() {
+    const kws = extractKeywords(state.vaga);
+    const hay = " " + tokens(cvPlain(state.cv).replace(/\//g, " ")).join(" ") + " ";
+    let tot = 0, got = 0;
+    const ok = [], miss = [];
+    kws.forEach(k => { tot += k.weight; if (phraseCount(hay, k.key) > 0) { got += k.weight; ok.push(k); } else miss.push(k); });
+    const pct = tot ? Math.round(got / tot * 100) : 0;
+
+    $("score-num").textContent = pct;
+    const C = 326.7, ring = $("ring-val");
+    ring.style.strokeDashoffset = String(C - C * pct / 100);
+    const lvl = !kws.length ? "" : pct >= 75 ? "good" : pct >= 50 ? "warn" : "bad";
+    ring.style.stroke = lvl ? `var(--${lvl})` : "var(--line)";
+    const vt = $("verdict-title"), vs = $("verdict-sub");
+    vt.className = lvl ? "lvl-" + lvl : "";
+    if (!kws.length) { vt.textContent = "Cole uma vaga"; vs.textContent = "A nota mostra quantas palavras-chave da vaga aparecem no seu currículo, com peso maior para ferramentas e técnicas."; }
+    else if (lvl === "good") { vt.textContent = "Boa chance de passar no filtro"; vs.textContent = `${ok.length} de ${kws.length} palavras-chave encontradas. Agora revise o checklist.`; }
+    else if (lvl === "warn") { vt.textContent = "Quase lá"; vs.textContent = `${ok.length} de ${kws.length} palavras-chave encontradas. Inclua as que faltam e que você domina.`; }
+    else { vt.textContent = "Risco de ser filtrado"; vs.textContent = `Só ${ok.length} de ${kws.length} palavras-chave encontradas. Use os termos da vaga nas suas conquistas.`; }
+
+    const chip = (k, cls) => `<span class="chip ${cls}" ${cls === "miss" ? `role="button" tabindex="0" data-add="${esc(k.label)}" title="Adicionar às habilidades"` : ""}>${cls === "miss" ? "+ " : "✓ "}${esc(k.label)}</span>`;
+    $("kw-miss").innerHTML = miss.length ? miss.map(k => chip(k, "miss")).join("") : `<span class="empty">${kws.length ? "Nada faltando. Ótimo." : "Nenhuma vaga colada."}</span>`;
+    $("kw-ok").innerHTML = ok.length ? ok.map(k => chip(k, "ok")).join("") : `<span class="empty">Nenhuma ainda.</span>`;
+
+    $("checks").innerHTML = checklist(state.cv).map(c => `<li class="${c.ok ? "pass" : "fail"}"><span class="ic">${c.ok ? "✓" : "!"}</span><span><strong>${c.t}</strong><small>${esc(c.d)}</small></span></li>`).join("");
+    renderSheet(state.cv);
+  }
+
+  function addSkill(label) {
+    const cur = state.cv.habilidades.split(",").map(s => s.trim()).filter(Boolean);
+    if (!cur.some(s => norm(s) === norm(label))) cur.push(label);
+    state.cv.habilidades = cur.join(", ");
+    $("f-habilidades").value = state.cv.habilidades;
+    changed(); toast(`"${label}" adicionada às habilidades`);
+  }
+  $("kw-miss").addEventListener("click", e => { const c = e.target.closest("[data-add]"); if (c) addSkill(c.dataset.add); });
+  $("kw-miss").addEventListener("keydown", e => { const c = e.target.closest("[data-add]"); if (c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); addSkill(c.dataset.add); } });
+
+  // ---------- Abas ----------
+  const TABS = [["tab-kw", "pane-kw"], ["tab-ck", "pane-ck"], ["tab-pv", "pane-pv"]];
+  TABS.forEach(([t, p]) => $(t).addEventListener("click", () => {
+    TABS.forEach(([t2, p2]) => { $(t2).setAttribute("aria-selected", String(t2 === t)); $(p2).hidden = p2 !== p; });
+  }));
+
+  // ---------- Exportar ----------
+  const framed = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+  if (framed) { $("btn-print").hidden = true; $("print-hint").hidden = false; }
+  $("btn-print").addEventListener("click", () => window.print());
+  $("btn-copy").addEventListener("click", () => {
+    const txt = cvPlain(state.cv);
+    const fb = () => { const ta = $("copy-fallback"); ta.value = txt; ta.hidden = false; ta.focus(); ta.select(); toast("Selecionei o texto. Use Ctrl+C para copiar."); };
+    try { navigator.clipboard.writeText(txt).then(() => toast("Currículo copiado como texto"), fb); } catch (e) { fb(); }
+  });
+
+  let tt;
+  function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("show"), 2200); }
+
+  // ---------- Ciclo ----------
+  let timer;
+  function changed() {
+    if (state.example) { state.example = false; $("example-tag").hidden = true; clearBtn.textContent = "Limpar tudo"; }
+    clearTimeout(timer); timer = setTimeout(() => { analyze(); save(); }, 150);
+  }
+  function bindAll() {
+    bindSimple(); renderList("exp"); renderList("edu");
+    $("example-tag").hidden = !state.example;
+    clearBtn.textContent = state.example ? "Começar do zero" : "Limpar tudo";
+    analyze();
+  }
+  // bindSimple adiciona listeners; só chamamos uma vez e depois apenas atualizamos valores
+  let bound = false;
+  const _bindSimple = bindSimple;
+  bindSimple = function () {
+    if (!bound) { _bindSimple(); bound = true; return; }
+    $("vaga").value = state.vaga;
+    document.querySelectorAll("[data-k]").forEach(el => { el.value = state.cv[el.dataset.k] || ""; });
+  };
+  bindAll();
+
+  // exposto para testes
+  window.__ats = { extractKeywords, cvPlain };
+})();
+</script>
+
+</body>
+</html>
