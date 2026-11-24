@@ -11,7 +11,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "fases": "tsx ferramentas/montar-fases.ts",
-    "fases:ver": "tsx ferramentas/ver-fases.ts"
+    "fases:ver": "tsx ferramentas/ver-fases.ts",
+    "pagina": "npm run build && tsx ferramentas/pagina-publicavel.ts"
   },
   "devDependencies": {
     "@types/node": "22.20.5",
