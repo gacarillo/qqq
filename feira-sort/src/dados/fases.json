@@ -1,0 +1,10554 @@
+{
+ "versao": 1,
+ "capacidade": 4,
+ "fases": [
+  {
+   "id": 1,
+   "capacidade": 4,
+   "caixas": [
+    "AAA",
+    "A"
+   ],
+   "solucao": [
+    [
+     0,
+     1
+    ]
+   ],
+   "info": {
+    "tipos": 1,
+    "caixas": 2,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 1,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 2,
+   "capacidade": 4,
+   "caixas": [
+    "ABB",
+    "BB",
+    "AAA"
+   ],
+   "solucao": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 2,
+    "caixas": 3,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 2,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 3,
+   "capacidade": 4,
+   "caixas": [
+    "AABB",
+    "BBAA",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 2,
+    "caixas": 3,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 3,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 4,
+   "capacidade": 4,
+   "caixas": [
+    "A",
+    "CCBB",
+    "BBCC",
+    "AAA"
+   ],
+   "solucao": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 3,
+    "caixas": 4,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 4,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 5,
+   "capacidade": 4,
+   "caixas": [
+    "BBBA",
+    "AB",
+    "ACA",
+    "CCC",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 3,
+    "caixas": 5,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 5,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 6,
+   "capacidade": 4,
+   "caixas": [
+    "AB",
+    "CAA",
+    "CCBA",
+    "BBC"
+   ],
+   "solucao": [
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 3,
+    "caixas": 4,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 6,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 7,
+   "capacidade": 4,
+   "caixas": [
+    "AAA",
+    "CA",
+    "DDCB",
+    "DCB",
+    "BB",
+    "DC"
+   ],
+   "solucao": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 8,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 8,
+   "capacidade": 4,
+   "caixas": [
+    "",
+    "ABC",
+    "DD",
+    "BDDB",
+    "CCAA",
+    "CBA"
+   ],
+   "solucao": [
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 9,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 9,
+   "capacidade": 4,
+   "caixas": [
+    "CCDC",
+    "BC",
+    "AABD",
+    "DABA",
+    "DB"
+   ],
+   "solucao": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 5,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 10,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 10,
+   "capacidade": 4,
+   "caixas": [
+    "DEEE",
+    "ECDD",
+    "CB",
+    "CAC",
+    "DAAB",
+    "A",
+    "BB"
+   ],
+   "solucao": [
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 0,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 10,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "tutorial"
+   }
+  },
+  {
+   "id": 11,
+   "capacidade": 4,
+   "caixas": [
+    "EAAC",
+    "B",
+    "EBCC",
+    "AAB",
+    "BECE",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 10,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 12,
+   "capacidade": 4,
+   "caixas": [
+    "DB",
+    "BC",
+    "CDBC",
+    "ECEE",
+    "DEBD",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 11,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 13,
+   "capacidade": 4,
+   "caixas": [
+    "BAAD",
+    "BEBA",
+    "DA",
+    "EDBE",
+    "DE",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 12,
+    "minimoExato": true,
+    "falhaSimulada": 0.01,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 14,
+   "capacidade": 4,
+   "caixas": [
+    "EAD",
+    "EEAD",
+    "BDB",
+    "BE",
+    "ADBA",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 12,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 15,
+   "capacidade": 4,
+   "caixas": [
+    "AEDB",
+    "CCEC",
+    "BDE",
+    "CE",
+    "BAA",
+    "BDAD",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.01,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 16,
+   "capacidade": 4,
+   "caixas": [
+    "FBD",
+    "BBDA",
+    "FFA",
+    "ADA",
+    "DFB",
+    ""
+   ],
+   "solucao": [
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 4,
+    "caixas": 6,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 11,
+    "minimoExato": true,
+    "falhaSimulada": 0,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 17,
+   "capacidade": 4,
+   "caixas": [
+    "DFCD",
+    "ECE",
+    "AF",
+    "FACD",
+    "AADE",
+    "FCE",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.028,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 18,
+   "capacidade": 4,
+   "caixas": [
+    "FFA",
+    "BCAB",
+    "AFEC",
+    "FE",
+    "AECB",
+    "BEC",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 1,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 16,
+    "minimoExato": true,
+    "falhaSimulada": 0.05,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 19,
+   "capacidade": 4,
+   "caixas": [
+    "CBDF",
+    "CBCD",
+    "EDFE",
+    "DFFE",
+    "ECBB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.015,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 20,
+   "capacidade": 4,
+   "caixas": [
+    "CEFE",
+    "BAFA",
+    "EFBE",
+    "FACA",
+    "BBCC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.055,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 21,
+   "capacidade": 4,
+   "caixas": [
+    "EFEC",
+    "ECDD",
+    "CDFD",
+    "ECBF",
+    "BFBB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 16,
+    "minimoExato": true,
+    "falhaSimulada": 0.04,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 22,
+   "capacidade": 4,
+   "caixas": [
+    "DCEG",
+    "EGAC",
+    "AEAD",
+    "ADCG",
+    "EGCD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 17,
+    "minimoExato": true,
+    "falhaSimulada": 0.003,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 23,
+   "capacidade": 4,
+   "caixas": [
+    "DCBD",
+    "GGBG",
+    "AABD",
+    "CCAC",
+    "AGDB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 14,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 24,
+   "capacidade": 4,
+   "caixas": [
+    "CACB",
+    "CEAA",
+    "EDBD",
+    "CBDA",
+    "BEDE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 16,
+    "minimoExato": true,
+    "falhaSimulada": 0.048,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 25,
+   "capacidade": 4,
+   "caixas": [
+    "GABF",
+    "AFDB",
+    "CFAC",
+    "CDGA",
+    "FBBG",
+    "DCDG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.07,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 26,
+   "capacidade": 4,
+   "caixas": [
+    "FFGC",
+    "CEFA",
+    "GCGE",
+    "AAEG",
+    "FECA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.09,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 27,
+   "capacidade": 4,
+   "caixas": [
+    "BGCA",
+    "CDDC",
+    "GEAB",
+    "CEBE",
+    "GGBD",
+    "AAED",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 17,
+    "minimoExato": true,
+    "falhaSimulada": 0.053,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 28,
+   "capacidade": 4,
+   "caixas": [
+    "BBEF",
+    "CDBD",
+    "DBAC",
+    "FAED",
+    "FCEA",
+    "ACFE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     6
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.073,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 29,
+   "capacidade": 4,
+   "caixas": [
+    "DADF",
+    "EEAC",
+    "DECA",
+    "CFFD",
+    "ECFA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 15,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 30,
+   "capacidade": 4,
+   "caixas": [
+    "HAED",
+    "HHBG",
+    "BGEA",
+    "EEGD",
+    "DDAB",
+    "AHBG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 17,
+    "minimoExato": true,
+    "falhaSimulada": 0.043,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 31,
+   "capacidade": 4,
+   "caixas": [
+    "HCCE",
+    "ACAH",
+    "CBDH",
+    "BBEA",
+    "EBAD",
+    "DEDH",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 18,
+    "minimoExato": true,
+    "falhaSimulada": 0.055,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 32,
+   "capacidade": 4,
+   "caixas": [
+    "CGCD",
+    "GDAH",
+    "BBAD",
+    "CBAG",
+    "CBGH",
+    "HHDA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 18,
+    "minimoExato": true,
+    "falhaSimulada": 0.065,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 33,
+   "capacidade": 4,
+   "caixas": [
+    "GABB",
+    "EFAE",
+    "FCFF",
+    "BBGA",
+    "GCAC",
+    "EGCE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 18,
+    "minimoExato": true,
+    "falhaSimulada": 0.085,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 34,
+   "capacidade": 4,
+   "caixas": [
+    "GEBA",
+    "EDFF",
+    "EDAG",
+    "BAGB",
+    "BDFF",
+    "EDGA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.12,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 35,
+   "capacidade": 4,
+   "caixas": [
+    "CDHG",
+    "DGDF",
+    "DBHB",
+    "GHCH",
+    "CFGC",
+    "BFBF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 20,
+    "minimoExato": true,
+    "falhaSimulada": 0.09,
+    "papel": "habito"
+   }
+  },
+  {
+   "id": 36,
+   "capacidade": 4,
+   "caixas": [
+    "FEFA",
+    "BAAE",
+    "fBAG",
+    "eFBG",
+    "GEGB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 5,
+    "caixas": 7,
+    "vazias": 2,
+    "ocultos": 2,
+    "trancas": 0,
+    "jogadasMinimas": 16,
+    "minimoExato": true,
+    "falhaSimulada": 0.008,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 37,
+   "capacidade": 4,
+   "caixas": [
+    "ABCH",
+    "EEGC",
+    "GDAD",
+    "CEAH",
+    "HACG",
+    "DBDB",
+    "HBEG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.04,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 38,
+   "capacidade": 4,
+   "caixas": [
+    "DhHD",
+    "HBAB",
+    "DebC",
+    "DEcA",
+    "BCAC",
+    "HEEA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.068,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 39,
+   "capacidade": 4,
+   "caixas": [
+    "FGDA",
+    "FHDG",
+    "AFAG",
+    "BCCG",
+    "CBBH",
+    "CFAD",
+    "HBDH",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.223,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 40,
+   "capacidade": 4,
+   "caixas": [
+    "cBFD",
+    "BDFG",
+    "dcGE",
+    "ABCG",
+    "DBEE",
+    "fEAG",
+    "AaFC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.303,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 41,
+   "capacidade": 4,
+   "caixas": [
+    "HGHF",
+    "CCGB",
+    "BBFE",
+    "CEHC",
+    "GHEF",
+    "GBEF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 18,
+    "minimoExato": true,
+    "falhaSimulada": 0.023,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 42,
+   "capacidade": 4,
+   "caixas": [
+    "IEID",
+    "EcCE",
+    "DGaG",
+    "eAiC",
+    "dGAC",
+    "GAID",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.035,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 43,
+   "capacidade": 4,
+   "caixas": [
+    "IFIA",
+    "AAEF",
+    "BBEF",
+    "BDEI",
+    "ADDF",
+    "IBED",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 18,
+    "minimoExato": true,
+    "falhaSimulada": 0.105,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 44,
+   "capacidade": 4,
+   "caixas": [
+    "bfAD",
+    "EAbF",
+    "IFEH",
+    "AHHB",
+    "DiDI",
+    "DeIA",
+    "EHBF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.098,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 45,
+   "capacidade": 4,
+   "caixas": [
+    "GIAB",
+    "ICiC",
+    "BfEG",
+    "EaDB",
+    "ABFC",
+    "fEDD",
+    "dfEI",
+    "ACGG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     8
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.343,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 46,
+   "capacidade": 4,
+   "caixas": [
+    "GHDB",
+    "GBDE",
+    "GFFF",
+    "EEHB",
+    "FGEH",
+    "DHBD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 17,
+    "minimoExato": true,
+    "falhaSimulada": 0.015,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 47,
+   "capacidade": 4,
+   "caixas": [
+    "DEFD",
+    "GDFE",
+    "FAGI",
+    "CCCG",
+    "FAEE",
+    "ICIA",
+    "GIAD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 20,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 48,
+   "capacidade": 4,
+   "caixas": [
+    "IHCB",
+    "GgIA",
+    "EeAB",
+    "bIBE",
+    "EGAH",
+    "ACIH",
+    "HgcC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     6,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 20,
+    "minimoExato": true,
+    "falhaSimulada": 0.165,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 49,
+   "capacidade": 4,
+   "caixas": [
+    "IDHC",
+    "BHAD",
+    "HCGC",
+    "ABGD",
+    "IBIH",
+    "CAAG",
+    "BIGD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.108,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 50,
+   "capacidade": 4,
+   "caixas": [
+    "FFGA",
+    "BGCD",
+    "BBIC",
+    "FAIA",
+    "cIgC",
+    "bFDI",
+    "aGdD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.368,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 51,
+   "capacidade": 4,
+   "caixas": [
+    "DBHD",
+    "IECI",
+    "CDBE",
+    "CICB",
+    "EHHI",
+    "BEHD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.028,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 52,
+   "capacidade": 4,
+   "caixas": [
+    "EGhF",
+    "CECE",
+    "dbGH",
+    "fCFH",
+    "DCGD",
+    "BbdE",
+    "GHBF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.093,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 53,
+   "capacidade": 4,
+   "caixas": [
+    "ICDD",
+    "FIIB",
+    "BCFB",
+    "GCFH",
+    "FDHH",
+    "DICH",
+    "GGBG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.138,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 54,
+   "capacidade": 4,
+   "caixas": [
+    "AEeH",
+    "AaEH",
+    "ECbB",
+    "FDDF",
+    "HFcD",
+    "ACBC",
+    "BFHD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.163,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 55,
+   "capacidade": 4,
+   "caixas": [
+    "BGhA",
+    "FDGG",
+    "hBGE",
+    "DAFH",
+    "DDhA",
+    "FEEE",
+    "FBbA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.473,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 56,
+   "capacidade": 4,
+   "caixas": [
+    "DDIE",
+    "FCAE",
+    "AEDI",
+    "CCAE",
+    "IAIF",
+    "FFCD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 17,
+    "minimoExato": true,
+    "falhaSimulada": 0.038,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 57,
+   "capacidade": 4,
+   "caixas": [
+    "DHFB",
+    "DFBD",
+    "HAAB",
+    "HIBC",
+    "FACC",
+    "CIFI",
+    "AHDI",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.12,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 58,
+   "capacidade": 4,
+   "caixas": [
+    "EGcI",
+    "HhGE",
+    "FhIF",
+    "IGEH",
+    "FIGC",
+    "AAFC",
+    "AAeC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 20,
+    "minimoExato": true,
+    "falhaSimulada": 0.138,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 59,
+   "capacidade": 4,
+   "caixas": [
+    "EBCF",
+    "FCAH",
+    "AFBI",
+    "HAEI",
+    "FIHE",
+    "EBIA",
+    "BHCC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.155,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 60,
+   "capacidade": 4,
+   "caixas": [
+    "gGCC",
+    "HCDB",
+    "dIEC",
+    "FBFB",
+    "DEII",
+    "DGEH",
+    "eGFH",
+    "fIbH",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     3,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 5,
+    "trancas": 0,
+    "jogadasMinimas": 25,
+    "minimoExato": true,
+    "falhaSimulada": 0.525,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 61,
+   "capacidade": 4,
+   "caixas": [
+    "GICI",
+    "CDEB",
+    "EEDC",
+    "BDGD",
+    "IEIC",
+    "BGGB",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 2,
+     "chave": "G"
+    }
+   ],
+   "solucao": [
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 6,
+    "caixas": 8,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 19,
+    "minimoExato": true,
+    "falhaSimulada": 0.035,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 62,
+   "capacidade": 4,
+   "caixas": [
+    "FFDC",
+    "BDEC",
+    "GFIE",
+    "ECIB",
+    "FIGI",
+    "GEDC",
+    "DGBB",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 3,
+     "chave": "F"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.063,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 63,
+   "capacidade": 4,
+   "caixas": [
+    "bgJA",
+    "fGAI",
+    "FaGA",
+    "BEbI",
+    "fFJE",
+    "iJJG",
+    "EEBI",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     0,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.158,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 64,
+   "capacidade": 4,
+   "caixas": [
+    "HEBJ",
+    "GJCG",
+    "EJHF",
+    "EBGC",
+    "IFHC",
+    "FJCF",
+    "BIII",
+    "GBEH",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 5,
+     "chave": "H"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.365,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 65,
+   "capacidade": 4,
+   "caixas": [
+    "jBcD",
+    "CjDJ",
+    "AADI",
+    "HBGH",
+    "BBHA",
+    "iCIG",
+    "hAIC",
+    "JgDG",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.368,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 66,
+   "capacidade": 4,
+   "caixas": [
+    "CHeA",
+    "HaCF",
+    "CheA",
+    "IhGA",
+    "FEFI",
+    "gFGG",
+    "ECiI",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.073,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 67,
+   "capacidade": 4,
+   "caixas": [
+    "GBAC",
+    "ICGF",
+    "FEEG",
+    "BFEA",
+    "EFBA",
+    "BIIA",
+    "GICC",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 5,
+     "chave": "G"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 20,
+    "minimoExato": true,
+    "falhaSimulada": 0.11,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 68,
+   "capacidade": 4,
+   "caixas": [
+    "aFHG",
+    "HegA",
+    "GGFA",
+    "CjEC",
+    "CFJH",
+    "JHfE",
+    "JAeC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 23,
+    "minimoExato": true,
+    "falhaSimulada": 0.245,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 69,
+   "capacidade": 4,
+   "caixas": [
+    "DhdI",
+    "jHeI",
+    "HGDG",
+    "gIFF",
+    "JEAA",
+    "fAJF",
+    "eGIA",
+    "hDEJ",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 25,
+    "minimoExato": true,
+    "falhaSimulada": 0.295,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 70,
+   "capacidade": 4,
+   "caixas": [
+    "hCCB",
+    "BEEA",
+    "HHfG",
+    "GBAF",
+    "EGEA",
+    "BFHF",
+    "CGCA",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 0,
+     "chave": "G"
+    }
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 2,
+    "trancas": 1,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.458,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 71,
+   "capacidade": 4,
+   "caixas": [
+    "jaED",
+    "BDAG",
+    "dIdE",
+    "biGG",
+    "IGJB",
+    "JaEI",
+    "JEBA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 23,
+    "minimoExato": true,
+    "falhaSimulada": 0.03,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 72,
+   "capacidade": 4,
+   "caixas": [
+    "FigE",
+    "FhBF",
+    "AHgB",
+    "BbgA",
+    "DFDH",
+    "IEgA",
+    "hdAE",
+    "IDiE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 10,
+    "trancas": 0,
+    "jogadasMinimas": 25,
+    "minimoExato": true,
+    "falhaSimulada": 0.18,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 73,
+   "capacidade": 4,
+   "caixas": [
+    "IIAE",
+    "BGEF",
+    "FFDE",
+    "JAAA",
+    "IIJD",
+    "BDFJ",
+    "DEJG",
+    "GBGB",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 6,
+     "chave": "A"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.145,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 74,
+   "capacidade": 4,
+   "caixas": [
+    "AiEE",
+    "CBDC",
+    "FJjF",
+    "JCbC",
+    "DdII",
+    "aJAD",
+    "BFEI",
+    "aFeB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 23,
+    "minimoExato": true,
+    "falhaSimulada": 0.365,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 75,
+   "capacidade": 4,
+   "caixas": [
+    "kFkB",
+    "GDiJ",
+    "IbDF",
+    "GikA",
+    "bHAA",
+    "JJFH",
+    "bIGF",
+    "DkhA",
+    "HGDJ",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     8,
+     3
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 10,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.433,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 76,
+   "capacidade": 4,
+   "caixas": [
+    "GACK",
+    "FDCC",
+    "DDGH",
+    "aCaG",
+    "hGFH",
+    "KFkA",
+    "FKHD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     7
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 77,
+   "capacidade": 4,
+   "caixas": [
+    "CbAE",
+    "GkIB",
+    "bAEG",
+    "GIhE",
+    "KBaE",
+    "aikH",
+    "CHCH",
+    "KGIC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.148,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 78,
+   "capacidade": 4,
+   "caixas": [
+    "GCFH",
+    "DIBG",
+    "FgJJ",
+    "CBgH",
+    "CHDF",
+    "IDHC",
+    "iiBJ",
+    "JBDF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 25,
+    "minimoExato": true,
+    "falhaSimulada": 0.27,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 79,
+   "capacidade": 4,
+   "caixas": [
+    "AEHA",
+    "KGAB",
+    "FEEA",
+    "EKKG",
+    "FGHG",
+    "HFCF",
+    "CBBC",
+    "HKCB",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 2,
+     "chave": "C"
+    }
+   ],
+   "solucao": [
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 23,
+    "minimoExato": true,
+    "falhaSimulada": 0.333,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 80,
+   "capacidade": 4,
+   "caixas": [
+    "hEEE",
+    "fBIJ",
+    "HjCK",
+    "ikCI",
+    "FBCE",
+    "JbHC",
+    "hJKF",
+    "FIKB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 26,
+    "minimoExato": true,
+    "falhaSimulada": 0.445,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 81,
+   "capacidade": 4,
+   "caixas": [
+    "BbHD",
+    "EEDG",
+    "AEAI",
+    "HeHG",
+    "DiBD",
+    "GAIG",
+    "bihA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     7
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 7,
+    "caixas": 9,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.088,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 82,
+   "capacidade": 4,
+   "caixas": [
+    "EEKE",
+    "DFAG",
+    "AKJJ",
+    "KFHH",
+    "KEJH",
+    "GAFG",
+    "AFJG",
+    "DDHD",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 3,
+     "chave": "A"
+    }
+   ],
+   "solucao": [
+    [
+     2,
+     8
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.165,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 83,
+   "capacidade": 4,
+   "caixas": [
+    "ECDD",
+    "IkEI",
+    "DaHC",
+    "CGaI",
+    "kAhE",
+    "GDhH",
+    "aKgK",
+    "CGIE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     8
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     7,
+     9
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.21,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 84,
+   "capacidade": 4,
+   "caixas": [
+    "khjF",
+    "EHCI",
+    "CgEA",
+    "FAEA",
+    "jJiG",
+    "iffI",
+    "HgKK",
+    "KCAH",
+    "gCEJ",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     10
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 11,
+    "trancas": 0,
+    "jogadasMinimas": 26,
+    "minimoExato": true,
+    "falhaSimulada": 0.26,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 85,
+   "capacidade": 4,
+   "caixas": [
+    "kgHH",
+    "ABhE",
+    "AEFG",
+    "AFfG",
+    "kdDB",
+    "GKBI",
+    "kDeH",
+    "EDiA",
+    "FBiI",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 7,
+     "chave": "B"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 10,
+    "trancas": 1,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.555,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 86,
+   "capacidade": 4,
+   "caixas": [
+    "hKEA",
+    "EcCK",
+    "KEAB",
+    "BBCE",
+    "BHdD",
+    "CGgG",
+    "kaGD",
+    "HHdA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 21,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 87,
+   "capacidade": 4,
+   "caixas": [
+    "KCjF",
+    "ifBG",
+    "JDjF",
+    "IDGB",
+    "kkKD",
+    "cCFC",
+    "gAIB",
+    "JBGA",
+    "aiDA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 10,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.105,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 88,
+   "capacidade": 4,
+   "caixas": [
+    "GKgB",
+    "aAII",
+    "FLKB",
+    "egfK",
+    "fELL",
+    "IALG",
+    "KBAB",
+    "ieEF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     8
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 22,
+    "minimoExato": true,
+    "falhaSimulada": 0.18,
+    "papel": "novidade"
+   }
+  },
+  {
+   "id": 89,
+   "capacidade": 4,
+   "caixas": [
+    "DIHE",
+    "EdJK",
+    "fKDB",
+    "CJHI",
+    "JAIK",
+    "jBCA",
+    "iCkB",
+    "HBEC",
+    "AeAD",
+    "fffH",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     10
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     11
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     2,
+     9
+    ]
+   ],
+   "info": {
+    "tipos": 10,
+    "caixas": 12,
+    "vazias": 2,
+    "ocultos": 9,
+    "trancas": 0,
+    "jogadasMinimas": 30,
+    "minimoExato": true,
+    "falhaSimulada": 0.31,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 90,
+   "capacidade": 4,
+   "caixas": [
+    "FGHH",
+    "BDGH",
+    "EaAE",
+    "BlbE",
+    "AGLA",
+    "GBEF",
+    "JDLJ",
+    "FJFL",
+    "JhDD",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 4,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.54,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 91,
+   "capacidade": 4,
+   "caixas": [
+    "HkCL",
+    "FekK",
+    "CHFH",
+    "AAAJ",
+    "EKjF",
+    "LELA",
+    "ClHC",
+    "jEJF",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     8
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     9
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 23,
+    "minimoExato": true,
+    "falhaSimulada": 0.06,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 92,
+   "capacidade": 4,
+   "caixas": [
+    "JAHI",
+    "LlhF",
+    "JkaB",
+    "GieK",
+    "kALH",
+    "GliB",
+    "JakB",
+    "IgfG",
+    "fFhB",
+    "eEeJ",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     2,
+     10
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     11
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "info": {
+    "tipos": 10,
+    "caixas": 12,
+    "vazias": 2,
+    "ocultos": 17,
+    "trancas": 0,
+    "jogadasMinimas": 29,
+    "minimoExato": true,
+    "falhaSimulada": 0.093,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 93,
+   "capacidade": 4,
+   "caixas": [
+    "IAGC",
+    "LIAG",
+    "eJEJ",
+    "fiiA",
+    "HHeF",
+    "LLhA",
+    "eGcG",
+    "JLFH",
+    "FCJC",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.225,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 94,
+   "capacidade": 4,
+   "caixas": [
+    "FGBG",
+    "HBFA",
+    "CIHC",
+    "FEGG",
+    "IBAF",
+    "EBED",
+    "DEIA",
+    "DCAD",
+    "HIHC",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 2,
+     "chave": "A"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     1,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 29,
+    "minimoExato": true,
+    "falhaSimulada": 0.278,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 95,
+   "capacidade": 4,
+   "caixas": [
+    "FALL",
+    "GAII",
+    "dEfB",
+    "JFeE",
+    "GLBE",
+    "IlGD",
+    "IjdA",
+    "JbfJ",
+    "DBGA",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 28,
+    "minimoExato": true,
+    "falhaSimulada": 0.623,
+    "papel": "pico"
+   }
+  },
+  {
+   "id": 96,
+   "capacidade": 4,
+   "caixas": [
+    "KKCI",
+    "kegI",
+    "DCHI",
+    "ChdA",
+    "EgHC",
+    "ADKH",
+    "IDAG",
+    "GaEE",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "info": {
+    "tipos": 8,
+    "caixas": 10,
+    "vazias": 2,
+    "ocultos": 7,
+    "trancas": 0,
+    "jogadasMinimas": 24,
+    "minimoExato": true,
+    "falhaSimulada": 0.025,
+    "papel": "recuperacao"
+   }
+  },
+  {
+   "id": 97,
+   "capacidade": 4,
+   "caixas": [
+    "EEDB",
+    "CECD",
+    "AFJF",
+    "GAGA",
+    "CFJB",
+    "IBFJ",
+    "CIEI",
+    "DGAB",
+    "GJID",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 5,
+     "chave": "A"
+    }
+   ],
+   "solucao": [
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 0,
+    "trancas": 1,
+    "jogadasMinimas": 29,
+    "minimoExato": true,
+    "falhaSimulada": 0.165,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 98,
+   "capacidade": 4,
+   "caixas": [
+    "bJKL",
+    "jfLC",
+    "FKbH",
+    "LHEJ",
+    "ICEC",
+    "fIfB",
+    "ELKJ",
+    "KIIC",
+    "EbhH",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     1,
+     9
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 8,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.155,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 99,
+   "capacidade": 4,
+   "caixas": [
+    "CiHF",
+    "GLIF",
+    "KHIK",
+    "CLgC",
+    "EKEC",
+    "BbGI",
+    "LGHE",
+    "heFL",
+    "FKbB",
+    "",
+    ""
+   ],
+   "solucao": [
+    [
+     5,
+     9
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     8,
+     10
+    ]
+   ],
+   "info": {
+    "tipos": 9,
+    "caixas": 11,
+    "vazias": 2,
+    "ocultos": 6,
+    "trancas": 0,
+    "jogadasMinimas": 27,
+    "minimoExato": true,
+    "falhaSimulada": 0.26,
+    "papel": "subida"
+   }
+  },
+  {
+   "id": 100,
+   "capacidade": 4,
+   "caixas": [
+    "LlaA",
+    "IKCH",
+    "bCEJ",
+    "IikE",
+    "JJFF",
+    "CLhL",
+    "BJFE",
+    "IbkF",
+    "aEBA",
+    "KCHH",
+    "",
+    ""
+   ],
+   "trancas": [
+    {
+     "caixa": 3,
+     "chave": "L"
+    }
+   ],
+   "solucao": [
+    [
+     1,
+     10
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     7,
+     11
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     9,
+     5
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   "info": {
+    "tipos": 10,
+    "caixas": 12,
+    "vazias": 2,
+    "ocultos": 9,
+    "trancas": 1,
+    "jogadasMinimas": 28,
+    "minimoExato": true,
+    "falhaSimulada": 0.6,
+    "papel": "pico"
+   }
+  }
+ ]
+}
